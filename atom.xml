@@ -38,6 +38,32 @@
   
   <entry>
     <title>Summa | Firmware and Drivers</title>
+    <link href="https://stu-yue.github.io/jottings/architecture/summa_firmware_and_drivers/"/>
+    <id>https://stu-yue.github.io/jottings/architecture/summa_firmware_and_drivers/</id>
+    <published>2023-07-13T06:21:53.000Z</published>
+    <updated>2023-07-13T08:16:18.543Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="What’s"><a href="#What’s" class="headerlink" title="What’s"></a>What’s</h2>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;What’s&quot;&gt;&lt;a href=&quot;#What’s&quot; class=&quot;headerlink&quot; title=&quot;What’s&quot;&gt;&lt;/a&gt;What’s&lt;/h2&gt;</summary>
+      
+    
+    
+    
+    <category term="architecture" scheme="https://stu-yue.github.io/categories/architecture/"/>
+    
+    
+    <category term="firmware" scheme="https://stu-yue.github.io/tags/firmware/"/>
+    
+    <category term="driver" scheme="https://stu-yue.github.io/tags/driver/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Summa | Firmware and Drivers</title>
     <link href="https://stu-yue.github.io/jottings/architecture/linux/summa_firmware_and_drivers/"/>
     <id>https://stu-yue.github.io/jottings/architecture/linux/summa_firmware_and_drivers/</id>
     <published>2023-07-13T06:21:53.000Z</published>
@@ -56,32 +82,6 @@
     <category term="architecture" scheme="https://stu-yue.github.io/categories/architecture/"/>
     
     <category term="linux" scheme="https://stu-yue.github.io/categories/architecture/linux/"/>
-    
-    
-    <category term="firmware" scheme="https://stu-yue.github.io/tags/firmware/"/>
-    
-    <category term="driver" scheme="https://stu-yue.github.io/tags/driver/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Summa | Firmware and Drivers</title>
-    <link href="https://stu-yue.github.io/jottings/architecture/summa_firmware_and_drivers/"/>
-    <id>https://stu-yue.github.io/jottings/architecture/summa_firmware_and_drivers/</id>
-    <published>2023-07-13T06:21:53.000Z</published>
-    <updated>2023-07-13T08:16:18.543Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="What’s"><a href="#What’s" class="headerlink" title="What’s"></a>What’s</h2>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;What’s&quot;&gt;&lt;a href=&quot;#What’s&quot; class=&quot;headerlink&quot; title=&quot;What’s&quot;&gt;&lt;/a&gt;What’s&lt;/h2&gt;</summary>
-      
-    
-    
-    
-    <category term="architecture" scheme="https://stu-yue.github.io/categories/architecture/"/>
     
     
     <category term="firmware" scheme="https://stu-yue.github.io/tags/firmware/"/>
