@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Yue&#39;s Jotter</title>
+  
+  
+  <link href="https://stu-yue.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://stu-yue.github.io/"/>
+  <updated>2023-07-13T09:18:58.689Z</updated>
+  <id>https://stu-yue.github.io/</id>
+  
+  <author>
+    <name>stu-yue</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Welcome Yue&#39;s Jotter</title>
+    <link href="https://stu-yue.github.io/jottings/intro/"/>
+    <id>https://stu-yue.github.io/jottings/intro/</id>
+    <published>2023-07-13T08:23:57.000Z</published>
+    <updated>2023-07-13T09:18:58.689Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Summa | Firmware and Drivers</title>
+    <link href="https://stu-yue.github.io/jottings/architecture/linux/summa_firmware_and_drivers/"/>
+    <id>https://stu-yue.github.io/jottings/architecture/linux/summa_firmware_and_drivers/</id>
+    <published>2023-07-13T06:21:53.000Z</published>
+    <updated>2023-07-13T08:16:18.543Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="What’s"><a href="#What’s" class="headerlink" title="What’s"></a>What’s</h2>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;What’s&quot;&gt;&lt;a href=&quot;#What’s&quot; class=&quot;headerlink&quot; title=&quot;What’s&quot;&gt;&lt;/a&gt;What’s&lt;/h2&gt;</summary>
+      
+    
+    
+    
+    <category term="architecture" scheme="https://stu-yue.github.io/categories/architecture/"/>
+    
+    <category term="linux" scheme="https://stu-yue.github.io/categories/architecture/linux/"/>
+    
+    
+    <category term="firmware" scheme="https://stu-yue.github.io/tags/firmware/"/>
+    
+    <category term="driver" scheme="https://stu-yue.github.io/tags/driver/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Summa | Firmware and Drivers</title>
+    <link href="https://stu-yue.github.io/jottings/architecture/summa_firmware_and_drivers/"/>
+    <id>https://stu-yue.github.io/jottings/architecture/summa_firmware_and_drivers/</id>
+    <published>2023-07-13T06:21:53.000Z</published>
+    <updated>2023-07-13T08:16:18.543Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="What’s"><a href="#What’s" class="headerlink" title="What’s"></a>What’s</h2>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;What’s&quot;&gt;&lt;a href=&quot;#What’s&quot; class=&quot;headerlink&quot; title=&quot;What’s&quot;&gt;&lt;/a&gt;What’s&lt;/h2&gt;</summary>
+      
+    
+    
+    
+    <category term="architecture" scheme="https://stu-yue.github.io/categories/architecture/"/>
+    
+    
+    <category term="firmware" scheme="https://stu-yue.github.io/tags/firmware/"/>
+    
+    <category term="driver" scheme="https://stu-yue.github.io/tags/driver/"/>
+    
+  </entry>
+  
+</feed>
