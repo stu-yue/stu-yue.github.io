@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://stu-yue.github.io/about/</loc>
+    
+    <lastmod>2023-07-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://stu-yue.github.io/jottings/intro/</loc>
     
     <lastmod>2023-07-13</lastmod>
@@ -20,15 +29,6 @@
   </url>
   
   <url>
-    <loc>https://stu-yue.github.io/jottings/architecture/linux/summa_firmware_and_drivers/</loc>
-    
-    <lastmod>2023-07-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://stu-yue.github.io/tags/</loc>
     
     <lastmod>2023-07-06</lastmod>
@@ -39,15 +39,6 @@
   
   <url>
     <loc>https://stu-yue.github.io/categories/</loc>
-    
-    <lastmod>2023-07-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://stu-yue.github.io/about/</loc>
     
     <lastmod>2023-07-06</lastmod>
     
@@ -82,13 +73,6 @@
   
   <url>
     <loc>https://stu-yue.github.io/categories/architecture/</loc>
-    <lastmod>2023-07-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://stu-yue.github.io/categories/architecture/linux/</loc>
     <lastmod>2023-07-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
