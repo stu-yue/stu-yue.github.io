@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://stu-yue.github.io/jottings/architecture/summa_firmware_and_drivers/summa_firmware_and_drivers/relation_graph.png">
 <meta property="og:image" content="https://stu-yue.github.io/jottings/architecture/summa_firmware_and_drivers/relation_graph.png">
 <meta property="article:published_time" content="2023-07-13T06:21:53.000Z">
-<meta property="article:modified_time" content="2023-07-19T15:45:22.318Z">
+<meta property="article:modified_time" content="2023-07-20T05:15:59.324Z">
 <meta property="article:author" content="stu-yue">
 <meta property="article:tag" content="firmware">
 <meta property="article:tag" content="driver">
@@ -359,9 +359,9 @@
 </tr>
 </tbody></table>
 <p>Layers of software on a typical computer are shown in the following figure:</p>
-<img src="./summa_firmware_and_drivers/layer.png" style="zoom:50%" >
+<img src="./summa_firmware_and_drivers/layer.png" style="zoom:80%" >
 
-<img src="./layer.png" style="zoom:50%" >
+<img src="./layer.png" style="zoom:80%" >
 
 <blockquote>
 <h4 id="Firmware"><a href="#Firmware" class="headerlink" title="Firmware"></a>Firmware</h4><p>​        <strong>Firmware is a computer program that is written to work directly on specific custom hardware and it lives in non-volatile memory such as a flash chip and it is executed directly from it. The job of the firmware is to make the hardware accessible to the operating system.</strong> Firmware can be thought of as the glasses through which the operating system can see the actual hardware!</p>
@@ -370,9 +370,9 @@
 <h4 id="Device-Drivers"><a href="#Device-Drivers" class="headerlink" title="Device Drivers"></a>Device Drivers</h4><p><strong>Device drivers are programs that can control a given hardware and provide a software interface to it. Other programs like Operating Systems can interact with the hardware through this software interface without needing to know the actual underlying implementation of the software interface.</strong></p>
 </blockquote>
 <p>The relation graph between firmware and drivers is also shown below:</p>
-<img src="./summa_firmware_and_drivers/relation_graph.png" style="zoom:50%" >
+<img src="./summa_firmware_and_drivers/relation_graph.png" style="zoom:80%" >
 
-<img src="./relation_graph.png" style="zoom:50%" >
+<img src="./relation_graph.png" style="zoom:80%" >
 
 <p>​        Generally speaking, drivers and firmware together form the module that operates hardware. <strong>But why not make the firmware perfect so that it doesn’t require driver support?</strong> </p>
 <p>​         The answer to the above question is, there are different operating systems which have completely different ways of operating hardware. So, <strong>on the one hand, hardware manufactures need to write firmware to make their hardware easier to use with software,</strong> but <strong>on the other hand, they cannot make the firmware too rigid in order to be compatible with various operating systems. They must leave enough room for software to freely operate</strong> —— and <strong>that’s where drivers come in.</strong></p>
