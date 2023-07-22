@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://stu-yue.github.io/jottings/architecture/summa_memory_categories/</loc>
+    
+    <lastmod>2023-07-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://stu-yue.github.io/jottings/architecture/summa_firmware_and_drivers/</loc>
     
     <lastmod>2023-07-20</lastmod>
@@ -49,22 +58,29 @@
 
   <url>
     <loc>https://stu-yue.github.io/</loc>
-    <lastmod>2023-07-20</lastmod>
+    <lastmod>2023-07-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
+    <loc>https://stu-yue.github.io/tags/memory/</loc>
+    <lastmod>2023-07-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://stu-yue.github.io/tags/firmware/</loc>
-    <lastmod>2023-07-20</lastmod>
+    <lastmod>2023-07-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://stu-yue.github.io/tags/driver/</loc>
-    <lastmod>2023-07-20</lastmod>
+    <lastmod>2023-07-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -73,7 +89,7 @@
   
   <url>
     <loc>https://stu-yue.github.io/categories/architecture/</loc>
-    <lastmod>2023-07-20</lastmod>
+    <lastmod>2023-07-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
