@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://stu-yue.github.io/jottings/points/hot_points/</loc>
+    
+    <lastmod>2023-07-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://stu-yue.github.io/jottings/architecture/summa_memory_categories/</loc>
     
     <lastmod>2023-07-22</lastmod>
@@ -65,6 +74,13 @@
 
   
   <url>
+    <loc>https://stu-yue.github.io/tags/points/</loc>
+    <lastmod>2023-07-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://stu-yue.github.io/tags/memory/</loc>
     <lastmod>2023-07-22</lastmod>
     <changefreq>weekly</changefreq>
@@ -86,6 +102,13 @@
   </url>
   
 
+  
+  <url>
+    <loc>https://stu-yue.github.io/categories/points/</loc>
+    <lastmod>2023-07-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
   
   <url>
     <loc>https://stu-yue.github.io/categories/architecture/</loc>
