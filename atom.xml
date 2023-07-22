@@ -6,7 +6,7 @@
   <link href="https://stu-yue.github.io/atom.xml" rel="self"/>
   
   <link href="https://stu-yue.github.io/"/>
-  <updated>2023-07-22T12:04:58.680Z</updated>
+  <updated>2023-07-22T12:06:58.932Z</updated>
   <id>https://stu-yue.github.io/</id>
   
   <author>
@@ -21,16 +21,16 @@
     <link href="https://stu-yue.github.io/jottings/points/hot_points/"/>
     <id>https://stu-yue.github.io/jottings/points/hot_points/</id>
     <published>2023-07-22T12:00:53.000Z</published>
-    <updated>2023-07-22T12:04:58.680Z</updated>
+    <updated>2023-07-22T12:06:58.932Z</updated>
     
-    <content type="html"><![CDATA[<ol><li>Generate random numbers by reading thermal noise on CPU pins.</li><li>Hot Plug, refers to the operation of inserting&#x2F;removing a device while it is running. In contrast, Cold Plug means do above operation while the device is powered off.</li></ol>]]></content>
+    <content type="html"><![CDATA[<ol><li>Generate random numbers by reading <strong>thermal noise</strong> on CPU pins.</li><li><strong>Hot Plug</strong>, refers to the operation of inserting&#x2F;removing a device while it is running. In contrast, <strong>Cold Plug</strong> means do above operation while the device is powered off.</li></ol>]]></content>
     
     
       
       
     <summary type="html">&lt;ol&gt;
-&lt;li&gt;Generate random numbers by reading thermal noise on CPU pins.&lt;/li&gt;
-&lt;li&gt;Hot Plug, refers to the operation of inserting&amp;#x2F;removing</summary>
+&lt;li&gt;Generate random numbers by reading &lt;strong&gt;thermal noise&lt;/strong&gt; on CPU pins.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hot Plug&lt;/strong&gt;, refers to the op</summary>
       
     
     

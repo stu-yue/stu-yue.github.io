@@ -74,7 +74,14 @@
 
   
   <url>
-    <loc>https://stu-yue.github.io/tags/points/</loc>
+    <loc>https://stu-yue.github.io/tags/firmware/</loc>
+    <lastmod>2023-07-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://stu-yue.github.io/tags/driver/</loc>
     <lastmod>2023-07-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -88,14 +95,7 @@
   </url>
   
   <url>
-    <loc>https://stu-yue.github.io/tags/firmware/</loc>
-    <lastmod>2023-07-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://stu-yue.github.io/tags/driver/</loc>
+    <loc>https://stu-yue.github.io/tags/points/</loc>
     <lastmod>2023-07-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
