@@ -6,7 +6,7 @@
   <link href="https://stu-yue.github.io/atom.xml" rel="self"/>
   
   <link href="https://stu-yue.github.io/"/>
-  <updated>2023-07-22T12:06:58.932Z</updated>
+  <updated>2023-08-01T08:44:30.460Z</updated>
   <id>https://stu-yue.github.io/</id>
   
   <author>
@@ -21,16 +21,17 @@
     <link href="https://stu-yue.github.io/jottings/points/hot_points/"/>
     <id>https://stu-yue.github.io/jottings/points/hot_points/</id>
     <published>2023-07-22T12:00:53.000Z</published>
-    <updated>2023-07-22T12:06:58.932Z</updated>
+    <updated>2023-08-01T08:44:30.460Z</updated>
     
-    <content type="html"><![CDATA[<ol><li>Generate random numbers by reading <strong>thermal noise</strong> on CPU pins.</li><li><strong>Hot Plug</strong>, refers to the operation of inserting&#x2F;removing a device while it is running. In contrast, <strong>Cold Plug</strong> means do above operation while the device is powered off.</li></ol>]]></content>
+    <content type="html"><![CDATA[<ol><li><p>Generate random numbers by reading <strong>thermal noise</strong> on CPU pins.</p></li><li><p><strong>Hot Plug</strong>, refers to the operation of inserting&#x2F;removing a device while it is running. In contrast, <strong>Cold Plug</strong> means do above operation while the device is powered off.</p></li><li><p>Software version’s explanation:</p><table><thead><tr><th>Version</th><th>Description</th></tr></thead><tbody><tr><td>Snapshot</td><td>Development version</td></tr><tr><td>Alpha</td><td>Internal beta</td></tr><tr><td>Beta</td><td>Public beta</td></tr><tr><td>Pre (M)</td><td>Similar to Alpha, sometimes subdivided into M_(Milestone) version</td></tr><tr><td>RC(Release Candidate)</td><td>During Beta stage, new features will continue to be added, but once the RC version is reached, there will mainly be on debugging and issue resolution.</td></tr><tr><td>GA(General Availability)</td><td>Some software may be labeled as “stable” or “production”.</td></tr><tr><td>Release&#x2F;Stable</td><td></td></tr><tr><td>Current</td><td>The latest version, but no necessarily a stable one.</td></tr><tr><td>Eval</td><td>There may be a monthly or fixed time limit for usage.</td></tr></tbody></table></li></ol>]]></content>
     
     
       
       
     <summary type="html">&lt;ol&gt;
-&lt;li&gt;Generate random numbers by reading &lt;strong&gt;thermal noise&lt;/strong&gt; on CPU pins.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Hot Plug&lt;/strong&gt;, refers to the op</summary>
+&lt;li&gt;&lt;p&gt;Generate random numbers by reading &lt;strong&gt;thermal noise&lt;/strong&gt; on CPU pins.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Hot Plug&lt;/strong&gt;, refer</summary>
       
     
     
