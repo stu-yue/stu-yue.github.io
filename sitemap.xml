@@ -2,7 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://stu-yue.github.io/jottings/points/hot_points/</loc>
+    <loc>https://stu-yue.github.io/jottings/languages/shell/memo_exploring_os/</loc>
+    
+    <lastmod>2023-08-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://stu-yue.github.io/jottings/tidbits/hot_points/</loc>
     
     <lastmod>2023-08-01</lastmod>
     
@@ -67,36 +76,50 @@
 
   <url>
     <loc>https://stu-yue.github.io/</loc>
-    <lastmod>2023-08-01</lastmod>
+    <lastmod>2023-08-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
+    <loc>https://stu-yue.github.io/tags/memory/</loc>
+    <lastmod>2023-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://stu-yue.github.io/tags/firmware/</loc>
-    <lastmod>2023-08-01</lastmod>
+    <lastmod>2023-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://stu-yue.github.io/tags/driver/</loc>
-    <lastmod>2023-08-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://stu-yue.github.io/tags/memory/</loc>
-    <lastmod>2023-08-01</lastmod>
+    <lastmod>2023-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://stu-yue.github.io/tags/points/</loc>
-    <lastmod>2023-08-01</lastmod>
+    <lastmod>2023-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://stu-yue.github.io/tags/shell/</loc>
+    <lastmod>2023-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://stu-yue.github.io/tags/linux/</loc>
+    <lastmod>2023-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -104,15 +127,29 @@
 
   
   <url>
-    <loc>https://stu-yue.github.io/categories/points/</loc>
-    <lastmod>2023-08-01</lastmod>
+    <loc>https://stu-yue.github.io/categories/tidbits/</loc>
+    <lastmod>2023-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://stu-yue.github.io/categories/languages/</loc>
+    <lastmod>2023-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://stu-yue.github.io/categories/architecture/</loc>
-    <lastmod>2023-08-01</lastmod>
+    <lastmod>2023-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://stu-yue.github.io/categories/languages/shell/</loc>
+    <lastmod>2023-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
