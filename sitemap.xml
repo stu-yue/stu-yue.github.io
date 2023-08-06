@@ -92,13 +92,6 @@
 
   
   <url>
-    <loc>https://stu-yue.github.io/tags/memory/</loc>
-    <lastmod>2023-08-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://stu-yue.github.io/tags/firmware/</loc>
     <lastmod>2023-08-06</lastmod>
     <changefreq>weekly</changefreq>
@@ -107,6 +100,13 @@
   
   <url>
     <loc>https://stu-yue.github.io/tags/driver/</loc>
+    <lastmod>2023-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://stu-yue.github.io/tags/memory/</loc>
     <lastmod>2023-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -164,14 +164,14 @@
   </url>
   
   <url>
-    <loc>https://stu-yue.github.io/categories/architecture/</loc>
+    <loc>https://stu-yue.github.io/categories/languages/shell/</loc>
     <lastmod>2023-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://stu-yue.github.io/categories/languages/shell/</loc>
+    <loc>https://stu-yue.github.io/categories/architecture/</loc>
     <lastmod>2023-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
