@@ -92,7 +92,14 @@
 
   
   <url>
-    <loc>https://stu-yue.github.io/tags/memory/</loc>
+    <loc>https://stu-yue.github.io/tags/optimization/</loc>
+    <lastmod>2023-08-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://stu-yue.github.io/tags/ml/</loc>
     <lastmod>2023-08-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -107,20 +114,6 @@
   
   <url>
     <loc>https://stu-yue.github.io/tags/driver/</loc>
-    <lastmod>2023-08-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://stu-yue.github.io/tags/optimization/</loc>
-    <lastmod>2023-08-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://stu-yue.github.io/tags/ml/</loc>
     <lastmod>2023-08-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -142,6 +135,13 @@
   
   <url>
     <loc>https://stu-yue.github.io/tags/linux/</loc>
+    <lastmod>2023-08-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://stu-yue.github.io/tags/memory/</loc>
     <lastmod>2023-08-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -171,14 +171,14 @@
   </url>
   
   <url>
-    <loc>https://stu-yue.github.io/categories/architecture/</loc>
+    <loc>https://stu-yue.github.io/categories/mathematics/</loc>
     <lastmod>2023-08-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://stu-yue.github.io/categories/mathematics/</loc>
+    <loc>https://stu-yue.github.io/categories/architecture/</loc>
     <lastmod>2023-08-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
