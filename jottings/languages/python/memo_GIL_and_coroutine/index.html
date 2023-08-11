@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Memo | GIL and Coroutine | Yue&#39;s Jotter</title>
+    
+    
+        <meta name="keywords" content="python" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="GIL (Global Interpreter Lock) GIL is not a characteristic of Python itself, but rather a characteristic to CPython, the reference implementation of Python.  In CPython, GIL is a mutex lock used to ens">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Memo | GIL and Coroutine">
+<meta property="og:url" content="https://stu-yue.github.io/jottings/languages/python/memo_GIL_and_coroutine/">
+<meta property="og:site_name" content="Yue&#39;s Jotter">
+<meta property="og:description" content="GIL (Global Interpreter Lock) GIL is not a characteristic of Python itself, but rather a characteristic to CPython, the reference implementation of Python.  In CPython, GIL is a mutex lock used to ens">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-08-10T08:01:53.000Z">
+<meta property="article:modified_time" content="2023-08-11T16:23:09.434Z">
+<meta property="article:author" content="stu-yue">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+    
+
+    
+
+    
+        <link rel="icon" href="/css/images/logo.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Yue's Jotter" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Yue&#39;s Jotter</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">HOME</a>
+                
+                    <a class="main-nav-link" href="/archives">ARCHIVES</a>
+                
+                    <a class="main-nav-link" href="/categories">CATEGORIES</a>
+                
+                    <a class="main-nav-link" href="/tags">TAGS</a>
+                
+                    <a class="main-nav-link" href="/about">ABOUT</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">HOME</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">ARCHIVES</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">CATEGORIES</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">TAGS</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">ABOUT</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            architecture
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/architecture/summa_firmware_and_drivers/">Summa | Firmware and Drivers</a></li>  <li class="file"><a href="/jottings/architecture/summa_memory_categories/">Summa | The Majority of Memory Categories</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            languages
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            python
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file active"><a href="/jottings/languages/python/memo_GIL_and_coroutine/">Memo | GIL and Coroutine</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            shell
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/languages/shell/memo_exploring_os/">Memo | Exploring Linux Files and Directories</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            mathematics
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/mathematics/memo_optimization_alg/">Memo | Optimization Algorithm in Machine Learning</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            tidbits
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/tidbits/hot_points/">Hot Points</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/jottings/intro/">Welcome to Yue's Jotter</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-languages/python/memo_GIL_and_coroutine" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/languages/">languages</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/languages/python/">python</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/python/" rel="tag">python</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/jottings/languages/python/memo_GIL_and_coroutine/">
+            <time datetime="2023-08-10T08:01:53.000Z" itemprop="datePublished">2023-08-10</time>
+        </a>
+    </div>
+
+
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/stu-yue/stu-yue.github.io/raw/main/source/_posts/languages/python/memo_GIL_and_coroutine.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/stu-yue/stu-yue.github.io/edit/main/source/_posts/languages/python/memo_GIL_and_coroutine.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/stu-yue/stu-yue.github.io/commits/main/source/_posts/languages/python/memo_GIL_and_coroutine.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Memo | GIL and Coroutine
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <h4 id="GIL-Global-Interpreter-Lock"><a href="#GIL-Global-Interpreter-Lock" class="headerlink" title="GIL (Global Interpreter Lock)"></a>GIL (Global Interpreter Lock)</h4><ol>
+<li><p>GIL is not a characteristic of Python itself, but rather a characteristic to CPython, the reference implementation of Python.</p>
+</li>
+<li><p>In CPython, GIL is a mutex lock used to ensure that only on thread is executing at a time within a process.</p>
+</li>
+<li><p>In the absence of the GIL, it’s possible for multiple threads executing the same code simultaneously <strong>to cause incorrect reference counting of variables</strong>, leading to the garbage collector directly reclaiming the variables involved in the executed code. This can result in errors when other threads attempt to use those reclaimed variables.</p>
+</li>
+<li><p><strong>How to work:</strong> </p>
+<ul>
+<li><p>Each thread acquires the GIL at the beginning of its execution to prevent other threads from preempting. Similarly, <strong>after each thread completes a segment of code</strong> (or <strong>before system calls that may cause blocking, such as IO operations</strong>), it releases the GIL to allow other threads to utilize resources.</p>
+</li>
+<li><p>In CPython, there’s another mechanism called <code>check_interval</code>, where the interpreter periodically checks the status of the GIL lock for threads. After a certain interval, the interpreter forces the current thread to release the GIL, allowing other threads to have opportunity to execute.</p>
+<p>Overall, each Python thread is encapsulated in a similar loop structure. Let’s take a look at the following code: </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (;;) &#123;</span><br><span class="line">    <span class="keyword">if</span> (--ticker &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        ticker = check_interval;</span><br><span class="line">        <span class="comment">/* Give another thread a chance */</span></span><br><span class="line">        PyThread_release_lock(interpreter_lock);</span><br><span class="line">        <span class="comment">/* Other thread may run now */</span></span><br><span class="line">        PyThread_acquire_lock(interpreter_lock);</span><br><span class="line">    &#125;</span><br><span class="line">    bytecode = *next_instr++;</span><br><span class="line">    <span class="keyword">switch</span>(bytecode) &#123;</span><br><span class="line">            <span class="comment">/* execute the next instruction ... */</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The above example represents instruction counting, while the current approach is mostly based on time slicing.</p>
+</li>
+<li><p>Here’s another example that demonstrates GIL’s working principle:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"><span class="keyword">from</span> threading <span class="keyword">import</span> Thread</span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test</span>():</span><br><span class="line">    <span class="comment"># endless loop for full CPU utilization</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># multi-thread version:</span></span><br><span class="line"><span class="comment"># t1 = Thread(target=test)</span></span><br><span class="line"><span class="comment"># multi-process version:</span></span><br><span class="line">t1 = Process(target=test)</span><br><span class="line">t1.start()</span><br><span class="line"></span><br><span class="line"><span class="comment"># main thread execution</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<p>When the multi-thread code running, we can observe the CPU utilization from <code>htop</code> as shown below:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1  [50%]</span><br><span class="line">2  [50%]</span><br></pre></td></tr></table></figure>
+
+<p>According to the above, we can know that each thread spends their a half time waiting for GIL.</p>
+<p>Additionally, the multi-process version as shown below:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1  [100%]</span><br><span class="line">2  [100%]</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>The other way to utilize multi-core CPU is <strong>Multi-Process or Coroutine</strong></p>
+</li>
+</ol>
+<h4 id="Generator"><a href="#Generator" class="headerlink" title="Generator"></a>Generator</h4><p><strong>Generator</strong> contains the <code>yield</code> keyword to produce values. It has the following characteristics:</p>
+<ol>
+<li><em>Laziness</em>: Generators are lazy in nature, meaning they produce values on-demand as requested by the caller, rather than generating all the values at once. This lazy evaluation allows for efficient memory usage, especially when dealing with large or infinite sequences.</li>
+<li><em>Memory efficiency</em>: Due to their lazy evaluation, generators are memory-efficient. </li>
+<li><em>Iterability:</em> Generators are iterable objects, which means they can be looped over using a <code>for</code> loop or consumed by other iterable functions like <code>list()</code> or <code>sum()</code>. They provide a convenient way to iterate over a sequence of values without the need to store the entire sequence in memory.</li>
+<li><em>State persistence</em>: Generators maintain their internal state between successive calls. When a generator function is paused at a <code>yield</code> statement, the local variables’ values are preserved. This allows the generator to resume execution from where it left off, retaining the necessary information to generate the next value.</li>
+<li><em>Infinite sequences</em>: Generators can be used to represent infinite sequences since they generate values on-the-fly.</li>
+<li><em>Function-like behavior</em>: Generators are defined using the <code>def</code> keyword like regular functions, and they can have parameters, return values, and other function features. However, they differ in their execution behavior, as they can be paused and resumed.</li>
+</ol>
+<blockquote>
+<p>When the generator function finishes executing (no more <code>yield</code> statements or returns), the generator object raises a <code>StopIteration</code> exception.</p>
+<ul>
+<li><p><code>yield from</code> is a syntactic sugar that allows delegation of generator execution within a generator function. It provides a concise way to call a sub-generator from a parent generator and directly pass the values yielded by the sub-generator to the parent generator.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">sub_generator</span>():</span><br><span class="line">    <span class="keyword">yield</span> <span class="string">&#x27;A&#x27;</span></span><br><span class="line">    <span class="keyword">yield</span> <span class="string">&#x27;B&#x27;</span></span><br><span class="line">    <span class="keyword">yield</span> <span class="string">&#x27;C&#x27;</span></span><br><span class="line">   </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">parent_generator</span>():</span><br><span class="line">    <span class="keyword">yield</span> <span class="string">&#x27;START&#x27;</span></span><br><span class="line">    <span class="keyword">yield</span> <span class="keyword">from</span> sub_generator()</span><br><span class="line">    <span class="keyword">yield</span> <span class="string">&#x27;END&#x27;</span></span><br><span class="line">   </span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> parent_generator():</span><br><span class="line">    <span class="built_in">print</span>(item)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>yield</code> and <code>send</code> are used together to allow the generator function to receive values during each iteration and send values back into the generator function for processing.</p>
+<p>Here is an example of how <code>yield</code> and <code>send</code> are used:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">generator_function</span>():</span><br><span class="line">    result = <span class="keyword">yield</span>  <span class="comment"># First call, receives a value sent by send()</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;gen&#x27;</span>, result)</span><br><span class="line">        result = <span class="keyword">yield</span> result</span><br><span class="line">gen = generator_function()</span><br><span class="line"><span class="comment"># Start the generator</span></span><br><span class="line"><span class="built_in">next</span>(gen)		<span class="comment"># or gen.send(None)</span></span><br><span class="line">output = gen.send(<span class="string">&quot;Hello&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;out&#x27;</span>, output)</span><br><span class="line">output = gen.send(<span class="string">&quot;World&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;out&#x27;</span>, output)</span><br><span class="line"><span class="comment"># print result:</span></span><br><span class="line"><span class="comment"># gen Hello</span></span><br><span class="line"><span class="comment"># out Hello</span></span><br><span class="line"><span class="comment"># gen World</span></span><br><span class="line"><span class="comment"># out World</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>generator.throw(AnyException)</code> allows generator to throw an Exception, and <code>generator.close()</code> can stop the generator.</p>
+</li>
+</ul>
+</blockquote>
+<h4 id="Coroutine"><a href="#Coroutine" class="headerlink" title="Coroutine"></a>Coroutine</h4><p><strong>Coroutines</strong> are implemented using generator functions and the <code>yield</code> statement. The principle of coroutines is as follows:</p>
+<ol>
+<li><em>Coroutine Function Definition</em>: Define a generator function as a coroutine function. This function can use the <code>yield</code> statement to specify suspension points, where it pauses execution and returns a value to the caller.</li>
+<li><em>Coroutine Initialization</em>: Create a coroutine object by calling the coroutine function.</li>
+<li><em>Coroutine Iteration</em>: Use the <code>next()</code> function or the <code>.send()</code> method of the coroutine object to iterate and execute the coroutine. When the coroutine encounters a <code>yield</code> statement, it pauses execution and returns the result to the caller.</li>
+<li><em>Coroutine Resumption</em>: When the caller sends a value to the coroutine (using the <code>.send()</code> method), the coroutine resumes execution from the last paused position and uses the sent value as the result of the <code>yield</code> expression.</li>
+<li><em>Coroutine Termination</em>: When the coroutine reaches the end of the function or encounters a <code>StopIteration</code> exception, the coroutine terminates. Further calls to the <code>.send()</code> method on the coroutine object will raise a <code>StopIteration</code> exception.</li>
+</ol>
+<blockquote>
+<p>Coroutines allow achieving concurrent execution without the need for multiple threads or processes. Coroutines can switch between different execution paths, enabling efficient asynchronous programming. Coroutines can also delegate to other coroutines using the <code>yield from</code> statement, enabling more complex cooperation and task decomposition.</p>
+<p><strong>Python provides the <code>asyncio</code> module to support coroutine programming, where the <code>async</code> and <code>await</code> keywords offer a more concise syntax for defining and managing coroutines. With <code>asyncio</code>, it becomes easy to write asynchronous programs and handle tasks like I&#x2F;O operations, network communication, and more.</strong></p>
+<p>It’s important to note that coroutines run in a single thread, so their performance may not be as good as multi-threading or multiprocessing when it comes to CPU-bound tasks. <strong>However, in I&#x2F;O-bound tasks, coroutines shine because they can effectively utilize the waiting time for I&#x2F;O to execute other tasks.</strong></p>
+</blockquote>
+<h4 id="Async-x2F-Await"><a href="#Async-x2F-Await" class="headerlink" title="Async&#x2F;Await"></a>Async&#x2F;Await</h4><ol>
+<li><p><strong><code>async def</code></strong> is a keyword combination used in Python to <strong>define asynchronous functions</strong>. An <strong>asynchronous function</strong> is a special type of function <strong>that can contain <code>await</code> expressions</strong>, <strong>which suspend the execution of the function and wait for the completion of asynchronous operations</strong>.</p>
+<p>Here is a example:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"></span><br><span class="line"><span class="comment"># Define an asynchronous function</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">async_func</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Start&quot;</span>)</span><br><span class="line">    <span class="keyword">await</span> asyncio.sleep(<span class="number">1</span>)  <span class="comment"># Suspend function execution using await, waiting for the completion of an asynchronous operation</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;End&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Run the asynchronous function in an event loop</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    <span class="keyword">await</span> async_func()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create an event loop and run the main function</span></span><br><span class="line">loop = asyncio.get_event_loop()</span><br><span class="line">loop.run_until_complete(main())</span><br><span class="line">loop.close()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong><code>await</code></strong> is a keyword used to suspend the execution of an asynchronous function and wait for the completion of an asynchronous operation. <strong><code>await</code> can only be used within an asynchronous context and is typically used in conjunction with <code>async def</code>.</strong></p>
+<p>The general usage of <code>await</code> is as follows:</p>
+<ul>
+<li><p>Use <code>await</code> within an asynchronous function or coroutine to suspend its execution and wait for the completion of an asynchronous operation. For example:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">async_func</span>():</span><br><span class="line">    result = <span class="keyword">await</span> async_operation()  <span class="comment"># 等待 async_operation() 异步操作的完成</span></span><br><span class="line">    <span class="comment"># 继续异步操作，使用异步操作的结果 result</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p> <em><strong>Note that <code>await</code> can only be used within asynchronous functions or coroutines. It is not valid to use <code>await</code> in synchronous code.</strong></em></p>
+</blockquote>
+</li>
+<li><p>Typically, <code>await</code> is followed by an awaitable object, such as an asynchronous function, coroutine, asynchronous iterator, etc. These awaitable objects must implement specific protocols, which include methods like <code>__await__()</code> or <code>__aiter__()</code>. The <code>await</code> expression invokes these methods to obtain an iterator or a context manager from the awaitable object and waits for its completion.</p>
+<p>Here are some common awaitable objects:</p>
+<ul>
+<li><em>Asynchronous functions or coroutines</em>: Use <code>await</code> to wait for the execution of an asynchronous function or coroutine to complete.</li>
+<li>Asynchronous generators: Use <code>await</code> to iterate over asynchronous generators and wait for each generated value.</li>
+<li><em>Asynchronous iterators</em>: Use <code>await</code> to iterate over asynchronous iterators and wait for each iteration value.</li>
+<li><em>Asynchronous context managers</em>: Use <code>await</code> to enter and exit the context of an asynchronous context manager.</li>
+</ul>
+<p>For example:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">async_func</span>():</span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">with</span> async_context_manager() <span class="keyword">as</span> cm:</span><br><span class="line">        <span class="keyword">await</span> cm.do_something()  <span class="comment"># Wait for the completion of the asynchronous context manager</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">for</span> item <span class="keyword">in</span> async_iterator():</span><br><span class="line">        <span class="keyword">await</span> process_item(item)  <span class="comment"># Wait for the completion of each item generated by the asynchronous iterator</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+    
+        <a href="/jottings/mathematics/memo_optimization_alg/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Memo | Optimization Algorithm in Machine Learning</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            stu-yue &copy; 2023 
+            <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a target="_blank" rel="noopener" href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>
