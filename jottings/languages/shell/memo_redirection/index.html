@@ -17,7 +17,7 @@
 <meta property="og:description" content="Input&#x2F;output redirection is achieved by modifying file pointers. When redirection occurs, file descriptors themselves are not changed, instead, it’s the file pointers associated with the file de">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-08-25T06:56:53.000Z">
-<meta property="article:modified_time" content="2023-08-25T06:49:04.136Z">
+<meta property="article:modified_time" content="2023-08-25T07:42:17.718Z">
 <meta property="article:author" content="stu-yue">
 <meta property="article:tag" content="shell">
 <meta property="article:tag" content="linux">
@@ -368,7 +368,10 @@
 <li><p>Output Redirection:</p>
 <ul>
 <li><code>stdiout</code> redirection: <ul>
-<li><code>command &gt;file</code>: [overwrite], stdout overwrites the file.</li>
+<li><code>command &gt;file</code>: [overwrite], stdout overwrites the file.<ul>
+<li><code>&gt; file</code>: clear the content.</li>
+</ul>
+</li>
 <li><code>command &gt;&gt;file</code>: [append], stdout appends to the file.</li>
 </ul>
 </li>
@@ -405,9 +408,38 @@
 <p><code>&gt;&amp;</code>: redirect the output of one file descriptor to another</p>
 <p><code>&gt;&amp;-</code>: equal to redirection to <code>/dev/null</code></p>
 </blockquote>
-<h4 id="Pipeline"><a href="#Pipeline" class="headerlink" title="Pipeline"></a>Pipeline</h4><p>Pipeline is used to link the standard output of the previous instruction as the standard input of the next instruction.</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">who | wc -l</span><br></pre></td></tr></table></figure>
+<h4 id="Pipeline"><a href="#Pipeline" class="headerlink" title="Pipeline"></a>Pipeline</h4><p>Pipeline is used to <strong>link the stdout of the previous instruction</strong> as <strong>the stdin of the next instruction</strong>.</p>
+<p>Pipeline is often used to perform complex operations on data. It’s possible to put several commands together to form a pipeline (usually called filter). For example: </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls /bin /usr/bin | sort | uniq | less</span><br></pre></td></tr></table></figure>
 
+<h4 id="Command"><a href="#Command" class="headerlink" title="Command"></a>Command</h4><p>There’s some useful command in this memo:</p>
+<ul>
+<li><code>cat</code>: To link file.<ul>
+<li><code>cat</code> can accept not one parameter, so it can concatenate the file: <code>cat movie.mpeg.0* &gt; movie.mpeg</code>;</li>
+</ul>
+</li>
+<li><code>sort</code>: To sort the text lines.</li>
+<li><code>uniq</code>: To report&#x2F;omit the repetitive lines.</li>
+<li><code>grep</code>: To print the matching rows.<ul>
+<li><code>-i</code> (ignore upper&#x2F;lower), <code>-v</code> (reverse find, print mismatching lines), <code>-n</code>  (show the matching lines), <code>-r</code> (recursively find), <code>-l</code> (only print matching filename), <code>-c</code>  (only print the number of matching line)</li>
+</ul>
+</li>
+<li><code>wc</code>: To print the LF, word, bytes of the text.<ul>
+<li><code>-c</code> (bytes), <code>-l</code> (lines), <code>-w</code> (words)</li>
+</ul>
+</li>
+<li><code>head</code>&#x2F;<code>tail</code>: To print first&#x2F;last part of text.<ul>
+<li><code>-n</code> (lines), <code>-c</code> (bytes)</li>
+<li><code>tail -f filename</code>: continue to monitor this file, when the new is added to the file, they appear immediately on the screen.</li>
+</ul>
+</li>
+<li><code>tee</code>: read from stdin, and write to stdout and file.<ul>
+<li><code>-a</code>  (append mode), <code>-i</code> (ignore-interrupts)</li>
+<li><code>ls -l | tee -a ls.log </code>: print the content both in the stdout and file.</li>
+<li><code>ls /usr/bin | tee ls.log | grep zip</code></li>
+</ul>
+</li>
+</ul>
 
             </div>
         
