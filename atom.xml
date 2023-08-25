@@ -6,7 +6,7 @@
   <link href="https://stu-yue.github.io/atom.xml" rel="self"/>
   
   <link href="https://stu-yue.github.io/"/>
-  <updated>2023-08-11T16:23:09.434Z</updated>
+  <updated>2023-08-25T06:49:04.136Z</updated>
   <id>https://stu-yue.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Memo | Redirection</title>
+    <link href="https://stu-yue.github.io/jottings/languages/shell/memo_redirection/"/>
+    <id>https://stu-yue.github.io/jottings/languages/shell/memo_redirection/</id>
+    <published>2023-08-25T06:56:53.000Z</published>
+    <updated>2023-08-25T06:49:04.136Z</updated>
+    
+    <content type="html"><![CDATA[<hr><p><em>Input&#x2F;output redirection is achieved by modifying file pointers.</em> <strong>When redirection occurs, file descriptors themselves are not changed, instead, it’s the file pointers associated with the file descriptors that are altered.</strong></p><h4 id="Manipulation-of-File-Descriptors-in-Shell"><a href="#Manipulation-of-File-Descriptors-in-Shell" class="headerlink" title="Manipulation of File Descriptors in Shell"></a>Manipulation of File Descriptors in Shell</h4><blockquote><p><strong>In redirection, <code>&amp;</code> is used to indicates the following numbers is file descriptor rather than  a filename.</strong></p></blockquote><ul><li><p>Output Redirection:</p><ul><li><code>stdiout</code> redirection: <ul><li><code>command &gt;file</code>: [overwrite], stdout overwrites the file.</li><li><code>command &gt;&gt;file</code>: [append], stdout appends to the file.</li></ul></li><li><code>stderr</code> redirection:<ul><li><code>command 2&gt;file</code>: [overwrite], stderr overwrites the file.</li><li><code>command 2&gt;&gt;file</code>: [append], stderr appends to the file.</li></ul></li><li>Both <code>stdout</code> and <code>stderr</code>:<ul><li><code>command &gt;file 2&gt;&amp;1</code>: [overwrite], both stdout and stderr overwrite the file.</li><li><code>command &gt;&gt;file 2&gt;&amp;1</code>: [append], both stdout and stderr append to the file.</li><li><code>command &gt;file1 2&gt;file2</code>: stdout overwrites the file1, stderr overwrites the file2.</li><li><code>command &gt;&gt;file1 2&gt;&gt;file2</code>: stdout appends to file1, stderr appends to file2.</li><li><code>command &gt;file 2&gt;file</code>: [not recommend] file is opened twice, leading to resource competition.</li><li><code>command &gt;&gt;file 2&gt;&gt;file</code>: [not recommend] file is opened twice, leading to resource competition.</li></ul></li></ul></li><li><p>Input Redirection: </p><ul><li><p><code>command &lt;file</code>: take the contents of the file as the input to command.</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line">while read str; do</span><br><span class="line">echo $str</span><br><span class="line">done &lt;readme.txt</span><br></pre></td></tr></table></figure></li><li><p><code>command &lt;&lt;END</code>: read data from standard input (keyboard) until meeting the delimiter END (defined by the user).</p></li><li><p><code>command &lt;file1 &gt;file2</code>: input by file1, and output to file2</p></li></ul></li></ul><blockquote><p><code>&amp;&gt;</code>: redirect both stdout and stderr to the same  location (usually a file).</p><p><code>&gt;&amp;</code>: redirect the output of one file descriptor to another</p><p><code>&gt;&amp;-</code>: equal to redirection to <code>/dev/null</code></p></blockquote><h4 id="Pipeline"><a href="#Pipeline" class="headerlink" title="Pipeline"></a>Pipeline</h4><p>Pipeline is used to link the standard output of the previous instruction as the standard input of the next instruction.</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">who | wc -l</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;Input&amp;#x2F;output redirection is achieved by modifying file pointers.&lt;/em&gt; &lt;strong&gt;When redirection occurs, file descriptors the</summary>
+      
+    
+    
+    
+    <category term="languages" scheme="https://stu-yue.github.io/categories/languages/"/>
+    
+    <category term="shell" scheme="https://stu-yue.github.io/categories/languages/shell/"/>
+    
+    
+    <category term="shell" scheme="https://stu-yue.github.io/tags/shell/"/>
+    
+    <category term="linux" scheme="https://stu-yue.github.io/tags/linux/"/>
+    
+  </entry>
   
   <entry>
     <title>Memo | GIL and Coroutine</title>
@@ -85,35 +114,6 @@
     <summary type="html">&lt;p&gt;Let’s start by learning some commands that are helpful for researching Linux systems.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;code&gt;type&lt;/code&gt;: To explain how t</summary>
-      
-    
-    
-    
-    <category term="languages" scheme="https://stu-yue.github.io/categories/languages/"/>
-    
-    <category term="shell" scheme="https://stu-yue.github.io/categories/languages/shell/"/>
-    
-    
-    <category term="shell" scheme="https://stu-yue.github.io/tags/shell/"/>
-    
-    <category term="linux" scheme="https://stu-yue.github.io/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Memo | Exploring Linux Files and Directories</title>
-    <link href="https://stu-yue.github.io/jottings/languages/shell/memo_redirection/"/>
-    <id>https://stu-yue.github.io/jottings/languages/shell/memo_redirection/</id>
-    <published>2023-08-05T02:56:53.000Z</published>
-    <updated>2023-08-25T06:44:44.038Z</updated>
-    
-    <content type="html"><![CDATA[<hr><p><em>Input&#x2F;output redirection is achieved by modifying file pointers.</em> <strong>When redirection occurs, file descriptors themselves are not changed, instead, it’s the file pointers associated with the file descriptors that are altered.</strong></p><h4 id="Manipulation-of-File-Descriptors-in-Shell"><a href="#Manipulation-of-File-Descriptors-in-Shell" class="headerlink" title="Manipulation of File Descriptors in Shell"></a>Manipulation of File Descriptors in Shell</h4><blockquote><p><strong>In redirection, <code>&amp;</code> is used to indicates the following numbers is file descriptor rather than  a filename.</strong></p></blockquote><ul><li><p>Output Redirection:</p><ul><li><code>stdiout</code> redirection: <ul><li><code>command &gt;file</code>: [overwrite], stdout overwrites the file.</li><li><code>command &gt;&gt;file</code>: [append], stdout appends to the file.</li></ul></li><li><code>stderr</code> redirection:<ul><li><code>command 2&gt;file</code>: [overwrite], stderr overwrites the file.</li><li><code>command 2&gt;&gt;file</code>: [append], stderr appends to the file.</li></ul></li><li>Both <code>stdout</code> and <code>stderr</code>:<ul><li><code>command &gt;file 2&gt;&amp;1</code>: [overwrite], both stdout and stderr overwrite the file.</li><li><code>command &gt;&gt;file 2&gt;&amp;1</code>: [append], both stdout and stderr append to the file.</li><li><code>command &gt;file1 2&gt;file2</code>: stdout overwrites the file1, stderr overwrites the file2.</li><li><code>command &gt;&gt;file1 2&gt;&gt;file2</code>: stdout appends to file1, stderr appends to file2.</li><li><code>command &gt;file 2&gt;file</code>: [not recommend] file is opened twice, leading to resource competition.</li><li><code>command &gt;&gt;file 2&gt;&gt;file</code>: [not recommend] file is opened twice, leading to resource competition.</li></ul></li></ul></li><li><p>Input Redirection: </p><ul><li><p><code>command &lt;file</code>: take the contents of the file as the input to command.</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line">while read str; do</span><br><span class="line">echo $str</span><br><span class="line">done &lt;readme.txt</span><br></pre></td></tr></table></figure></li><li><p><code>command &lt;&lt;END</code>: read data from standard input (keyboard) until meeting the delimiter END (defined by the user).</p></li><li><p><code>command &lt;file1 &gt;file2</code>: input by file1, and output to file2</p></li></ul></li></ul><blockquote><p><code>&amp;&gt;</code>: redirect both stdout and stderr to the same  location (usually a file).</p><p><code>&gt;&amp;</code>: redirect the output of one file descriptor to another</p><p><code>&gt;&amp;-</code>: equal to redirection to <code>/dev/null</code></p></blockquote><h4 id="Pipeline"><a href="#Pipeline" class="headerlink" title="Pipeline"></a>Pipeline</h4><p>Pipeline is used to link the standard output of the previous instruction as the standard input of the next instruction.</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">who | wc -l</span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;hr&gt;
-&lt;p&gt;&lt;em&gt;Input&amp;#x2F;output redirection is achieved by modifying file pointers.&lt;/em&gt; &lt;strong&gt;When redirection occurs, file descriptors the</summary>
       
     
     
