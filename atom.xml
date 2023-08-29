@@ -6,7 +6,7 @@
   <link href="https://stu-yue.github.io/atom.xml" rel="self"/>
   
   <link href="https://stu-yue.github.io/"/>
-  <updated>2023-08-27T09:17:51.365Z</updated>
+  <updated>2023-08-29T06:26:10.195Z</updated>
   <id>https://stu-yue.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://stu-yue.github.io/jottings/nlp/%E6%9D%82%E8%AE%B0/"/>
+    <id>https://stu-yue.github.io/jottings/nlp/%E6%9D%82%E8%AE%B0/</id>
+    <published>2023-08-29T05:56:57.783Z</published>
+    <updated>2023-08-29T06:26:10.195Z</updated>
+    
+    <content type="html"><![CDATA[<p>词向量模型的演化历程</p><h4 id="1-One-hot编码"><a href="#1-One-hot编码" class="headerlink" title="1 One-hot编码"></a>1 One-hot编码</h4><p>高维稀疏——高维计算量剧增，信息稀疏分布，难以优化</p><p>向量正交——无法表达两词向量间的潜在关系，造成语义鸿沟</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;词向量模型的演化历程&lt;/p&gt;
+&lt;h4 id=&quot;1-One-hot编码&quot;&gt;&lt;a href=&quot;#1-One-hot编码&quot; class=&quot;headerlink&quot; title=&quot;1 One-hot编码&quot;&gt;&lt;/a&gt;1 One-hot编码&lt;/h4&gt;&lt;p&gt;高维稀疏——高维计算量剧增，信息</summary>
+      
+    
+    
+    
+    <category term="nlp" scheme="https://stu-yue.github.io/categories/nlp/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Memo | Algebra Basis</title>

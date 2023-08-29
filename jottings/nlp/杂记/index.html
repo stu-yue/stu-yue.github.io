@@ -9,13 +9,15 @@
         <meta name="keywords" content="Yue&#39;s Jotter" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="simple jottings">
-<meta property="og:type" content="website">
+    <meta name="description" content="词向量模型的演化历程 1 One-hot编码高维稀疏——高维计算量剧增，信息稀疏分布，难以优化 向量正交——无法表达两词向量间的潜在关系，造成语义鸿沟">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Yue&#39;s Jotter">
-<meta property="og:url" content="https://stu-yue.github.io/">
+<meta property="og:url" content="https://stu-yue.github.io/jottings/nlp/%E6%9D%82%E8%AE%B0/">
 <meta property="og:site_name" content="Yue&#39;s Jotter">
-<meta property="og:description" content="simple jottings">
+<meta property="og:description" content="词向量模型的演化历程 1 One-hot编码高维稀疏——高维计算量剧增，信息稀疏分布，难以优化 向量正交——无法表达两词向量间的潜在关系，造成语义鸿沟">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-08-29T05:56:57.783Z">
+<meta property="article:modified_time" content="2023-08-29T06:26:10.195Z">
 <meta property="article:author" content="stu-yue">
 <meta name="twitter:card" content="summary">
     
@@ -218,13 +220,13 @@
                          <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/mathematics/memo_optimization_alg/">Memo | Optimization Algorithm in Machine Learning</a></li>  <li class="file"><a href="/jottings/mathematics/memo_algebra_basis/">Memo | Algebra Basis</a></li>  </ul> 
                     </li> 
                     
-                    <li class="directory">
+                    <li class="directory open">
                         <a href="#" data-role="directory">
-                            <i class="fa fa-folder"></i>
+                            <i class="fa fa-folder-open"></i>
                             &nbsp;
                             nlp
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/nlp/%E6%9D%82%E8%AE%B0/"></a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file active"><a href="/jottings/nlp/%E6%9D%82%E8%AE%B0/"></a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -306,47 +308,9 @@
     <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
             
-            <section id="main">
-    <article id="post-intro" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-nlp/杂记" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-                        
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/jottings/intro/">
-            <time datetime="2023-07-13T08:23:57.000Z" itemprop="datePublished">2023-07-13</time>
-        </a>
-    </div>
-
-
-                        
-                        
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/stu-yue/stu-yue.github.io/raw/main/source/_posts/intro.md'> Source </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/stu-yue/stu-yue.github.io/edit/main/source/_posts/intro.md'> Edit </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/stu-yue/stu-yue.github.io/commits/main/source/_posts/intro.md'> History </a>
-                            </div>
-                        
-                    </div>
-                
-                
-    
-        <h1 class="article-title" itemprop="name">
-            Welcome to Yue&#39;s Jotter
-        </h1>
-    
-
-            </header>
         
         
         <div class="article-entry" itemprop="articleBody">
@@ -355,7 +319,10 @@
             
         
         
-            
+            <p>词向量模型的演化历程</p>
+<h4 id="1-One-hot编码"><a href="#1-One-hot编码" class="headerlink" title="1 One-hot编码"></a>1 One-hot编码</h4><p>高维稀疏——高维计算量剧增，信息稀疏分布，难以优化</p>
+<p>向量正交——无法表达两词向量间的潜在关系，造成语义鸿沟</p>
+
             </div>
         
         <footer class="article-footer">
@@ -367,19 +334,10 @@
     
 <nav id="article-nav">
     
-        <a href="/jottings/architecture/summa_memory_categories/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Newer</strong>
-            <div class="article-nav-title">
-                
-                    Summa | The Majority of Memory Categories
-                
-            </div>
-        </a>
     
-    
-        <a href="/jottings/architecture/summa_firmware_and_drivers/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/jottings/mathematics/memo_algebra_basis/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Older</strong>
-            <div class="article-nav-title">Summa | Firmware and Drivers</div>
+            <div class="article-nav-title">Memo | Algebra Basis</div>
         </a>
     
 </nav>
@@ -398,8 +356,6 @@
 <script type="text/javascript">
     !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
 </script>     
-
-
 </section>
         </div>
         <footer id="footer">
