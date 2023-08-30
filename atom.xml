@@ -6,7 +6,7 @@
   <link href="https://stu-yue.github.io/atom.xml" rel="self"/>
   
   <link href="https://stu-yue.github.io/"/>
-  <updated>2023-08-29T06:26:10.195Z</updated>
+  <updated>2023-08-30T09:14:11.931Z</updated>
   <id>https://stu-yue.github.io/</id>
   
   <author>
@@ -17,19 +17,46 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Memo | Parameter Estimation</title>
+    <link href="https://stu-yue.github.io/jottings/mathematics/memo_mle_mae_bayes/"/>
+    <id>https://stu-yue.github.io/jottings/mathematics/memo_mle_mae_bayes/</id>
+    <published>2023-08-30T05:56:53.000Z</published>
+    <updated>2023-08-30T09:14:11.931Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>Through this note, I hope to deepen my understanding of probability distribution and inference.</p></blockquote><h4 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h4><blockquote><ul><li>**Probability: ** to predict results obtained in the next observation when parameters are known;</li><li>**Statistic&#x2F;Likelihood: ** to estimate parameters about properties when the result of observations are known;</li><li>**Parametric Method: ** assume that  the learned distribution has a specific functional form (like Gaussian distribution or exponential p.d.f), we only estimate the parameters in these functions.</li><li><strong>Nonparametric Method</strong>: use the training samples to estimate the density of any point in the domain.<ul><li>Nonparametric methods also have parameters, we just don’t assume any specific functional form for distribution;</li><li>Actually, nonparametric methods treat all training samples as parameters;</li><li>example: kernel density estimation;</li></ul></li></ul></blockquote><ol><li>Under the joint distribution $p_{X,Y}(X,Y)$:<ul><li>When the effect of $Y$ is removed from the joint distribution $p_{X,Y}(X,Y)$,  <em>marginal distribution</em> $p_X(X)$ is called <strong>marginal likelihood</strong>;</li><li>When $X$ has not yet been observed,  <em>marginal distribution</em> $p_Y(Y)$ is called <strong>prior distribution</strong>;</li></ul></li><li>**Posterior Distribution: ** $p(\theta|\mathcal{D}) &#x3D; \frac{p(\mathcal{D},\theta)}{p(\mathcal{D})}$, concentrating <em>Population Info, Sample Info and Prior Info</em>;<ul><li>$p(\mathcal{D})$ is marginal likelihood;</li><li>$\text{Posterior} &#x3D; \frac{\text{Likelihood}\times \text{Prior}}{\text{Marginal Likelihood}}$, in terms of $p(Y|X) &#x3D; \frac{1}{Z}p(X|Y)p(Y)$, $Z&#x3D;p(X)&gt;0$ is a normalized constant such that $p(Y|X)$ is a valid probability distribution.</li></ul></li><li>The Views<ul><li>Frequentist: <ul><li>Data are repeatable random sample - there is a frequency;</li><li>Underlying parameters remain constant during this repeatable process;</li><li><em>Parameters are <strong>fixed value</strong></em>;</li><li><em>statistical inference: Population Info + Sample Info</em></li><li>MLE, MAP;</li></ul></li><li>Bayesian: <ul><li>Data are observed from the realized sample;</li><li><em>Parameters are unknown <strong>(random variable)</strong> and described probabilistically <strong>(prior distribution)</strong></em>;</li><li><em>statistical inference: Population Info + Sample Info + <strong>Prior Info (Main Diff)</strong></em>;</li><li>Bayesian Estimation;</li></ul></li></ul></li></ol><blockquote><p><strong>Notations</strong></p><ul><li>Training Data: $\mathcal{D} &#x3D; { (\mathbf{x_1}, y_1),\cdots,(\mathbf{x}_n, y_n) }$;</li><li>Model Parameter: $\theta$;</li><li>New Data: $x^*$;</li></ul></blockquote><h4 id="Maximum-Likelihood-Estimation"><a href="#Maximum-Likelihood-Estimation" class="headerlink" title="Maximum Likelihood Estimation"></a>Maximum Likelihood Estimation</h4><ul><li><p>Objective is<br>$$<br>\theta_{MLE}^* &#x3D; \arg\max_\theta p(\mathcal{D}|\theta)<br>$$</p><ul><li>$p(\mathcal{D}|\theta)$ is likelihood, not conditional probability;</li></ul><p>Usually, we define<br>$$<br>\mathscr{l}(\theta) &#x3D; p(\mathcal{D}|\theta) \<br>\mathscr{ll}(\theta) &#x3D; \ln \mathscr{l}(\theta)<br>$$<br>So, objective is equivalent to<br>$$<br>\theta_{MLE}^* &#x3D; \arg\max_\theta \mathscr{ll}(\theta)<br>$$<br>That is, we seek those values for the parameters in $\theta$ which maximize $p(\mathcal{D}|\theta)$. The MLE solution is usually obtained by setting<br>$$<br>\frac{\partial \mathscr{ll}(\theta)}{\partial\theta} &#x3D; 0<br>$$</p></li><li><p><font color=red>However, the model…</font></p><ul><li>Does not incorporate prior belief;</li><li>Easy to overfit the data;</li></ul></li></ul><h4 id="Maximum-A-Posteri-Estimation"><a href="#Maximum-A-Posteri-Estimation" class="headerlink" title="Maximum A Posteri Estimation"></a>Maximum A Posteri Estimation</h4><ul><li><p>Objective is<br>$$<br>\theta^*_{MAP} &#x3D; \arg\max_\theta p(\theta|\mathcal{D})<br>$$<br>Since we have Bayes rule:<br>$$<br>p(\theta | \mathcal{D}) &#x3D; \frac{p(\mathcal{D})p(\theta)}{p(\mathcal{D})}<br>$$<br>Our objective is equivalent to<br>$$<br>\theta^*_{MAP} &#x3D; \arg\max_\theta p(\mathcal{D}|\theta)p(\theta)<br>$$<br>Further, by taking the log<br>$$<br>\theta^*_{MAP} &#x3D; \arg\max_\theta {\ln p(\mathcal{D}|\theta) + lnp(\theta) } \<br>\theta^*_{MAP} &#x3D; \arg\max_\theta { \mathscr{ll}(\theta) + \ln p(\theta) }<br>$$<br>Thus, our final goal is to find<br>$$<br>\theta^*_{MAP} &#x3D; \arg\max_\theta { \mathscr{ll}(\theta) + \ln p(\theta) }<br>$$<br>The difference between MAP and MLE is the “extra” term - $p(\theta)$. The term is:</p><ul><li>our prior (belief)</li><li>also can be seen as penalty (regularization) - to reduce the overfitting.</li></ul></li></ul><blockquote><p> For $p(\theta|\mathcal{D})$, in terms of <strong>point estimation</strong> for $\theta$,</p><ul><li>using the <strong>maximum value</strong> is called <strong>Maximum A Posterior Estimation</strong>;</li><li>using the <strong>median value</strong> is called <strong>Posteriror Median Estimation</strong>;</li><li>using the <strong>expectation value</strong> is called <strong>Posterior Expectation Estimation</strong>;</li></ul></blockquote><h4 id="Bayesian-Estimation"><a href="#Bayesian-Estimation" class="headerlink" title="Bayesian Estimation"></a>Bayesian Estimation</h4><blockquote><ul><li>$p(\theta|\mathcal{D})$ (it’s the result of adjustments to prior $p(\theta)$ by population and sample);</li><li><strong>Equal Ignorance</strong>: If there’s no information about the prior distribution, assume $\theta \sim U(0,1)$ ;</li></ul></blockquote><ul><li><p>Learning:  Computing the posterior $p(\theta|\mathcal{D})$ ;</p></li><li><p>Prediction:  $p(\hat y | x^*,\mathcal{D}) &#x3D; \int_\theta p(\hat y | x^*,\theta)p(\theta|\mathcal{D})d\theta$ ;</p></li><li><p><font color=red>Both MLE and MAP return only single and specific values for the paramter $\theta$; </font></p><p><font color=blue>Bayesian estimation, by contrast, calculates fully the posterior distribution $p(\theta|\mathcal{D})$, </font> and making prediction by considering all possible $\theta$.</p><p>Thus, for Bayesian methods:</p><ul><li>The prediction is optimal</li><li>Avoid the overfitting</li></ul></li><li><p><font color=blue>Bayesian is powerful, but…</font></p><p>We need to compute posterior distribution $p(\theta|\mathcal{D})$, and<br>$$<br>p(\theta|\mathcal{D}) &#x3D; \frac{p(\mathcal{D}|\theta)p(\theta)}{\int p(\mathcal{D},\theta)d\theta}<br>$$<br>In practice, evaluating this posterior is usually intractable due to the <font color=red>complex integrals</font>…</p></li></ul><h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h4><p><a href="https://yuanxiaosc.github.io/2018/06/20/%E8%B4%9D%E5%8F%B6%E6%96%AF%E4%BC%B0%E8%AE%A1%E3%80%81%E6%9C%80%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1%E3%80%81%E6%9C%80%E5%A4%A7%E5%90%8E%E9%AA%8C%E4%BC%B0%E8%AE%A1%E4%B8%89%E8%80%85%E7%9A%84%E5%8C%BA%E5%88%AB/">Mainly Ref</a></p><p><a href="https://blog.csdn.net/u011508640/article/details/72815981">Ref2</a></p><p><a href="https://www.zhangzhenhu.com/glm/source/%E8%B4%9D%E5%8F%B6%E6%96%AF%E4%BC%B0%E8%AE%A1/content.html">Ref3</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;Through this note, I hope to deepen my understanding of probability distribution and inference.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;Pr</summary>
+      
+    
+    
+    
+    <category term="mathematics" scheme="https://stu-yue.github.io/categories/mathematics/"/>
+    
+    
+    <category term="math" scheme="https://stu-yue.github.io/tags/math/"/>
+    
+  </entry>
+  
+  <entry>
     <title></title>
     <link href="https://stu-yue.github.io/jottings/nlp/%E6%9D%82%E8%AE%B0/"/>
     <id>https://stu-yue.github.io/jottings/nlp/%E6%9D%82%E8%AE%B0/</id>
     <published>2023-08-29T05:56:57.783Z</published>
-    <updated>2023-08-29T06:26:10.195Z</updated>
+    <updated>2023-08-29T07:01:13.741Z</updated>
     
-    <content type="html"><![CDATA[<p>词向量模型的演化历程</p><h4 id="1-One-hot编码"><a href="#1-One-hot编码" class="headerlink" title="1 One-hot编码"></a>1 One-hot编码</h4><p>高维稀疏——高维计算量剧增，信息稀疏分布，难以优化</p><p>向量正交——无法表达两词向量间的潜在关系，造成语义鸿沟</p>]]></content>
+    <content type="html"><![CDATA[<p>词向量模型的演化历程</p><p><a href="http://fancyerii.github.io/2023/02/20/about-chatgpt/#%E8%AF%8D%E5%90%91%E9%87%8Fword-embedding">http://fancyerii.github.io/2023/02/20/about-chatgpt/#%E8%AF%8D%E5%90%91%E9%87%8Fword-embedding</a></p><p>分布假说（Distributional Hypothesis）</p><p>分布表示（Distributional Representation）</p><p>分布式表示 （Distributed Representation）：指的是用稠密的低维向量来表示一个词的语义，也就是把语义”分散”到不同的维度上。与之相对的通常是one-hot表示，它的语义集中在高维的稀疏的某一维上。</p><h4 id="1-One-hot编码"><a href="#1-One-hot编码" class="headerlink" title="1 One-hot编码"></a>1 One-hot编码</h4><p>高维稀疏——高维计算量剧增，信息稀疏分布，难以优化</p><p>向量正交——无法表达两词向量间的潜在关系，造成语义鸿沟</p><p>Word2Vec</p><p><a href="https://baidinghub.github.io/2020/09/01/NLP%E8%AF%8D%E5%90%91%E9%87%8F%E7%AF%87%EF%BC%88%E4%B8%80%EF%BC%89Word2Vec/#Efficient-Estimation-of-Word-Representations-in-Vector-Space">https://baidinghub.github.io/2020/09/01/NLP%E8%AF%8D%E5%90%91%E9%87%8F%E7%AF%87%EF%BC%88%E4%B8%80%EF%BC%89Word2Vec/#Efficient-Estimation-of-Word-Representations-in-Vector-Space</a></p>]]></content>
     
     
       
       
     <summary type="html">&lt;p&gt;词向量模型的演化历程&lt;/p&gt;
-&lt;h4 id=&quot;1-One-hot编码&quot;&gt;&lt;a href=&quot;#1-One-hot编码&quot; class=&quot;headerlink&quot; title=&quot;1 One-hot编码&quot;&gt;&lt;/a&gt;1 One-hot编码&lt;/h4&gt;&lt;p&gt;高维稀疏——高维计算量剧增，信息</summary>
+&lt;p&gt;&lt;a href=&quot;http://fancyerii.github.io/2023/02/20/about-chatgpt/#%E8%AF%8D%E5%90%91%E9%87%8Fword-embedding&quot;&gt;http://fancyer</summary>
       
     
     
@@ -44,7 +71,7 @@
     <link href="https://stu-yue.github.io/jottings/mathematics/memo_algebra_basis/"/>
     <id>https://stu-yue.github.io/jottings/mathematics/memo_algebra_basis/</id>
     <published>2023-08-27T07:56:53.000Z</published>
-    <updated>2023-08-27T09:17:51.365Z</updated>
+    <updated>2023-08-30T05:59:00.628Z</updated>
     
     <content type="html"><![CDATA[<ol><li><p>**Positive Definiteness of the Norm: ** According to the usual definition, a norm should satisfy the property of positive definiteness which means that a norm must have a non-negative value for non-zero vectors and only attain zero when the vector is the <strong>zero</strong>.</p></li><li><p>**Norm and Distance Evaluation: **</p><table><thead><tr><th align="left">Norm</th><th>Distance</th></tr></thead><tbody><tr><td align="left">$L_0\ \text{norm}$ : $</td><td></td></tr><tr><td align="left">$L_1\ \text{norm}$ : $</td><td></td></tr><tr><td align="left">$L_2\ \text{norm}$ :  $</td><td></td></tr><tr><td align="left">$L_p\ \text{norm}$ :  $</td><td></td></tr><tr><td align="left">$\text{Infinite norm}$ : $</td><td></td></tr></tbody></table></li><li><p><strong>Normed Space:</strong> Normed space introduces a norm (or length, modulus) concept on the basis of linear space.</p></li></ol>]]></content>
     
@@ -61,6 +88,35 @@
     
     
     <category term="algebra" scheme="https://stu-yue.github.io/tags/algebra/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Summa | Intro of Statistical ML</title>
+    <link href="https://stu-yue.github.io/jottings/statistical_ml/summa_intro/"/>
+    <id>https://stu-yue.github.io/jottings/statistical_ml/summa_intro/</id>
+    <published>2023-08-27T07:56:53.000Z</published>
+    <updated>2023-08-30T06:19:28.678Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>If a system is able to improve its performance by executing a certain process, it is called learning.</p></blockquote><h4 id="1-Basis"><a href="#1-Basis" class="headerlink" title="1 Basis"></a>1 Basis</h4><ol><li><strong>Hypothesis Space:</strong> The set of functions that includes all possible models to be learned.</li><li><strong>Common Steps:</strong> <ol><li>Attain a finite training data set.</li><li>Determine the set of <strong>learning models</strong>.</li><li>Determine the criteria for model selection (<strong>learning strategies</strong>).</li><li>Develop algorithms for solving the optimal model (<strong>learning algorithm</strong>).</li><li>Select optimal model according to criteria.</li><li>Use the learned optimal model to predict or analyze new data.</li></ol></li><li><strong>Problem Types:</strong> <strong>Classification&#x2F;Tagging</strong> (outputs take a finite number of discrete values), <strong>Regression</strong> (function fitting, real values)</li><li>**Model Types: **<ul><li>**Discriminative Model: ** directly model $p(Y|X)$;<ul><li><em>Cons</em>:  easy to learn, high classification accuracy;</li></ul></li><li>**Generative Model: ** model $p(X, Y)$, usually translating to modeling the prior distribution $p(Y)$ and class conditional distribution $p(X|Y)$, due to ($p(X, Y)&#x3D; P(X|Y)p(Y)$);<ul><li><em>Cons</em>: <strong>add the prior distribution [main diff]</strong>, model the data generation process;</li></ul></li></ul></li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;If a system is able to improve its performance by executing a certain process, it is called learning.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 </summary>
+      
+    
+    
+    
+    <category term="statistical_ml" scheme="https://stu-yue.github.io/categories/statistical-ml/"/>
+    
+    
+    <category term="statistic" scheme="https://stu-yue.github.io/tags/statistic/"/>
+    
+    <category term="ml" scheme="https://stu-yue.github.io/tags/ml/"/>
     
   </entry>
   
@@ -173,9 +229,9 @@
     <category term="mathematics" scheme="https://stu-yue.github.io/categories/mathematics/"/>
     
     
-    <category term="optimization" scheme="https://stu-yue.github.io/tags/optimization/"/>
-    
     <category term="ml" scheme="https://stu-yue.github.io/tags/ml/"/>
+    
+    <category term="optimization" scheme="https://stu-yue.github.io/tags/optimization/"/>
     
   </entry>
   

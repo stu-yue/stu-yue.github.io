@@ -3,22 +3,23 @@
 <head>
     <meta charset="utf-8">
     
-    <title>CATEGORIES | Yue&#39;s Jotter</title>
+    <title>Memo | Parameter Estimation | Yue&#39;s Jotter</title>
     
     
-        <meta name="keywords" content="CATEGORIES" />
+        <meta name="keywords" content="math" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="simple jottings">
-<meta property="og:type" content="website">
-<meta property="og:title" content="CATEGORIES">
-<meta property="og:url" content="https://stu-yue.github.io/categories/">
+    <meta name="description" content="Through this note, I hope to deepen my understanding of probability distribution and inference.  Preface  **Probability: ** to predict results obtained in the next observation when parameters are kno">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Memo | Parameter Estimation">
+<meta property="og:url" content="https://stu-yue.github.io/jottings/mathematics/memo_mle_mae_bayes/">
 <meta property="og:site_name" content="Yue&#39;s Jotter">
-<meta property="og:description" content="simple jottings">
+<meta property="og:description" content="Through this note, I hope to deepen my understanding of probability distribution and inference.  Preface  **Probability: ** to predict results obtained in the next observation when parameters are kno">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-07-13T06:47:46.496Z">
-<meta property="article:modified_time" content="2023-07-06T09:21:56.980Z">
+<meta property="article:published_time" content="2023-08-30T05:56:53.000Z">
+<meta property="article:modified_time" content="2023-08-30T09:14:11.931Z">
 <meta property="article:author" content="stu-yue">
+<meta property="article:tag" content="math">
 <meta name="twitter:card" content="summary">
     
 
@@ -211,13 +212,13 @@
                      </ul> 
                     </li> 
                     
-                    <li class="directory">
+                    <li class="directory open">
                         <a href="#" data-role="directory">
-                            <i class="fa fa-folder"></i>
+                            <i class="fa fa-folder-open"></i>
                             &nbsp;
                             mathematics
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/mathematics/memo_optimization_alg/">Memo | Optimization Algorithm in Machine Learning</a></li>  <li class="file"><a href="/jottings/mathematics/memo_algebra_basis/">Memo | Algebra Basis</a></li>  <li class="file"><a href="/jottings/mathematics/memo_mle_mae_bayes/">Memo | Parameter Estimation</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/mathematics/memo_optimization_alg/">Memo | Optimization Algorithm in Machine Learning</a></li>  <li class="file"><a href="/jottings/mathematics/memo_algebra_basis/">Memo | Algebra Basis</a></li>  <li class="file active"><a href="/jottings/mathematics/memo_mle_mae_bayes/">Memo | Parameter Estimation</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -317,16 +318,209 @@
     <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
             
-            <section id="main"><section class="layout-wrap">
-    <div class="layout-title">
-        <span>CATEGORIES</span>
-    </div>
-    <div class="layout-wrap-inner list-categories">
+            <section id="main"><article id="post-mathematics/memo_mle_mae_bayes" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/architecture/">architecture</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/languages/">languages</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/languages/python/">python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/languages/shell/">shell</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/mathematics/">mathematics</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nlp/">nlp</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/statistical-ml/">statistical_ml</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tidbits/">tidbits</a><span class="category-list-count">1</span></li></ul>
         
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/mathematics/">mathematics</a>
     </div>
-</section></section>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/math/" rel="tag">math</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/jottings/mathematics/memo_mle_mae_bayes/">
+            <time datetime="2023-08-30T05:56:53.000Z" itemprop="datePublished">2023-08-30</time>
+        </a>
+    </div>
+
+
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/stu-yue/stu-yue.github.io/raw/main/source/_posts/mathematics/memo_mle_mae_bayes.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/stu-yue/stu-yue.github.io/edit/main/source/_posts/mathematics/memo_mle_mae_bayes.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/stu-yue/stu-yue.github.io/commits/main/source/_posts/mathematics/memo_mle_mae_bayes.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Memo | Parameter Estimation
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <blockquote>
+<p>Through this note, I hope to deepen my understanding of probability distribution and inference.</p>
+</blockquote>
+<h4 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h4><blockquote>
+<ul>
+<li>**Probability: ** to predict results obtained in the next observation when parameters are known;</li>
+<li>**Statistic&#x2F;Likelihood: ** to estimate parameters about properties when the result of observations are known;</li>
+<li>**Parametric Method: ** assume that  the learned distribution has a specific functional form (like Gaussian distribution or exponential p.d.f), we only estimate the parameters in these functions.</li>
+<li><strong>Nonparametric Method</strong>: use the training samples to estimate the density of any point in the domain.<ul>
+<li>Nonparametric methods also have parameters, we just don’t assume any specific functional form for distribution;</li>
+<li>Actually, nonparametric methods treat all training samples as parameters;</li>
+<li>example: kernel density estimation;</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<ol>
+<li>Under the joint distribution $p_{X,Y}(X,Y)$:<ul>
+<li>When the effect of $Y$ is removed from the joint distribution $p_{X,Y}(X,Y)$,  <em>marginal distribution</em> $p_X(X)$ is called <strong>marginal likelihood</strong>;</li>
+<li>When $X$ has not yet been observed,  <em>marginal distribution</em> $p_Y(Y)$ is called <strong>prior distribution</strong>;</li>
+</ul>
+</li>
+<li>**Posterior Distribution: ** $p(\theta|\mathcal{D}) &#x3D; \frac{p(\mathcal{D},\theta)}{p(\mathcal{D})}$, concentrating <em>Population Info, Sample Info and Prior Info</em>;<ul>
+<li>$p(\mathcal{D})$ is marginal likelihood;</li>
+<li>$\text{Posterior} &#x3D; \frac{\text{Likelihood}\times \text{Prior}}{\text{Marginal Likelihood}}$, in terms of $p(Y|X) &#x3D; \frac{1}{Z}p(X|Y)p(Y)$, $Z&#x3D;p(X)&gt;0$ is a normalized constant such that $p(Y|X)$ is a valid probability distribution.</li>
+</ul>
+</li>
+<li>The Views<ul>
+<li>Frequentist: <ul>
+<li>Data are repeatable random sample - there is a frequency;</li>
+<li>Underlying parameters remain constant during this repeatable process;</li>
+<li><em>Parameters are <strong>fixed value</strong></em>;</li>
+<li><em>statistical inference: Population Info + Sample Info</em></li>
+<li>MLE, MAP;</li>
+</ul>
+</li>
+<li>Bayesian: <ul>
+<li>Data are observed from the realized sample;</li>
+<li><em>Parameters are unknown <strong>(random variable)</strong> and described probabilistically <strong>(prior distribution)</strong></em>;</li>
+<li><em>statistical inference: Population Info + Sample Info + <strong>Prior Info (Main Diff)</strong></em>;</li>
+<li>Bayesian Estimation;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p><strong>Notations</strong></p>
+<ul>
+<li>Training Data: $\mathcal{D} &#x3D; { (\mathbf{x_1}, y_1),\cdots,(\mathbf{x}_n, y_n) }$;</li>
+<li>Model Parameter: $\theta$;</li>
+<li>New Data: $x^*$;</li>
+</ul>
+</blockquote>
+<h4 id="Maximum-Likelihood-Estimation"><a href="#Maximum-Likelihood-Estimation" class="headerlink" title="Maximum Likelihood Estimation"></a>Maximum Likelihood Estimation</h4><ul>
+<li><p>Objective is<br>$$<br>\theta_{MLE}^* &#x3D; \arg\max_\theta p(\mathcal{D}|\theta)<br>$$</p>
+<ul>
+<li>$p(\mathcal{D}|\theta)$ is likelihood, not conditional probability;</li>
+</ul>
+<p>Usually, we define<br>$$<br>\mathscr{l}(\theta) &#x3D; p(\mathcal{D}|\theta) \<br>\mathscr{ll}(\theta) &#x3D; \ln \mathscr{l}(\theta)<br>$$<br>So, objective is equivalent to<br>$$<br>\theta_{MLE}^* &#x3D; \arg\max_\theta \mathscr{ll}(\theta)<br>$$<br>That is, we seek those values for the parameters in $\theta$ which maximize $p(\mathcal{D}|\theta)$. The MLE solution is usually obtained by setting<br>$$<br>\frac{\partial \mathscr{ll}(\theta)}{\partial\theta} &#x3D; 0<br>$$</p>
+</li>
+<li><p><font color=red>However, the model…</font></p>
+<ul>
+<li>Does not incorporate prior belief;</li>
+<li>Easy to overfit the data;</li>
+</ul>
+</li>
+</ul>
+<h4 id="Maximum-A-Posteri-Estimation"><a href="#Maximum-A-Posteri-Estimation" class="headerlink" title="Maximum A Posteri Estimation"></a>Maximum A Posteri Estimation</h4><ul>
+<li><p>Objective is<br>$$<br>\theta^*_{MAP} &#x3D; \arg\max_\theta p(\theta|\mathcal{D})<br>$$<br>Since we have Bayes rule:<br>$$<br>p(\theta | \mathcal{D}) &#x3D; \frac{p(\mathcal{D})p(\theta)}{p(\mathcal{D})}<br>$$<br>Our objective is equivalent to<br>$$<br>\theta^*_{MAP} &#x3D; \arg\max_\theta p(\mathcal{D}|\theta)p(\theta)<br>$$<br>Further, by taking the log<br>$$<br>\theta^*_{MAP} &#x3D; \arg\max_\theta {\ln p(\mathcal{D}|\theta) + lnp(\theta) } \<br>\theta^*_{MAP} &#x3D; \arg\max_\theta { \mathscr{ll}(\theta) + \ln p(\theta) }<br>$$<br>Thus, our final goal is to find<br>$$<br>\theta^*_{MAP} &#x3D; \arg\max_\theta { \mathscr{ll}(\theta) + \ln p(\theta) }<br>$$<br>The difference between MAP and MLE is the “extra” term - $p(\theta)$. The term is:</p>
+<ul>
+<li>our prior (belief)</li>
+<li>also can be seen as penalty (regularization) - to reduce the overfitting.</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p> For $p(\theta|\mathcal{D})$, in terms of <strong>point estimation</strong> for $\theta$,</p>
+<ul>
+<li>using the <strong>maximum value</strong> is called <strong>Maximum A Posterior Estimation</strong>;</li>
+<li>using the <strong>median value</strong> is called <strong>Posteriror Median Estimation</strong>;</li>
+<li>using the <strong>expectation value</strong> is called <strong>Posterior Expectation Estimation</strong>;</li>
+</ul>
+</blockquote>
+<h4 id="Bayesian-Estimation"><a href="#Bayesian-Estimation" class="headerlink" title="Bayesian Estimation"></a>Bayesian Estimation</h4><blockquote>
+<ul>
+<li>$p(\theta|\mathcal{D})$ (it’s the result of adjustments to prior $p(\theta)$ by population and sample);</li>
+<li><strong>Equal Ignorance</strong>: If there’s no information about the prior distribution, assume $\theta \sim U(0,1)$ ;</li>
+</ul>
+</blockquote>
+<ul>
+<li><p>Learning:  Computing the posterior $p(\theta|\mathcal{D})$ ;</p>
+</li>
+<li><p>Prediction:  $p(\hat y | x^*,\mathcal{D}) &#x3D; \int_\theta p(\hat y | x^*,\theta)p(\theta|\mathcal{D})d\theta$ ;</p>
+</li>
+<li><p><font color=red>Both MLE and MAP return only single and specific values for the paramter $\theta$; </font></p>
+<p><font color=blue>Bayesian estimation, by contrast, calculates fully the posterior distribution $p(\theta|\mathcal{D})$, </font> and making prediction by considering all possible $\theta$.</p>
+<p>Thus, for Bayesian methods:</p>
+<ul>
+<li>The prediction is optimal</li>
+<li>Avoid the overfitting</li>
+</ul>
+</li>
+<li><p><font color=blue>Bayesian is powerful, but…</font></p>
+<p>We need to compute posterior distribution $p(\theta|\mathcal{D})$, and<br>$$<br>p(\theta|\mathcal{D}) &#x3D; \frac{p(\mathcal{D}|\theta)p(\theta)}{\int p(\mathcal{D},\theta)d\theta}<br>$$<br>In practice, evaluating this posterior is usually intractable due to the <font color=red>complex integrals</font>…</p>
+</li>
+</ul>
+<h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h4><p><a target="_blank" rel="noopener" href="https://yuanxiaosc.github.io/2018/06/20/%E8%B4%9D%E5%8F%B6%E6%96%AF%E4%BC%B0%E8%AE%A1%E3%80%81%E6%9C%80%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1%E3%80%81%E6%9C%80%E5%A4%A7%E5%90%8E%E9%AA%8C%E4%BC%B0%E8%AE%A1%E4%B8%89%E8%80%85%E7%9A%84%E5%8C%BA%E5%88%AB/">Mainly Ref</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u011508640/article/details/72815981">Ref2</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.zhangzhenhu.com/glm/source/%E8%B4%9D%E5%8F%B6%E6%96%AF%E4%BC%B0%E8%AE%A1/content.html">Ref3</a></p>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+    
+        <a href="/jottings/nlp/%E6%9D%82%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title"></div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
         </div>
         <footer id="footer">
     <div class="outer">

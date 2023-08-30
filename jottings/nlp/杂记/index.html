@@ -9,15 +9,15 @@
         <meta name="keywords" content="Yue&#39;s Jotter" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="词向量模型的演化历程 1 One-hot编码高维稀疏——高维计算量剧增，信息稀疏分布，难以优化 向量正交——无法表达两词向量间的潜在关系，造成语义鸿沟">
+    <meta name="description" content="词向量模型的演化历程 http:&#x2F;&#x2F;fancyerii.github.io&#x2F;2023&#x2F;02&#x2F;20&#x2F;about-chatgpt&#x2F;#%E8%AF%8D%E5%90%91%E9%87%8Fword-embedding 分布假说（Distributional Hypothesis） 分布表示（Distributional Representation） 分布式表示 （Distributed Represe">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Yue&#39;s Jotter">
 <meta property="og:url" content="https://stu-yue.github.io/jottings/nlp/%E6%9D%82%E8%AE%B0/">
 <meta property="og:site_name" content="Yue&#39;s Jotter">
-<meta property="og:description" content="词向量模型的演化历程 1 One-hot编码高维稀疏——高维计算量剧增，信息稀疏分布，难以优化 向量正交——无法表达两词向量间的潜在关系，造成语义鸿沟">
+<meta property="og:description" content="词向量模型的演化历程 http:&#x2F;&#x2F;fancyerii.github.io&#x2F;2023&#x2F;02&#x2F;20&#x2F;about-chatgpt&#x2F;#%E8%AF%8D%E5%90%91%E9%87%8Fword-embedding 分布假说（Distributional Hypothesis） 分布表示（Distributional Representation） 分布式表示 （Distributed Represe">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-08-29T05:56:57.783Z">
-<meta property="article:modified_time" content="2023-08-29T06:26:10.195Z">
+<meta property="article:modified_time" content="2023-08-29T07:01:13.741Z">
 <meta property="article:author" content="stu-yue">
 <meta name="twitter:card" content="summary">
     
@@ -217,7 +217,7 @@
                             &nbsp;
                             mathematics
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/mathematics/memo_optimization_alg/">Memo | Optimization Algorithm in Machine Learning</a></li>  <li class="file"><a href="/jottings/mathematics/memo_algebra_basis/">Memo | Algebra Basis</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/mathematics/memo_optimization_alg/">Memo | Optimization Algorithm in Machine Learning</a></li>  <li class="file"><a href="/jottings/mathematics/memo_algebra_basis/">Memo | Algebra Basis</a></li>  <li class="file"><a href="/jottings/mathematics/memo_mle_mae_bayes/">Memo | Parameter Estimation</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory open">
@@ -227,6 +227,15 @@
                             nlp
                         </a>
                          <ul class="unstyled" id="tree" >  <li class="file active"><a href="/jottings/nlp/%E6%9D%82%E8%AE%B0/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            statistical_ml
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/statistical_ml/summa_intro/">Summa | Intro of Statistical ML</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -320,8 +329,14 @@
         
         
             <p>词向量模型的演化历程</p>
+<p><a target="_blank" rel="noopener" href="http://fancyerii.github.io/2023/02/20/about-chatgpt/#%E8%AF%8D%E5%90%91%E9%87%8Fword-embedding">http://fancyerii.github.io/2023/02/20/about-chatgpt/#%E8%AF%8D%E5%90%91%E9%87%8Fword-embedding</a></p>
+<p>分布假说（Distributional Hypothesis）</p>
+<p>分布表示（Distributional Representation）</p>
+<p>分布式表示 （Distributed Representation）：指的是用稠密的低维向量来表示一个词的语义，也就是把语义”分散”到不同的维度上。与之相对的通常是one-hot表示，它的语义集中在高维的稀疏的某一维上。</p>
 <h4 id="1-One-hot编码"><a href="#1-One-hot编码" class="headerlink" title="1 One-hot编码"></a>1 One-hot编码</h4><p>高维稀疏——高维计算量剧增，信息稀疏分布，难以优化</p>
 <p>向量正交——无法表达两词向量间的潜在关系，造成语义鸿沟</p>
+<p>Word2Vec</p>
+<p><a target="_blank" rel="noopener" href="https://baidinghub.github.io/2020/09/01/NLP%E8%AF%8D%E5%90%91%E9%87%8F%E7%AF%87%EF%BC%88%E4%B8%80%EF%BC%89Word2Vec/#Efficient-Estimation-of-Word-Representations-in-Vector-Space">https://baidinghub.github.io/2020/09/01/NLP%E8%AF%8D%E5%90%91%E9%87%8F%E7%AF%87%EF%BC%88%E4%B8%80%EF%BC%89Word2Vec/#Efficient-Estimation-of-Word-Representations-in-Vector-Space</a></p>
 
             </div>
         
@@ -333,6 +348,15 @@
 
     
 <nav id="article-nav">
+    
+        <a href="/jottings/mathematics/memo_mle_mae_bayes/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Memo | Parameter Estimation
+                
+            </div>
+        </a>
     
     
         <a href="/jottings/mathematics/memo_algebra_basis/" id="article-nav-older" class="article-nav-link-wrap">
