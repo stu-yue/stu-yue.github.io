@@ -9,15 +9,15 @@
         <meta name="keywords" content="math" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Through this note, I hope to deepen my understanding of probability distribution and inference.  Preface  **Probability: ** to predict results obtained in the next observation when parameters are kno">
+    <meta name="description" content="Through this note, I hope to deepen my understanding of probability distribution and inference.  Preface  Probability: to predict results obtained in the next observation when parameters are known; S">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Memo | Parameter Estimation">
 <meta property="og:url" content="https://stu-yue.github.io/jottings/mathematics/memo_mle_mae_bayes/">
 <meta property="og:site_name" content="Yue&#39;s Jotter">
-<meta property="og:description" content="Through this note, I hope to deepen my understanding of probability distribution and inference.  Preface  **Probability: ** to predict results obtained in the next observation when parameters are kno">
+<meta property="og:description" content="Through this note, I hope to deepen my understanding of probability distribution and inference.  Preface  Probability: to predict results obtained in the next observation when parameters are known; S">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-08-30T05:56:53.000Z">
-<meta property="article:modified_time" content="2023-08-30T09:14:11.931Z">
+<meta property="article:modified_time" content="2023-08-30T09:21:54.177Z">
 <meta property="article:author" content="stu-yue">
 <meta property="article:tag" content="math">
 <meta name="twitter:card" content="summary">
@@ -372,9 +372,9 @@
 </blockquote>
 <h4 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h4><blockquote>
 <ul>
-<li>**Probability: ** to predict results obtained in the next observation when parameters are known;</li>
-<li>**Statistic&#x2F;Likelihood: ** to estimate parameters about properties when the result of observations are known;</li>
-<li>**Parametric Method: ** assume that  the learned distribution has a specific functional form (like Gaussian distribution or exponential p.d.f), we only estimate the parameters in these functions.</li>
+<li><strong>Probability:</strong> to predict results obtained in the next observation when parameters are known;</li>
+<li><strong>Statistic&#x2F;Likelihood:</strong> to estimate parameters about properties when the result of observations are known;</li>
+<li><strong>Parametric Method:</strong>  assume that  the learned distribution has a specific functional form (like Gaussian distribution or exponential p.d.f), we only estimate the parameters in these functions.</li>
 <li><strong>Nonparametric Method</strong>: use the training samples to estimate the density of any point in the domain.<ul>
 <li>Nonparametric methods also have parameters, we just don’t assume any specific functional form for distribution;</li>
 <li>Actually, nonparametric methods treat all training samples as parameters;</li>
@@ -389,7 +389,7 @@
 <li>When $X$ has not yet been observed,  <em>marginal distribution</em> $p_Y(Y)$ is called <strong>prior distribution</strong>;</li>
 </ul>
 </li>
-<li>**Posterior Distribution: ** $p(\theta|\mathcal{D}) &#x3D; \frac{p(\mathcal{D},\theta)}{p(\mathcal{D})}$, concentrating <em>Population Info, Sample Info and Prior Info</em>;<ul>
+<li><strong>Posterior Distribution</strong>:  $p(\theta|\mathcal{D}) &#x3D; \frac{p(\mathcal{D},\theta)}{p(\mathcal{D})}$, concentrating <em>Population Info, Sample Info and Prior Info</em>;<ul>
 <li>$p(\mathcal{D})$ is marginal likelihood;</li>
 <li>$\text{Posterior} &#x3D; \frac{\text{Likelihood}\times \text{Prior}}{\text{Marginal Likelihood}}$, in terms of $p(Y|X) &#x3D; \frac{1}{Z}p(X|Y)p(Y)$, $Z&#x3D;p(X)&gt;0$ is a normalized constant such that $p(Y|X)$ is a valid probability distribution.</li>
 </ul>
@@ -490,9 +490,9 @@
 <nav id="article-nav">
     
     
-        <a href="/jottings/mathematics/memo_algebra_basis/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/jottings/statistical_ml/summa_intro/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Older</strong>
-            <div class="article-nav-title">Memo | Algebra Basis</div>
+            <div class="article-nav-title">Summa | Intro of Statistical ML</div>
         </a>
     
 </nav>
