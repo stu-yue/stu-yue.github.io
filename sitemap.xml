@@ -29,15 +29,6 @@
   </url>
   
   <url>
-    <loc>https://stu-yue.github.io/jottings/nlp/%E6%9D%82%E8%AE%B0/</loc>
-    
-    <lastmod>2023-08-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://stu-yue.github.io/jottings/mathematics/memo_optimization_alg/</loc>
     
     <lastmod>2023-08-27</lastmod>
@@ -162,7 +153,35 @@
   </url>
   
   <url>
+    <loc>https://stu-yue.github.io/tags/firmware/</loc>
+    <lastmod>2023-08-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://stu-yue.github.io/tags/driver/</loc>
+    <lastmod>2023-08-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://stu-yue.github.io/tags/math/</loc>
+    <lastmod>2023-08-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://stu-yue.github.io/tags/memory/</loc>
+    <lastmod>2023-08-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://stu-yue.github.io/tags/points/</loc>
     <lastmod>2023-08-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -184,34 +203,6 @@
   
   <url>
     <loc>https://stu-yue.github.io/tags/optimization/</loc>
-    <lastmod>2023-08-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://stu-yue.github.io/tags/firmware/</loc>
-    <lastmod>2023-08-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://stu-yue.github.io/tags/driver/</loc>
-    <lastmod>2023-08-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://stu-yue.github.io/tags/memory/</loc>
-    <lastmod>2023-08-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://stu-yue.github.io/tags/points/</loc>
     <lastmod>2023-08-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -249,13 +240,6 @@
   
   <url>
     <loc>https://stu-yue.github.io/categories/statistical-ml/</loc>
-    <lastmod>2023-08-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://stu-yue.github.io/categories/nlp/</loc>
     <lastmod>2023-08-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
