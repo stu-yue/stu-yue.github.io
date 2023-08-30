@@ -44,35 +44,6 @@
   </entry>
   
   <entry>
-    <title>Summa | Intro of Statistical ML</title>
-    <link href="https://stu-yue.github.io/jottings/statistical_ml/summa_intro/"/>
-    <id>https://stu-yue.github.io/jottings/statistical_ml/summa_intro/</id>
-    <published>2023-08-27T07:56:53.000Z</published>
-    <updated>2023-08-30T06:19:28.678Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>If a system is able to improve its performance by executing a certain process, it is called learning.</p></blockquote><h4 id="1-Basis"><a href="#1-Basis" class="headerlink" title="1 Basis"></a>1 Basis</h4><ol><li><strong>Hypothesis Space:</strong> The set of functions that includes all possible models to be learned.</li><li><strong>Common Steps:</strong> <ol><li>Attain a finite training data set.</li><li>Determine the set of <strong>learning models</strong>.</li><li>Determine the criteria for model selection (<strong>learning strategies</strong>).</li><li>Develop algorithms for solving the optimal model (<strong>learning algorithm</strong>).</li><li>Select optimal model according to criteria.</li><li>Use the learned optimal model to predict or analyze new data.</li></ol></li><li><strong>Problem Types:</strong> <strong>Classification&#x2F;Tagging</strong> (outputs take a finite number of discrete values), <strong>Regression</strong> (function fitting, real values)</li><li>**Model Types: **<ul><li>**Discriminative Model: ** directly model $p(Y|X)$;<ul><li><em>Cons</em>:  easy to learn, high classification accuracy;</li></ul></li><li>**Generative Model: ** model $p(X, Y)$, usually translating to modeling the prior distribution $p(Y)$ and class conditional distribution $p(X|Y)$, due to ($p(X, Y)&#x3D; P(X|Y)p(Y)$);<ul><li><em>Cons</em>: <strong>add the prior distribution [main diff]</strong>, model the data generation process;</li></ul></li></ul></li></ol>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;If a system is able to improve its performance by executing a certain process, it is called learning.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 </summary>
-      
-    
-    
-    
-    <category term="statistical_ml" scheme="https://stu-yue.github.io/categories/statistical-ml/"/>
-    
-    
-    <category term="statistic" scheme="https://stu-yue.github.io/tags/statistic/"/>
-    
-    <category term="ml" scheme="https://stu-yue.github.io/tags/ml/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Memo | Algebra Basis</title>
     <link href="https://stu-yue.github.io/jottings/mathematics/memo_algebra_basis/"/>
     <id>https://stu-yue.github.io/jottings/mathematics/memo_algebra_basis/</id>
@@ -94,6 +65,35 @@
     
     
     <category term="algebra" scheme="https://stu-yue.github.io/tags/algebra/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Summa | Intro of Statistical ML</title>
+    <link href="https://stu-yue.github.io/jottings/statistical_ml/summa_intro/"/>
+    <id>https://stu-yue.github.io/jottings/statistical_ml/summa_intro/</id>
+    <published>2023-08-27T07:56:53.000Z</published>
+    <updated>2023-08-30T09:24:16.463Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>If a system is able to improve its performance by executing a certain process, it is called learning.</p></blockquote><h4 id="1-Basis"><a href="#1-Basis" class="headerlink" title="1 Basis"></a>1 Basis</h4><ol><li><strong>Hypothesis Space:</strong> The set of functions that includes all possible models to be learned.</li><li><strong>Common Steps:</strong> <ol><li>Attain a finite training data set.</li><li>Determine the set of <strong>learning models</strong>.</li><li>Determine the criteria for model selection (<strong>learning strategies</strong>).</li><li>Develop algorithms for solving the optimal model (<strong>learning algorithm</strong>).</li><li>Select optimal model according to criteria.</li><li>Use the learned optimal model to predict or analyze new data.</li></ol></li><li><strong>Problem Types:</strong> <strong>Classification&#x2F;Tagging</strong> (outputs take a finite number of discrete values), <strong>Regression</strong> (function fitting, real values)</li><li><strong>Model Types</strong>:<ul><li><strong>Discriminative Model</strong>: directly model $p(Y|X)$;<ul><li><em>Cons</em>:  easy to learn, high classification accuracy;</li></ul></li><li><strong>Generative Model</strong>: model $p(X, Y)$, usually translating to modeling the prior distribution $p(Y)$ and class conditional distribution $p(X|Y)$, due to ($p(X, Y)&#x3D; P(X|Y)p(Y)$);<ul><li><em>Cons</em>: <strong>add the prior distribution [main diff]</strong>, model the data generation process;</li></ul></li></ul></li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;If a system is able to improve its performance by executing a certain process, it is called learning.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 </summary>
+      
+    
+    
+    
+    <category term="statistical_ml" scheme="https://stu-yue.github.io/categories/statistical-ml/"/>
+    
+    
+    <category term="statistic" scheme="https://stu-yue.github.io/tags/statistic/"/>
+    
+    <category term="ml" scheme="https://stu-yue.github.io/tags/ml/"/>
     
   </entry>
   
