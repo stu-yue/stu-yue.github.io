@@ -6,7 +6,7 @@
   <link href="https://stu-yue.github.io/atom.xml" rel="self"/>
   
   <link href="https://stu-yue.github.io/"/>
-  <updated>2023-09-01T08:58:51.495Z</updated>
+  <updated>2023-09-06T07:37:09.249Z</updated>
   <id>https://stu-yue.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Memo | Olds and Ends</title>
+    <link href="https://stu-yue.github.io/jottings/languages/shell/memo_others/"/>
+    <id>https://stu-yue.github.io/jottings/languages/shell/memo_others/</id>
+    <published>2023-09-06T07:56:53.000Z</published>
+    <updated>2023-09-06T07:37:09.249Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li><p>Difference between <strong>sh</strong> and <strong>bash</strong>: <strong>sh</strong> is usually symbolic link for <strong>dash</strong>; <strong>dash</strong> is a more lightweight shell, POSIX, designed to replace <strong>sh</strong> and provide faster startup and executions speeds; <strong>bash</strong> is an extended version of <strong>sh</strong>, and most scripts that conform to <strong>sh</strong> syntax should work fine in <strong>bash</strong>; <strong>In a nutshell, sh is bash, which enables the POSIX standard</strong>.</p><blockquote><p>POSIX, Portable Operating System Interface of UNIX</p><p>In accordance with the POSIX specification, “When a line of code encounters an error, it does not continue to interpret subsequent lines.” However, in bash, even if an error occurs, it will continue to execute subsequent lines.</p></blockquote></li><li><p>To view cpu information: <code>lscpu</code>, or <code>cat /proc/cpuinfo</code>;</p></li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Difference between &lt;strong&gt;sh&lt;/strong&gt; and &lt;strong&gt;bash&lt;/strong&gt;: &lt;strong&gt;sh&lt;/strong&gt; is usually symbolic link for &lt;strong&gt;dash&lt;</summary>
+      
+    
+    
+    
+    <category term="languages" scheme="https://stu-yue.github.io/categories/languages/"/>
+    
+    <category term="shell" scheme="https://stu-yue.github.io/categories/languages/shell/"/>
+    
+    
+    <category term="shell" scheme="https://stu-yue.github.io/tags/shell/"/>
+    
+    <category term="linux" scheme="https://stu-yue.github.io/tags/linux/"/>
+    
+  </entry>
   
   <entry>
     <title>Memo | Permission, Progress and Shell Environment</title>
@@ -74,6 +103,31 @@
   </entry>
   
   <entry>
+    <title>Memo | Algebra Basis</title>
+    <link href="https://stu-yue.github.io/jottings/mathematics/memo_algebra_basis/"/>
+    <id>https://stu-yue.github.io/jottings/mathematics/memo_algebra_basis/</id>
+    <published>2023-08-27T07:56:53.000Z</published>
+    <updated>2023-08-30T05:59:00.628Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li><p>**Positive Definiteness of the Norm: ** According to the usual definition, a norm should satisfy the property of positive definiteness which means that a norm must have a non-negative value for non-zero vectors and only attain zero when the vector is the <strong>zero</strong>.</p></li><li><p>**Norm and Distance Evaluation: **</p><table><thead><tr><th align="left">Norm</th><th>Distance</th></tr></thead><tbody><tr><td align="left">$L_0\ \text{norm}$ : $</td><td></td></tr><tr><td align="left">$L_1\ \text{norm}$ : $</td><td></td></tr><tr><td align="left">$L_2\ \text{norm}$ :  $</td><td></td></tr><tr><td align="left">$L_p\ \text{norm}$ :  $</td><td></td></tr><tr><td align="left">$\text{Infinite norm}$ : $</td><td></td></tr></tbody></table></li><li><p><strong>Normed Space:</strong> Normed space introduces a norm (or length, modulus) concept on the basis of linear space.</p></li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;**Positive Definiteness of the Norm: ** According to the usual definition, a norm should satisfy the property of positive defini</summary>
+      
+    
+    
+    
+    <category term="mathematics" scheme="https://stu-yue.github.io/categories/mathematics/"/>
+    
+    
+    <category term="algebra" scheme="https://stu-yue.github.io/tags/algebra/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Summa | Intro of Statistical ML</title>
     <link href="https://stu-yue.github.io/jottings/statistical_ml/summa_intro/"/>
     <id>https://stu-yue.github.io/jottings/statistical_ml/summa_intro/</id>
@@ -99,31 +153,6 @@
     <category term="statistic" scheme="https://stu-yue.github.io/tags/statistic/"/>
     
     <category term="ml" scheme="https://stu-yue.github.io/tags/ml/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Memo | Algebra Basis</title>
-    <link href="https://stu-yue.github.io/jottings/mathematics/memo_algebra_basis/"/>
-    <id>https://stu-yue.github.io/jottings/mathematics/memo_algebra_basis/</id>
-    <published>2023-08-27T07:56:53.000Z</published>
-    <updated>2023-08-30T05:59:00.628Z</updated>
-    
-    <content type="html"><![CDATA[<ol><li><p>**Positive Definiteness of the Norm: ** According to the usual definition, a norm should satisfy the property of positive definiteness which means that a norm must have a non-negative value for non-zero vectors and only attain zero when the vector is the <strong>zero</strong>.</p></li><li><p>**Norm and Distance Evaluation: **</p><table><thead><tr><th align="left">Norm</th><th>Distance</th></tr></thead><tbody><tr><td align="left">$L_0\ \text{norm}$ : $</td><td></td></tr><tr><td align="left">$L_1\ \text{norm}$ : $</td><td></td></tr><tr><td align="left">$L_2\ \text{norm}$ :  $</td><td></td></tr><tr><td align="left">$L_p\ \text{norm}$ :  $</td><td></td></tr><tr><td align="left">$\text{Infinite norm}$ : $</td><td></td></tr></tbody></table></li><li><p><strong>Normed Space:</strong> Normed space introduces a norm (or length, modulus) concept on the basis of linear space.</p></li></ol>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;**Positive Definiteness of the Norm: ** According to the usual definition, a norm should satisfy the property of positive defini</summary>
-      
-    
-    
-    
-    <category term="mathematics" scheme="https://stu-yue.github.io/categories/mathematics/"/>
-    
-    
-    <category term="algebra" scheme="https://stu-yue.github.io/tags/algebra/"/>
     
   </entry>
   
