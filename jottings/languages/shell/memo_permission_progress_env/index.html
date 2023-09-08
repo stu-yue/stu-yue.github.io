@@ -9,15 +9,15 @@
         <meta name="keywords" content="shell,linux" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="First of all, let’s take a quick look at the permissions-related commands.  id: To show the id number of the user.  id username:   chmod: To change the mode of files.  symbolic examples: 123u (user),">
+    <meta name="description" content="PermissionFirst of all, let’s take a quick look at the permissions-related commands.  id: To show the id number of the user.  id username:   chmod: To change the mode of files.  symbolic examples: 123">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Memo | Permission, Progress and Shell Environment">
 <meta property="og:url" content="https://stu-yue.github.io/jottings/languages/shell/memo_permission_progress_env/">
 <meta property="og:site_name" content="Yue&#39;s Jotter">
-<meta property="og:description" content="First of all, let’s take a quick look at the permissions-related commands.  id: To show the id number of the user.  id username:   chmod: To change the mode of files.  symbolic examples: 123u (user),">
+<meta property="og:description" content="PermissionFirst of all, let’s take a quick look at the permissions-related commands.  id: To show the id number of the user.  id username:   chmod: To change the mode of files.  symbolic examples: 123">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-08-31T14:56:53.000Z">
-<meta property="article:modified_time" content="2023-09-01T08:58:51.495Z">
+<meta property="article:modified_time" content="2023-09-07T08:56:53.427Z">
 <meta property="article:author" content="stu-yue">
 <meta property="article:tag" content="shell">
 <meta property="article:tag" content="linux">
@@ -368,7 +368,7 @@
             
         
         
-            <p>First of all, let’s take a quick look at the permissions-related commands.</p>
+            <h4 id="Permission"><a href="#Permission" class="headerlink" title="Permission"></a>Permission</h4><p>First of all, let’s take a quick look at the permissions-related commands.</p>
 <ul>
 <li><p><code>id</code>: To show the id number of the user.</p>
 <ul>
@@ -436,11 +436,11 @@
 <ul>
 <li><p>User information is stored in <code>/etc/passwd</code>, group information is stored in <code>/etc/group</code>;</p>
 <p>use the command <code>cat /etc/passwd</code> to have a quick look.</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/passwd | grep ubuntu</span><br><span class="line"></span><br><span class="line"><span class="comment"># username:passwd:uid:gid:comment:home_dir:shell</span></span><br><span class="line"><span class="comment"># passwd (x) denotes that password is protected in /etc/passwd</span></span><br><span class="line"><span class="comment"># comment store some useful comments (like username)</span></span><br><span class="line">ubuntu:x:1000:1000:ubuntu:/home/ubuntu:/bin/bash</span><br><span class="line"></span><br><span class="line">sudo <span class="built_in">cat</span> /etc/shadow | grep ubuntu</span><br><span class="line"></span><br><span class="line"><span class="comment"># username:passwd(encrypted):last_modify_time:min_interval:max_interval</span></span><br><span class="line">ubuntu:$1$oQIzlBrL<span class="variable">$MErhwMGkTzqaeWkJNzpUh1</span>:19132:0:99999:7:::</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">cat</span> /etc/group | grep cdrom</span><br><span class="line"></span><br><span class="line"><span class="comment"># groupname:passwd:gid:group_member</span></span><br><span class="line">cdrom:x:24:ubuntu,yue</span><br><span class="line"></span><br><span class="line">sudo <span class="built_in">cat</span> /etc/gshadow | grep <span class="built_in">test</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># groupname:passwd:group_manager:group_member</span></span><br><span class="line"><span class="built_in">test</span>:*:yue:ubuntu</span><br></pre></td></tr></table></figure>
-
-
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/passwd | grep ubuntu</span><br><span class="line">      </span><br><span class="line"><span class="comment"># username:passwd:uid:gid:comment:home_dir:shell</span></span><br><span class="line"><span class="comment"># passwd (x) denotes that password is protected in /etc/passwd</span></span><br><span class="line"><span class="comment"># comment store some useful comments (like username)</span></span><br><span class="line">ubuntu:x:1000:1000:ubuntu:/home/ubuntu:/bin/bash</span><br><span class="line">      </span><br><span class="line">sudo <span class="built_in">cat</span> /etc/shadow | grep ubuntu</span><br><span class="line">      </span><br><span class="line"><span class="comment">#username:passwd(encrypted):last_modify_time:min_interval:max_interval</span></span><br><span class="line">ubuntu:$1$oQIzlBrL<span class="variable">$MErhwMGkTzqaeWkJNzpUh1</span>:19132:0:99999:7:::</span><br><span class="line">    </span><br><span class="line"><span class="built_in">cat</span> /etc/group | grep cdrom</span><br><span class="line">  </span><br><span class="line"><span class="comment"># groupname:passwd:gid:group_member</span></span><br><span class="line">cdrom:x:24:ubuntu,yue</span><br><span class="line">  </span><br><span class="line">sudo <span class="built_in">cat</span> /etc/gshadow | grep <span class="built_in">test</span></span><br><span class="line">  </span><br><span class="line"><span class="comment"># groupname:passwd:group_manager:group_member</span></span><br><span class="line"><span class="built_in">test</span>:*:yue:ubuntu</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>Permission Overview</strong>:</p>
+</li>
+</ul>
 <table>
 <thead>
 <tr>
@@ -471,8 +471,9 @@
 <li><code>sticky (t/T &lt;-&gt; x/-, 1000/o+t)</code>: It has no effect on files, but when it is used on a directory, all files in the directory can only be deleted or moved by their owner.</li>
 </ul>
 </blockquote>
-</li>
-<li><p><strong>File Type</strong>:</p>
+<ul>
+<li><strong>File Type</strong>:</li>
+</ul>
 <table>
 <thead>
 <tr>
@@ -501,8 +502,6 @@
 <td align="center">a block device file (process blocks, like hard-disk or CD-ROM)</td>
 </tr>
 </tbody></table>
-</li>
-</ul>
 </blockquote>
 <h4 id="User-and-Group"><a href="#User-and-Group" class="headerlink" title="User and Group"></a>User and Group</h4><p>Because the permission is too large, you can even delete system files and crash the system. Therefore, you are not recommended to directly use <strong>root</strong> account.</p>
 <p>On Linux systems, <code>sudo</code> is used as the default <strong>root</strong> identity for standard users.</p>
@@ -571,7 +570,104 @@
 </ul>
 </li>
 </ul>
-<h4 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/coobeedongzhou/article/details/24492581">ref1</a></p>
+<h4 id="Progress"><a href="#Progress" class="headerlink" title="Progress"></a>Progress</h4><p>When the system starts, the kernel initializes some of its own activities as <strong>Init Process</strong> (PID 1). In turn, a series of shell scripts called <strong>Init Scripts</strong> (located in <code>/etc</code>) are run, which can start all system services. Many of these system services are implemented in the form of <strong>daemons</strong>, which run only in the background without any user interface (inaccessible). Here are some of the command-line tools available:</p>
+<ul>
+<li><p><code>ps</code>: To view the snapshot of process status;</p>
+<ul>
+<li><p>common parameter <code>aux</code> (show all processes)</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@VM-16-17-ubuntu:/etc$ ps aux</span><br><span class="line">USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND</span><br><span class="line"></span><br><span class="line"><span class="comment"># TTY: ? denotes terminal running locally, Pts/n denotes terminal running remotely</span></span><br><span class="line"><span class="comment"># VSZ: virtual memory size</span></span><br><span class="line"><span class="comment"># RSS: physical memory size occupied by process</span></span><br><span class="line"><span class="comment"># STAT: R(running), S(sleeping), D(uninterruptible sleeping), T(terminal), Z(zombie) &lt;(high priority) N(low priority)</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Ctrl-C: send a SIGIN</p>
+<p>Ctrl-D: send a EOF</p>
+<p>Ctrl-Z: send a SIGSTP, pause ongoing process on the terminal so as to be resumed when necessary.</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p><code>top</code>: To displays a continuously updated list of system process in order of process activity (default, refresh per 3s);</p>
+</li>
+<li><p><code>jobs</code>: </p>
+</li>
+<li><p><code>bg</code>: </p>
+</li>
+<li><p><code>fg</code>: </p>
+</li>
+<li><p><code>kill</code>: To send signals to programs (<code>kill [-signal] PID...</code>);</p>
+<ul>
+<li><table>
+<thead>
+<tr>
+<th>NO.</th>
+<th>NAME</th>
+<th>EXPLANATION</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>HUP</td>
+<td>Hang up, this signal is used to tell the program that the control terminal has “hung up.” You can show what this signal does by closing a terminal session. Foreground programs running on the current terminal will receive this signal and terminate. Many daemons also use this signal to re-initialize.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>INT</td>
+<td>like Ctrl-c</td>
+</tr>
+<tr>
+<td>9</td>
+<td>KILL</td>
+<td>The KILL signal is never sent to the target program. Instead, the kernel immediately terminates the process. When a process is terminated in this way, it has no opportunity to do any “cleaning” or saving work.</td>
+</tr>
+<tr>
+<td>15</td>
+<td>TERM</td>
+<td>Terminal, this is default signal sent by KILL</td>
+</tr>
+<tr>
+<td>18</td>
+<td>CONT</td>
+<td>Continue, after getting a stop signal, program will be resumed by CONT</td>
+</tr>
+<tr>
+<td>19</td>
+<td>STOP</td>
+<td>like KILL, STOP is not sent to the target process, so it cannot be ignored</td>
+</tr>
+</tbody></table>
+<p>其他常用信号：</p>
+<table>
+<thead>
+<tr>
+<th>NO.</th>
+<th>NAME</th>
+<th>EXPLANATION</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>3</td>
+<td>QUIT</td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td>SEGV</td>
+<td>If a program uses memory illegally, this signal will be sent</td>
+</tr>
+<tr>
+<td>20</td>
+<td>TSTP</td>
+<td>Ctrl-z will trigger this signal to cause terminal stop, unlike STOP, it can be ignored</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+</li>
+<li><p><code>killall</code>: To send signals to multiple processes that match a particular program or username (<code>killall [-u user] [-signal] name...</code>);</p>
+</li>
+<li><p><code>shutdown</code>: To shutdown the machine or reboot;</p>
+</li>
+</ul>
+<h4 id="Shell-Environment"><a href="#Shell-Environment" class="headerlink" title="Shell Environment"></a>Shell Environment</h4><h4 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/coobeedongzhou/article/details/24492581">ref1</a></p>
 
             </div>
         

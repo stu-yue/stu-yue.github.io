@@ -17,7 +17,7 @@
 <meta property="og:description" content="Let’s start by learning some commands that are helpful for researching Linux systems.  type: To explain how to interpret a command name.  which: To show which executable program will be executed.  man">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-08-05T02:56:53.000Z">
-<meta property="article:modified_time" content="2023-08-24T09:38:42.932Z">
+<meta property="article:modified_time" content="2023-09-08T14:17:30.961Z">
 <meta property="article:author" content="stu-yue">
 <meta property="article:tag" content="shell">
 <meta property="article:tag" content="linux">
@@ -570,9 +570,13 @@
 </li>
 <li><p><em>list the content of archive files</em>: <code>tar -tvf archive.tar</code></p>
 </li>
+<li><p><code>tar -tf test.tar</code>: view package structure</p>
+</li>
+<li><p><code>tar -C dest_dir/ -x[z]vf test.tar[.gz] specified_dir_or_file...[path in -tf shows]</code>: unzip the specified file&#x2F;directory in the package;</p>
+</li>
 </ul>
 <blockquote>
-<p><code>unzip archive.zip</code></p>
+<p><code>unzip archive.zip -d dest_dir</code></p>
 </blockquote>
 </li>
 </ul>
