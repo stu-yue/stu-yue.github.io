@@ -6,7 +6,7 @@
   <link href="https://stu-yue.github.io/atom.xml" rel="self"/>
   
   <link href="https://stu-yue.github.io/"/>
-  <updated>2023-09-06T07:37:09.249Z</updated>
+  <updated>2023-09-08T14:19:04.994Z</updated>
   <id>https://stu-yue.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Summa |Networks Tidbits</title>
+    <link href="https://stu-yue.github.io/jottings/networks/memo_network_tidbits/"/>
+    <id>https://stu-yue.github.io/jottings/networks/memo_network_tidbits/</id>
+    <published>2023-09-07T10:35:53.000Z</published>
+    <updated>2023-09-08T14:19:04.994Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li><strong>Tunneling</strong>: The basic principle is to create a virtual channel between the source and the target, through which the original packets is encapsulated in the packet of another protocol, and then transmitted between the source and the target. At the target end, the receiver unwarps the encapsulated packet, reverts it to the original packet, and gives it to the target application for processing. For example, <strong>VPN (Virtual Private Network), SSH Tunneling, GRE (Generic Routing Encapsulation, like IPv6 over IPv4)</strong>.</li><li></li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Tunneling&lt;/strong&gt;: The basic principle is to create a virtual channel between the source and the target, through which the</summary>
+      
+    
+    
+    
+    <category term="networks" scheme="https://stu-yue.github.io/categories/networks/"/>
+    
+    
+    <category term="networks" scheme="https://stu-yue.github.io/tags/networks/"/>
+    
+  </entry>
   
   <entry>
     <title>Memo | Olds and Ends</title>
