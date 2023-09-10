@@ -17,7 +17,7 @@
 <meta property="og:description" content="PermissionFirst of all, let’s take a quick look at the permissions-related commands.  id: To show the id number of the user.  id username:   chmod: To change the mode of files.  symbolic examples: 123">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-08-31T14:56:53.000Z">
-<meta property="article:modified_time" content="2023-09-07T08:56:53.427Z">
+<meta property="article:modified_time" content="2023-09-09T14:48:36.012Z">
 <meta property="article:author" content="stu-yue">
 <meta property="article:tag" content="shell">
 <meta property="article:tag" content="linux">
@@ -445,7 +445,7 @@
 <ul>
 <li><p>User information is stored in <code>/etc/passwd</code>, group information is stored in <code>/etc/group</code>;</p>
 <p>use the command <code>cat /etc/passwd</code> to have a quick look.</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/passwd | grep ubuntu</span><br><span class="line">      </span><br><span class="line"><span class="comment"># username:passwd:uid:gid:comment:home_dir:shell</span></span><br><span class="line"><span class="comment"># passwd (x) denotes that password is protected in /etc/passwd</span></span><br><span class="line"><span class="comment"># comment store some useful comments (like username)</span></span><br><span class="line">ubuntu:x:1000:1000:ubuntu:/home/ubuntu:/bin/bash</span><br><span class="line">      </span><br><span class="line">sudo <span class="built_in">cat</span> /etc/shadow | grep ubuntu</span><br><span class="line">      </span><br><span class="line"><span class="comment">#username:passwd(encrypted):last_modify_time:min_interval:max_interval</span></span><br><span class="line">ubuntu:$1$oQIzlBrL<span class="variable">$MErhwMGkTzqaeWkJNzpUh1</span>:19132:0:99999:7:::</span><br><span class="line">    </span><br><span class="line"><span class="built_in">cat</span> /etc/group | grep cdrom</span><br><span class="line">  </span><br><span class="line"><span class="comment"># groupname:passwd:gid:group_member</span></span><br><span class="line">cdrom:x:24:ubuntu,yue</span><br><span class="line">  </span><br><span class="line">sudo <span class="built_in">cat</span> /etc/gshadow | grep <span class="built_in">test</span></span><br><span class="line">  </span><br><span class="line"><span class="comment"># groupname:passwd:group_manager:group_member</span></span><br><span class="line"><span class="built_in">test</span>:*:yue:ubuntu</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/passwd | grep ubuntu</span><br><span class="line">        </span><br><span class="line"><span class="comment"># username:passwd:uid:gid:comment:home_dir:shell</span></span><br><span class="line"><span class="comment"># passwd (x) denotes that password is protected in /etc/passwd</span></span><br><span class="line"><span class="comment"># comment store some useful comments (like username)</span></span><br><span class="line">ubuntu:x:1000:1000:ubuntu:/home/ubuntu:/bin/bash</span><br><span class="line">        </span><br><span class="line">sudo <span class="built_in">cat</span> /etc/shadow | grep ubuntu</span><br><span class="line">        </span><br><span class="line"><span class="comment">#username:passwd(encrypted):last_modify_time:min_interval:max_interval</span></span><br><span class="line">ubuntu:$1$oQIzlBrL<span class="variable">$MErhwMGkTzqaeWkJNzpUh1</span>:19132:0:99999:7:::</span><br><span class="line">      </span><br><span class="line"><span class="built_in">cat</span> /etc/group | grep cdrom</span><br><span class="line">    </span><br><span class="line"><span class="comment"># groupname:passwd:gid:group_member</span></span><br><span class="line">cdrom:x:24:ubuntu,yue</span><br><span class="line">    </span><br><span class="line">sudo <span class="built_in">cat</span> /etc/gshadow | grep <span class="built_in">test</span></span><br><span class="line">    </span><br><span class="line"><span class="comment"># groupname:passwd:group_manager:group_member</span></span><br><span class="line"><span class="built_in">test</span>:*:yue:ubuntu</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>Permission Overview</strong>:</p>
 </li>
@@ -676,7 +676,61 @@
 <li><p><code>shutdown</code>: To shutdown the machine or reboot;</p>
 </li>
 </ul>
-<h4 id="Shell-Environment"><a href="#Shell-Environment" class="headerlink" title="Shell Environment"></a>Shell Environment</h4><h4 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/coobeedongzhou/article/details/24492581">ref1</a></p>
+<h4 id="Shell-Environment"><a href="#Shell-Environment" class="headerlink" title="Shell Environment"></a>Shell Environment</h4><ul>
+<li><p><code>printenv</code>: </p>
+</li>
+<li><p><code>set</code>: To display existing shell variables in the system and set new variable values for shell variables.</p>
+</li>
+<li><p>When user log in to the system, the <strong>bash</strong> program starts and reads a series of configuration scripts (startup files that define a default environment for all users), then it reads the startup files in the home directory that define the user’s personal shell environment.</p>
+<p>The exact startup order depends on the type of shell session you want to run. There are two types, one is login shell session (need username and password), the other is non-login shell session (start under the GUI).</p>
+<p><strong>Login shell startup order</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x2F;etc&#x2F;profile</td>
+<td>global conf script applying to all users</td>
+</tr>
+<tr>
+<td>~&#x2F;.bash_profile</td>
+<td>user’s personal startup file, used to extend or override settings in global conf script</td>
+</tr>
+<tr>
+<td>~&#x2F;.bash_login</td>
+<td>if ~&#x2F;.bash_profile is not found, bash will try to read this script</td>
+</tr>
+</tbody></table>
+<p><strong>Non-login shell startup order</strong>: </p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x2F;etc&#x2F;bash.bashrc</td>
+<td>global conf script applying to all users</td>
+</tr>
+<tr>
+<td>~&#x2F;.bashrc</td>
+<td>user’s personal startup file, used to extend or override settings in global conf script</td>
+</tr>
+</tbody></table>
+<p>In addition to reading the startup files above, <strong>non-login shell also inherit the environment settings of their parent process, usually a login shell</strong>. </p>
+<p>In general users’ points, <strong>the file ~&#x2F;.bashrc is probably the most important startup file</strong> because it’s almost always read. <strong>Non-login shells read it by default, and most startup files for login shells are written in such a way that they can read ~&#x2F;.bashrc</strong> . The below is a typical .bash_profile file (From CentOS 4):</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># .bash_profile</span></span><br><span class="line"><span class="comment"># Get the aliaes and functions</span></span><br><span class="line"><span class="keyword">if</span> [ -f ~/.bashrc ]; <span class="keyword">then</span></span><br><span class="line">. ~/.bashrc</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="comment"># User specific environment and startup programs</span></span><br><span class="line">PATH=<span class="variable">$PATH</span>:<span class="variable">$HOME</span>/bin</span><br><span class="line"><span class="built_in">export</span> PATH</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>export</code>: export environment variables;</p>
+</li>
+<li><p><code>alias</code>: create alias for command;</p>
+</li>
+</ul>
+<h4 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/coobeedongzhou/article/details/24492581">ref1</a></p>
 
             </div>
         
