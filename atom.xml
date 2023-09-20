@@ -6,7 +6,7 @@
   <link href="https://stu-yue.github.io/atom.xml" rel="self"/>
   
   <link href="https://stu-yue.github.io/"/>
-  <updated>2023-09-08T14:19:04.994Z</updated>
+  <updated>2023-09-19T14:18:58.743Z</updated>
   <id>https://stu-yue.github.io/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Memo | Package and Device</title>
+    <link href="https://stu-yue.github.io/jottings/languages/shell/memo_package_device/"/>
+    <id>https://stu-yue.github.io/jottings/languages/shell/memo_package_device/</id>
+    <published>2023-09-19T14:56:53.000Z</published>
+    <updated>2023-09-19T14:18:58.743Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="Package"><a href="#Package" class="headerlink" title="Package"></a>Package</h4><ul><li>Package System</li></ul><table><thead><tr><th>Package Management System</th><th>Linux Release Version</th></tr></thead><tbody><tr><td>Debian Style (.deb)</td><td>Debian, Ubuntu</td></tr><tr><td>Red Hat Style (.rpm)</td><td>Fedora, CentOS</td></tr></tbody></table><blockquote><p>A package file is a compressed collection of files that make up a software package and may contain a large number of programs and the data files that support those programs. </p><p><strong>Metadata for the packet</strong> is included, such as a text description of the package and its contents. </p><p>Other included are <strong>pre-installation and post-installation scripts</strong> (which perform configuration tasks before and after installation)</p></blockquote><ul><li>Upper Tools and Underlying Tools:</li></ul><table><thead><tr><th>Linux Release Version</th><th>Underlying Tool (install and delete packages)</th><th>Upper Tool (search for metadata and resolve dependencies)</th></tr></thead><tbody><tr><td>Debian-Style</td><td>dpkg</td><td>apt-get, aptitude</td></tr><tr><td>Fedora, CentOS</td><td>rpm</td><td>yum</td></tr></tbody></table><ul><li>Search for metadata in the resource repository</li></ul><table><thead><tr><th>Style</th><th>Command</th></tr></thead><tbody><tr><td>Debian</td><td>apt-get update; apt-cache search search_string</td></tr><tr><td>Red Hat</td><td>yum search search_string (e.g. yum search emacs)</td></tr></tbody></table><ul><li>Install a package via resource repository</li></ul><table><thead><tr><th>Style</th><th>Command</th></tr></thead><tbody><tr><td>Debian</td><td>apt-get update; apt-get install package_name</td></tr><tr><td>Red Hat</td><td>yum install package_name</td></tr></tbody></table><ul><li>Install a package via raw package files</li></ul><table><thead><tr><th>Style</th><th>Command</th></tr></thead><tbody><tr><td>Debian</td><td>dpkg –install package_file</td></tr><tr><td>Red Hat</td><td>rpm -i package_file (rpm -i emacs-22.1-7.fc7-i386.rpm)</td></tr></tbody></table><blockquote><p>NOTE: Due to this command is executed by rpm, not analyzing dependencies for package_file, so if a dependency is missing, rpm will report error and exit.</p></blockquote><ul><li>Uninstall a package</li></ul><table><thead><tr><th>Style</th><th>Command</th></tr></thead><tbody><tr><td>Debian</td><td>apt-get remove package_name</td></tr><tr><td>Red Hat</td><td>yum erase package_name</td></tr></tbody></table><ul><li>Upgrade package via resource repository</li></ul><table><thead><tr><th>Style</th><th>Command</th></tr></thead><tbody><tr><td>Debian</td><td>apt-get update; apt-get upgrade</td></tr><tr><td>Red Hat</td><td>yum update</td></tr></tbody></table><ul><li>Upgrade package via package_file</li></ul><table><thead><tr><th>Style</th><th>Command</th></tr></thead><tbody><tr><td>Debian</td><td>dpkg –install package_file</td></tr><tr><td>Red Hat</td><td>rpm -U package_file</td></tr></tbody></table><ul><li>List all package installed</li></ul><table><thead><tr><th>Style</th><th>Command</th></tr></thead><tbody><tr><td>Debian</td><td>dpkg –list</td></tr><tr><td>Red Hat</td><td>rpm -qa</td></tr></tbody></table><ul><li>Determine whether a package is installed</li></ul><table><thead><tr><th>Style</th><th>Command</th></tr></thead><tbody><tr><td>Debian</td><td>dpkg –status package_name</td></tr><tr><td>Red Hat</td><td>rpm -q package_name</td></tr></tbody></table><ul><li>Show the info for the installed package</li></ul><table><thead><tr><th>Style</th><th>Command</th></tr></thead><tbody><tr><td>Debian</td><td>apt-cache show package_name</td></tr><tr><td>Red Hat</td><td>yum info package_name</td></tr></tbody></table><h4 id="Device"><a href="#Device" class="headerlink" title="Device"></a>Device</h4>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h4 id=&quot;Package&quot;&gt;&lt;a href=&quot;#Package&quot; class=&quot;headerlink&quot; title=&quot;Package&quot;&gt;&lt;/a&gt;Package&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Package System&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;t</summary>
+      
+    
+    
+    
+    <category term="languages" scheme="https://stu-yue.github.io/categories/languages/"/>
+    
+    <category term="shell" scheme="https://stu-yue.github.io/categories/languages/shell/"/>
+    
+    
+    <category term="shell" scheme="https://stu-yue.github.io/tags/shell/"/>
+    
+    <category term="linux" scheme="https://stu-yue.github.io/tags/linux/"/>
+    
+  </entry>
   
   <entry>
     <title>Summa |Networks Tidbits</title>
