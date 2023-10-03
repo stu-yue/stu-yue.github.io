@@ -3,30 +3,26 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Summa | Firmware and Drivers | Yue&#39;s Jotter</title>
+    <title>Yue&#39;s Jotter</title>
     
     
-        <meta name="keywords" content="firmware,driver" />
+        <meta name="keywords" content="Yue&#39;s Jotter" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Reproduced in Firmware vs Device Drivers: Explained with Examples!  Firmware vs. Device Drivers   Firmware Device Drivers    Firmware is a class of software that is written for specific custom hardwa">
+    <meta name="description" content="在线量化：指量化感知训练(Quantization-Aware Training)，在网络模型训练阶段采用量化方案进行量化；  量化感知训练本质上是一种伪量化的过程，它是在可识别的某些操作内嵌入伪量化节点（fake quantization op），并参与模型训练的前向推理过程模拟引入，但模型的反向传播过程依旧使用全精度浮点数进行；  伪量化节点，是指量化感知训练中插入的节点，用以寻找网络数据分">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Summa | Firmware and Drivers">
-<meta property="og:url" content="https://stu-yue.github.io/jottings/architecture/summa_firmware_and_drivers/">
+<meta property="og:title" content="Yue&#39;s Jotter">
+<meta property="og:url" content="https://stu-yue.github.io/jottings/tidbits/quantization/">
 <meta property="og:site_name" content="Yue&#39;s Jotter">
-<meta property="og:description" content="Reproduced in Firmware vs Device Drivers: Explained with Examples!  Firmware vs. Device Drivers   Firmware Device Drivers    Firmware is a class of software that is written for specific custom hardwa">
+<meta property="og:description" content="在线量化：指量化感知训练(Quantization-Aware Training)，在网络模型训练阶段采用量化方案进行量化；  量化感知训练本质上是一种伪量化的过程，它是在可识别的某些操作内嵌入伪量化节点（fake quantization op），并参与模型训练的前向推理过程模拟引入，但模型的反向传播过程依旧使用全精度浮点数进行；  伪量化节点，是指量化感知训练中插入的节点，用以寻找网络数据分">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://stu-yue.github.io/jottings/architecture/summa_firmware_and_drivers/summa_firmware_and_drivers/layer.png">
-<meta property="og:image" content="https://stu-yue.github.io/jottings/architecture/summa_firmware_and_drivers/layer.png">
-<meta property="og:image" content="https://stu-yue.github.io/jottings/architecture/summa_firmware_and_drivers/summa_firmware_and_drivers/relation_graph.png">
-<meta property="og:image" content="https://stu-yue.github.io/jottings/architecture/summa_firmware_and_drivers/relation_graph.png">
-<meta property="article:published_time" content="2023-07-13T06:21:53.000Z">
-<meta property="article:modified_time" content="2023-07-20T05:15:59.324Z">
+<meta property="og:image" content="d:\Program Files\Typora\img\image-20230926154839682.png">
+<meta property="og:image" content="d:\Program Files\Typora\img\image-20230926153543814.png">
+<meta property="article:published_time" content="2023-09-26T06:40:27.727Z">
+<meta property="article:modified_time" content="2023-09-26T07:49:24.161Z">
 <meta property="article:author" content="stu-yue">
-<meta property="article:tag" content="firmware">
-<meta property="article:tag" content="driver">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://stu-yue.github.io/jottings/architecture/summa_firmware_and_drivers/summa_firmware_and_drivers/layer.png">
+<meta name="twitter:image" content="d:\Program Files\Typora\img\image-20230926154839682.png">
     
 
     
@@ -182,13 +178,13 @@
         
         
          <ul class="unstyled" id="tree" > 
-                    <li class="directory open">
+                    <li class="directory">
                         <a href="#" data-role="directory">
-                            <i class="fa fa-folder-open"></i>
+                            <i class="fa fa-folder"></i>
                             &nbsp;
                             architecture
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file active"><a href="/jottings/architecture/summa_firmware_and_drivers/">Summa | Firmware and Drivers</a></li>  <li class="file"><a href="/jottings/architecture/summa_memory_categories/">Summa | The Majority of Memory Categories</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/architecture/summa_firmware_and_drivers/">Summa | Firmware and Drivers</a></li>  <li class="file"><a href="/jottings/architecture/summa_memory_categories/">Summa | The Majority of Memory Categories</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -245,13 +241,13 @@
                          <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/statistical_ml/summa_intro/">Summa | Intro of Statistical ML</a></li>  </ul> 
                     </li> 
                     
-                    <li class="directory">
+                    <li class="directory open">
                         <a href="#" data-role="directory">
-                            <i class="fa fa-folder"></i>
+                            <i class="fa fa-folder-open"></i>
                             &nbsp;
                             tidbits
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/tidbits/hot_points/">Hot Points</a></li>  <li class="file"><a href="/jottings/tidbits/tbr_compiler/">TBR_compiler</a></li>  <li class="file"><a href="/jottings/tidbits/quantization/"></a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/tidbits/hot_points/">Hot Points</a></li>  <li class="file"><a href="/jottings/tidbits/tbr_compiler/">TBR_compiler</a></li>  <li class="file active"><a href="/jottings/tidbits/quantization/"></a></li>  </ul> 
                     </li> 
                      <li class="file"><a href="/jottings/intro/">Welcome to Yue's Jotter</a></li>  </ul> 
     </div>
@@ -324,56 +320,9 @@
     <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
             
-            <section id="main"><article id="post-architecture/summa_firmware_and_drivers" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-tidbits/quantization" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/architecture/">architecture</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/driver/" rel="tag">driver</a>, <a class="tag-link-link" href="/tags/firmware/" rel="tag">firmware</a>
-    </div>
-
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/jottings/architecture/summa_firmware_and_drivers/">
-            <time datetime="2023-07-13T06:21:53.000Z" itemprop="datePublished">2023-07-13</time>
-        </a>
-    </div>
-
-
-                        
-                        
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/stu-yue/stu-yue.github.io/raw/main/source/_posts/architecture/summa_firmware_and_drivers.md'> Source </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/stu-yue/stu-yue.github.io/edit/main/source/_posts/architecture/summa_firmware_and_drivers.md'> Edit </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/stu-yue/stu-yue.github.io/commits/main/source/_posts/architecture/summa_firmware_and_drivers.md'> History </a>
-                            </div>
-                        
-                    </div>
-                
-                
-    
-        <h1 class="article-title" itemprop="name">
-            Summa | Firmware and Drivers
-        </h1>
-    
-
-            </header>
         
         
         <div class="article-entry" itemprop="articleBody">
@@ -382,63 +331,40 @@
             
         
         
-            <blockquote>
-<p>Reproduced in <a target="_blank" rel="noopener" href="https://embeddedinventor.com/firmware-vs-device-drivers-explained-with-examples/">Firmware vs Device Drivers: Explained with Examples!</a></p>
-</blockquote>
-<h3 id="Firmware-vs-Device-Drivers"><a href="#Firmware-vs-Device-Drivers" class="headerlink" title="Firmware vs. Device Drivers"></a>Firmware vs. Device Drivers</h3><table>
-<thead>
-<tr>
-<th>Firmware</th>
-<th>Device Drivers</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Firmware is a class of software that is written for specific custom hardware.</td>
-<td>Device drivers are software that is needed to make a given hardware accessory</td>
-</tr>
-<tr>
-<td>Firmware lives and runs directly on the hardware.</td>
-<td>Device drivers live on hard-disk and run on the CPU.</td>
-</tr>
-<tr>
-<td>Firmware is independent of an operating system, i.e.,  you can run any operating system on top of a  given motherboard’s firmware.</td>
-<td>Device drivers are highly dependent on the operating system on which they are used. For example, for the same hardware device, you need different device drivers for using that on Windows vs Linux.</td>
-</tr>
-<tr>
-<td>Firmware cannot be updated through an operating system, we need to go into the BIOS&#x2F;UEFI to update the device drivers.</td>
-<td>Drivers can be updated from within the operating system.</td>
-</tr>
-<tr>
-<td>Firmware engineers do not need any knowledge of operating systems. But they need core knowledge on processors and the latest RAMs, PCIe standards, and so on to write firmware that complies with the latest standards</td>
-<td>Device driver engineers need knowledge about the specific device that they are using, the communication standard the device uses to talk to the computer (like Bluetooth, USB, etc), and the operating system the device driver is written for.</td>
-</tr>
-<tr>
-<td>Firmware is written by motherboard manufacturers</td>
-<td>Drivers are written by engineers in companies that produce hardware accessories that connect to your computer</td>
-</tr>
-<tr>
-<td>Examples include the BIOS&#x2F;UEFI interface that comes with the computer’s motherboard</td>
-<td>Examples include special software you install to handle the extra buttons on your mouse, software that comes with any non-standard hardware like special game controllers, also the software that helps us use all the standard hardware like USB storage devices, keyboards, mice, headphones, etc.</td>
-</tr>
-</tbody></table>
-<p>Layers of software on a typical computer are shown in the following figure:</p>
-<img src="./summa_firmware_and_drivers/layer.png" style="zoom:80%" >
+            <ol>
+<li><p>在线量化：指量化感知训练(Quantization-Aware Training)，在网络模型训练阶段采用量化方案进行量化；</p>
+<ol>
+<li><p>量化感知训练本质上是一种伪量化的过程，它是在可识别的某些操作内嵌入伪量化节点（fake quantization op），并参与模型训练的前向推理过程模拟引入，但模型的反向传播过程依旧使用全精度浮点数进行；</p>
+</li>
+<li><p>伪量化节点，是指量化感知训练中插入的节点，用以寻找网络数据分布，并反馈损失精度：</p>
+<ol>
+<li>找到输入、权重等待量化数据的分布，找到待量化数据的最大和最小值；</li>
+<li>模拟低比特量化带来的精度损失，把该损失作用到网络模型中，传递给损失函数，让优化器在训练过程中对该损失值进行优化， 尽可能减少由于伪量化操作而引起的精度下降；</li>
+</ol>
+</li>
+<li><p>先饱和截断处理：$clamp(x,x_{min}, x_{max}) &#x3D; \min(\max(x,x_{min}), x_{max})$；</p>
+</li>
+<li><p>再Float-&gt;Int-&gt;Float：</p>
+<img src="D:\Program Files\Typora\img\image-20230926154839682.png" alt="image-20230926154839682" style="zoom:50%;" /></li>
+</ol>
+</li>
+<li><p>离线量化：指训练后量化(Post-Training Quantization)：</p>
+<ol>
+<li><p>动态离线量化(PTQ, Dynamic)：</p>
+<p>动态离线量化仅将模型中特定算子的<strong>权重</strong>从FP32类型映射成 INT8&#x2F;16 类型，bias和激活函数 在推理过程中动态量化。但是对于不同的输入值来说，其缩放因子是<strong>动态计算</strong>的（“动态”的由来）。动态量化是几种量化方法中性能最差的。动态量化常用于非常大的模型。</p>
+</li>
+<li><p>静态离线量化(PTQ, Static)：</p>
+<p>静态离线量化使用少量无标签校准数据，采用 KL 散度等方法计算量化比例因子。静态量化（Static quantization）与动态量化的区别在于其输入的缩放因子计算方法不同，静态量化的模型在使用前有“calibrate”的过程（校准缩放因子）：准备部分输入（对于图像分类模型就是准备一些图片，其他任务类似），使用静态量化后的模型进行预测，在此过程中量化模型的缩放因子会根据输入数据的分布进行调整。一旦校准完成后，权重和输入的缩放因子都固定（<strong>“静态”的由来</strong>）。静态量化的性能一般比动态量化好，常用于中等模型和大模型。因此实际中基本都是在用静态量化。</p>
+<p>静态离线量化的目标是求取量化比例因子，主要通过对称量化、非对称量化方式来求，而找最大值或者阈值的方法又有MinMax、KLD、ADMM、EQ等方法。</p>
+</li>
+</ol>
+</li>
+</ol>
+<img src="D:\Program Files\Typora\img\image-20230926153543814.png" alt="image-20230926153543814" style="zoom:67%;" />
 
-<img src="./layer.png" style="zoom:80%" >
-
-<blockquote>
-<h4 id="Firmware"><a href="#Firmware" class="headerlink" title="Firmware"></a>Firmware</h4><p>​        <strong>Firmware is a computer program that is written to work directly on specific custom hardware and it lives in non-volatile memory such as a flash chip and it is executed directly from it. The job of the firmware is to make the hardware accessible to the operating system.</strong> Firmware can be thought of as the glasses through which the operating system can see the actual hardware!</p>
-<p>​           Originally Firmware is written on Masked ROMs, which is a special type of memory that can be programmed&#x2F;written-data-to only once. The products were then shipped with these unchangeable programs called firmware and they run for ages till the device goes out of use.</p>
-<p>​         The first replacement of Masked ROMs came in the form of EPROM which can be erased by exposure to UV light and then reprogrammed as required. Then came EEPROMs which used electricity to change the contents. Nowadays the Masked ROMs have been replaced with Flash memory, which is cheaper and serves the purpose. </p>
-<h4 id="Device-Drivers"><a href="#Device-Drivers" class="headerlink" title="Device Drivers"></a>Device Drivers</h4><p><strong>Device drivers are programs that can control a given hardware and provide a software interface to it. Other programs like Operating Systems can interact with the hardware through this software interface without needing to know the actual underlying implementation of the software interface.</strong></p>
-</blockquote>
-<p>The relation graph between firmware and drivers is also shown below:</p>
-<img src="./summa_firmware_and_drivers/relation_graph.png" style="zoom:80%" >
-
-<img src="./relation_graph.png" style="zoom:80%" >
-
-<p>​        Generally speaking, drivers and firmware together form the module that operates hardware. <strong>But why not make the firmware perfect so that it doesn’t require driver support?</strong> </p>
-<p>​         The answer to the above question is, there are different operating systems which have completely different ways of operating hardware. So, <strong>on the one hand, hardware manufactures need to write firmware to make their hardware easier to use with software,</strong> but <strong>on the other hand, they cannot make the firmware too rigid in order to be compatible with various operating systems. They must leave enough room for software to freely operate</strong> —— and <strong>that’s where drivers come in.</strong></p>
+<ul>
+<li>对称量化与非对称量化：对于weight权重的量化 使用对称量化，对于activate激活的量化使用非对称量化；</li>
+</ul>
 
             </div>
         
@@ -451,15 +377,11 @@
     
 <nav id="article-nav">
     
-        <a href="/jottings/intro/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Newer</strong>
-            <div class="article-nav-title">
-                
-                    Welcome to Yue&#39;s Jotter
-                
-            </div>
-        </a>
     
+        <a href="/jottings/languages/shell/memo_package_device/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Memo | Package and Device</div>
+        </a>
     
 </nav>
 

@@ -6,7 +6,7 @@
   <link href="https://stu-yue.github.io/atom.xml" rel="self"/>
   
   <link href="https://stu-yue.github.io/"/>
-  <updated>2023-09-19T14:18:58.743Z</updated>
+  <updated>2023-09-26T07:49:24.161Z</updated>
   <id>https://stu-yue.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://stu-yue.github.io/jottings/tidbits/quantization/"/>
+    <id>https://stu-yue.github.io/jottings/tidbits/quantization/</id>
+    <published>2023-09-26T06:40:27.727Z</published>
+    <updated>2023-09-26T07:49:24.161Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li><p>在线量化：指量化感知训练(Quantization-Aware Training)，在网络模型训练阶段采用量化方案进行量化；</p><ol><li><p>量化感知训练本质上是一种伪量化的过程，它是在可识别的某些操作内嵌入伪量化节点（fake quantization op），并参与模型训练的前向推理过程模拟引入，但模型的反向传播过程依旧使用全精度浮点数进行；</p></li><li><p>伪量化节点，是指量化感知训练中插入的节点，用以寻找网络数据分布，并反馈损失精度：</p><ol><li>找到输入、权重等待量化数据的分布，找到待量化数据的最大和最小值；</li><li>模拟低比特量化带来的精度损失，把该损失作用到网络模型中，传递给损失函数，让优化器在训练过程中对该损失值进行优化， 尽可能减少由于伪量化操作而引起的精度下降；</li></ol></li><li><p>先饱和截断处理：$clamp(x,x_{min}, x_{max}) &#x3D; \min(\max(x,x_{min}), x_{max})$；</p></li><li><p>再Float-&gt;Int-&gt;Float：</p><img src="D:\Program Files\Typora\img\image-20230926154839682.png" alt="image-20230926154839682" style="zoom:50%;" /></li></ol></li><li><p>离线量化：指训练后量化(Post-Training Quantization)：</p><ol><li><p>动态离线量化(PTQ, Dynamic)：</p><p>动态离线量化仅将模型中特定算子的<strong>权重</strong>从FP32类型映射成 INT8&#x2F;16 类型，bias和激活函数 在推理过程中动态量化。但是对于不同的输入值来说，其缩放因子是<strong>动态计算</strong>的（“动态”的由来）。动态量化是几种量化方法中性能最差的。动态量化常用于非常大的模型。</p></li><li><p>静态离线量化(PTQ, Static)：</p><p>静态离线量化使用少量无标签校准数据，采用 KL 散度等方法计算量化比例因子。静态量化（Static quantization）与动态量化的区别在于其输入的缩放因子计算方法不同，静态量化的模型在使用前有“calibrate”的过程（校准缩放因子）：准备部分输入（对于图像分类模型就是准备一些图片，其他任务类似），使用静态量化后的模型进行预测，在此过程中量化模型的缩放因子会根据输入数据的分布进行调整。一旦校准完成后，权重和输入的缩放因子都固定（<strong>“静态”的由来</strong>）。静态量化的性能一般比动态量化好，常用于中等模型和大模型。因此实际中基本都是在用静态量化。</p><p>静态离线量化的目标是求取量化比例因子，主要通过对称量化、非对称量化方式来求，而找最大值或者阈值的方法又有MinMax、KLD、ADMM、EQ等方法。</p></li></ol></li></ol><img src="D:\Program Files\Typora\img\image-20230926153543814.png" alt="image-20230926153543814" style="zoom:67%;" /><ul><li>对称量化与非对称量化：对于weight权重的量化 使用对称量化，对于activate激活的量化使用非对称量化；</li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;在线量化：指量化感知训练(Quantization-Aware Training)，在网络模型训练阶段采用量化方案进行量化；&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;量化感知训练本质上是一种伪量化的过程，它是在可识别的某些操作内嵌入伪量化节点（fake quant</summary>
+      
+    
+    
+    
+    <category term="tidbits" scheme="https://stu-yue.github.io/categories/tidbits/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Memo | Package and Device</title>
@@ -362,9 +387,9 @@
     <link href="https://stu-yue.github.io/jottings/tidbits/hot_points/"/>
     <id>https://stu-yue.github.io/jottings/tidbits/hot_points/</id>
     <published>2023-07-22T12:00:53.000Z</published>
-    <updated>2023-09-23T04:05:12.231Z</updated>
+    <updated>2023-10-03T11:43:40.001Z</updated>
     
-    <content type="html"><![CDATA[<ol><li><p>Generate random numbers by reading <strong>thermal noise</strong> on CPU pins.</p></li><li><p><strong>Hot Plug</strong>, refers to the operation of inserting&#x2F;removing a device while it is running. In contrast, <strong>Cold Plug</strong> means do above operation while the device is powered off.</p></li><li><p>Software version’s explanation:</p><table><thead><tr><th>Version</th><th>Description</th></tr></thead><tbody><tr><td>Snapshot</td><td>Development version</td></tr><tr><td>Alpha</td><td>Internal beta</td></tr><tr><td>Beta</td><td>Public beta</td></tr><tr><td>Pre (M)</td><td>Similar to Alpha, sometimes subdivided into M_(Milestone) version</td></tr><tr><td>RC(Release Candidate)</td><td>During Beta stage, new features will continue to be added, but once the RC version is reached, there will mainly be on debugging and issue resolution.</td></tr><tr><td>GA(General Availability)</td><td>Some software may be labeled as “stable” or “production”.</td></tr><tr><td>Release&#x2F;Stable</td><td></td></tr><tr><td>Current</td><td>The latest version, but no necessarily a stable one.</td></tr><tr><td>Eval</td><td>There may be a monthly or fixed time limit for usage.</td></tr></tbody></table></li><li><p><strong>Declarative Programming</strong> expresses the logic of a computation without describing its control flow.</p><blockquote><p>Many languages that apply this style attempt to minimize or eliminate side effects by describing <em>what</em> the  program must accomplish in terms of the problem domain (what to do), rather than specifying all the details of <em>how</em> the program should achieve the result (how to do).</p></blockquote><p><strong>Imperative Programming</strong> uses statements that change a program’s state. </p><blockquote><p>Imperative Programming focuses on describing <em>how</em> a program operates step by step, rather than on high-level descriptions of its expected results.</p></blockquote></li><li></li></ol>]]></content>
+    <content type="html"><![CDATA[<ol><li><p>Generate random numbers by reading <strong>thermal noise</strong> on CPU pins.</p></li><li><p><strong>Hot Plug</strong>, refers to the operation of inserting&#x2F;removing a device while it is running. In contrast, <strong>Cold Plug</strong> means do above operation while the device is powered off.</p></li><li><p>Software version’s explanation:</p><table><thead><tr><th>Version</th><th>Description</th></tr></thead><tbody><tr><td>Snapshot</td><td>Development version</td></tr><tr><td>Alpha</td><td>Internal beta</td></tr><tr><td>Beta</td><td>Public beta</td></tr><tr><td>Pre (M)</td><td>Similar to Alpha, sometimes subdivided into M_(Milestone) version</td></tr><tr><td>RC(Release Candidate)</td><td>During Beta stage, new features will continue to be added, but once the RC version is reached, there will mainly be on debugging and issue resolution.</td></tr><tr><td>GA(General Availability)</td><td>Some software may be labeled as “stable” or “production”.</td></tr><tr><td>Release&#x2F;Stable</td><td></td></tr><tr><td>Current</td><td>The latest version, but no necessarily a stable one.</td></tr><tr><td>Eval</td><td>There may be a monthly or fixed time limit for usage.</td></tr></tbody></table></li><li><p><strong>Declarative Programming</strong> expresses the logic of a computation without describing its control flow.</p><blockquote><p>Many languages that apply this style attempt to minimize or eliminate side effects by describing <em>what</em> the  program must accomplish in terms of the problem domain (what to do), rather than specifying all the details of <em>how</em> the program should achieve the result (how to do).</p></blockquote><p><strong>Imperative Programming</strong> uses statements that change a program’s state. </p><blockquote><p>Imperative Programming focuses on describing <em>how</em> a program operates step by step, rather than on high-level descriptions of its expected results.</p></blockquote></li><li><p><strong>KVM</strong>: Kernel-based Virtual Machine, is a virtualization infrastructure used in the Linux kernel to turn the Linux kernel into a <strong>hypervisor</strong>;</p><ul><li><strong>Hypervisor</strong>: creates and runs virtual machines, sometimes called a virtual machine monitor (VMM), like a meta-OS; </li><li>IT resource pooled, OS and hardware decoupled, allocated according to needs;</li><li>A computer on which a hypervisor runs one or more virtual machines is called a <strong>host machine</strong>, and <strong>each virtual machine is called a guest machine</strong>;</li><li><strong>(Type 1) Native or bare mental hypervisor:</strong> runs directly on the host’s hardware to manage guest operating systems. It takes the place of a host operating system and VM resources are scheduled directly to the hardware by the hypervisor. <ul><li>This type of hypervisor is most common in an enterprise data center or other server-based environments.</li><li>KVM, Microsoft Hyper-V, and VMware vSphere are examples of a type 1 hypervisor. KVM was merged into the Linux kernel in 2007, so if you’re using a modern version of <a href="https://www.redhat.com/en/topics/linux">Linux</a>, you already have access to KVM.</li></ul></li><li><strong>(Type 2) Hosted hypervisor:</strong> run on a conventional operating system as a software layer or application.<ul><li>It works by abstracting guest operating systems from the host operating system. VM resources are scheduled against a host operating system, which is then executed against the hardware.</li><li>A type 2 hypervisor is better for individual users who want to run multiple operating systems on a personal computer.</li><li>VMware Workstation and Oracle VirtualBox are examples of a type 2 hypervisor.</li></ul></li></ul><img src="./hot_points/hypervisor_type.png" style="zoom:30%"><img src=".hypervisor_type.png" style="zoom:50%"></li></ol>]]></content>
     
     
       
@@ -373,6 +398,33 @@
 &lt;li&gt;&lt;p&gt;Generate random numbers by reading &lt;strong&gt;thermal noise&lt;/strong&gt; on CPU pins.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;Hot Plug&lt;/strong&gt;, refer</summary>
+      
+    
+    
+    
+    <category term="tidbits" scheme="https://stu-yue.github.io/categories/tidbits/"/>
+    
+    
+    <category term="points" scheme="https://stu-yue.github.io/tags/points/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TBR_compiler</title>
+    <link href="https://stu-yue.github.io/jottings/tidbits/tbr_compiler/"/>
+    <id>https://stu-yue.github.io/jottings/tidbits/tbr_compiler/</id>
+    <published>2023-07-22T12:00:53.000Z</published>
+    <updated>2023-09-23T08:14:35.017Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>《编译原理》课件搬运 ——&gt; <a href="https://cs.nju.edu.cn/changxu/2_compiler/index.html">源地址</a></p></blockquote><h4 id="1-1-编译器作用"><a href="#1-1-编译器作用" class="headerlink" title="1.1 编译器作用"></a>1.1 编译器作用</h4><ul><li><p>编译器（Compiler）</p><ul><li>读入以某种语言（源语言）编写的程序；</li><li>输出等价的用另一种语言（目标语言）编写的程序；</li><li>通常目标程序是可执行的；</li></ul><img src="./tbr_compiler/compiler_1.png" style="zoom:60%"><img src="./compiler_1.png" style="zoom:60%"></li><li><p>解释器（Interpreter）</p><ul><li>不生成目标程序，直接根据源程序的语义执行源程序中指定的操作；</li><li>Java语言的处理结合了编译(.class字节码)和解释，Python会将编译的字节码(pyc)存放于_<em>pycache</em>_(可跨平台部署，一定程度防源码泄露，import的py不变pyc就不变[检查py和pyc的修改时间是否一致])</li></ul></li></ul><h4 id="1-2-编译器的结构"><a href="#1-2-编译器的结构" class="headerlink" title="1.2 编译器的结构"></a>1.2 编译器的结构</h4><ul><li><p>编译器可以分为分析部分和综合部分</p></li><li><p><strong>分析</strong>（analysis）部分 &#x2F; <strong>前端</strong>（front end）</p><ul><li>把源程序分解成组成要素，以及相应的语法结构；</li><li>使用这个结构创建源程序的中间表示；</li><li>同时收集和源程序相关的信息，存放到<strong>符号表</strong>；</li></ul></li><li><p><strong>综合</strong>（synthesis）部分 &#x2F; <strong>后端</strong>（back end）</p><ul><li>根据中间表示和符号表信息构造目标程序；</li></ul></li><li><p>前端部分是<strong>机器无关</strong>的，后端部分是<strong>机器相关</strong>的；</p></li><li><p>编译器分成执行顺序的一组步骤：</p><img src="./tbr_compiler/compiler_phase.png" style="zoom:60%"></li></ul><h4 id="1-3-词法分析"><a href="#1-3-词法分析" class="headerlink" title="1.3 词法分析"></a>1.3 词法分析</h4><ul><li><p>词法分析&#x2F;扫描（lexical analysis&#x2F;scanning）</p><ul><li>读入源程序的字符流，输出为有意义的词素（lexeme）</li><li>&lt;token-name, attribute-value&gt;</li><li>token-name：由语法分析步骤使用；</li><li>attribute-value：指向相应的符号表条目，由语义分析&#x2F;代码生成步骤使用；</li></ul></li><li><p>例子</p><p>position &#x3D; initial + rate * 60</p><p>&lt;id, 1&gt; &lt;&#x3D;, &gt; &lt;id, 2&gt;, &lt;+, &gt; &lt;id, 3&gt; &lt;*, &gt; &lt;number, 4&gt;</p></li></ul><h4 id="1-4-语法分析"><a href="#1-4-语法分析" class="headerlink" title="1.4 语法分析"></a>1.4 语法分析</h4><ul><li><p>语法分析&#x2F;解析（syntax analysis&#x2F;parsing）</p><ul><li>根据各个词法单元的第一个分量来创建树型的中间表示形式，通常是语法树（syntax tree）</li><li>中间表示形式指出了词法单元流的语法结构；</li></ul><img src="./tbr_compiler/syntax_tree.png" style="zoom:60%"></li></ul><h4 id="1-5-语义分析"><a href="#1-5-语义分析" class="headerlink" title="1.5 语义分析"></a>1.5 语义分析</h4><ul><li><p>语义分析（semantic analysis）</p><ul><li>使用语法树和符号表中的信息，检查源程序是否满足语言定义的语义约束；</li><li>同时收集类型信息，用于代码生成、类型检查、类型转换；</li></ul><img src="./tbr_compiler/semantic_analysis.png" style="zoom:60%"></li></ul><h4 id="1-6-中间代码生成"><a href="#1-6-中间代码生成" class="headerlink" title="1.6 中间代码生成"></a>1.6 中间代码生成</h4><ul><li><p>根据语义分析输出，生成类机器语言的中间表示；</p></li><li><p>三地址代码（three-address code）</p><ul><li>每个指令最多包含三个运算分量；很容易生成机器语言指令；</li></ul><img src="./tbr_compiler/three_addr_code.png" style="zoom:60%"></li></ul><h4 id="1-7-中间代码优化"><a href="#1-7-中间代码优化" class="headerlink" title="1.7 中间代码优化"></a>1.7 中间代码优化</h4><ul><li><p>通过对中间代码分析，改进中间代码的质量；（更快、更短、能耗更低）</p><img src="./tbr_compiler/mid_code_optim.png" style="zoom:60%"></li></ul><h4 id="1-8-代码生成"><a href="#1-8-代码生成" class="headerlink" title="1.8 代码生成"></a>1.8 代码生成</h4><ul><li><p>把中间表示形式映射成目标语言；（寄存器分配、指令选择）</p><img src="./tbr_compiler/code_generation.png" style="zoom:60%"></li></ul><h4 id="1-9-其他"><a href="#1-9-其他" class="headerlink" title="1.9 其他"></a>1.9 其他</h4><ul><li><strong>符号表</strong>管理：记录源程序中使用的变量的名字，收集各种属性；</li><li>编译器构造工具：扫描器（Lex）、语法分析器（Yacc）、语法制导的翻译引擎；</li><li>程序设计语言的新发展向编译器设计者提出新的要求<ul><li>设计相应的算法和表示方法来翻译和支持新的语言特征，如多态、动态绑定、类、类属 (模板) 、…</li></ul></li><li>编译器设计者还需要更好地利用新硬件的能力<ul><li>RISC技术、多核技术、大规模并行技术</li></ul></li></ul><h4 id="1-10-程序设计语言的基础概念"><a href="#1-10-程序设计语言的基础概念" class="headerlink" title="1.10 程序设计语言的基础概念"></a>1.10 程序设计语言的基础概念</h4><ul><li>静态&#x2F;动态：<ul><li>静态：支持编译器静态决定某个问题；</li><li>动态：只允许在程序运行时刻作出决定；</li></ul></li><li>作用域：<ul><li>x的作用域指程序文本的一个区域，其中对x的使用都指向这个声明；</li><li>静态作用域（static scope）: 通过静态阅读程序可决定；</li><li>动态作用域（dynamic scope）: 运行时确定x的指向；</li></ul></li><li>环境与状态：<ul><li>环境（environment）: 是从名字到存储位置的映射；</li><li>状态（state）: 从存储位置到它们值的映射；</li></ul></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;《编译原理》课件搬运 ——&amp;gt; &lt;a href=&quot;https://cs.nju.edu.cn/changxu/2_compiler/index.html&quot;&gt;源地址&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;1-1-编译器作用&quot;</summary>
       
     
     

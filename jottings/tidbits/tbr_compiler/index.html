@@ -3,30 +3,33 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Summa | Firmware and Drivers | Yue&#39;s Jotter</title>
+    <title>TBR_compiler | Yue&#39;s Jotter</title>
     
     
-        <meta name="keywords" content="firmware,driver" />
+        <meta name="keywords" content="points" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Reproduced in Firmware vs Device Drivers: Explained with Examples!  Firmware vs. Device Drivers   Firmware Device Drivers    Firmware is a class of software that is written for specific custom hardwa">
+    <meta name="description" content="《编译原理》课件搬运 ——&gt; 源地址  1.1 编译器作用 编译器（Compiler）  读入以某种语言（源语言）编写的程序； 输出等价的用另一种语言（目标语言）编写的程序； 通常目标程序是可执行的；      解释器（Interpreter）  不生成目标程序，直接根据源程序的语义执行源程序中指定的操作； Java语言的处理结合了编译(.class字节码)和解释，Python会将编译的字">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Summa | Firmware and Drivers">
-<meta property="og:url" content="https://stu-yue.github.io/jottings/architecture/summa_firmware_and_drivers/">
+<meta property="og:title" content="TBR_compiler">
+<meta property="og:url" content="https://stu-yue.github.io/jottings/tidbits/tbr_compiler/">
 <meta property="og:site_name" content="Yue&#39;s Jotter">
-<meta property="og:description" content="Reproduced in Firmware vs Device Drivers: Explained with Examples!  Firmware vs. Device Drivers   Firmware Device Drivers    Firmware is a class of software that is written for specific custom hardwa">
+<meta property="og:description" content="《编译原理》课件搬运 ——&gt; 源地址  1.1 编译器作用 编译器（Compiler）  读入以某种语言（源语言）编写的程序； 输出等价的用另一种语言（目标语言）编写的程序； 通常目标程序是可执行的；      解释器（Interpreter）  不生成目标程序，直接根据源程序的语义执行源程序中指定的操作； Java语言的处理结合了编译(.class字节码)和解释，Python会将编译的字">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://stu-yue.github.io/jottings/architecture/summa_firmware_and_drivers/summa_firmware_and_drivers/layer.png">
-<meta property="og:image" content="https://stu-yue.github.io/jottings/architecture/summa_firmware_and_drivers/layer.png">
-<meta property="og:image" content="https://stu-yue.github.io/jottings/architecture/summa_firmware_and_drivers/summa_firmware_and_drivers/relation_graph.png">
-<meta property="og:image" content="https://stu-yue.github.io/jottings/architecture/summa_firmware_and_drivers/relation_graph.png">
-<meta property="article:published_time" content="2023-07-13T06:21:53.000Z">
-<meta property="article:modified_time" content="2023-07-20T05:15:59.324Z">
+<meta property="og:image" content="https://stu-yue.github.io/jottings/tidbits/tbr_compiler/tbr_compiler/compiler_1.png">
+<meta property="og:image" content="https://stu-yue.github.io/jottings/tidbits/tbr_compiler/compiler_1.png">
+<meta property="og:image" content="https://stu-yue.github.io/jottings/tidbits/tbr_compiler/tbr_compiler/compiler_phase.png">
+<meta property="og:image" content="https://stu-yue.github.io/jottings/tidbits/tbr_compiler/tbr_compiler/syntax_tree.png">
+<meta property="og:image" content="https://stu-yue.github.io/jottings/tidbits/tbr_compiler/tbr_compiler/semantic_analysis.png">
+<meta property="og:image" content="https://stu-yue.github.io/jottings/tidbits/tbr_compiler/tbr_compiler/three_addr_code.png">
+<meta property="og:image" content="https://stu-yue.github.io/jottings/tidbits/tbr_compiler/tbr_compiler/mid_code_optim.png">
+<meta property="og:image" content="https://stu-yue.github.io/jottings/tidbits/tbr_compiler/tbr_compiler/code_generation.png">
+<meta property="article:published_time" content="2023-07-22T12:00:53.000Z">
+<meta property="article:modified_time" content="2023-09-23T08:14:35.017Z">
 <meta property="article:author" content="stu-yue">
-<meta property="article:tag" content="firmware">
-<meta property="article:tag" content="driver">
+<meta property="article:tag" content="points">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://stu-yue.github.io/jottings/architecture/summa_firmware_and_drivers/summa_firmware_and_drivers/layer.png">
+<meta name="twitter:image" content="https://stu-yue.github.io/jottings/tidbits/tbr_compiler/tbr_compiler/compiler_1.png">
     
 
     
@@ -182,13 +185,13 @@
         
         
          <ul class="unstyled" id="tree" > 
-                    <li class="directory open">
+                    <li class="directory">
                         <a href="#" data-role="directory">
-                            <i class="fa fa-folder-open"></i>
+                            <i class="fa fa-folder"></i>
                             &nbsp;
                             architecture
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file active"><a href="/jottings/architecture/summa_firmware_and_drivers/">Summa | Firmware and Drivers</a></li>  <li class="file"><a href="/jottings/architecture/summa_memory_categories/">Summa | The Majority of Memory Categories</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/architecture/summa_firmware_and_drivers/">Summa | Firmware and Drivers</a></li>  <li class="file"><a href="/jottings/architecture/summa_memory_categories/">Summa | The Majority of Memory Categories</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -245,13 +248,13 @@
                          <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/statistical_ml/summa_intro/">Summa | Intro of Statistical ML</a></li>  </ul> 
                     </li> 
                     
-                    <li class="directory">
+                    <li class="directory open">
                         <a href="#" data-role="directory">
-                            <i class="fa fa-folder"></i>
+                            <i class="fa fa-folder-open"></i>
                             &nbsp;
                             tidbits
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/tidbits/hot_points/">Hot Points</a></li>  <li class="file"><a href="/jottings/tidbits/tbr_compiler/">TBR_compiler</a></li>  <li class="file"><a href="/jottings/tidbits/quantization/"></a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/tidbits/hot_points/">Hot Points</a></li>  <li class="file active"><a href="/jottings/tidbits/tbr_compiler/">TBR_compiler</a></li>  <li class="file"><a href="/jottings/tidbits/quantization/"></a></li>  </ul> 
                     </li> 
                      <li class="file"><a href="/jottings/intro/">Welcome to Yue's Jotter</a></li>  </ul> 
     </div>
@@ -324,7 +327,7 @@
     <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
             
-            <section id="main"><article id="post-architecture/summa_firmware_and_drivers" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-tidbits/tbr_compiler" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -334,20 +337,20 @@
                         
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/architecture/">architecture</a>
+        <a class="article-category-link" href="/categories/tidbits/">tidbits</a>
     </div>
 
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/driver/" rel="tag">driver</a>, <a class="tag-link-link" href="/tags/firmware/" rel="tag">firmware</a>
+        <a class="tag-link-link" href="/tags/points/" rel="tag">points</a>
     </div>
 
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/jottings/architecture/summa_firmware_and_drivers/">
-            <time datetime="2023-07-13T06:21:53.000Z" itemprop="datePublished">2023-07-13</time>
+        <a href="/jottings/tidbits/tbr_compiler/">
+            <time datetime="2023-07-22T12:00:53.000Z" itemprop="datePublished">2023-07-22</time>
         </a>
     </div>
 
@@ -355,13 +358,13 @@
                         
                         
                             <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/stu-yue/stu-yue.github.io/raw/main/source/_posts/architecture/summa_firmware_and_drivers.md'> Source </a>
+                                <a target="_blank" rel="noopener" href='https://github.com/stu-yue/stu-yue.github.io/raw/main/source/_posts/tidbits/tbr_compiler.md'> Source </a>
                             </div>
                             <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/stu-yue/stu-yue.github.io/edit/main/source/_posts/architecture/summa_firmware_and_drivers.md'> Edit </a>
+                                <a target="_blank" rel="noopener" href='https://github.com/stu-yue/stu-yue.github.io/edit/main/source/_posts/tidbits/tbr_compiler.md'> Edit </a>
                             </div>
                             <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/stu-yue/stu-yue.github.io/commits/main/source/_posts/architecture/summa_firmware_and_drivers.md'> History </a>
+                                <a target="_blank" rel="noopener" href='https://github.com/stu-yue/stu-yue.github.io/commits/main/source/_posts/tidbits/tbr_compiler.md'> History </a>
                             </div>
                         
                     </div>
@@ -369,7 +372,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-            Summa | Firmware and Drivers
+            TBR_compiler
         </h1>
     
 
@@ -383,62 +386,123 @@
         
         
             <blockquote>
-<p>Reproduced in <a target="_blank" rel="noopener" href="https://embeddedinventor.com/firmware-vs-device-drivers-explained-with-examples/">Firmware vs Device Drivers: Explained with Examples!</a></p>
+<p>《编译原理》课件搬运 ——&gt; <a target="_blank" rel="noopener" href="https://cs.nju.edu.cn/changxu/2_compiler/index.html">源地址</a></p>
 </blockquote>
-<h3 id="Firmware-vs-Device-Drivers"><a href="#Firmware-vs-Device-Drivers" class="headerlink" title="Firmware vs. Device Drivers"></a>Firmware vs. Device Drivers</h3><table>
-<thead>
-<tr>
-<th>Firmware</th>
-<th>Device Drivers</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Firmware is a class of software that is written for specific custom hardware.</td>
-<td>Device drivers are software that is needed to make a given hardware accessory</td>
-</tr>
-<tr>
-<td>Firmware lives and runs directly on the hardware.</td>
-<td>Device drivers live on hard-disk and run on the CPU.</td>
-</tr>
-<tr>
-<td>Firmware is independent of an operating system, i.e.,  you can run any operating system on top of a  given motherboard’s firmware.</td>
-<td>Device drivers are highly dependent on the operating system on which they are used. For example, for the same hardware device, you need different device drivers for using that on Windows vs Linux.</td>
-</tr>
-<tr>
-<td>Firmware cannot be updated through an operating system, we need to go into the BIOS&#x2F;UEFI to update the device drivers.</td>
-<td>Drivers can be updated from within the operating system.</td>
-</tr>
-<tr>
-<td>Firmware engineers do not need any knowledge of operating systems. But they need core knowledge on processors and the latest RAMs, PCIe standards, and so on to write firmware that complies with the latest standards</td>
-<td>Device driver engineers need knowledge about the specific device that they are using, the communication standard the device uses to talk to the computer (like Bluetooth, USB, etc), and the operating system the device driver is written for.</td>
-</tr>
-<tr>
-<td>Firmware is written by motherboard manufacturers</td>
-<td>Drivers are written by engineers in companies that produce hardware accessories that connect to your computer</td>
-</tr>
-<tr>
-<td>Examples include the BIOS&#x2F;UEFI interface that comes with the computer’s motherboard</td>
-<td>Examples include special software you install to handle the extra buttons on your mouse, software that comes with any non-standard hardware like special game controllers, also the software that helps us use all the standard hardware like USB storage devices, keyboards, mice, headphones, etc.</td>
-</tr>
-</tbody></table>
-<p>Layers of software on a typical computer are shown in the following figure:</p>
-<img src="./summa_firmware_and_drivers/layer.png" style="zoom:80%" >
+<h4 id="1-1-编译器作用"><a href="#1-1-编译器作用" class="headerlink" title="1.1 编译器作用"></a>1.1 编译器作用</h4><ul>
+<li><p>编译器（Compiler）</p>
+<ul>
+<li>读入以某种语言（源语言）编写的程序；</li>
+<li>输出等价的用另一种语言（目标语言）编写的程序；</li>
+<li>通常目标程序是可执行的；</li>
+</ul>
+<img src="./tbr_compiler/compiler_1.png" style="zoom:60%">
 
-<img src="./layer.png" style="zoom:80%" >
-
-<blockquote>
-<h4 id="Firmware"><a href="#Firmware" class="headerlink" title="Firmware"></a>Firmware</h4><p>​        <strong>Firmware is a computer program that is written to work directly on specific custom hardware and it lives in non-volatile memory such as a flash chip and it is executed directly from it. The job of the firmware is to make the hardware accessible to the operating system.</strong> Firmware can be thought of as the glasses through which the operating system can see the actual hardware!</p>
-<p>​           Originally Firmware is written on Masked ROMs, which is a special type of memory that can be programmed&#x2F;written-data-to only once. The products were then shipped with these unchangeable programs called firmware and they run for ages till the device goes out of use.</p>
-<p>​         The first replacement of Masked ROMs came in the form of EPROM which can be erased by exposure to UV light and then reprogrammed as required. Then came EEPROMs which used electricity to change the contents. Nowadays the Masked ROMs have been replaced with Flash memory, which is cheaper and serves the purpose. </p>
-<h4 id="Device-Drivers"><a href="#Device-Drivers" class="headerlink" title="Device Drivers"></a>Device Drivers</h4><p><strong>Device drivers are programs that can control a given hardware and provide a software interface to it. Other programs like Operating Systems can interact with the hardware through this software interface without needing to know the actual underlying implementation of the software interface.</strong></p>
-</blockquote>
-<p>The relation graph between firmware and drivers is also shown below:</p>
-<img src="./summa_firmware_and_drivers/relation_graph.png" style="zoom:80%" >
-
-<img src="./relation_graph.png" style="zoom:80%" >
-
-<p>​        Generally speaking, drivers and firmware together form the module that operates hardware. <strong>But why not make the firmware perfect so that it doesn’t require driver support?</strong> </p>
-<p>​         The answer to the above question is, there are different operating systems which have completely different ways of operating hardware. So, <strong>on the one hand, hardware manufactures need to write firmware to make their hardware easier to use with software,</strong> but <strong>on the other hand, they cannot make the firmware too rigid in order to be compatible with various operating systems. They must leave enough room for software to freely operate</strong> —— and <strong>that’s where drivers come in.</strong></p>
+<img src="./compiler_1.png" style="zoom:60%">
+</li>
+<li><p>解释器（Interpreter）</p>
+<ul>
+<li>不生成目标程序，直接根据源程序的语义执行源程序中指定的操作；</li>
+<li>Java语言的处理结合了编译(.class字节码)和解释，Python会将编译的字节码(pyc)存放于_<em>pycache</em>_(可跨平台部署，一定程度防源码泄露，import的py不变pyc就不变[检查py和pyc的修改时间是否一致])</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-2-编译器的结构"><a href="#1-2-编译器的结构" class="headerlink" title="1.2 编译器的结构"></a>1.2 编译器的结构</h4><ul>
+<li><p>编译器可以分为分析部分和综合部分</p>
+</li>
+<li><p><strong>分析</strong>（analysis）部分 &#x2F; <strong>前端</strong>（front end）</p>
+<ul>
+<li>把源程序分解成组成要素，以及相应的语法结构；</li>
+<li>使用这个结构创建源程序的中间表示；</li>
+<li>同时收集和源程序相关的信息，存放到<strong>符号表</strong>；</li>
+</ul>
+</li>
+<li><p><strong>综合</strong>（synthesis）部分 &#x2F; <strong>后端</strong>（back end）</p>
+<ul>
+<li>根据中间表示和符号表信息构造目标程序；</li>
+</ul>
+</li>
+<li><p>前端部分是<strong>机器无关</strong>的，后端部分是<strong>机器相关</strong>的；</p>
+</li>
+<li><p>编译器分成执行顺序的一组步骤：</p>
+<img src="./tbr_compiler/compiler_phase.png" style="zoom:60%"></li>
+</ul>
+<h4 id="1-3-词法分析"><a href="#1-3-词法分析" class="headerlink" title="1.3 词法分析"></a>1.3 词法分析</h4><ul>
+<li><p>词法分析&#x2F;扫描（lexical analysis&#x2F;scanning）</p>
+<ul>
+<li>读入源程序的字符流，输出为有意义的词素（lexeme）</li>
+<li>&lt;token-name, attribute-value&gt;</li>
+<li>token-name：由语法分析步骤使用；</li>
+<li>attribute-value：指向相应的符号表条目，由语义分析&#x2F;代码生成步骤使用；</li>
+</ul>
+</li>
+<li><p>例子</p>
+<p>position &#x3D; initial + rate * 60</p>
+<p>&lt;id, 1&gt; &lt;&#x3D;, &gt; &lt;id, 2&gt;, &lt;+, &gt; &lt;id, 3&gt; &lt;*, &gt; &lt;number, 4&gt;</p>
+</li>
+</ul>
+<h4 id="1-4-语法分析"><a href="#1-4-语法分析" class="headerlink" title="1.4 语法分析"></a>1.4 语法分析</h4><ul>
+<li><p>语法分析&#x2F;解析（syntax analysis&#x2F;parsing）</p>
+<ul>
+<li>根据各个词法单元的第一个分量来创建树型的中间表示形式，通常是语法树（syntax tree）</li>
+<li>中间表示形式指出了词法单元流的语法结构；</li>
+</ul>
+<img src="./tbr_compiler/syntax_tree.png" style="zoom:60%"></li>
+</ul>
+<h4 id="1-5-语义分析"><a href="#1-5-语义分析" class="headerlink" title="1.5 语义分析"></a>1.5 语义分析</h4><ul>
+<li><p>语义分析（semantic analysis）</p>
+<ul>
+<li>使用语法树和符号表中的信息，检查源程序是否满足语言定义的语义约束；</li>
+<li>同时收集类型信息，用于代码生成、类型检查、类型转换；</li>
+</ul>
+<img src="./tbr_compiler/semantic_analysis.png" style="zoom:60%"></li>
+</ul>
+<h4 id="1-6-中间代码生成"><a href="#1-6-中间代码生成" class="headerlink" title="1.6 中间代码生成"></a>1.6 中间代码生成</h4><ul>
+<li><p>根据语义分析输出，生成类机器语言的中间表示；</p>
+</li>
+<li><p>三地址代码（three-address code）</p>
+<ul>
+<li>每个指令最多包含三个运算分量；很容易生成机器语言指令；</li>
+</ul>
+<img src="./tbr_compiler/three_addr_code.png" style="zoom:60%"></li>
+</ul>
+<h4 id="1-7-中间代码优化"><a href="#1-7-中间代码优化" class="headerlink" title="1.7 中间代码优化"></a>1.7 中间代码优化</h4><ul>
+<li><p>通过对中间代码分析，改进中间代码的质量；（更快、更短、能耗更低）</p>
+<img src="./tbr_compiler/mid_code_optim.png" style="zoom:60%"></li>
+</ul>
+<h4 id="1-8-代码生成"><a href="#1-8-代码生成" class="headerlink" title="1.8 代码生成"></a>1.8 代码生成</h4><ul>
+<li><p>把中间表示形式映射成目标语言；（寄存器分配、指令选择）</p>
+<img src="./tbr_compiler/code_generation.png" style="zoom:60%"></li>
+</ul>
+<h4 id="1-9-其他"><a href="#1-9-其他" class="headerlink" title="1.9 其他"></a>1.9 其他</h4><ul>
+<li><strong>符号表</strong>管理：记录源程序中使用的变量的名字，收集各种属性；</li>
+<li>编译器构造工具：扫描器（Lex）、语法分析器（Yacc）、语法制导的翻译引擎；</li>
+<li>程序设计语言的新发展向编译器设计者提出新的要求<ul>
+<li>设计相应的算法和表示方法来翻译和支持新的语言特征，如多态、动态绑定、类、类属 (模板) 、…</li>
+</ul>
+</li>
+<li>编译器设计者还需要更好地利用新硬件的能力<ul>
+<li>RISC技术、多核技术、大规模并行技术</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-10-程序设计语言的基础概念"><a href="#1-10-程序设计语言的基础概念" class="headerlink" title="1.10 程序设计语言的基础概念"></a>1.10 程序设计语言的基础概念</h4><ul>
+<li>静态&#x2F;动态：<ul>
+<li>静态：支持编译器静态决定某个问题；</li>
+<li>动态：只允许在程序运行时刻作出决定；</li>
+</ul>
+</li>
+<li>作用域：<ul>
+<li>x的作用域指程序文本的一个区域，其中对x的使用都指向这个声明；</li>
+<li>静态作用域（static scope）: 通过静态阅读程序可决定；</li>
+<li>动态作用域（dynamic scope）: 运行时确定x的指向；</li>
+</ul>
+</li>
+<li>环境与状态：<ul>
+<li>环境（environment）: 是从名字到存储位置的映射；</li>
+<li>状态（state）: 从存储位置到它们值的映射；</li>
+</ul>
+</li>
+</ul>
 
             </div>
         
@@ -451,15 +515,20 @@
     
 <nav id="article-nav">
     
-        <a href="/jottings/intro/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/jottings/tidbits/hot_points/" id="article-nav-newer" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Newer</strong>
             <div class="article-nav-title">
                 
-                    Welcome to Yue&#39;s Jotter
+                    Hot Points
                 
             </div>
         </a>
     
+    
+        <a href="/jottings/architecture/summa_memory_categories/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Summa | The Majority of Memory Categories</div>
+        </a>
     
 </nav>
 
