@@ -6,7 +6,7 @@
   <link href="https://stu-yue.github.io/atom.xml" rel="self"/>
   
   <link href="https://stu-yue.github.io/"/>
-  <updated>2023-10-04T06:04:18.320Z</updated>
+  <updated>2023-10-04T09:44:40.037Z</updated>
   <id>https://stu-yue.github.io/</id>
   
   <author>
@@ -21,8 +21,16 @@
     <link href="https://stu-yue.github.io/jottings/languages/shell/memo_tmux/"/>
     <id>https://stu-yue.github.io/jottings/languages/shell/memo_tmux/</id>
     <published>2023-10-04T07:56:53.000Z</published>
-    <updated>2023-10-04T06:04:18.320Z</updated>
+    <updated>2023-10-04T09:44:40.037Z</updated>
     
+    <content type="html"><![CDATA[<h4 id="What-is-tmux"><a href="#What-is-tmux" class="headerlink" title="What is tmux?"></a>What is tmux?</h4><ul><li><p>A typical use of the command line is to open a terminal window (session), whose important feature is that window is connected to the process started in it (window closed, session ends, vice versa).</p></li><li><p><strong>Tmux,</strong> Terminal multiplexer, is  the session and window “unbind” tool. It allows:</p><ul><li>simultaneous access to multiple sessions in a single window. (useful for running multiple terminal simultaneously)</li><li>a new window to  access an existing session;</li><li>each session having multiple connection window (multiple people sharing sessions in real time)</li><li>arbitrary vertical and horizontal splitting of windows;</li></ul></li><li><p>Basic conception:</p><ul><li>session:</li></ul><img src="./tmux/tmux_basic.png" style="zoom:50%"><img src="./tmux_basic.png" style="zoom:50%"></li></ul><h4 id="Basic-Usage"><a href="#Basic-Usage" class="headerlink" title="Basic Usage"></a>Basic Usage</h4><ul><li><p>Start —<code>tmux</code>, Quit—<code>exit/Ctrl-d</code>, Prefix Key—<code>Ctrl+b</code>;</p></li><li><p>A status bar is located at the bottom:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[name/id] [list of ]</span><br><span class="line">[0] 0:bash  1:test3* 2:test4-         &quot;VM-16-17-ubuntu&quot; 15:28 04-Oct-23</span><br></pre></td></tr></table></figure></li></ul><h4 id="Session-Management"><a href="#Session-Management" class="headerlink" title="Session Management"></a>Session Management</h4><ul><li><p>New a session: <code>tmux new -s &lt;session-name&gt;</code>; </p></li><li><p>Split sessions: <code>tmux detach/Ctrl+b d</code>, after the command is executed, the current Tmux window exits, but the session and the processes inside it still run in the background;</p></li><li><p>View all current tmux sessions: <code>tmux ls</code></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0: 1 windows (created Tue Sep 19 20:42:24 2023)</span><br><span class="line">1: 1 windows (created Tue Oct  3 19:57:48 2023)</span><br><span class="line">test2: 1 windows (created Wed Oct  4 14:49:04 2023) (attached)</span><br></pre></td></tr></table></figure></li><li><p>Attach a session: <code>tmux attach -t id/&lt;session-name&gt;</code>;</p></li><li><p>Kill a session: <code>tmux kill-session -t id/&lt;session-name&gt;</code>;</p></li><li><p>Switch a session: <code>tmux switch -t id/&lt;session-name&gt;</code>;</p></li><li><p>Rename a session: <code>tmux rename-session -t id/&lt;session-name&gt; &lt;new-name&gt;</code>;</p></li><li><p>Shortcuts: </p><ul><li><code>Ctrl+b</code>d: Split current session;</li><li><code>Ctrl+b s</code> list all session;</li><li><code>Ctrl+b $</code>: rename current session;</li></ul></li><li><p>Simple workflow of tmux:</p><ol><li>new a session: <code>tmux new -s my_session</code>;</li><li>run program in tmux window;</li><li><code>Ctrl+b d</code> splits the session;</li><li>Attach the last session <code>tmux attach-session -t my_session</code>;</li></ol></li></ul><h4 id="Pane-Operation"><a href="#Pane-Operation" class="headerlink" title="Pane Operation"></a>Pane Operation</h4><p>Tmux can split the window into panes, which can execute different commands.</p><ul><li><p><code>tmux splilt-window</code> splits into vertical layout;</p></li><li><p><code>tmux split-window -h</code> splits into horizontal layout;</p></li><li><p><code>tmux select-pane</code> moves the cursor in different panes:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">光标切换到上方窗格</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">tmux select-pane -U</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">光标切换到下方窗格</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">tmux select-pane -D</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">光标切换到左边窗格</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">tmux select-pane -L</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">光标切换到右边窗格</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">tmux select-pane -R</span></span><br></pre></td></tr></table></figure></li><li><p><code>tmux swap-pane</code> exchanges the positions of panes:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">当前窗格上移</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">tmux swap-pane -U</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">当前窗格下移</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">tmux swap-pane -D</span></span><br></pre></td></tr></table></figure></li><li><p>Shortcuts in pane operations:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+b %：划分左右两个窗格。</span><br><span class="line">Ctrl+b &quot;：划分上下两个窗格。</span><br><span class="line">Ctrl+b &lt;arrow key&gt;：光标切换到其他窗格。&lt;arrow key&gt;是指向要切换到的窗格的方向键，比如切换到下方窗格，就按方向键↓。</span><br><span class="line">Ctrl+b ;：光标切换到上一个窗格。</span><br><span class="line">Ctrl+b o：光标切换到下一个窗格。</span><br><span class="line">Ctrl+b &#123;：当前窗格与上一个窗格交换位置。</span><br><span class="line">Ctrl+b &#125;：当前窗格与下一个窗格交换位置。</span><br><span class="line">Ctrl+b Ctrl+o：所有窗格向前移动一个位置，第一个窗格变成最后一个窗格。</span><br><span class="line">Ctrl+b Alt+o：所有窗格向后移动一个位置，最后一个窗格变成第一个窗格。</span><br><span class="line">Ctrl+b x：关闭当前窗格。</span><br><span class="line">Ctrl+b !：将当前窗格拆分为一个独立窗口。</span><br><span class="line">Ctrl+b z：当前窗格全屏显示，再使用一次会变回原来大小。</span><br><span class="line">Ctrl+b Ctrl+&lt;arrow key&gt;：按箭头方向调整窗格大小。</span><br><span class="line">Ctrl+b q：显示窗格编号。</span><br></pre></td></tr></table></figure></li></ul><h4 id="Window-Operation"><a href="#Window-Operation" class="headerlink" title="Window Operation"></a>Window Operation</h4><ul><li><p><code>tmux new-window -n &lt;window-name&gt;</code>: new a window;</p></li><li><p><code>tmux select-window -t &lt;window-number/name&gt;</code>: switch window</p></li><li><p><code>tmux rename-window</code></p></li><li><p>Shortcuts in window operation:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+b c：创建一个新窗口，状态栏会显示多个窗口的信息。</span><br><span class="line">Ctrl+b p：切换到上一个窗口（按照状态栏上的顺序）。</span><br><span class="line">Ctrl+b n：切换到下一个窗口。</span><br><span class="line">Ctrl+b &lt;number&gt;：切换到指定编号的窗口，其中的&lt;number&gt;是状态栏上的窗口编号。</span><br><span class="line">Ctrl+b w：从列表中选择窗口。</span><br><span class="line">Ctrl+b ,：窗口重命名。</span><br></pre></td></tr></table></figure></li></ul><h4 id="Other-Commands"><a href="#Other-Commands" class="headerlink" title="Other Commands"></a>Other Commands</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">列出所有快捷键，及其对应的 Tmux 命令</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">tmux list-keys</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">列出所有 Tmux 命令及其参数</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">tmux list-commands</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">列出当前所有 Tmux 会话的信息</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">tmux info</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">重新加载当前的 Tmux 配置</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">tmux source-file ~/.tmux.conf</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h4 id=&quot;What-is-tmux&quot;&gt;&lt;a href=&quot;#What-is-tmux&quot; class=&quot;headerlink&quot; title=&quot;What is tmux?&quot;&gt;&lt;/a&gt;What is tmux?&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;A typical use of th</summary>
+      
     
     
     
@@ -205,31 +213,6 @@
   </entry>
   
   <entry>
-    <title>Memo | Algebra Basis</title>
-    <link href="https://stu-yue.github.io/jottings/mathematics/memo_algebra_basis/"/>
-    <id>https://stu-yue.github.io/jottings/mathematics/memo_algebra_basis/</id>
-    <published>2023-08-27T07:56:53.000Z</published>
-    <updated>2023-08-30T05:59:00.628Z</updated>
-    
-    <content type="html"><![CDATA[<ol><li><p>**Positive Definiteness of the Norm: ** According to the usual definition, a norm should satisfy the property of positive definiteness which means that a norm must have a non-negative value for non-zero vectors and only attain zero when the vector is the <strong>zero</strong>.</p></li><li><p>**Norm and Distance Evaluation: **</p><table><thead><tr><th align="left">Norm</th><th>Distance</th></tr></thead><tbody><tr><td align="left">$L_0\ \text{norm}$ : $</td><td></td></tr><tr><td align="left">$L_1\ \text{norm}$ : $</td><td></td></tr><tr><td align="left">$L_2\ \text{norm}$ :  $</td><td></td></tr><tr><td align="left">$L_p\ \text{norm}$ :  $</td><td></td></tr><tr><td align="left">$\text{Infinite norm}$ : $</td><td></td></tr></tbody></table></li><li><p><strong>Normed Space:</strong> Normed space introduces a norm (or length, modulus) concept on the basis of linear space.</p></li></ol>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;**Positive Definiteness of the Norm: ** According to the usual definition, a norm should satisfy the property of positive defini</summary>
-      
-    
-    
-    
-    <category term="mathematics" scheme="https://stu-yue.github.io/categories/mathematics/"/>
-    
-    
-    <category term="algebra" scheme="https://stu-yue.github.io/tags/algebra/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Summa | Intro of Statistical ML</title>
     <link href="https://stu-yue.github.io/jottings/statistical_ml/summa_intro/"/>
     <id>https://stu-yue.github.io/jottings/statistical_ml/summa_intro/</id>
@@ -252,9 +235,34 @@
     <category term="statistical_ml" scheme="https://stu-yue.github.io/categories/statistical-ml/"/>
     
     
+    <category term="statistic" scheme="https://stu-yue.github.io/tags/statistic/"/>
+    
     <category term="ml" scheme="https://stu-yue.github.io/tags/ml/"/>
     
-    <category term="statistic" scheme="https://stu-yue.github.io/tags/statistic/"/>
+  </entry>
+  
+  <entry>
+    <title>Memo | Algebra Basis</title>
+    <link href="https://stu-yue.github.io/jottings/mathematics/memo_algebra_basis/"/>
+    <id>https://stu-yue.github.io/jottings/mathematics/memo_algebra_basis/</id>
+    <published>2023-08-27T07:56:53.000Z</published>
+    <updated>2023-08-30T05:59:00.628Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li><p>**Positive Definiteness of the Norm: ** According to the usual definition, a norm should satisfy the property of positive definiteness which means that a norm must have a non-negative value for non-zero vectors and only attain zero when the vector is the <strong>zero</strong>.</p></li><li><p>**Norm and Distance Evaluation: **</p><table><thead><tr><th align="left">Norm</th><th>Distance</th></tr></thead><tbody><tr><td align="left">$L_0\ \text{norm}$ : $</td><td></td></tr><tr><td align="left">$L_1\ \text{norm}$ : $</td><td></td></tr><tr><td align="left">$L_2\ \text{norm}$ :  $</td><td></td></tr><tr><td align="left">$L_p\ \text{norm}$ :  $</td><td></td></tr><tr><td align="left">$\text{Infinite norm}$ : $</td><td></td></tr></tbody></table></li><li><p><strong>Normed Space:</strong> Normed space introduces a norm (or length, modulus) concept on the basis of linear space.</p></li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;**Positive Definiteness of the Norm: ** According to the usual definition, a norm should satisfy the property of positive defini</summary>
+      
+    
+    
+    
+    <category term="mathematics" scheme="https://stu-yue.github.io/categories/mathematics/"/>
+    
+    
+    <category term="algebra" scheme="https://stu-yue.github.io/tags/algebra/"/>
     
   </entry>
   
@@ -367,9 +375,9 @@
     <category term="mathematics" scheme="https://stu-yue.github.io/categories/mathematics/"/>
     
     
-    <category term="optimization" scheme="https://stu-yue.github.io/tags/optimization/"/>
-    
     <category term="ml" scheme="https://stu-yue.github.io/tags/ml/"/>
+    
+    <category term="optimization" scheme="https://stu-yue.github.io/tags/optimization/"/>
     
   </entry>
   
@@ -404,33 +412,6 @@
   </entry>
   
   <entry>
-    <title>Hot Points</title>
-    <link href="https://stu-yue.github.io/jottings/tidbits/hot_points/"/>
-    <id>https://stu-yue.github.io/jottings/tidbits/hot_points/</id>
-    <published>2023-07-22T12:00:53.000Z</published>
-    <updated>2023-10-03T11:57:23.274Z</updated>
-    
-    <content type="html"><![CDATA[<ol><li><p>Generate random numbers by reading <strong>thermal noise</strong> on CPU pins.</p></li><li><p><strong>Hot Plug</strong>, refers to the operation of inserting&#x2F;removing a device while it is running. In contrast, <strong>Cold Plug</strong> means do above operation while the device is powered off.</p></li><li><p>Software version’s explanation:</p><table><thead><tr><th>Version</th><th>Description</th></tr></thead><tbody><tr><td>Snapshot</td><td>Development version</td></tr><tr><td>Alpha</td><td>Internal beta</td></tr><tr><td>Beta</td><td>Public beta</td></tr><tr><td>Pre (M)</td><td>Similar to Alpha, sometimes subdivided into M_(Milestone) version</td></tr><tr><td>RC(Release Candidate)</td><td>During Beta stage, new features will continue to be added, but once the RC version is reached, there will mainly be on debugging and issue resolution.</td></tr><tr><td>GA(General Availability)</td><td>Some software may be labeled as “stable” or “production”.</td></tr><tr><td>Release&#x2F;Stable</td><td></td></tr><tr><td>Current</td><td>The latest version, but no necessarily a stable one.</td></tr><tr><td>Eval</td><td>There may be a monthly or fixed time limit for usage.</td></tr></tbody></table></li><li><p><strong>Declarative Programming</strong> expresses the logic of a computation without describing its control flow.</p><blockquote><p>Many languages that apply this style attempt to minimize or eliminate side effects by describing <em>what</em> the  program must accomplish in terms of the problem domain (what to do), rather than specifying all the details of <em>how</em> the program should achieve the result (how to do).</p></blockquote><p><strong>Imperative Programming</strong> uses statements that change a program’s state. </p><blockquote><p>Imperative Programming focuses on describing <em>how</em> a program operates step by step, rather than on high-level descriptions of its expected results.</p></blockquote></li><li><p><strong>KVM</strong>: Kernel-based Virtual Machine, is a virtualization infrastructure used in the Linux kernel to turn the Linux kernel into a <strong>hypervisor</strong>;</p><ul><li><strong>Hypervisor</strong>: creates and runs virtual machines, sometimes called a virtual machine monitor (VMM), like a meta-OS; </li><li>IT resource pooled, OS and hardware decoupled, allocated according to needs;</li><li>A computer on which a hypervisor runs one or more virtual machines is called a <strong>host machine</strong>, and <strong>each virtual machine is called a guest machine</strong>;</li><li><strong>(Type 1) Native or bare mental hypervisor:</strong> runs directly on the host’s hardware to manage guest operating systems. It takes the place of a host operating system and VM resources are scheduled directly to the hardware by the hypervisor. <ul><li>This type of hypervisor is most common in an enterprise data center or other server-based environments.</li><li>KVM, Microsoft Hyper-V, and VMware vSphere are examples of a type 1 hypervisor. KVM was merged into the Linux kernel in 2007, so if you’re using a modern version of <a href="https://www.redhat.com/en/topics/linux">Linux</a>, you already have access to KVM.</li></ul></li><li><strong>(Type 2) Hosted hypervisor:</strong> run on a conventional operating system as a software layer or application.<ul><li>It works by abstracting guest operating systems from the host operating system. VM resources are scheduled against a host operating system, which is then executed against the hardware.</li><li>A type 2 hypervisor is better for individual users who want to run multiple operating systems on a personal computer.</li><li>VMware Workstation and Oracle VirtualBox are examples of a type 2 hypervisor.</li></ul></li></ul><img src="./hot_points/hypervisor_type.png" style="zoom:30%"><img src=".hypervisor_type.png" style="zoom:50%"><ul><li><strong>(Emulator) The difference with the Hypervisor is that the Hypervisor runs the same VM and host CPU architecture, while the Emulator can be used to run systems or programs on other hardware platforms (arm, mips, x86).</strong><ul><li>When used as a machine emulator, QEMU can run OSes and programs made for one machine (e.g. an ARM board) on a different machine (e.g. your x86 PC). By using dynamic translation, it achieves very good performance;</li><li>QEMU can use other hypervisors like <a href="https://wiki.archlinux.org/title/Xen">Xen</a> or <a href="https://wiki.archlinux.org/title/KVM">KVM</a> to use CPU extensions (<a href="https://en.wikipedia.org/wiki/Hardware-assisted_virtualization">HVM</a>) for virtualization. When used as a virtualizer, QEMU achieves near native performances by executing the guest code directly on the host CPU.</li><li>When QEMU is used in conjunction with KVM, KVM provides hardware virtualization support, while QEMU is responsible for virtual machine simulation and management. In this configuration, <strong>KVM functions as a Hypervisor to directly interact with hardware and provide high-performance virtualization support</strong>, while <strong>QEMU runs on the upper layer of KVM and is responsible for VM simulation and management</strong>, including device simulation, VM creation, start, and stop.</li><li>So while QEMU is not a traditional Hypervisor on its own, when used in conjunction with KVM, QEMU can work with KVM to provide a complete virtualization solution and act as part of a Hypervisor.</li></ul></li></ul></li></ol>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Generate random numbers by reading &lt;strong&gt;thermal noise&lt;/strong&gt; on CPU pins.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Hot Plug&lt;/strong&gt;, refer</summary>
-      
-    
-    
-    
-    <category term="tidbits" scheme="https://stu-yue.github.io/categories/tidbits/"/>
-    
-    
-    <category term="points" scheme="https://stu-yue.github.io/tags/points/"/>
-    
-  </entry>
-  
-  <entry>
     <title>TBR_compiler</title>
     <link href="https://stu-yue.github.io/jottings/tidbits/tbr_compiler/"/>
     <id>https://stu-yue.github.io/jottings/tidbits/tbr_compiler/</id>
@@ -446,6 +427,33 @@
 &lt;p&gt;《编译原理》课件搬运 ——&amp;gt; &lt;a href=&quot;https://cs.nju.edu.cn/changxu/2_compiler/index.html&quot;&gt;源地址&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h4 id=&quot;1-1-编译器作用&quot;</summary>
+      
+    
+    
+    
+    <category term="tidbits" scheme="https://stu-yue.github.io/categories/tidbits/"/>
+    
+    
+    <category term="points" scheme="https://stu-yue.github.io/tags/points/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hot Points</title>
+    <link href="https://stu-yue.github.io/jottings/tidbits/hot_points/"/>
+    <id>https://stu-yue.github.io/jottings/tidbits/hot_points/</id>
+    <published>2023-07-22T12:00:53.000Z</published>
+    <updated>2023-10-03T11:57:23.274Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li><p>Generate random numbers by reading <strong>thermal noise</strong> on CPU pins.</p></li><li><p><strong>Hot Plug</strong>, refers to the operation of inserting&#x2F;removing a device while it is running. In contrast, <strong>Cold Plug</strong> means do above operation while the device is powered off.</p></li><li><p>Software version’s explanation:</p><table><thead><tr><th>Version</th><th>Description</th></tr></thead><tbody><tr><td>Snapshot</td><td>Development version</td></tr><tr><td>Alpha</td><td>Internal beta</td></tr><tr><td>Beta</td><td>Public beta</td></tr><tr><td>Pre (M)</td><td>Similar to Alpha, sometimes subdivided into M_(Milestone) version</td></tr><tr><td>RC(Release Candidate)</td><td>During Beta stage, new features will continue to be added, but once the RC version is reached, there will mainly be on debugging and issue resolution.</td></tr><tr><td>GA(General Availability)</td><td>Some software may be labeled as “stable” or “production”.</td></tr><tr><td>Release&#x2F;Stable</td><td></td></tr><tr><td>Current</td><td>The latest version, but no necessarily a stable one.</td></tr><tr><td>Eval</td><td>There may be a monthly or fixed time limit for usage.</td></tr></tbody></table></li><li><p><strong>Declarative Programming</strong> expresses the logic of a computation without describing its control flow.</p><blockquote><p>Many languages that apply this style attempt to minimize or eliminate side effects by describing <em>what</em> the  program must accomplish in terms of the problem domain (what to do), rather than specifying all the details of <em>how</em> the program should achieve the result (how to do).</p></blockquote><p><strong>Imperative Programming</strong> uses statements that change a program’s state. </p><blockquote><p>Imperative Programming focuses on describing <em>how</em> a program operates step by step, rather than on high-level descriptions of its expected results.</p></blockquote></li><li><p><strong>KVM</strong>: Kernel-based Virtual Machine, is a virtualization infrastructure used in the Linux kernel to turn the Linux kernel into a <strong>hypervisor</strong>;</p><ul><li><strong>Hypervisor</strong>: creates and runs virtual machines, sometimes called a virtual machine monitor (VMM), like a meta-OS; </li><li>IT resource pooled, OS and hardware decoupled, allocated according to needs;</li><li>A computer on which a hypervisor runs one or more virtual machines is called a <strong>host machine</strong>, and <strong>each virtual machine is called a guest machine</strong>;</li><li><strong>(Type 1) Native or bare mental hypervisor:</strong> runs directly on the host’s hardware to manage guest operating systems. It takes the place of a host operating system and VM resources are scheduled directly to the hardware by the hypervisor. <ul><li>This type of hypervisor is most common in an enterprise data center or other server-based environments.</li><li>KVM, Microsoft Hyper-V, and VMware vSphere are examples of a type 1 hypervisor. KVM was merged into the Linux kernel in 2007, so if you’re using a modern version of <a href="https://www.redhat.com/en/topics/linux">Linux</a>, you already have access to KVM.</li></ul></li><li><strong>(Type 2) Hosted hypervisor:</strong> run on a conventional operating system as a software layer or application.<ul><li>It works by abstracting guest operating systems from the host operating system. VM resources are scheduled against a host operating system, which is then executed against the hardware.</li><li>A type 2 hypervisor is better for individual users who want to run multiple operating systems on a personal computer.</li><li>VMware Workstation and Oracle VirtualBox are examples of a type 2 hypervisor.</li></ul></li></ul><img src="./hot_points/hypervisor_type.png" style="zoom:30%"><img src=".hypervisor_type.png" style="zoom:50%"><ul><li><strong>(Emulator) The difference with the Hypervisor is that the Hypervisor runs the same VM and host CPU architecture, while the Emulator can be used to run systems or programs on other hardware platforms (arm, mips, x86).</strong><ul><li>When used as a machine emulator, QEMU can run OSes and programs made for one machine (e.g. an ARM board) on a different machine (e.g. your x86 PC). By using dynamic translation, it achieves very good performance;</li><li>QEMU can use other hypervisors like <a href="https://wiki.archlinux.org/title/Xen">Xen</a> or <a href="https://wiki.archlinux.org/title/KVM">KVM</a> to use CPU extensions (<a href="https://en.wikipedia.org/wiki/Hardware-assisted_virtualization">HVM</a>) for virtualization. When used as a virtualizer, QEMU achieves near native performances by executing the guest code directly on the host CPU.</li><li>When QEMU is used in conjunction with KVM, KVM provides hardware virtualization support, while QEMU is responsible for virtual machine simulation and management. In this configuration, <strong>KVM functions as a Hypervisor to directly interact with hardware and provide high-performance virtualization support</strong>, while <strong>QEMU runs on the upper layer of KVM and is responsible for VM simulation and management</strong>, including device simulation, VM creation, start, and stop.</li><li>So while QEMU is not a traditional Hypervisor on its own, when used in conjunction with KVM, QEMU can work with KVM to provide a complete virtualization solution and act as part of a Hypervisor.</li></ul></li></ul></li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Generate random numbers by reading &lt;strong&gt;thermal noise&lt;/strong&gt; on CPU pins.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Hot Plug&lt;/strong&gt;, refer</summary>
       
     
     
