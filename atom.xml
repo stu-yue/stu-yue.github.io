@@ -213,6 +213,31 @@
   </entry>
   
   <entry>
+    <title>Memo | Algebra Basis</title>
+    <link href="https://stu-yue.github.io/jottings/mathematics/memo_algebra_basis/"/>
+    <id>https://stu-yue.github.io/jottings/mathematics/memo_algebra_basis/</id>
+    <published>2023-08-27T07:56:53.000Z</published>
+    <updated>2023-08-30T05:59:00.628Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li><p>**Positive Definiteness of the Norm: ** According to the usual definition, a norm should satisfy the property of positive definiteness which means that a norm must have a non-negative value for non-zero vectors and only attain zero when the vector is the <strong>zero</strong>.</p></li><li><p>**Norm and Distance Evaluation: **</p><table><thead><tr><th align="left">Norm</th><th>Distance</th></tr></thead><tbody><tr><td align="left">$L_0\ \text{norm}$ : $</td><td></td></tr><tr><td align="left">$L_1\ \text{norm}$ : $</td><td></td></tr><tr><td align="left">$L_2\ \text{norm}$ :  $</td><td></td></tr><tr><td align="left">$L_p\ \text{norm}$ :  $</td><td></td></tr><tr><td align="left">$\text{Infinite norm}$ : $</td><td></td></tr></tbody></table></li><li><p><strong>Normed Space:</strong> Normed space introduces a norm (or length, modulus) concept on the basis of linear space.</p></li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;**Positive Definiteness of the Norm: ** According to the usual definition, a norm should satisfy the property of positive defini</summary>
+      
+    
+    
+    
+    <category term="mathematics" scheme="https://stu-yue.github.io/categories/mathematics/"/>
+    
+    
+    <category term="algebra" scheme="https://stu-yue.github.io/tags/algebra/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Summa | Intro of Statistical ML</title>
     <link href="https://stu-yue.github.io/jottings/statistical_ml/summa_intro/"/>
     <id>https://stu-yue.github.io/jottings/statistical_ml/summa_intro/</id>
@@ -235,34 +260,9 @@
     <category term="statistical_ml" scheme="https://stu-yue.github.io/categories/statistical-ml/"/>
     
     
-    <category term="statistic" scheme="https://stu-yue.github.io/tags/statistic/"/>
-    
     <category term="ml" scheme="https://stu-yue.github.io/tags/ml/"/>
     
-  </entry>
-  
-  <entry>
-    <title>Memo | Algebra Basis</title>
-    <link href="https://stu-yue.github.io/jottings/mathematics/memo_algebra_basis/"/>
-    <id>https://stu-yue.github.io/jottings/mathematics/memo_algebra_basis/</id>
-    <published>2023-08-27T07:56:53.000Z</published>
-    <updated>2023-08-30T05:59:00.628Z</updated>
-    
-    <content type="html"><![CDATA[<ol><li><p>**Positive Definiteness of the Norm: ** According to the usual definition, a norm should satisfy the property of positive definiteness which means that a norm must have a non-negative value for non-zero vectors and only attain zero when the vector is the <strong>zero</strong>.</p></li><li><p>**Norm and Distance Evaluation: **</p><table><thead><tr><th align="left">Norm</th><th>Distance</th></tr></thead><tbody><tr><td align="left">$L_0\ \text{norm}$ : $</td><td></td></tr><tr><td align="left">$L_1\ \text{norm}$ : $</td><td></td></tr><tr><td align="left">$L_2\ \text{norm}$ :  $</td><td></td></tr><tr><td align="left">$L_p\ \text{norm}$ :  $</td><td></td></tr><tr><td align="left">$\text{Infinite norm}$ : $</td><td></td></tr></tbody></table></li><li><p><strong>Normed Space:</strong> Normed space introduces a norm (or length, modulus) concept on the basis of linear space.</p></li></ol>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;**Positive Definiteness of the Norm: ** According to the usual definition, a norm should satisfy the property of positive defini</summary>
-      
-    
-    
-    
-    <category term="mathematics" scheme="https://stu-yue.github.io/categories/mathematics/"/>
-    
-    
-    <category term="algebra" scheme="https://stu-yue.github.io/tags/algebra/"/>
+    <category term="statistic" scheme="https://stu-yue.github.io/tags/statistic/"/>
     
   </entry>
   
@@ -375,9 +375,9 @@
     <category term="mathematics" scheme="https://stu-yue.github.io/categories/mathematics/"/>
     
     
-    <category term="ml" scheme="https://stu-yue.github.io/tags/ml/"/>
-    
     <category term="optimization" scheme="https://stu-yue.github.io/tags/optimization/"/>
+    
+    <category term="ml" scheme="https://stu-yue.github.io/tags/ml/"/>
     
   </entry>
   
@@ -412,33 +412,6 @@
   </entry>
   
   <entry>
-    <title>TBR_compiler</title>
-    <link href="https://stu-yue.github.io/jottings/tidbits/tbr_compiler/"/>
-    <id>https://stu-yue.github.io/jottings/tidbits/tbr_compiler/</id>
-    <published>2023-07-22T12:00:53.000Z</published>
-    <updated>2023-09-23T08:14:35.017Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>《编译原理》课件搬运 ——&gt; <a href="https://cs.nju.edu.cn/changxu/2_compiler/index.html">源地址</a></p></blockquote><h4 id="1-1-编译器作用"><a href="#1-1-编译器作用" class="headerlink" title="1.1 编译器作用"></a>1.1 编译器作用</h4><ul><li><p>编译器（Compiler）</p><ul><li>读入以某种语言（源语言）编写的程序；</li><li>输出等价的用另一种语言（目标语言）编写的程序；</li><li>通常目标程序是可执行的；</li></ul><img src="./tbr_compiler/compiler_1.png" style="zoom:60%"><img src="./compiler_1.png" style="zoom:60%"></li><li><p>解释器（Interpreter）</p><ul><li>不生成目标程序，直接根据源程序的语义执行源程序中指定的操作；</li><li>Java语言的处理结合了编译(.class字节码)和解释，Python会将编译的字节码(pyc)存放于_<em>pycache</em>_(可跨平台部署，一定程度防源码泄露，import的py不变pyc就不变[检查py和pyc的修改时间是否一致])</li></ul></li></ul><h4 id="1-2-编译器的结构"><a href="#1-2-编译器的结构" class="headerlink" title="1.2 编译器的结构"></a>1.2 编译器的结构</h4><ul><li><p>编译器可以分为分析部分和综合部分</p></li><li><p><strong>分析</strong>（analysis）部分 &#x2F; <strong>前端</strong>（front end）</p><ul><li>把源程序分解成组成要素，以及相应的语法结构；</li><li>使用这个结构创建源程序的中间表示；</li><li>同时收集和源程序相关的信息，存放到<strong>符号表</strong>；</li></ul></li><li><p><strong>综合</strong>（synthesis）部分 &#x2F; <strong>后端</strong>（back end）</p><ul><li>根据中间表示和符号表信息构造目标程序；</li></ul></li><li><p>前端部分是<strong>机器无关</strong>的，后端部分是<strong>机器相关</strong>的；</p></li><li><p>编译器分成执行顺序的一组步骤：</p><img src="./tbr_compiler/compiler_phase.png" style="zoom:60%"></li></ul><h4 id="1-3-词法分析"><a href="#1-3-词法分析" class="headerlink" title="1.3 词法分析"></a>1.3 词法分析</h4><ul><li><p>词法分析&#x2F;扫描（lexical analysis&#x2F;scanning）</p><ul><li>读入源程序的字符流，输出为有意义的词素（lexeme）</li><li>&lt;token-name, attribute-value&gt;</li><li>token-name：由语法分析步骤使用；</li><li>attribute-value：指向相应的符号表条目，由语义分析&#x2F;代码生成步骤使用；</li></ul></li><li><p>例子</p><p>position &#x3D; initial + rate * 60</p><p>&lt;id, 1&gt; &lt;&#x3D;, &gt; &lt;id, 2&gt;, &lt;+, &gt; &lt;id, 3&gt; &lt;*, &gt; &lt;number, 4&gt;</p></li></ul><h4 id="1-4-语法分析"><a href="#1-4-语法分析" class="headerlink" title="1.4 语法分析"></a>1.4 语法分析</h4><ul><li><p>语法分析&#x2F;解析（syntax analysis&#x2F;parsing）</p><ul><li>根据各个词法单元的第一个分量来创建树型的中间表示形式，通常是语法树（syntax tree）</li><li>中间表示形式指出了词法单元流的语法结构；</li></ul><img src="./tbr_compiler/syntax_tree.png" style="zoom:60%"></li></ul><h4 id="1-5-语义分析"><a href="#1-5-语义分析" class="headerlink" title="1.5 语义分析"></a>1.5 语义分析</h4><ul><li><p>语义分析（semantic analysis）</p><ul><li>使用语法树和符号表中的信息，检查源程序是否满足语言定义的语义约束；</li><li>同时收集类型信息，用于代码生成、类型检查、类型转换；</li></ul><img src="./tbr_compiler/semantic_analysis.png" style="zoom:60%"></li></ul><h4 id="1-6-中间代码生成"><a href="#1-6-中间代码生成" class="headerlink" title="1.6 中间代码生成"></a>1.6 中间代码生成</h4><ul><li><p>根据语义分析输出，生成类机器语言的中间表示；</p></li><li><p>三地址代码（three-address code）</p><ul><li>每个指令最多包含三个运算分量；很容易生成机器语言指令；</li></ul><img src="./tbr_compiler/three_addr_code.png" style="zoom:60%"></li></ul><h4 id="1-7-中间代码优化"><a href="#1-7-中间代码优化" class="headerlink" title="1.7 中间代码优化"></a>1.7 中间代码优化</h4><ul><li><p>通过对中间代码分析，改进中间代码的质量；（更快、更短、能耗更低）</p><img src="./tbr_compiler/mid_code_optim.png" style="zoom:60%"></li></ul><h4 id="1-8-代码生成"><a href="#1-8-代码生成" class="headerlink" title="1.8 代码生成"></a>1.8 代码生成</h4><ul><li><p>把中间表示形式映射成目标语言；（寄存器分配、指令选择）</p><img src="./tbr_compiler/code_generation.png" style="zoom:60%"></li></ul><h4 id="1-9-其他"><a href="#1-9-其他" class="headerlink" title="1.9 其他"></a>1.9 其他</h4><ul><li><strong>符号表</strong>管理：记录源程序中使用的变量的名字，收集各种属性；</li><li>编译器构造工具：扫描器（Lex）、语法分析器（Yacc）、语法制导的翻译引擎；</li><li>程序设计语言的新发展向编译器设计者提出新的要求<ul><li>设计相应的算法和表示方法来翻译和支持新的语言特征，如多态、动态绑定、类、类属 (模板) 、…</li></ul></li><li>编译器设计者还需要更好地利用新硬件的能力<ul><li>RISC技术、多核技术、大规模并行技术</li></ul></li></ul><h4 id="1-10-程序设计语言的基础概念"><a href="#1-10-程序设计语言的基础概念" class="headerlink" title="1.10 程序设计语言的基础概念"></a>1.10 程序设计语言的基础概念</h4><ul><li>静态&#x2F;动态：<ul><li>静态：支持编译器静态决定某个问题；</li><li>动态：只允许在程序运行时刻作出决定；</li></ul></li><li>作用域：<ul><li>x的作用域指程序文本的一个区域，其中对x的使用都指向这个声明；</li><li>静态作用域（static scope）: 通过静态阅读程序可决定；</li><li>动态作用域（dynamic scope）: 运行时确定x的指向；</li></ul></li><li>环境与状态：<ul><li>环境（environment）: 是从名字到存储位置的映射；</li><li>状态（state）: 从存储位置到它们值的映射；</li></ul></li></ul>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;《编译原理》课件搬运 ——&amp;gt; &lt;a href=&quot;https://cs.nju.edu.cn/changxu/2_compiler/index.html&quot;&gt;源地址&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&quot;1-1-编译器作用&quot;</summary>
-      
-    
-    
-    
-    <category term="tidbits" scheme="https://stu-yue.github.io/categories/tidbits/"/>
-    
-    
-    <category term="points" scheme="https://stu-yue.github.io/tags/points/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Hot Points</title>
     <link href="https://stu-yue.github.io/jottings/tidbits/hot_points/"/>
     <id>https://stu-yue.github.io/jottings/tidbits/hot_points/</id>
@@ -454,6 +427,33 @@
 &lt;li&gt;&lt;p&gt;Generate random numbers by reading &lt;strong&gt;thermal noise&lt;/strong&gt; on CPU pins.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;Hot Plug&lt;/strong&gt;, refer</summary>
+      
+    
+    
+    
+    <category term="tidbits" scheme="https://stu-yue.github.io/categories/tidbits/"/>
+    
+    
+    <category term="points" scheme="https://stu-yue.github.io/tags/points/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TBR_compiler</title>
+    <link href="https://stu-yue.github.io/jottings/tidbits/tbr_compiler/"/>
+    <id>https://stu-yue.github.io/jottings/tidbits/tbr_compiler/</id>
+    <published>2023-07-22T12:00:53.000Z</published>
+    <updated>2023-09-23T08:14:35.017Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>《编译原理》课件搬运 ——&gt; <a href="https://cs.nju.edu.cn/changxu/2_compiler/index.html">源地址</a></p></blockquote><h4 id="1-1-编译器作用"><a href="#1-1-编译器作用" class="headerlink" title="1.1 编译器作用"></a>1.1 编译器作用</h4><ul><li><p>编译器（Compiler）</p><ul><li>读入以某种语言（源语言）编写的程序；</li><li>输出等价的用另一种语言（目标语言）编写的程序；</li><li>通常目标程序是可执行的；</li></ul><img src="./tbr_compiler/compiler_1.png" style="zoom:60%"><img src="./compiler_1.png" style="zoom:60%"></li><li><p>解释器（Interpreter）</p><ul><li>不生成目标程序，直接根据源程序的语义执行源程序中指定的操作；</li><li>Java语言的处理结合了编译(.class字节码)和解释，Python会将编译的字节码(pyc)存放于_<em>pycache</em>_(可跨平台部署，一定程度防源码泄露，import的py不变pyc就不变[检查py和pyc的修改时间是否一致])</li></ul></li></ul><h4 id="1-2-编译器的结构"><a href="#1-2-编译器的结构" class="headerlink" title="1.2 编译器的结构"></a>1.2 编译器的结构</h4><ul><li><p>编译器可以分为分析部分和综合部分</p></li><li><p><strong>分析</strong>（analysis）部分 &#x2F; <strong>前端</strong>（front end）</p><ul><li>把源程序分解成组成要素，以及相应的语法结构；</li><li>使用这个结构创建源程序的中间表示；</li><li>同时收集和源程序相关的信息，存放到<strong>符号表</strong>；</li></ul></li><li><p><strong>综合</strong>（synthesis）部分 &#x2F; <strong>后端</strong>（back end）</p><ul><li>根据中间表示和符号表信息构造目标程序；</li></ul></li><li><p>前端部分是<strong>机器无关</strong>的，后端部分是<strong>机器相关</strong>的；</p></li><li><p>编译器分成执行顺序的一组步骤：</p><img src="./tbr_compiler/compiler_phase.png" style="zoom:60%"></li></ul><h4 id="1-3-词法分析"><a href="#1-3-词法分析" class="headerlink" title="1.3 词法分析"></a>1.3 词法分析</h4><ul><li><p>词法分析&#x2F;扫描（lexical analysis&#x2F;scanning）</p><ul><li>读入源程序的字符流，输出为有意义的词素（lexeme）</li><li>&lt;token-name, attribute-value&gt;</li><li>token-name：由语法分析步骤使用；</li><li>attribute-value：指向相应的符号表条目，由语义分析&#x2F;代码生成步骤使用；</li></ul></li><li><p>例子</p><p>position &#x3D; initial + rate * 60</p><p>&lt;id, 1&gt; &lt;&#x3D;, &gt; &lt;id, 2&gt;, &lt;+, &gt; &lt;id, 3&gt; &lt;*, &gt; &lt;number, 4&gt;</p></li></ul><h4 id="1-4-语法分析"><a href="#1-4-语法分析" class="headerlink" title="1.4 语法分析"></a>1.4 语法分析</h4><ul><li><p>语法分析&#x2F;解析（syntax analysis&#x2F;parsing）</p><ul><li>根据各个词法单元的第一个分量来创建树型的中间表示形式，通常是语法树（syntax tree）</li><li>中间表示形式指出了词法单元流的语法结构；</li></ul><img src="./tbr_compiler/syntax_tree.png" style="zoom:60%"></li></ul><h4 id="1-5-语义分析"><a href="#1-5-语义分析" class="headerlink" title="1.5 语义分析"></a>1.5 语义分析</h4><ul><li><p>语义分析（semantic analysis）</p><ul><li>使用语法树和符号表中的信息，检查源程序是否满足语言定义的语义约束；</li><li>同时收集类型信息，用于代码生成、类型检查、类型转换；</li></ul><img src="./tbr_compiler/semantic_analysis.png" style="zoom:60%"></li></ul><h4 id="1-6-中间代码生成"><a href="#1-6-中间代码生成" class="headerlink" title="1.6 中间代码生成"></a>1.6 中间代码生成</h4><ul><li><p>根据语义分析输出，生成类机器语言的中间表示；</p></li><li><p>三地址代码（three-address code）</p><ul><li>每个指令最多包含三个运算分量；很容易生成机器语言指令；</li></ul><img src="./tbr_compiler/three_addr_code.png" style="zoom:60%"></li></ul><h4 id="1-7-中间代码优化"><a href="#1-7-中间代码优化" class="headerlink" title="1.7 中间代码优化"></a>1.7 中间代码优化</h4><ul><li><p>通过对中间代码分析，改进中间代码的质量；（更快、更短、能耗更低）</p><img src="./tbr_compiler/mid_code_optim.png" style="zoom:60%"></li></ul><h4 id="1-8-代码生成"><a href="#1-8-代码生成" class="headerlink" title="1.8 代码生成"></a>1.8 代码生成</h4><ul><li><p>把中间表示形式映射成目标语言；（寄存器分配、指令选择）</p><img src="./tbr_compiler/code_generation.png" style="zoom:60%"></li></ul><h4 id="1-9-其他"><a href="#1-9-其他" class="headerlink" title="1.9 其他"></a>1.9 其他</h4><ul><li><strong>符号表</strong>管理：记录源程序中使用的变量的名字，收集各种属性；</li><li>编译器构造工具：扫描器（Lex）、语法分析器（Yacc）、语法制导的翻译引擎；</li><li>程序设计语言的新发展向编译器设计者提出新的要求<ul><li>设计相应的算法和表示方法来翻译和支持新的语言特征，如多态、动态绑定、类、类属 (模板) 、…</li></ul></li><li>编译器设计者还需要更好地利用新硬件的能力<ul><li>RISC技术、多核技术、大规模并行技术</li></ul></li></ul><h4 id="1-10-程序设计语言的基础概念"><a href="#1-10-程序设计语言的基础概念" class="headerlink" title="1.10 程序设计语言的基础概念"></a>1.10 程序设计语言的基础概念</h4><ul><li>静态&#x2F;动态：<ul><li>静态：支持编译器静态决定某个问题；</li><li>动态：只允许在程序运行时刻作出决定；</li></ul></li><li>作用域：<ul><li>x的作用域指程序文本的一个区域，其中对x的使用都指向这个声明；</li><li>静态作用域（static scope）: 通过静态阅读程序可决定；</li><li>动态作用域（dynamic scope）: 运行时确定x的指向；</li></ul></li><li>环境与状态：<ul><li>环境（environment）: 是从名字到存储位置的映射；</li><li>状态（state）: 从存储位置到它们值的映射；</li></ul></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;《编译原理》课件搬运 ——&amp;gt; &lt;a href=&quot;https://cs.nju.edu.cn/changxu/2_compiler/index.html&quot;&gt;源地址&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;1-1-编译器作用&quot;</summary>
       
     
     
