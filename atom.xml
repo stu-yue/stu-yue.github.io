@@ -6,7 +6,7 @@
   <link href="https://stu-yue.github.io/atom.xml" rel="self"/>
   
   <link href="https://stu-yue.github.io/"/>
-  <updated>2023-09-26T07:49:24.161Z</updated>
+  <updated>2023-10-04T06:04:18.320Z</updated>
   <id>https://stu-yue.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Memo | Tmux</title>
+    <link href="https://stu-yue.github.io/jottings/languages/shell/memo_tmux/"/>
+    <id>https://stu-yue.github.io/jottings/languages/shell/memo_tmux/</id>
+    <published>2023-10-04T07:56:53.000Z</published>
+    <updated>2023-10-04T06:04:18.320Z</updated>
+    
+    
+    
+    
+    <category term="languages" scheme="https://stu-yue.github.io/categories/languages/"/>
+    
+    <category term="shell" scheme="https://stu-yue.github.io/categories/languages/shell/"/>
+    
+    
+    <category term="shell" scheme="https://stu-yue.github.io/tags/shell/"/>
+    
+    <category term="linux" scheme="https://stu-yue.github.io/tags/linux/"/>
+    
+  </entry>
   
   <entry>
     <title></title>
