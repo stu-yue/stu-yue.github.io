@@ -17,7 +17,7 @@
 <meta property="og:description" content="Let’s start by learning some commands that are helpful for researching Linux systems.  type: To explain how to interpret a command name.  which: To show which executable program will be executed.  man">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-08-05T02:56:53.000Z">
-<meta property="article:modified_time" content="2023-09-08T14:17:30.961Z">
+<meta property="article:modified_time" content="2023-10-10T11:30:28.036Z">
 <meta property="article:author" content="stu-yue">
 <meta property="article:tag" content="shell">
 <meta property="article:tag" content="linux">
@@ -560,24 +560,24 @@
 </li>
 <li><p><code>tar</code>: To create archive files (usually with the <code>.tar</code> extension) and <em>archive</em> files.</p>
 <ul>
-<li><p><em>create archive file</em>: <code>tar -cvf archive.tar file1 file2 directory/</code></p>
+<li><p><strong>create archive file</strong>: <code>tar -cvf archive.tar file1 file2 directory/</code></p>
 <ul>
 <li><code>-c</code> (<strong>c</strong>reate archive file), <code>-v</code> (view details), <code>-f</code> (specify archive file)</li>
 </ul>
 </li>
-<li><p><em>extract archive file</em>: <code>tar -xvf archive.tar</code></p>
+<li><p><strong>extract archive file</strong>: <code>tar -xvf archive.tar</code></p>
 <ul>
 <li><code>-x</code> (extract the content of archive files)</li>
 </ul>
 </li>
-<li><p><em>compress archive file</em>: <code>tar -czvf archive.tar.gz directory/</code></p>
+<li><p><strong>compress archive file</strong>: <code>tar -czvf archive.tar.gz directory/</code></p>
 <ul>
 <li><code>-z</code> (use <code>gzip</code> to compress)</li>
 </ul>
 </li>
-<li><p><em>decompress archive file</em>: <code>tar -xzvf archive.tar.gz</code>, <code>tar -xjvf archive.tar.bz2</code></p>
+<li><p><strong>decompress archive file</strong>: <code>tar -xzvf archive.tar.gz</code>, <code>tar -xjvf archive.tar.bz2</code></p>
 </li>
-<li><p><em>list the content of archive files</em>: <code>tar -tvf archive.tar</code></p>
+<li><p><strong>list the content of archive files</strong>: <code>tar -tvf archive.tar</code></p>
 </li>
 <li><p><code>tar -tf test.tar</code>: view package structure</p>
 </li>
@@ -587,6 +587,22 @@
 <blockquote>
 <p><code>unzip archive.zip -d dest_dir</code></p>
 </blockquote>
+</li>
+<li><p><code>split</code> and <code>cat</code>: split the <code>tar.gz</code> into small files,</p>
+<ul>
+<li><p><code>split</code>: <code>split -6/-b 3M -d -a 2 cud_test.tar.gz[dst_filename] cud_test.tar.gz_[out_filename]</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cud_test.tar.gz_00</span><br><span class="line">cud_test.tar.gz_01</span><br><span class="line">cud_test.tar.gz_02</span><br><span class="line">cud_test.tar.gz_03</span><br><span class="line">cud_test.tar.gz_04</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>-&lt;line_N&gt; : split into a file every N lines</li>
+<li>-b &lt;bytes&gt; : split into a file every N bytes</li>
+<li>-d : specify the generated split file suffix in numeric form </li>
+<li>-a x : set the length of the sequence (suffix digits)</li>
+</ul>
+</li>
+<li><p><code>cat cud_test.tar.gz_* &gt; cud_test.tar.gz</code> : to concatenate split files;</p>
+</li>
+</ul>
 </li>
 </ul>
 <p>Before starting using commands, let’s introduce <strong>wildcards</strong> that provide special characters to help you quickly specify a group of filenames.</p>

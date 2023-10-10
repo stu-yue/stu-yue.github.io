@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://stu-yue.github.io/jottings/languages/shell/memo_exploring_os/</loc>
+    
+    <lastmod>2023-10-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://stu-yue.github.io/jottings/tidbits/quantization/</loc>
+    
+    <lastmod>2023-10-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://stu-yue.github.io/jottings/tidbits/hot_points/</loc>
     
     <lastmod>2023-10-04</lastmod>
@@ -23,15 +41,6 @@
     <loc>https://stu-yue.github.io/about/</loc>
     
     <lastmod>2023-10-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://stu-yue.github.io/jottings/tidbits/quantization/</loc>
-    
-    <lastmod>2023-09-26</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -66,15 +75,6 @@
   
   <url>
     <loc>https://stu-yue.github.io/jottings/networks/memo_network_tidbits/</loc>
-    
-    <lastmod>2023-09-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://stu-yue.github.io/jottings/languages/shell/memo_exploring_os/</loc>
     
     <lastmod>2023-09-08</lastmod>
     
@@ -202,99 +202,99 @@
 
   <url>
     <loc>https://stu-yue.github.io/</loc>
-    <lastmod>2023-10-04</lastmod>
+    <lastmod>2023-10-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
+    <loc>https://stu-yue.github.io/tags/memory/</loc>
+    <lastmod>2023-10-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://stu-yue.github.io/tags/firmware/</loc>
-    <lastmod>2023-10-04</lastmod>
+    <lastmod>2023-10-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://stu-yue.github.io/tags/driver/</loc>
-    <lastmod>2023-10-04</lastmod>
+    <lastmod>2023-10-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://stu-yue.github.io/tags/networks/</loc>
-    <lastmod>2023-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://stu-yue.github.io/tags/algebra/</loc>
-    <lastmod>2023-10-04</lastmod>
+    <lastmod>2023-10-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://stu-yue.github.io/tags/math/</loc>
-    <lastmod>2023-10-04</lastmod>
+    <lastmod>2023-10-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://stu-yue.github.io/tags/optimization/</loc>
-    <lastmod>2023-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://stu-yue.github.io/tags/ml/</loc>
-    <lastmod>2023-10-04</lastmod>
+    <loc>https://stu-yue.github.io/tags/algebra/</loc>
+    <lastmod>2023-10-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://stu-yue.github.io/tags/statistic/</loc>
-    <lastmod>2023-10-04</lastmod>
+    <lastmod>2023-10-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://stu-yue.github.io/tags/memory/</loc>
-    <lastmod>2023-10-04</lastmod>
+    <loc>https://stu-yue.github.io/tags/ml/</loc>
+    <lastmod>2023-10-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://stu-yue.github.io/tags/optimization/</loc>
+    <lastmod>2023-10-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://stu-yue.github.io/tags/points/</loc>
-    <lastmod>2023-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://stu-yue.github.io/tags/python/</loc>
-    <lastmod>2023-10-04</lastmod>
+    <lastmod>2023-10-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://stu-yue.github.io/tags/shell/</loc>
-    <lastmod>2023-10-04</lastmod>
+    <lastmod>2023-10-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://stu-yue.github.io/tags/linux/</loc>
-    <lastmod>2023-10-04</lastmod>
+    <lastmod>2023-10-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://stu-yue.github.io/tags/python/</loc>
+    <lastmod>2023-10-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -303,56 +303,56 @@
   
   <url>
     <loc>https://stu-yue.github.io/categories/networks/</loc>
-    <lastmod>2023-10-04</lastmod>
+    <lastmod>2023-10-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://stu-yue.github.io/categories/mathematics/</loc>
-    <lastmod>2023-10-04</lastmod>
+    <lastmod>2023-10-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://stu-yue.github.io/categories/statistical-ml/</loc>
-    <lastmod>2023-10-04</lastmod>
+    <lastmod>2023-10-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://stu-yue.github.io/categories/tidbits/</loc>
-    <lastmod>2023-10-04</lastmod>
+    <lastmod>2023-10-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://stu-yue.github.io/categories/languages/</loc>
-    <lastmod>2023-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://stu-yue.github.io/categories/languages/python/</loc>
-    <lastmod>2023-10-04</lastmod>
+    <lastmod>2023-10-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://stu-yue.github.io/categories/languages/shell/</loc>
-    <lastmod>2023-10-04</lastmod>
+    <lastmod>2023-10-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://stu-yue.github.io/categories/languages/python/</loc>
+    <lastmod>2023-10-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://stu-yue.github.io/categories/architecture/</loc>
-    <lastmod>2023-10-04</lastmod>
+    <lastmod>2023-10-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
