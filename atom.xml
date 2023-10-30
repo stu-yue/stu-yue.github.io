@@ -6,7 +6,7 @@
   <link href="https://stu-yue.github.io/atom.xml" rel="self"/>
   
   <link href="https://stu-yue.github.io/"/>
-  <updated>2023-10-17T15:49:36.026Z</updated>
+  <updated>2023-10-23T10:26:48.546Z</updated>
   <id>https://stu-yue.github.io/</id>
   
   <author>
@@ -17,9 +17,58 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Memo | Law of Large Number</title>
+    <link href="https://stu-yue.github.io/jottings/mathematics/memo_law_of_probability/"/>
+    <id>https://stu-yue.github.io/jottings/mathematics/memo_law_of_probability/</id>
+    <published>2023-10-21T05:56:53.000Z</published>
+    <updated>2023-10-23T10:26:48.546Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="1-Law-of-Large-Number"><a href="#1-Law-of-Large-Number" class="headerlink" title="1 Law of Large Number"></a>1 Law of Large Number</h4><h5 id="1-1-Folk-Understanding"><a href="#1-1-Folk-Understanding" class="headerlink" title="1.1 Folk Understanding"></a>1.1 Folk Understanding</h5><p>In simple terms, the large numbers theorem refers to that a random event may or may not occur  in a single experiment, but in a large number of repeated experiments, it often shows obvious regularity, that is, the frequency of the random event will converge to a constant value, which is the probability of the event.</p><p>Another way to express it is that when the sample data is infinite, the sample mean tends to population mean.</p><p>Because in real life, we can not run  an infinite number of experiments, and it is difficult to estimate the parameters of the population.</p><blockquote><p><strong>The law of large numbers connects mean values, which belong to mathematical statistics, with expectations, which belong to probability theory.</strong></p></blockquote><h5 id="1-2-Convergence-in-Probability"><a href="#1-2-Convergence-in-Probability" class="headerlink" title="1.2 Convergence in Probability"></a>1.2 Convergence in Probability</h5><ul><li>Weak Law: convergence in probability</li><li>Strong Law: almost sure convergence (outlier can be negligible in measure)</li></ul><h5 id="1-3-Bernoulli’s-Law"><a href="#1-3-Bernoulli’s-Law" class="headerlink" title="1.3 Bernoulli’s Law"></a>1.3 Bernoulli’s Law</h5><p>From the perspective of defining probability, <strong>reveals the relationship between probability and frequency</strong>.<br>$$<br>\lim\limits_{n\rightarrow \infin} P{ |\frac{f_A}{n} - p| &lt; \epsilon } &#x3D; 1<br>$$</p><h5 id="1-4-Khinchin’s-Law"><a href="#1-4-Khinchin’s-Law" class="headerlink" title="1.4 Khinchin’s Law"></a>1.4 Khinchin’s Law</h5><p>Priori Condition: Independent Identically Distributed,     $\lim\limits_{n\rightarrow \infin} P{ |\frac{1}{n}\sum\limits_{i&#x3D;1}^nX_i - \frac{1}{n}\sum\limits_{i&#x3D;1}^{n}E(X_i)| &lt; \epsilon } &#x3D; 1$</p><h5 id="1-5-Chebyshev’s-Law"><a href="#1-5-Chebyshev’s-Law" class="headerlink" title="1.5 Chebyshev’s Law"></a>1.5 Chebyshev’s Law</h5><p>Priori Condition: Independent Distributed,     $\lim\limits_{n\rightarrow \infin} P{ |\frac{1}{n}\sum\limits_{i&#x3D;1}^nX_i - \frac{1}{n}\sum\limits_{i&#x3D;1}^{n}\mu_i| &lt; \epsilon } &#x3D; 1$</p><h4 id="2-Heavy-tailed-Distribution"><a href="#2-Heavy-tailed-Distribution" class="headerlink" title="2 Heavy-tailed Distribution"></a>2 Heavy-tailed Distribution</h4><img src="./memo_law_of_probability/types.png" style="zoom:50%"><img src="./types.png" style="zoom:50%"><blockquote><p>Ref: <a href="https://www.jianshu.com/p/b7e06c4839b2">1</a>,  <a href="">2</a></p></blockquote><ul><li><p>Pareto  Distribution:<br>$$<br>P(X&gt;x) &#x3D; \left{<br>\begin{align}<br>(\frac{x_{min}}{x})^\alpha,&amp;\quad x\ge x_{min} \<br>1, &amp;\quad x&lt;x_{min}<br>\end{align}<br>\right.<br>$$</p><p>$$<br>f(x) &#x3D; \left{<br>\begin{align}<br>\frac{1}{x^\alpha}\cdot\frac{\alpha x_{min}^\alpha}{x},&amp;\quad x\ge x_{min} \<br>0, &amp;\quad x&lt;x_{min}<br>\end{align}<br>\right.<br>$$</p><p><strong>Pareto Principle</strong>: states that for many outcomes, roughly 80% of consequences com from 20% of causes (the “vital few”). Other names —— 80&#x2F;20 rule, the <strong>law of the vital few</strong> (states the imbalance phenomenon);</p><p><strong>Mathematically</strong>, the 80&#x2F;20 rule is roughly described by a <strong>power law distribution</strong> (also known as a Pareto distribution) for a particular set of parameters.</p><ul><li><p>Zipf Distribution:<br>$$<br>f(x) &#x3D; \frac{1}{x^\alpha\sum_{i&#x3D;1}^{n}(1&#x2F;i)^\alpha}, \  x &#x3D; 1,2,\cdots,n<br>$$<br><strong>Zipf’s law</strong> states that the value of the <em>n</em>th entry is <strong>inversely proportional</strong> to <em>n</em>, when a list of measured values is sorted in decreasing order.</p><ul><li>Zeta Distribution:  when $n\rightarrow \infty$,   $\text{Zipf}(\alpha, n)\rightarrow\text{Zeta}(\alpha)$ ; Zeta is regraded as a type of pareto distribution in the discrete distribution.<br>$$<br>f(x) &#x3D; \frac{1}{x^\alpha\sum_{i&#x3D;1}^{\infty}(1&#x2F;i)^\alpha}, \  x &#x3D; 1,2,\cdots,n,\text{and}\ \alpha &gt; 1<br>$$</li></ul></li></ul></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h4 id=&quot;1-Law-of-Large-Number&quot;&gt;&lt;a href=&quot;#1-Law-of-Large-Number&quot; class=&quot;headerlink&quot; title=&quot;1 Law of Large Number&quot;&gt;&lt;/a&gt;1 Law of Large Number&lt;/</summary>
+      
+    
+    
+    
+    <category term="mathematics" scheme="https://stu-yue.github.io/categories/mathematics/"/>
+    
+    
+    <category term="math" scheme="https://stu-yue.github.io/tags/math/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Memo | LM and Word Representation</title>
+    <link href="https://stu-yue.github.io/jottings/statistics_ml/memo_lm_and_word_vector/"/>
+    <id>https://stu-yue.github.io/jottings/statistics_ml/memo_lm_and_word_vector/</id>
+    <published>2023-10-17T07:56:53.000Z</published>
+    <updated>2023-10-22T10:59:24.709Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="Language-Model"><a href="#Language-Model" class="headerlink" title="Language Model"></a>Language Model</h4><ul><li><p>语言模型是衡量一句话出现在自然语言中的概率的模型；</p></li><li><p>数学形式上，给定一句话 $s &#x3D; { w_1,\cdots,w_n }$，它对应的概率为：<br>$$<br>\begin{align*}<br>P(s) &amp;&#x3D; P(w_1,\cdots,w_n) \<br>&amp;&#x3D; P(w_1)\times P(w_2|w_1) \times \cdots \times P(w_n|w_1,\cdots,w_{n-1})\<br>&amp;&#x3D; \prod\limits_{i&#x3D;1}^{n}P(w_i|w_1,\cdots,w_{i-1})<br>\end{align*}<br>$$</p></li><li><p>语言模型的核心在于根据前文预测下一个词出现的概率；</p><p>$P(w_i|w_1,\cdots,w_{i-1}),\  w_i \in V,\ V&#x3D;{ w_1,\cdots,w_{|V|} }$</p></li><li><p>马尔可夫假设 (Markov Assumption)：当前词出现的概率只和它前面的k个词相关；<br>$$<br>\begin{align*}<br>P(w_i | w_1,\cdots,w_{i-1}) &amp;&#x3D; P(w_i | w_{i-k},\cdots,w_{i-1}) \<br>&amp; &#x3D; P(w_i) \qquad\qquad\qquad \rightarrow\quad\text{k&#x3D;0, Unigram Model} \<br>&amp; &#x3D; P(w_i | w_{i-1}) \qquad\qquad \rightarrow\quad\text{k&#x3D;1, Bigram Model} \<br>&amp; &#x3D; P(w_i | w_{i-2}, w_{i-1})\qquad\rightarrow\quad\text{k&#x3D;2, Trigram Model}\<br>\end{align*}<br>$$</p></li><li><p>用频率估计概率（大数定理——伯努利）<br>$$<br>\begin{align*}<br>P(w_i | w_1,\cdots,w_{i-1}) &amp;&#x3D; P(w_i | w_{i-k},\cdots,w_{i-1}) \<br>&amp; &#x3D; \frac{P(w_{i-k},\cdots,w_{i-1},w_i)}{P(w_{i-k},\cdots,w_{i-1})} \<br>&amp; \approx \frac{\text{count}(w_{i-k},\cdots,w_{i-1},w_i)}{\text{count}(w_{i-k},\cdots,w_{i-1})} \<br>\end{align*}<br>$$</p></li><li><p>Zipf Law, also known as the rank-size rule or Zipf distribution, is an empirical observation about the frequency distribution of words or other items in a given corpus of natural language. It states that <strong>the frequency of any word is inversely proportional to its rank in the frequency table</strong>.</p><ul><li><p>隐藏信息，排位靠后的词的频率非常低，甚至未出现在语料中；</p></li><li><p>数据稀疏，对于未出现在语料中的词或n-gram，无法估计其概率；</p><ul><li>平滑技术 （拉普拉斯平滑、古德-图灵平滑、插值平滑、Katz平滑）</li></ul><p>$$<br>\begin{align*}<br>P(w_i | w_1,\cdots,w_{i-1}) &amp;&#x3D; P(w_i | w_{i-k},\cdots,w_{i-1}) \<br>&amp; &#x3D; \frac{P(w_{i-k},\cdots,w_{i-1},w_i)}{P(w_{i-k},\cdots,w_{i-1})} \<br>&amp; \approx \frac{\text{count}(w_{i-k},\cdots,w_{i-1},w_i)+1}{\text{count}(w_{i-k},\cdots,w_{i-1})+|V|} \<br>\end{align*}<br>$$</p><ul><li><p>回退策略<br>$$<br>\begin{align*}<br>P(w_i | w_1,\cdots,w_{i-1}) &amp;&#x3D; P(w_i | w_{i-k},\cdots,w_{i-1}) \<br>&amp; &#x3D; \frac{P(w_{i-k},\cdots,w_{i-1},w_i)}{P(w_{i-k},\cdots,w_{i-1})} \<br>&amp; \approx \frac{\text{count}(w_{i-k},\cdots,w_{i-1},w_i)}{\text{count}(w_{i-k},\cdots,w_{i-1})}\qquad \rightarrow\quad\text{students opened their} \<br>&amp; \approx \frac{\text{count}(w_{i-k+j},\cdots,w_{i-1},w_i)}{\text{count}(w_{i-k+j},\cdots,w_{i-1})}\quad \rightarrow\quad\text{opened their} \<br>\end{align*}<br>$$</p></li><li><p>参数规模问题：随着k的增大，参数数目呈指数增长，无法存储；</p><p>k&#x3D;1，参数量&#x3D;$|V|^2$；k&#x3D;2，参数量&#x3D;$|V|^3$；k&#x3D;n-1，参数量&#x3D;$|V|^n$；</p></li></ul></li></ul></li><li><p>困惑度（Perplexity）</p><ul><li><p>用来衡量一个概率分布或概率模型预测样本的好坏程度；</p></li><li><p>可以用来比较两个概率模型，低困惑度的概率模型能更好地预测样本；<br>$$<br>\text{Perplexity}(s) &#x3D; 2^{H(s)} &#x3D; \sqrt[n]{1&#x2F;P(w_1,\cdots,w_n)}<br>$$</p></li></ul></li></ul><h4 id="Word-Representation"><a href="#Word-Representation" class="headerlink" title="Word Representation"></a>Word Representation</h4><ul><li><p>词库：</p><ul><li>WordNet：一个包含同义词（ synonym ）和上位词（ hypernyms ）的知识库；</li><li>词库的问题：<ul><li>缺少差异性 (proficient也被视为good的同义词)，不够精确；</li><li>缺少新词，无法及时更新</li><li>主观性，人工标注；</li></ul></li></ul></li><li><p>离散词表示：</p><ul><li><p>One-hot表示：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">单词表示motel = [0 0 0 0 0 1 0]</span><br><span class="line">   hotel = [0 0 0 1 0 0 0]</span><br><span class="line">文本表示The students opened their books</span><br><span class="line">   [0 0 1 1 0 0 1 0]</span><br><span class="line">        ⬆</span><br><span class="line">   次数、频率、逆文档频率、TF-IDF、...</span><br></pre></td></tr></table></figure></li><li><p>词袋模型（Bag of Word）：词袋模型用于文本表示，如果每个词为One-hot表示，那么把每个词的One-hot向量相加，得到的向量就是该文本基于BOW得到的表示；</p></li><li><p>词频（Term Frequency，TF）：在文档中出现频率越高的词对当前文档可能越重要；<br>$$<br>f_{ij} &#x3D; \frac{\text{count}(\text{term}\ i)\text{in doc} \ j}{\text{count}(\text{all term})\text{in doc} \ j}, \<br>tf_{ij} &#x3D; \frac{f_{ij}}{\max_k(f_{kj})}<br>$$</p></li><li><p>逆文档频率（Inverse Document Frequency，IDF）：在很多文档中都出现的词可能不重要（如虚词）；<br>$$<br>df_i &#x3D; \text{doc frequency of term}\ i &#x3D; \text{numbers of doc containing term} \ i, \<br>idf_i &#x3D; \log_2\frac{N}{df_i} \ \text{（N为文档总数）}<br>$$</p></li><li><p>TF-IDF：综合一个词在当前文档中的频率和所有文档中出现的次数来度量这个词对当前文档重要性；<br>$$<br>tf_{ij}-idf_i &#x3D; tf_{ij}*idf_i &#x3D; tf_{ij}*\log_2\frac{N}{df_i}<br>$$</p></li><li><p>N-gram：N元组提取局部的上下文你信息；</p></li><li><p>离散词表示问题：语义鸿沟、维度爆炸；</p></li></ul></li><li><p>分布式词表示（词嵌入）</p><ul><li><p>用一个低维稠密的向量表示单词的整体含义；</p></li><li><p>核心思想：一个词的含义能被该词所在的上下文反映；</p></li><li><p>Co-occurrence：</p><ul><li>基于窗口的共现矩阵：<ul><li>统计窗口内单词之间的共现信息；</li><li>类似于word2vec；</li><li>能够捕获一些句法和语义信息（局部信息）；</li></ul></li><li>基于文档的共现矩阵：<ul><li>统计文档和单词之间的共现信息；</li><li>Latent Semantics Analysis (LSA)；</li><li>能够捕获话题信息（全局信息）；</li></ul></li></ul></li><li><p>Word2vec[Mikolov et al. 2013] 是一套学习词向量的算法框架</p><ul><li>算法思想：大量的自然语言文本（训练语料）</li><li>为词表中的每个词随机初始化一个向量表示</li><li>遍历文本中的每个单词 $c$，其上下文单词为 $o$</li><li>使用单词 $c$ 的上下文 $o$ 预测单词 $c$ 的概率分布（核心思想）</li><li>更新词向量的表示使得单词 $c$ 的预测概率最大化</li><li>连续词袋模型（CBOW，Continuous Bag of Words）</li><li>目标：通过局部语言模型的优化，获得词向量</li><li>优化目标：固定上下文词向量表示，计算中心词的似然函数，最大化其似然（负对数）</li><li>计算优化：负采样（Negative Sampling）<ul><li>为避免softmax计算整个庞大的词表，通常采用负采样的方法，将多分类问题转换为二分类问题；大大减少了训练时间和计算成本；</li></ul></li><li>Skip-gram：中心词 $c$ 预测上下文 $o$；</li></ul><table><thead><tr><th></th><th>优点</th><th>缺点</th><th>代表方法</th></tr></thead><tbody><tr><td>共现矩阵法</td><td>速度快，有效利用统计数据</td><td>过分依赖单词共现性和数据量</td><td>LSA, HAL</td></tr><tr><td>直接学习法</td><td>能够捕获语法和语义信息</td><td>速度和数据规模相关，未有效利用统计数据</td><td>Skip-gram,  CBOW</td></tr></tbody></table><p>基于计数的和基于预测的都探究了语料库的潜在共现统计</p></li><li><p>GloVe：集两家之长</p><ul><li><p>共现概率矩阵$X_{ij}$；</p></li><li><p>单词 $w_i$，$w_j$ 的词向量 $v_i$，$v_j$；</p></li><li><p>以学习的方式，用词向量之间的语义关系来拟合共现概率矩阵；<br>$$<br>J &#x3D; \sum\limits_{i,j&#x3D;1}^{|V|}f(X_{ij})(v_i^Tv_j+b_i+b_j-\log X_{ij})^2 \<br>v_i^Tv_j \quad\rightarrow\quad\text{局部信息} \<br>\log X_{ij}\quad\rightarrow\quad\text{全局统计信息} \<br>$$</p></li><li><p>训练快，适应于大规模数据，在小规模数据上性能优秀；</p></li></ul></li></ul></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h4 id=&quot;Language-Model&quot;&gt;&lt;a href=&quot;#Language-Model&quot; class=&quot;headerlink&quot; title=&quot;Language Model&quot;&gt;&lt;/a&gt;Language Model&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;语言模型是衡量一句话出现在</summary>
+      
+    
+    
+    
+    <category term="statistics_ml" scheme="https://stu-yue.github.io/categories/statistics-ml/"/>
+    
+    
+    <category term="ml" scheme="https://stu-yue.github.io/tags/ml/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Memo | CTC Introduction</title>
-    <link href="https://stu-yue.github.io/jottings/statistical_ml/memo_ctc/"/>
-    <id>https://stu-yue.github.io/jottings/statistical_ml/memo_ctc/</id>
+    <link href="https://stu-yue.github.io/jottings/statistics_ml/memo_ctc/"/>
+    <id>https://stu-yue.github.io/jottings/statistics_ml/memo_ctc/</id>
     <published>2023-10-17T07:56:53.000Z</published>
     <updated>2023-10-17T15:49:36.026Z</updated>
     
@@ -33,7 +82,7 @@
     
     
     
-    <category term="statistical_ml" scheme="https://stu-yue.github.io/categories/statistical-ml/"/>
+    <category term="statistics_ml" scheme="https://stu-yue.github.io/categories/statistics-ml/"/>
     
     
     <category term="ml" scheme="https://stu-yue.github.io/tags/ml/"/>
@@ -124,9 +173,9 @@
     <link href="https://stu-yue.github.io/jottings/languages/shell/memo_package_device/"/>
     <id>https://stu-yue.github.io/jottings/languages/shell/memo_package_device/</id>
     <published>2023-09-19T14:56:53.000Z</published>
-    <updated>2023-09-19T14:18:58.743Z</updated>
+    <updated>2023-10-30T13:46:02.142Z</updated>
     
-    <content type="html"><![CDATA[<h4 id="Package"><a href="#Package" class="headerlink" title="Package"></a>Package</h4><ul><li>Package System</li></ul><table><thead><tr><th>Package Management System</th><th>Linux Release Version</th></tr></thead><tbody><tr><td>Debian Style (.deb)</td><td>Debian, Ubuntu</td></tr><tr><td>Red Hat Style (.rpm)</td><td>Fedora, CentOS</td></tr></tbody></table><blockquote><p>A package file is a compressed collection of files that make up a software package and may contain a large number of programs and the data files that support those programs. </p><p><strong>Metadata for the packet</strong> is included, such as a text description of the package and its contents. </p><p>Other included are <strong>pre-installation and post-installation scripts</strong> (which perform configuration tasks before and after installation)</p></blockquote><ul><li>Upper Tools and Underlying Tools:</li></ul><table><thead><tr><th>Linux Release Version</th><th>Underlying Tool (install and delete packages)</th><th>Upper Tool (search for metadata and resolve dependencies)</th></tr></thead><tbody><tr><td>Debian-Style</td><td>dpkg</td><td>apt-get, aptitude</td></tr><tr><td>Fedora, CentOS</td><td>rpm</td><td>yum</td></tr></tbody></table><ul><li>Search for metadata in the resource repository</li></ul><table><thead><tr><th>Style</th><th>Command</th></tr></thead><tbody><tr><td>Debian</td><td>apt-get update; apt-cache search search_string</td></tr><tr><td>Red Hat</td><td>yum search search_string (e.g. yum search emacs)</td></tr></tbody></table><ul><li>Install a package via resource repository</li></ul><table><thead><tr><th>Style</th><th>Command</th></tr></thead><tbody><tr><td>Debian</td><td>apt-get update; apt-get install package_name</td></tr><tr><td>Red Hat</td><td>yum install package_name</td></tr></tbody></table><ul><li>Install a package via raw package files</li></ul><table><thead><tr><th>Style</th><th>Command</th></tr></thead><tbody><tr><td>Debian</td><td>dpkg –install package_file</td></tr><tr><td>Red Hat</td><td>rpm -i package_file (rpm -i emacs-22.1-7.fc7-i386.rpm)</td></tr></tbody></table><blockquote><p>NOTE: Due to this command is executed by rpm, not analyzing dependencies for package_file, so if a dependency is missing, rpm will report error and exit.</p></blockquote><ul><li>Uninstall a package</li></ul><table><thead><tr><th>Style</th><th>Command</th></tr></thead><tbody><tr><td>Debian</td><td>apt-get remove package_name</td></tr><tr><td>Red Hat</td><td>yum erase package_name</td></tr></tbody></table><ul><li>Upgrade package via resource repository</li></ul><table><thead><tr><th>Style</th><th>Command</th></tr></thead><tbody><tr><td>Debian</td><td>apt-get update; apt-get upgrade</td></tr><tr><td>Red Hat</td><td>yum update</td></tr></tbody></table><ul><li>Upgrade package via package_file</li></ul><table><thead><tr><th>Style</th><th>Command</th></tr></thead><tbody><tr><td>Debian</td><td>dpkg –install package_file</td></tr><tr><td>Red Hat</td><td>rpm -U package_file</td></tr></tbody></table><ul><li>List all package installed</li></ul><table><thead><tr><th>Style</th><th>Command</th></tr></thead><tbody><tr><td>Debian</td><td>dpkg –list</td></tr><tr><td>Red Hat</td><td>rpm -qa</td></tr></tbody></table><ul><li>Determine whether a package is installed</li></ul><table><thead><tr><th>Style</th><th>Command</th></tr></thead><tbody><tr><td>Debian</td><td>dpkg –status package_name</td></tr><tr><td>Red Hat</td><td>rpm -q package_name</td></tr></tbody></table><ul><li>Show the info for the installed package</li></ul><table><thead><tr><th>Style</th><th>Command</th></tr></thead><tbody><tr><td>Debian</td><td>apt-cache show package_name</td></tr><tr><td>Red Hat</td><td>yum info package_name</td></tr></tbody></table><h4 id="Device"><a href="#Device" class="headerlink" title="Device"></a>Device</h4>]]></content>
+    <content type="html"><![CDATA[<h4 id="Package"><a href="#Package" class="headerlink" title="Package"></a>Package</h4><ul><li>Package System</li></ul><table><thead><tr><th>Package Management System</th><th>Linux Release Version</th></tr></thead><tbody><tr><td>Debian Style (.deb)</td><td>Debian, Ubuntu</td></tr><tr><td>Red Hat Style (.rpm)</td><td>Fedora, CentOS</td></tr></tbody></table><blockquote><p>A package file is a compressed collection of files that make up a software package and may contain a large number of programs and the data files that support those programs. </p><p><strong>Metadata for the packet</strong> is included, such as a text description of the package and its contents. </p><p>Other included are <strong>pre-installation and post-installation scripts</strong> (which perform configuration tasks before and after installation)</p></blockquote><ul><li>Upper Tools and Underlying Tools:</li></ul><table><thead><tr><th>Linux Release Version</th><th>Underlying Tool (install and delete packages)</th><th>Upper Tool (search for metadata and resolve dependencies)</th></tr></thead><tbody><tr><td>Debian-Style</td><td>dpkg</td><td>apt-get, aptitude</td></tr><tr><td>Fedora, CentOS</td><td>rpm</td><td>yum</td></tr></tbody></table><ul><li>Search for metadata in the resource repository</li></ul><table><thead><tr><th>Style</th><th>Command</th></tr></thead><tbody><tr><td>Debian</td><td>apt-get update; apt-cache search search_string</td></tr><tr><td>Red Hat</td><td>yum search search_string (e.g. yum search emacs)</td></tr></tbody></table><ul><li>Install a package via resource repository</li></ul><table><thead><tr><th>Style</th><th>Command</th></tr></thead><tbody><tr><td>Debian</td><td>apt-get update; apt-get install package_name</td></tr><tr><td>Red Hat</td><td>yum install package_name</td></tr></tbody></table><ul><li>Install a package via raw package files</li></ul><table><thead><tr><th>Style</th><th>Command</th></tr></thead><tbody><tr><td>Debian</td><td>dpkg –install &#x2F; -i package_file</td></tr><tr><td>Red Hat</td><td>rpm -i package_file (rpm -i emacs-22.1-7.fc7-i386.rpm)</td></tr></tbody></table><blockquote><p>NOTE: Due to this command is executed by rpm, not analyzing dependencies for package_file, so if a dependency is missing, rpm will report error and exit.</p></blockquote><ul><li>Uninstall a package</li></ul><table><thead><tr><th>Style</th><th>Command</th></tr></thead><tbody><tr><td>Debian</td><td>apt-get remove package_name  &#x2F; dpkg -r package_name</td></tr><tr><td>Red Hat</td><td>yum erase package_name</td></tr></tbody></table><ul><li>Upgrade package via resource repository</li></ul><table><thead><tr><th>Style</th><th>Command</th></tr></thead><tbody><tr><td>Debian</td><td>apt-get update; apt-get upgrade</td></tr><tr><td>Red Hat</td><td>yum update</td></tr></tbody></table><ul><li>Upgrade package via package_file</li></ul><table><thead><tr><th>Style</th><th>Command</th></tr></thead><tbody><tr><td>Debian</td><td>dpkg –install package_file</td></tr><tr><td>Red Hat</td><td>rpm -U package_file</td></tr></tbody></table><ul><li>List all package installed</li></ul><table><thead><tr><th>Style</th><th>Command</th></tr></thead><tbody><tr><td>Debian</td><td>dpkg –list &#x2F; -l</td></tr><tr><td>Red Hat</td><td>rpm -qa</td></tr></tbody></table><ul><li>Determine whether a package is installed</li></ul><table><thead><tr><th>Style</th><th>Command</th></tr></thead><tbody><tr><td>Debian</td><td>dpkg –status package_name</td></tr><tr><td>Red Hat</td><td>rpm -q package_name</td></tr></tbody></table><ul><li>Show the info for the installed package</li></ul><table><thead><tr><th>Style</th><th>Command</th></tr></thead><tbody><tr><td>Debian</td><td>apt-cache show package_name</td></tr><tr><td>Red Hat</td><td>yum info package_name</td></tr></tbody></table><h4 id="Device"><a href="#Device" class="headerlink" title="Device"></a>Device</h4>]]></content>
     
     
       
@@ -262,6 +311,35 @@
   </entry>
   
   <entry>
+    <title>Summa | Intro of Statistical ML</title>
+    <link href="https://stu-yue.github.io/jottings/statistics_ml/summa_intro/"/>
+    <id>https://stu-yue.github.io/jottings/statistics_ml/summa_intro/</id>
+    <published>2023-08-27T07:56:53.000Z</published>
+    <updated>2023-08-30T09:24:16.463Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>If a system is able to improve its performance by executing a certain process, it is called learning.</p></blockquote><h4 id="1-Basis"><a href="#1-Basis" class="headerlink" title="1 Basis"></a>1 Basis</h4><ol><li><strong>Hypothesis Space:</strong> The set of functions that includes all possible models to be learned.</li><li><strong>Common Steps:</strong> <ol><li>Attain a finite training data set.</li><li>Determine the set of <strong>learning models</strong>.</li><li>Determine the criteria for model selection (<strong>learning strategies</strong>).</li><li>Develop algorithms for solving the optimal model (<strong>learning algorithm</strong>).</li><li>Select optimal model according to criteria.</li><li>Use the learned optimal model to predict or analyze new data.</li></ol></li><li><strong>Problem Types:</strong> <strong>Classification&#x2F;Tagging</strong> (outputs take a finite number of discrete values), <strong>Regression</strong> (function fitting, real values)</li><li><strong>Model Types</strong>:<ul><li><strong>Discriminative Model</strong>: directly model $p(Y|X)$;<ul><li><em>Cons</em>:  easy to learn, high classification accuracy;</li></ul></li><li><strong>Generative Model</strong>: model $p(X, Y)$, usually translating to modeling the prior distribution $p(Y)$ and class conditional distribution $p(X|Y)$, due to ($p(X, Y)&#x3D; P(X|Y)p(Y)$);<ul><li><em>Cons</em>: <strong>add the prior distribution [main diff]</strong>, model the data generation process;</li></ul></li></ul></li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;If a system is able to improve its performance by executing a certain process, it is called learning.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 </summary>
+      
+    
+    
+    
+    <category term="statistics_ml" scheme="https://stu-yue.github.io/categories/statistics-ml/"/>
+    
+    
+    <category term="statistic" scheme="https://stu-yue.github.io/tags/statistic/"/>
+    
+    <category term="ml" scheme="https://stu-yue.github.io/tags/ml/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Memo | Algebra Basis</title>
     <link href="https://stu-yue.github.io/jottings/mathematics/memo_algebra_basis/"/>
     <id>https://stu-yue.github.io/jottings/mathematics/memo_algebra_basis/</id>
@@ -283,35 +361,6 @@
     
     
     <category term="algebra" scheme="https://stu-yue.github.io/tags/algebra/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Summa | Intro of Statistical ML</title>
-    <link href="https://stu-yue.github.io/jottings/statistical_ml/summa_intro/"/>
-    <id>https://stu-yue.github.io/jottings/statistical_ml/summa_intro/</id>
-    <published>2023-08-27T07:56:53.000Z</published>
-    <updated>2023-08-30T09:24:16.463Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>If a system is able to improve its performance by executing a certain process, it is called learning.</p></blockquote><h4 id="1-Basis"><a href="#1-Basis" class="headerlink" title="1 Basis"></a>1 Basis</h4><ol><li><strong>Hypothesis Space:</strong> The set of functions that includes all possible models to be learned.</li><li><strong>Common Steps:</strong> <ol><li>Attain a finite training data set.</li><li>Determine the set of <strong>learning models</strong>.</li><li>Determine the criteria for model selection (<strong>learning strategies</strong>).</li><li>Develop algorithms for solving the optimal model (<strong>learning algorithm</strong>).</li><li>Select optimal model according to criteria.</li><li>Use the learned optimal model to predict or analyze new data.</li></ol></li><li><strong>Problem Types:</strong> <strong>Classification&#x2F;Tagging</strong> (outputs take a finite number of discrete values), <strong>Regression</strong> (function fitting, real values)</li><li><strong>Model Types</strong>:<ul><li><strong>Discriminative Model</strong>: directly model $p(Y|X)$;<ul><li><em>Cons</em>:  easy to learn, high classification accuracy;</li></ul></li><li><strong>Generative Model</strong>: model $p(X, Y)$, usually translating to modeling the prior distribution $p(Y)$ and class conditional distribution $p(X|Y)$, due to ($p(X, Y)&#x3D; P(X|Y)p(Y)$);<ul><li><em>Cons</em>: <strong>add the prior distribution [main diff]</strong>, model the data generation process;</li></ul></li></ul></li></ol>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;If a system is able to improve its performance by executing a certain process, it is called learning.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 </summary>
-      
-    
-    
-    
-    <category term="statistical_ml" scheme="https://stu-yue.github.io/categories/statistical-ml/"/>
-    
-    
-    <category term="ml" scheme="https://stu-yue.github.io/tags/ml/"/>
-    
-    <category term="statistic" scheme="https://stu-yue.github.io/tags/statistic/"/>
     
   </entry>
   
@@ -424,9 +473,9 @@
     <category term="mathematics" scheme="https://stu-yue.github.io/categories/mathematics/"/>
     
     
-    <category term="optimization" scheme="https://stu-yue.github.io/tags/optimization/"/>
-    
     <category term="ml" scheme="https://stu-yue.github.io/tags/ml/"/>
+    
+    <category term="optimization" scheme="https://stu-yue.github.io/tags/optimization/"/>
     
   </entry>
   
@@ -461,6 +510,33 @@
   </entry>
   
   <entry>
+    <title>Hot Points</title>
+    <link href="https://stu-yue.github.io/jottings/tidbits/hot_points/"/>
+    <id>https://stu-yue.github.io/jottings/tidbits/hot_points/</id>
+    <published>2023-07-22T12:00:53.000Z</published>
+    <updated>2023-10-28T05:01:11.823Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li><p>Generate random numbers by reading <strong>thermal noise</strong> on CPU pins.</p></li><li><p><strong>Hot Plug</strong>, refers to the operation of inserting&#x2F;removing a device while it is running. In contrast, <strong>Cold Plug</strong> means do above operation while the device is powered off.</p></li><li><p>Software version’s explanation:</p><table><thead><tr><th>Version</th><th>Description</th></tr></thead><tbody><tr><td>Snapshot</td><td>Development version</td></tr><tr><td>Alpha</td><td>Internal beta</td></tr><tr><td>Beta</td><td>Public beta</td></tr><tr><td>Pre (M)</td><td>Similar to Alpha, sometimes subdivided into M_(Milestone) version</td></tr><tr><td>RC(Release Candidate)</td><td>During Beta stage, new features will continue to be added, but once the RC version is reached, there will mainly be on debugging and issue resolution.</td></tr><tr><td>GA(General Availability)</td><td>Some software may be labeled as “stable” or “production”.</td></tr><tr><td>Release&#x2F;Stable</td><td></td></tr><tr><td>Current</td><td>The latest version, but no necessarily a stable one.</td></tr><tr><td>Eval</td><td>There may be a monthly or fixed time limit for usage.</td></tr></tbody></table></li><li><p><strong>Declarative Programming</strong> expresses the logic of a computation without describing its control flow.</p><blockquote><p>Many languages that apply this style attempt to minimize or eliminate side effects by describing <em>what</em> the  program must accomplish in terms of the problem domain (what to do), rather than specifying all the details of <em>how</em> the program should achieve the result (how to do).</p></blockquote><p><strong>Imperative Programming</strong> uses statements that change a program’s state. </p><blockquote><p>Imperative Programming focuses on describing <em>how</em> a program operates step by step, rather than on high-level descriptions of its expected results.</p></blockquote></li><li><p><strong>KVM</strong>: Kernel-based Virtual Machine, is a virtualization infrastructure used in the Linux kernel to turn the Linux kernel into a <strong>hypervisor</strong>;</p><ul><li><strong>Hypervisor</strong>: creates and runs virtual machines, sometimes called a virtual machine monitor (VMM), like a meta-OS; </li><li>IT resource pooled, OS and hardware decoupled, allocated according to needs;</li><li>A computer on which a hypervisor runs one or more virtual machines is called a <strong>host machine</strong>, and <strong>each virtual machine is called a guest machine</strong>;</li><li><strong>(Type 1) Native or bare mental hypervisor:</strong> runs directly on the host’s hardware to manage guest operating systems. It takes the place of a host operating system and VM resources are scheduled directly to the hardware by the hypervisor. <ul><li>This type of hypervisor is most common in an enterprise data center or other server-based environments.</li><li>KVM, Microsoft Hyper-V, and VMware vSphere are examples of a type 1 hypervisor. KVM was merged into the Linux kernel in 2007, so if you’re using a modern version of <a href="https://www.redhat.com/en/topics/linux">Linux</a>, you already have access to KVM.</li></ul></li><li><strong>(Type 2) Hosted hypervisor:</strong> run on a conventional operating system as a software layer or application.<ul><li>It works by abstracting guest operating systems from the host operating system. VM resources are scheduled against a host operating system, which is then executed against the hardware.</li><li>A type 2 hypervisor is better for individual users who want to run multiple operating systems on a personal computer.</li><li>VMware Workstation and Oracle VirtualBox are examples of a type 2 hypervisor.</li></ul></li></ul><img src="./hot_points/hypervisor_type.png" style="zoom:30%"><img src="./hypervisor_type.png" style="zoom:50%"><ul><li><strong>(Emulator) The difference with the Hypervisor is that the Hypervisor runs the same VM and host CPU architecture, while the Emulator can be used to run systems or programs on other hardware platforms (arm, mips, x86).</strong><ul><li>When used as a machine emulator, QEMU can run OSes and programs made for one machine (e.g. an ARM board) on a different machine (e.g. your x86 PC). By using dynamic translation, it achieves very good performance;</li><li>QEMU can use other hypervisors like <a href="https://wiki.archlinux.org/title/Xen">Xen</a> or <a href="https://wiki.archlinux.org/title/KVM">KVM</a> to use CPU extensions (<a href="https://en.wikipedia.org/wiki/Hardware-assisted_virtualization">HVM</a>) for virtualization. When used as a virtualizer, QEMU achieves near native performances by executing the guest code directly on the host CPU.</li><li>When QEMU is used in conjunction with KVM, KVM provides hardware virtualization support, while QEMU is responsible for virtual machine simulation and management. In this configuration, <strong>KVM functions as a Hypervisor to directly interact with hardware and provide high-performance virtualization support</strong>, while <strong>QEMU runs on the upper layer of KVM and is responsible for VM simulation and management</strong>, including device simulation, VM creation, start, and stop.</li><li>So while QEMU is not a traditional Hypervisor on its own, when used in conjunction with KVM, QEMU can work with KVM to provide a complete virtualization solution and act as part of a Hypervisor</li></ul></li></ul></li><li><hr></li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Generate random numbers by reading &lt;strong&gt;thermal noise&lt;/strong&gt; on CPU pins.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Hot Plug&lt;/strong&gt;, refer</summary>
+      
+    
+    
+    
+    <category term="tidbits" scheme="https://stu-yue.github.io/categories/tidbits/"/>
+    
+    
+    <category term="points" scheme="https://stu-yue.github.io/tags/points/"/>
+    
+  </entry>
+  
+  <entry>
     <title>TBR_compiler</title>
     <link href="https://stu-yue.github.io/jottings/tidbits/tbr_compiler/"/>
     <id>https://stu-yue.github.io/jottings/tidbits/tbr_compiler/</id>
@@ -484,71 +560,6 @@
     
     
     <category term="points" scheme="https://stu-yue.github.io/tags/points/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hot Points</title>
-    <link href="https://stu-yue.github.io/jottings/tidbits/hot_points/"/>
-    <id>https://stu-yue.github.io/jottings/tidbits/hot_points/</id>
-    <published>2023-07-22T12:00:53.000Z</published>
-    <updated>2023-10-04T09:54:43.579Z</updated>
-    
-    <content type="html"><![CDATA[<ol><li><p>Generate random numbers by reading <strong>thermal noise</strong> on CPU pins.</p></li><li><p><strong>Hot Plug</strong>, refers to the operation of inserting&#x2F;removing a device while it is running. In contrast, <strong>Cold Plug</strong> means do above operation while the device is powered off.</p></li><li><p>Software version’s explanation:</p><table><thead><tr><th>Version</th><th>Description</th></tr></thead><tbody><tr><td>Snapshot</td><td>Development version</td></tr><tr><td>Alpha</td><td>Internal beta</td></tr><tr><td>Beta</td><td>Public beta</td></tr><tr><td>Pre (M)</td><td>Similar to Alpha, sometimes subdivided into M_(Milestone) version</td></tr><tr><td>RC(Release Candidate)</td><td>During Beta stage, new features will continue to be added, but once the RC version is reached, there will mainly be on debugging and issue resolution.</td></tr><tr><td>GA(General Availability)</td><td>Some software may be labeled as “stable” or “production”.</td></tr><tr><td>Release&#x2F;Stable</td><td></td></tr><tr><td>Current</td><td>The latest version, but no necessarily a stable one.</td></tr><tr><td>Eval</td><td>There may be a monthly or fixed time limit for usage.</td></tr></tbody></table></li><li><p><strong>Declarative Programming</strong> expresses the logic of a computation without describing its control flow.</p><blockquote><p>Many languages that apply this style attempt to minimize or eliminate side effects by describing <em>what</em> the  program must accomplish in terms of the problem domain (what to do), rather than specifying all the details of <em>how</em> the program should achieve the result (how to do).</p></blockquote><p><strong>Imperative Programming</strong> uses statements that change a program’s state. </p><blockquote><p>Imperative Programming focuses on describing <em>how</em> a program operates step by step, rather than on high-level descriptions of its expected results.</p></blockquote></li><li><p><strong>KVM</strong>: Kernel-based Virtual Machine, is a virtualization infrastructure used in the Linux kernel to turn the Linux kernel into a <strong>hypervisor</strong>;</p><ul><li><strong>Hypervisor</strong>: creates and runs virtual machines, sometimes called a virtual machine monitor (VMM), like a meta-OS; </li><li>IT resource pooled, OS and hardware decoupled, allocated according to needs;</li><li>A computer on which a hypervisor runs one or more virtual machines is called a <strong>host machine</strong>, and <strong>each virtual machine is called a guest machine</strong>;</li><li><strong>(Type 1) Native or bare mental hypervisor:</strong> runs directly on the host’s hardware to manage guest operating systems. It takes the place of a host operating system and VM resources are scheduled directly to the hardware by the hypervisor. <ul><li>This type of hypervisor is most common in an enterprise data center or other server-based environments.</li><li>KVM, Microsoft Hyper-V, and VMware vSphere are examples of a type 1 hypervisor. KVM was merged into the Linux kernel in 2007, so if you’re using a modern version of <a href="https://www.redhat.com/en/topics/linux">Linux</a>, you already have access to KVM.</li></ul></li><li><strong>(Type 2) Hosted hypervisor:</strong> run on a conventional operating system as a software layer or application.<ul><li>It works by abstracting guest operating systems from the host operating system. VM resources are scheduled against a host operating system, which is then executed against the hardware.</li><li>A type 2 hypervisor is better for individual users who want to run multiple operating systems on a personal computer.</li><li>VMware Workstation and Oracle VirtualBox are examples of a type 2 hypervisor.</li></ul></li></ul><img src="./hot_points/hypervisor_type.png" style="zoom:30%"><img src="./hypervisor_type.png" style="zoom:50%"><ul><li><strong>(Emulator) The difference with the Hypervisor is that the Hypervisor runs the same VM and host CPU architecture, while the Emulator can be used to run systems or programs on other hardware platforms (arm, mips, x86).</strong><ul><li>When used as a machine emulator, QEMU can run OSes and programs made for one machine (e.g. an ARM board) on a different machine (e.g. your x86 PC). By using dynamic translation, it achieves very good performance;</li><li>QEMU can use other hypervisors like <a href="https://wiki.archlinux.org/title/Xen">Xen</a> or <a href="https://wiki.archlinux.org/title/KVM">KVM</a> to use CPU extensions (<a href="https://en.wikipedia.org/wiki/Hardware-assisted_virtualization">HVM</a>) for virtualization. When used as a virtualizer, QEMU achieves near native performances by executing the guest code directly on the host CPU.</li><li>When QEMU is used in conjunction with KVM, KVM provides hardware virtualization support, while QEMU is responsible for virtual machine simulation and management. In this configuration, <strong>KVM functions as a Hypervisor to directly interact with hardware and provide high-performance virtualization support</strong>, while <strong>QEMU runs on the upper layer of KVM and is responsible for VM simulation and management</strong>, including device simulation, VM creation, start, and stop.</li><li>So while QEMU is not a traditional Hypervisor on its own, when used in conjunction with KVM, QEMU can work with KVM to provide a complete virtualization solution and act as part of a Hypervisor.</li></ul></li></ul></li></ol>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Generate random numbers by reading &lt;strong&gt;thermal noise&lt;/strong&gt; on CPU pins.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Hot Plug&lt;/strong&gt;, refer</summary>
-      
-    
-    
-    
-    <category term="tidbits" scheme="https://stu-yue.github.io/categories/tidbits/"/>
-    
-    
-    <category term="points" scheme="https://stu-yue.github.io/tags/points/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Summa | The Majority of Memory Categories</title>
-    <link href="https://stu-yue.github.io/jottings/architecture/summa_memory_categories/"/>
-    <id>https://stu-yue.github.io/jottings/architecture/summa_memory_categories/</id>
-    <published>2023-07-20T08:41:53.000Z</published>
-    <updated>2023-07-22T11:56:11.198Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>Reproduced in <a href="https://embeddedinventor.com/8-types-of-memory-every-embedded-engineer-should-know-about/">8 types of memory every embedded engineer should know about!</a></p></blockquote><p>The majority of memory can be categorized as shown in the following picture:</p><img src="./summa_memory_categories/category.png" style="zoom:80%"><img src="./category.png" style="zoom:80%"><blockquote><p>The real difference between primary and secondary memories is the <strong>speed&#x2F;volatility(without power) tradeoffs</strong>.</p></blockquote><h3 id="Primary-Memory"><a href="#Primary-Memory" class="headerlink" title="Primary Memory"></a>Primary Memory</h3><p>Primary memory is <strong>very fast, but it cannot hold data without power</strong>. The popular name for Primary Memory is <strong>RAM</strong>, which has 2 most important types namely <strong>SRAM</strong> and <strong>DRAM</strong>.</p><blockquote><p>Bistable Circuit usually consists of <strong>two complementary transistors or other switching devices</strong>, <strong>one used to hold the circuit in one stable state and the other to switch the circuit to another stable state</strong>. The switch between these two states is triggered by the input signal. <strong>Bistable Circuit can store data. Latches and registers are bistable devices.</strong></p><img src="./summa_memory_categories/bistable.png" style="zoom:50%"><img src="./bistable.png" style="zoom:50%"></blockquote><ul><li><strong>SRAM is the use of bistable flip-flop to save information, as long as the power is not lost, the information is not lost.</strong></li><li><strong>DRAM uses capacitors to store charge to store information, so data stored in the DRAM must be constantly refreshed every few milliseconds or else it will end up being erased</strong>. The action is taken care of by a special device named <strong>DRAM controllers</strong>.</li></ul><img src="./summa_memory_categories/ram_arch.png" style="zoom:60%"><img src="./ram_arch.png" style="zoom:60%"><table><thead><tr><th></th><th>SRAM</th><th>DRAM</th></tr></thead><tbody><tr><td>Construction Principle</td><td>It uses a cross-coupled flip flop configuration of transistors</td><td>It uses a capacitor transistor circuit to hold data</td></tr><tr><td>Cost</td><td>Relatively more expensive, it needs more transistors per bit of data it can store</td><td>Relatively less expensive, as fewer transistors per bit of storage are needed</td></tr><tr><td>Speed</td><td>Faster</td><td>Slower (capacitor charge and discharge time)</td></tr><tr><td>Volatility</td><td>As long as power is ON, it can store data since it uses no capacitors</td><td>Data needs to be continuously refreshed (usually in the order of 4 times a second) since the capacitors leak power.</td></tr><tr><td>Power consumption</td><td>Less</td><td>More</td></tr><tr><td>Density</td><td>Less dense (6 transistors, more area needed)</td><td>Highly dense (1 pass transistor and 1 capacitor, easy to integrate)</td></tr><tr><td>Addition components needed</td><td>None</td><td>DRAM controllers are needed to make it work like an SRAM. This controller offloads the data refreshing duties of a microprocessor and hence a DRAM coupled with a DRAM controller behaves more like an SRAM from the processor’s perspective.</td></tr><tr><td>Application areas</td><td>Cache memory (Ls2)</td><td>Main memory (memory chips)</td></tr></tbody></table><blockquote><p>NVRAM or Non Volatile Random Access Memory, is a special type of RAM that can store data permanently. It’s basically an SRAM with a power supply</p></blockquote><h3 id="Secondary-Memory"><a href="#Secondary-Memory" class="headerlink" title="Secondary Memory"></a>Secondary Memory</h3><h4 id="ROM"><a href="#ROM" class="headerlink" title="ROM"></a>ROM</h4><ul><li><p><strong>MASK ROM</strong>: The main characteristic of this device is the fact that the data is written onto the device as it gets manufactured and it is impossible to change them. This is done by designing the chip in such a manner so that it already contains the necessary data.</p><p>In order to mass production, the manufacturer makes a ROM or EPROM with original data as a sample in advance, and then mass-produces the same ROM as the sample. This kind of ROM sample for mass production is the MASK ROM, and the data burned in the MASK ROM can never be modified.</p></li><li><p><strong>PROM</strong> stands for Programmable Read-Only Memory. These are <strong>programmable chips for user needs</strong>, the main characteristic being it can <strong>only be programmed one time</strong>. That is it cannot be erased or reprogrammed. They are also known as <strong>One Time Programmable</strong> devices or <strong>OTP</strong>s for short. </p></li><li><p><strong>EPROM</strong> stands for Erasable Programmable Read-Only Memory. These chips usually <strong>have a small glass window on top and if you expose them to direct sunlight(UV, ultraviolet) that will erase the chip’s data.</strong> They can then be programmed again with fresh data.</p><ul><li>Cons: Inconvenient, instability, can not be exposed to the light source otherwise easy to lead to data loss</li></ul></li><li><p><strong>EEPROM</strong> stands for Electrically Erasable Programmable Read-Only Memory. These chips can be <strong>erased and reprogrammed using electricity</strong> as opposed to exposing them to UV rays as EPROMs. EEPROM can be erased and reprogrammed on a computer or dedicated device,  generally plugging and playing.</p></li></ul><h4 id="FLASH-MEMORY"><a href="#FLASH-MEMORY" class="headerlink" title="FLASH MEMORY"></a>FLASH MEMORY</h4><ol><li><p>The basic storage unit of flash memory is the transistor-based storage unit, and each storage unit can store 1 bit of data. Storage units are usually organized into a block, and each block contains thousands of storage units.</p></li><li><p>Each storage unit has a floating gate to store electric charges. The state of a storage unit can be determined as “1” or “0” based on the amount of electric charges stored in the floating gate. The state of a storage unit is changed by injecting or extracting electrons into&#x2F;from the floating gate to modify the amount of electric charges stored in it.</p></li><li><p>Flash memory uses <strong>Hot carrier injection(HCI)</strong> mechanism to write data. In simple terms, a certain storage unit is grounded at the <strong>source</strong>, a positive voltage is applied to its <strong>control gate</strong>, and a positive voltage is applied to the <strong>drain</strong> to generate a strong electric field between the source and drain. This will give electrons enough energy (<strong>hot carriers</strong>) to be attracted by the voltage at the <strong>control gate</strong> and injected into the <strong>floating gate</strong>. Afterwards, as the <strong>insulating material</strong> on the top and bottom of the <strong>floating gate</strong> is <strong>not conductive</strong>, these <strong>electrons are trapped in the floating gate and cannot escape</strong>. (Every time <strong>electrons enter and exit the surrounding silicon dioxide on the floating gate</strong>, <strong>it will cause aging</strong><a href="https://www.cnblogs.com/ricklz/p/16415763.html">[1]</a>)</p><img src="./summa_memory_categories/flash_particle.png" style="zoom:50%"><img src="./flash_particle.png" style="zoom:50%"></li><li><p>To save  cost, flash memory adopts page programming mode. Each page contains a certain number of storage units, and all units in a page are written at the same time.</p></li></ol><ul><li>Cons: Flash memory has the issue of wear-out (<strong>write&#x2F;erase endurance limits</strong>), which is usually mitigated by disabling bad blocks, and then reducing usable capacity.</li></ul><blockquote><ul><li><strong>USB flash disk, namely “U disk”</strong>, is a new generation of storage devices <strong>based on USB interface and flash memory chip as storage medium</strong>. It is basically composed of five parts: <strong>USB port, main control chip, flash memory chip, PCB backboard, outer package</strong>.</li><li><strong>USB flash drives, SD cards, and SSDs are a type of storage device that uses flash memory chips as the storage medium</strong>. They are primarily composed of a controller (main control) and flash memory chips, and have no mechanical structure, consisting purely of electronic circuitry. <strong>They are resistant to physical shocks and impacts.</strong> The controller manages data storage and other functions. Even after power loss, data remains stored in the memory cells.</li><li>USB flash drives generally have a cache on them to prevent the loss of data copies from being quickly plugged in&#x2F;out.</li></ul></blockquote><h4 id="OTHER"><a href="#OTHER" class="headerlink" title="OTHER"></a>OTHER</h4><ul><li>Hard Disk Drive: The disk reads data according to the polarity of the magnetic particle and writes data according to the polarity of the magnetic head.</li><li>Compact Disk: CD-ROM can only be read and not written to because after being burned once, each unit has a fixed different reflectivity (the reading probe emits laser and the reflected laser is read as “1”, or non-reflected laser is read as “0”).</li><li>Floppy Disk: A type of magnetic disk, less capacity, slower speed.</li></ul>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;Reproduced in &lt;a href=&quot;https://embeddedinventor.com/8-types-of-memory-every-embedded-engineer-should-know-about/&quot;&gt;8 types of</summary>
-      
-    
-    
-    
-    <category term="architecture" scheme="https://stu-yue.github.io/categories/architecture/"/>
-    
-    
-    <category term="memory" scheme="https://stu-yue.github.io/tags/memory/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Welcome to Yue&#39;s Jotter</title>
-    <link href="https://stu-yue.github.io/jottings/intro/"/>
-    <id>https://stu-yue.github.io/jottings/intro/</id>
-    <published>2023-07-13T08:23:57.000Z</published>
-    <updated>2023-07-19T06:33:54.671Z</updated>
-    
-    
-    
-    
     
   </entry>
   
