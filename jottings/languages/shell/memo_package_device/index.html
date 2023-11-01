@@ -17,7 +17,7 @@
 <meta property="og:description" content="Package Package System     Package Management System Linux Release Version    Debian Style (.deb) Debian, Ubuntu   Red Hat Style (.rpm) Fedora, CentOS    A package file is a compressed collection of f">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-09-19T14:56:53.000Z">
-<meta property="article:modified_time" content="2023-10-30T13:46:02.142Z">
+<meta property="article:modified_time" content="2023-11-01T03:27:05.881Z">
 <meta property="article:author" content="stu-yue">
 <meta property="article:tag" content="shell">
 <meta property="article:tag" content="linux">
@@ -237,7 +237,7 @@
                             &nbsp;
                             statistics_ml
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/statistics_ml/summa_intro/">Summa | Intro of Statistical ML</a></li>  <li class="file"><a href="/jottings/statistics_ml/memo_lm_and_word_vector/">Memo | LM and Word Representation</a></li>  <li class="file"><a href="/jottings/statistics_ml/memo_ctc/">Memo | CTC Introduction</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/statistics_ml/summa_intro/">Summa | Intro of Statistical ML</a></li>  <li class="file"><a href="/jottings/statistics_ml/memo_ctc/">Memo | CTC Introduction</a></li>  <li class="file"><a href="/jottings/statistics_ml/memo_lm_and_word_vector/">Memo | LM and Word Representation</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -415,7 +415,7 @@
 <tbody><tr>
 <td>Debian-Style</td>
 <td>dpkg</td>
-<td>apt-get, aptitude</td>
+<td>apt, aptitude</td>
 </tr>
 <tr>
 <td>Fedora, CentOS</td>
@@ -435,7 +435,7 @@
 </thead>
 <tbody><tr>
 <td>Debian</td>
-<td>apt-get update; apt-cache search search_string</td>
+<td>apt update; apt search search_string</td>
 </tr>
 <tr>
 <td>Red Hat</td>
@@ -454,7 +454,7 @@
 </thead>
 <tbody><tr>
 <td>Debian</td>
-<td>apt-get update; apt-get install package_name</td>
+<td>apt update; apt install package_name</td>
 </tr>
 <tr>
 <td>Red Hat</td>
@@ -495,7 +495,7 @@
 </thead>
 <tbody><tr>
 <td>Debian</td>
-<td>apt-get remove package_name  &#x2F; dpkg -r package_name</td>
+<td>apt remove package_name  &#x2F; dpkg -r package_name</td>
 </tr>
 <tr>
 <td>Red Hat</td>
@@ -514,7 +514,7 @@
 </thead>
 <tbody><tr>
 <td>Debian</td>
-<td>apt-get update; apt-get upgrade</td>
+<td>apt update; apt upgrade</td>
 </tr>
 <tr>
 <td>Red Hat</td>
@@ -590,13 +590,22 @@
 </thead>
 <tbody><tr>
 <td>Debian</td>
-<td>apt-cache show package_name</td>
+<td>apt show package_name</td>
 </tr>
 <tr>
 <td>Red Hat</td>
 <td>yum info package_name</td>
 </tr>
 </tbody></table>
+<blockquote>
+<ul>
+<li><code>apt</code> useful arguments:<ul>
+<li><code>-y</code> : default set yes in interactive shell;</li>
+<li><code>-f</code>: solve the package dependencies;</li>
+</ul>
+</li>
+</ul>
+</blockquote>
 <h4 id="Device"><a href="#Device" class="headerlink" title="Device"></a>Device</h4>
             </div>
         
