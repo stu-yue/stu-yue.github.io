@@ -16,11 +16,13 @@
 <meta property="og:site_name" content="Yue&#39;s Jotter">
 <meta property="og:description" content="1 IPTV 和 OTTIPTV（Internet Protocol Television）是一种通过Internet Protocol（IP）在专用网络上传输视频和音频内容的技术。它使用LAN（局域网）或WAN（广域网）等封闭网络生态系统进行操作。IPTV需要专门的设备（如机顶盒）和宽带连接，用户可以通过这些设备访问传统的电视频道，如CBS、CNN、FOX、HBO等。IPTV的优势在于提供高质量">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://stu-yue.github.io/jottings/tidbits/tbr_net_info/tbr_net_info/net_type.png">
 <meta property="article:published_time" content="2023-07-22T12:00:53.000Z">
-<meta property="article:modified_time" content="2023-10-28T06:06:13.338Z">
+<meta property="article:modified_time" content="2023-11-06T08:47:47.695Z">
 <meta property="article:author" content="stu-yue">
 <meta property="article:tag" content="points">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://stu-yue.github.io/jottings/tidbits/tbr_net_info/tbr_net_info/net_type.png">
     
 
     
@@ -207,7 +209,7 @@
                             &nbsp;
                             shell
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/languages/shell/memo_exploring_os/">Memo | Exploring Linux Files and Directories</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_redirection/">Memo | Redirection</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_see_the_world_through_shell/">Memo | See the World through Shell</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_permission_progress_env/">Memo | Permission, Progress and Shell Environment</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_others/">Memo | Olds and Ends</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_package_device/">Memo | Package and Device</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_tmux/">Memo | Tmux</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/languages/shell/memo_exploring_os/">Memo | Exploring Linux Files and Directories</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_redirection/">Memo | Redirection</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_see_the_world_through_shell/">Memo | See the World through Shell</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_permission_progress_env/">Memo | Permission, Progress and Shell Environment</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_others/">Memo | Olds and Ends</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_package_device/">Memo | Package and Device</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_tmux/">Memo | Tmux</a></li>  <li class="file"><a href="/jottings/languages/shell/shell/"></a></li>  </ul> 
                     </li> 
                      </ul> 
                     </li> 
@@ -440,7 +442,56 @@
 <li>信息产业部 CHINAGBN：中国金桥信息网</li>
 <li>教育部     CERNET：中国教育和科研计算机网，国家公用经济信息通信网</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">移动		铁通    电信   联通(CDMA)	卫通		联通(GSM)		网通</span><br><span class="line"> |		  |       |        |      / \        |           |</span><br><span class="line">  \      /         \       |     /   \        \         /</span><br><span class="line">    \   /           \      |    /    |          \      /</span><br><span class="line">     移动                  电信     航天科技         联通</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">移动		铁通    电信   联通(CDMA)	卫通		联通(GSM)		网通</span><br><span class="line"> |		  |       |        |      / \        |           |</span><br><span class="line">  \      /         \       |     /   \        \         /</span><br><span class="line">    \   /           \      |    /    |          \      /</span><br><span class="line">     移动                  电信     航天科技         联通</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>SDN是典型的网络技术，NFV是典型的计算技术；SDN主要应用于承载网，NFV主要应用于核心网和接入网；SDN是转发与控制的解耦，NFV是软件与硬件的解耦。</p>
+<ol>
+<li><p>NFV，全称Network Function Virtualization，网络功能虚拟化。所谓的网络功能，是指网络设备的功能；而虚拟化，是云计算的核心技术。</p>
+<p>从前的移动通信网络，尤其是核心网，是由很多专用硬件设备组成的，在专用设备运行对应的软件服务，保证功能实现。但是在5G核心网中，已经没有任何专用硬件，完全采用X86通用服务器，软件服务运行在虚拟机和容器上。</p>
+<p>这就是采用了NFV技术，将通信设备网元云化，实现软件和硬件的解耦，运行商不需要再购买专用硬件设备，减少了硬件资金的投入。</p>
+<p>另外，NFV还具备自动部署、弹性伸缩、故障隔离和自愈性高等优点，可以大幅提升网络运维效率、降低故障风险和能耗。</p>
+</li>
+<li><p>SDN，全称是Software Defined Networking，软件定义网络。</p>
+<p>它的核心思想就是将控制平面与转发平面解耦，引入网络可编程能力，来提升系统灵活性。</p>
+<p>控制功能全部集中到控制器中，路由器交换机只负责按照Flowtable转发即可。承载网引入了SDN技术，路由器只转发，SDN控制器建立在云平台上，向上层用户提供接口服务。</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">SDN</th>
+<th align="center">NFV</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">目的</td>
+<td align="center">转发和控制分离，控制面集中，网络可编程</td>
+<td align="center">将网络功能从原来的专用服务器转移到通用设备</td>
+</tr>
+<tr>
+<td align="center">针对场景</td>
+<td align="center">数据中心、园区网、运营商网络</td>
+<td align="center">运营商网络</td>
+</tr>
+<tr>
+<td align="center">针对设备</td>
+<td align="center">商用交换机等数通设备</td>
+<td align="center">专用服务器</td>
+</tr>
+<tr>
+<td align="center">ISO层级</td>
+<td align="center">2-3层</td>
+<td align="center">4-7层</td>
+</tr>
+</tbody></table>
+<img src="./tbr_net_info/net_type.png" style="zoom:60%">
+
+<ul>
+<li>接入网（接入层）：无线接入、有线接入</li>
+<li>传输网（骨干网）：主要为OTN（光传输网络）</li>
+</ul>
+</li>
 </ol>
 
             </div>
@@ -490,7 +541,7 @@
         <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            stu-yue &copy; 2023 
+            stu-yue &copy; 2024 
             <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
             <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a target="_blank" rel="noopener" href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
             

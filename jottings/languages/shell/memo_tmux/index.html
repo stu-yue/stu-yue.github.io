@@ -16,15 +16,15 @@
 <meta property="og:site_name" content="Yue&#39;s Jotter">
 <meta property="og:description" content="What is tmux? A typical use of the command line is to open a terminal window (session), whose important feature is that window is connected to the process started in it (window closed, session ends, v">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://stu-yue.github.io/jottings/languages/shell/memo_tmux/tmux/tmux_basic.png">
+<meta property="og:image" content="https://stu-yue.github.io/jottings/languages/shell/memo_tmux/memo_tmux/tmux_basic.png">
 <meta property="og:image" content="https://stu-yue.github.io/jottings/languages/shell/memo_tmux/tmux_basic.png">
 <meta property="article:published_time" content="2023-10-04T07:56:53.000Z">
-<meta property="article:modified_time" content="2023-10-10T11:55:35.428Z">
+<meta property="article:modified_time" content="2024-01-06T15:10:12.480Z">
 <meta property="article:author" content="stu-yue">
 <meta property="article:tag" content="shell">
 <meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://stu-yue.github.io/jottings/languages/shell/memo_tmux/tmux/tmux_basic.png">
+<meta name="twitter:image" content="https://stu-yue.github.io/jottings/languages/shell/memo_tmux/memo_tmux/tmux_basic.png">
     
 
     
@@ -211,7 +211,7 @@
                             &nbsp;
                             shell
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/languages/shell/memo_exploring_os/">Memo | Exploring Linux Files and Directories</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_redirection/">Memo | Redirection</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_see_the_world_through_shell/">Memo | See the World through Shell</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_permission_progress_env/">Memo | Permission, Progress and Shell Environment</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_others/">Memo | Olds and Ends</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_package_device/">Memo | Package and Device</a></li>  <li class="file active"><a href="/jottings/languages/shell/memo_tmux/">Memo | Tmux</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/languages/shell/memo_exploring_os/">Memo | Exploring Linux Files and Directories</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_redirection/">Memo | Redirection</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_see_the_world_through_shell/">Memo | See the World through Shell</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_permission_progress_env/">Memo | Permission, Progress and Shell Environment</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_others/">Memo | Olds and Ends</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_package_device/">Memo | Package and Device</a></li>  <li class="file active"><a href="/jottings/languages/shell/memo_tmux/">Memo | Tmux</a></li>  <li class="file"><a href="/jottings/languages/shell/shell/"></a></li>  </ul> 
                     </li> 
                      </ul> 
                     </li> 
@@ -395,7 +395,7 @@
 <ul>
 <li>session:</li>
 </ul>
-<img src="./tmux/tmux_basic.png" style="zoom:50%">
+<img src="./memo_tmux/tmux_basic.png" style="zoom:50%">
 
 <img src="./tmux_basic.png" style="zoom:50%"></li>
 </ul>
@@ -407,6 +407,7 @@
 </ul>
 <h4 id="Session-Management"><a href="#Session-Management" class="headerlink" title="Session Management"></a>Session Management</h4><ul>
 <li><p>New a session: <code>tmux new -s &lt;session-name&gt;</code>; </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux new -s sessionName -n window</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Split sessions: <code>tmux detach/Ctrl+b d</code>, after the command is executed, the current Tmux window exits, but the session and the processes inside it still run in the background;</p>
 </li>
@@ -424,7 +425,8 @@
 <li><p>Shortcuts: </p>
 <ul>
 <li><code>Ctrl+b</code>d: Split current session;</li>
-<li><code>Ctrl+b s</code> list all session;</li>
+<li><strong><code>Ctrl+b s</code> list all session;</strong></li>
+<li><strong><code>Ctrl+b w</code> list all windows;</strong></li>
 <li><code>Ctrl+b $</code>: rename current session;</li>
 </ul>
 </li>
@@ -450,7 +452,10 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">当前窗格上移</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">tmux swap-pane -U</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">当前窗格下移</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">tmux swap-pane -D</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Shortcuts in pane operations:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+b %				：划分左右两个窗格。</span><br><span class="line">Ctrl+b &quot;				：划分上下两个窗格。</span><br><span class="line">Ctrl+b &lt;arrow key&gt;		：光标切换到其他窗格。&lt;arrow key&gt;是指向要切换到的窗格的方向键，比如切换到下方窗格，就按方向键↓。</span><br><span class="line">Ctrl+b ;				：光标切换到上一个窗格。</span><br><span class="line">Ctrl+b o				：光标切换到下一个窗格。</span><br><span class="line">Ctrl+b &#123;				：当前窗格与上一个窗格交换位置。</span><br><span class="line">Ctrl+b &#125;				：当前窗格与下一个窗格交换位置。</span><br><span class="line">Ctrl+b Ctrl+o			：所有窗格向前移动一个位置，第一个窗格变成最后一个窗格。</span><br><span class="line">Ctrl+b Alt+o			：所有窗格向后移动一个位置，最后一个窗格变成第一个窗格。</span><br><span class="line">Ctrl+b x				：关闭当前窗格。</span><br><span class="line">Ctrl+b !				：将当前窗格拆分为一个独立窗口。</span><br><span class="line">Ctrl+b z				：当前窗格全屏显示，再使用一次会变回原来大小。</span><br><span class="line">Ctrl+b Ctrl+&lt;arrow key&gt;	：按箭头方向调整窗格大小。</span><br><span class="line">Ctrl+b q				：显示窗格编号。</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+b %				：划分左右两个窗格。</span><br><span class="line">Ctrl+b &quot;				：划分上下两个窗格。</span><br><span class="line">Ctrl+b &lt;arrow key&gt;		：光标切换到其他窗格。&lt;arrow key&gt;是指向要切换到的窗格的方向键，比如切换到下方窗格，就按方向键↓。</span><br><span class="line">Ctrl+b ;				：光标切换到上一个窗格。</span><br><span class="line">Ctrl+b o				：光标切换到下一个窗格。</span><br><span class="line">Ctrl+b &#123;				：当前窗格与上一个窗格交换位置。</span><br><span class="line">Ctrl+b &#125;				：当前窗格与下一个窗格交换位置。</span><br><span class="line">Ctrl+b Ctrl+o			：所有窗格向前移动一个位置，第一个窗格变成最后一个窗格。</span><br><span class="line">Ctrl+b Alt+o			：所有窗格向后移动一个位置，最后一个窗格变成第一个窗格。</span><br><span class="line">Ctrl+b x				：关闭当前窗格。</span><br><span class="line">Ctrl+b !				：将当前窗格拆分为一个独立窗口。</span><br><span class="line">Ctrl+b z				：当前窗格全屏显示，再使用一次会变回原来大小。</span><br><span class="line">Ctrl+b Ctrl+&lt;arrow key&gt;	：按箭头方向调整窗格大小。</span><br><span class="line">Ctrl+b q				：显示窗格编号。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Close window&#x2F;pane</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exit</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h4 id="Window-Operation"><a href="#Window-Operation" class="headerlink" title="Window Operation"></a>Window Operation</h4><ul>
 <li><p><code>tmux new-window -n &lt;window-name&gt;</code>: new a window;</p>
@@ -462,7 +467,7 @@
 <li><p>Shortcuts in window operation:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+b c：创建一个新窗口，状态栏会显示多个窗口的信息。</span><br><span class="line">Ctrl+b p：切换到上一个窗口（按照状态栏上的顺序）。</span><br><span class="line">Ctrl+b n：切换到下一个窗口。</span><br><span class="line">Ctrl+b &lt;number&gt;：切换到指定编号的窗口，其中的&lt;number&gt;是状态栏上的窗口编号。</span><br><span class="line">Ctrl+b w：从列表中选择窗口。</span><br><span class="line">Ctrl+b ,：窗口重命名。</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h4 id="Other-Commands"><a href="#Other-Commands" class="headerlink" title="Other Commands"></a>Other Commands</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">列出所有快捷键，及其对应的 Tmux 命令</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">tmux list-keys</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">列出所有 Tmux 命令及其参数</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">tmux list-commands</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">列出当前所有 Tmux 会话的信息</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">tmux info</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">重新加载当前的 Tmux 配置</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">tmux source-file ~/.tmux.conf</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ctrl+b, :  //按完前缀ctrl+B后，再按分号：进入命令行模式</span><br><span class="line">set -g mouse on //命令行中输入这句命令，回车就行了</span><br></pre></td></tr></table></figure>
+<h4 id="Other-Commands"><a href="#Other-Commands" class="headerlink" title="Other Commands"></a>Other Commands</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">列出所有快捷键，及其对应的 Tmux 命令</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">tmux list-keys</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">列出所有 Tmux 命令及其参数</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">tmux list-commands</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">列出当前所有 Tmux 会话的信息</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">tmux info</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">常用快捷键</span></span><br><span class="line">Ctrl+b s	列出所有sessions信息</span><br><span class="line">Ctrl+b w</span><br><span class="line">Ctrl+b o	切换窗格</span><br><span class="line">Ctrl+b n	切换窗口</span><br><span class="line">Ctrl+b d	分离session</span><br><span class="line"></span><br><span class="line">tmux new [-t xx [-n xx]]</span><br><span class="line">tmux new-window</span><br><span class="line">tmux split-window [-h]</span><br><span class="line">tmux ls</span><br><span class="line">tmux attach -t xx</span><br><span class="line">tmux detach</span><br><span class="line">exit</span><br><span class="line"></span><br><span class="line">打开鼠标模式</span><br><span class="line">tmux set mouse on</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">重新加载当前的 Tmux 配置</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">tmux source-file ~/.tmux.conf</span></span><br><span class="line"></span><br><span class="line">ctrl+b, :  //按完前缀ctrl+B后，再按分号：进入命令行模式</span><br><span class="line">set -g mouse on //命令行中输入这句命令，回车就行了</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">重命名</span></span><br><span class="line">tmux rename-session -t id &lt;new&gt;		-t (target)</span><br><span class="line">tmux rename-window -t id &lt;new&gt;</span><br><span class="line"></span><br><span class="line">tmux resize-pane -U/D/L/R 10</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">选中复制</span></span><br><span class="line">shift + 左键选中</span><br></pre></td></tr></table></figure>
 
 
             </div>
@@ -512,7 +517,7 @@
         <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            stu-yue &copy; 2023 
+            stu-yue &copy; 2024 
             <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
             <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a target="_blank" rel="noopener" href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
             

@@ -17,7 +17,7 @@
 <meta property="og:description" content="In this post, there’re other commands we should be familiar with:  echo: To display a line text.  -e (explain the escape sequences)   clear:   history: To display the history list content.  list histo">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-08-27T07:56:53.000Z">
-<meta property="article:modified_time" content="2023-08-31T13:24:31.847Z">
+<meta property="article:modified_time" content="2023-11-08T05:38:14.844Z">
 <meta property="article:author" content="stu-yue">
 <meta property="article:tag" content="shell">
 <meta property="article:tag" content="linux">
@@ -208,7 +208,7 @@
                             &nbsp;
                             shell
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/languages/shell/memo_exploring_os/">Memo | Exploring Linux Files and Directories</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_redirection/">Memo | Redirection</a></li>  <li class="file active"><a href="/jottings/languages/shell/memo_see_the_world_through_shell/">Memo | See the World through Shell</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_permission_progress_env/">Memo | Permission, Progress and Shell Environment</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_others/">Memo | Olds and Ends</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_package_device/">Memo | Package and Device</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_tmux/">Memo | Tmux</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/languages/shell/memo_exploring_os/">Memo | Exploring Linux Files and Directories</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_redirection/">Memo | Redirection</a></li>  <li class="file active"><a href="/jottings/languages/shell/memo_see_the_world_through_shell/">Memo | See the World through Shell</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_permission_progress_env/">Memo | Permission, Progress and Shell Environment</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_others/">Memo | Olds and Ends</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_package_device/">Memo | Package and Device</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_tmux/">Memo | Tmux</a></li>  <li class="file"><a href="/jottings/languages/shell/shell/"></a></li>  </ul> 
                     </li> 
                      </ul> 
                     </li> 
@@ -465,6 +465,34 @@
 
 <p>When you use the form $’abc’ in the Shell, <strong>the Shell extends the string and replaces the special characters with the corresponding escape sequence</strong>.</p>
 </blockquote>
+<h4 id="Supplement"><a href="#Supplement" class="headerlink" title="Supplement"></a>Supplement</h4><ol>
+<li><p><code>$()</code>仅在Bash Shell中有效，反引号可在多种Shell中使用；它俩作用都是执行命令</p>
+</li>
+<li><p><code>$()</code>是新用法，``是老用法；<code>$()</code>支持嵌套——如<code>$(wc -l $(ls | sed -n &#39;1p&#39;))</code>;</p>
+</li>
+<li><p>单引号（’）所见即所得，直接显示单引号里的内容。即单引号里的任何字符都会原样输出，单引号字符串中的变量是无效的；</p>
+</li>
+<li><p>双引号（“）先把变量解析之后，再输出；双引号括起来的字符中（$，\，`)，<strong>主要是区分空格</strong></p>
+<ul>
+<li><p><code>$</code> 代表引用变量的值；</p>
+</li>
+<li><p><code>\</code> 是转义字符；</p>
+</li>
+<li><p>`   代表引用命令；</p>
+</li>
+<li><p><code>echo -e</code>可以识别双引号中的转义字符；</p>
+</li>
+</ul>
+</li>
+<li><p>反引号用于命令替换，即先执行反引号中的语句，再把结果加入到原命令中；</p>
+</li>
+<li><p><code>$&#123;a&#125;</code>和<code>$a</code>一样，数组则需要<code>$&#123;array[0]&#125;</code>；</p>
+</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39852676/article/details/90228973">https://blog.csdn.net/qq_39852676/article/details/90228973</a></p>
+<h4 id="Vim"><a href="#Vim" class="headerlink" title="Vim"></a>Vim</h4><h5 id="1-替换字符串"><a href="#1-替换字符串" class="headerlink" title="1 替换字符串"></a>1 替换字符串</h5><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">:[range]s/&#123;pattern&#125;/&#123;string&#125;/[flags] [count]</span><br><span class="line"></span><br><span class="line">range:</span><br><span class="line">	.,<span class="variable">$s</span>/foo/bar/   .表示当前行</span><br><span class="line">	3,10s/foo/bar/	3-10行</span><br><span class="line">	%s/foo/bar/		整个文本</span><br><span class="line">	</span><br><span class="line">flags:</span><br><span class="line">	i:忽略大小写</span><br><span class="line">	g:出现的所有模式</span><br><span class="line">	c:确认每次替换</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2015348">https://cloud.tencent.com/developer/article/2015348</a></p>
 
             </div>
         
@@ -513,7 +541,7 @@
         <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            stu-yue &copy; 2023 
+            stu-yue &copy; 2024 
             <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
             <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a target="_blank" rel="noopener" href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
             

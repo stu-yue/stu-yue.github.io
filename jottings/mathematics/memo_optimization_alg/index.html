@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://stu-yue.github.io/jottings/mathematics/memo_optimization_alg/memo_optimization_alg/overview.png">
 <meta property="og:image" content="https://stu-yue.github.io/jottings/mathematics/memo_optimization_alg/overview.png">
 <meta property="article:published_time" content="2023-08-05T14:56:53.000Z">
-<meta property="article:modified_time" content="2023-08-27T07:48:39.542Z">
+<meta property="article:modified_time" content="2023-11-13T10:46:27.185Z">
 <meta property="article:author" content="stu-yue">
 <meta property="article:tag" content="optimization">
 <meta property="article:tag" content="ml">
@@ -211,7 +211,7 @@
                             &nbsp;
                             shell
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/languages/shell/memo_exploring_os/">Memo | Exploring Linux Files and Directories</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_redirection/">Memo | Redirection</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_see_the_world_through_shell/">Memo | See the World through Shell</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_permission_progress_env/">Memo | Permission, Progress and Shell Environment</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_others/">Memo | Olds and Ends</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_package_device/">Memo | Package and Device</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_tmux/">Memo | Tmux</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/languages/shell/memo_exploring_os/">Memo | Exploring Linux Files and Directories</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_redirection/">Memo | Redirection</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_see_the_world_through_shell/">Memo | See the World through Shell</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_permission_progress_env/">Memo | Permission, Progress and Shell Environment</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_others/">Memo | Olds and Ends</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_package_device/">Memo | Package and Device</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_tmux/">Memo | Tmux</a></li>  <li class="file"><a href="/jottings/languages/shell/shell/"></a></li>  </ul> 
                     </li> 
                      </ul> 
                     </li> 
@@ -385,31 +385,127 @@
 </blockquote>
 <p>For machine learning algorithms with diverse forms and characteristics, we have various optimization algorithms suitable for optimizing their objective functions. Apart from a few problems that can be solved using <strong>Brute Force Search</strong> to obtain the optimal solution, we can categorize the optimization algorithms used in machine learning into two types: </p>
 <ul>
-<li><strong>Analytical Solutions</strong>: <em><strong>These algorithms aim to find the optimal solution to the objective function by solving mathematical equations or performing algebraic manipulations. They often involve setting derivatives or gradients to zero and solving the resulting equations</strong>.</em> Analytical solutions are typically used for linear regression, logistic regression, and certain types of optimization problems with closed-form solutions.</li>
-<li><strong>Numerical Optimization</strong>: <em><strong>These algorithms iteratively search for the optimal solution by evaluating the objective function at different points in the search space. They do not rely on explicit mathematical equations or derivatives</strong></em>. Numerical optimization methods include gradient-based algorithms like gradient descent and its variants, Newton’s method, stochastic gradient descent, and quasi-Newton methods. <ul>
-<li><strong>Global Optimization Methods:</strong> <ul>
+<li><p><strong>Analytical Solutions</strong>: <em><strong>These algorithms aim to find the optimal solution to the objective function by solving mathematical equations or performing algebraic manipulations. They often involve setting derivatives or gradients to zero and solving the resulting equations</strong>.</em> Analytical solutions are typically used for linear regression, logistic regression, and certain types of optimization problems with closed-form solutions.</p>
+</li>
+<li><p><strong>Numerical Optimization</strong>: <em><strong>These algorithms iteratively search for the optimal solution by evaluating the objective function at different points in the search space. They do not rely on explicit mathematical equations or derivatives</strong></em>. Numerical optimization methods include gradient-based algorithms like gradient descent and its variants, Newton’s method, stochastic gradient descent, and quasi-Newton methods. </p>
+<ul>
+<li><p><strong>Global Optimization Methods:</strong> </p>
+<ul>
 <li><strong>Heuristic Algorithm, Simulated Annealing, Particle Swarm Optimization</strong>, etc.</li>
 </ul>
 </li>
-<li><strong>Local Optimization Methods:</strong> <ul>
-<li><strong>Gradient Based:</strong> <ul>
-<li><strong>First Order Derivative:</strong> <ul>
-<li><strong>Gradient Descent:</strong></li>
+<li><p><strong>Local Optimization Methods:</strong> </p>
+<ul>
+<li><p><strong>Gradient Based:</strong> </p>
+<ul>
+<li><p><strong>First Order Derivative:</strong> (Jacobian)</p>
+<ul>
+<li><p><strong>Gradient Descent:</strong> $\theta &#x3D; \theta - \eta \cdot\nabla J(\theta)$</p>
+<ul>
+<li>whereas Standard Gradient Descent will only converge to the minimum of the basin as mentioned above.</li>
 </ul>
 </li>
-<li><strong>Second Order Derivative:</strong> <ul>
+<li><p><strong>SGD</strong>: $\theta &#x3D; \theta - \eta \cdot \nabla J(\theta;x_i;y_i)$;</p>
+<ul>
+<li>frequent updates, parameters updates have high variance and causes the Loss function to fluctuate to different intensities;</li>
+<li>helps us <strong>discover new and possibly better local minima</strong>;</li>
+<li>it ultimately <strong>complicates the convergence to the exact minimum</strong> and will <strong>keep overshooting</strong> due to the frequent fluctuations;</li>
+</ul>
+</li>
+<li><p><strong>Mini-Batch GD</strong>: ultimately lead us to a much better and stable convergence;</p>
+<ul>
+<li>make use of highly optimized matrix optimizations common to state-of-the-art deep learning libraries that make computing the gradient w.r.t. a mini-batch very efficient.</li>
+</ul>
+</li>
+<li><p><strong>Challenges in GD</strong>: </p>
+<ol>
+<li>Choosing a proper learning rate can be difficult;</li>
+<li>Additionally, the same learning rate applies to all parameter updates. If our data is sparse and our features have very different frequencies, we might not want to update all of them to the same extent, but perform a larger update for rarely occurring features.</li>
+<li>avoiding getting trapped in their numerous <strong>sub-optimal local minima</strong>; Actually, Difficulty arises in fact not from local minima but from *<strong>saddle points*</strong>, i.e. <em>points where one dimension slopes up and another slopes down</em>. These saddle points are usually surrounded by a plateau of the same error, which makes it notoriously hard for SGD to escape, as the gradient is close to zero in all dimensions.</li>
+</ol>
+</li>
+<li><p><strong>Momentum</strong>: $V(t) &#x3D; \gamma\cdot V(t-1)+\eta \cdot\nabla J(\theta)$, then $\theta &#x3D; \theta - V(t)$;</p>
+<ul>
+<li>leads to faster and stable convergence; reduced oscillations</li>
+<li>Problem: What actually happens is that as we reach the minima i.e the lowest point on the curve ,the <strong>momentum</strong> is pretty high and it doesn’t knows to *<strong>slow*</strong> <em>down</em> at that point due to the high momentum <em>which could cause it to miss the minima entirely and continue movie up.</em></li>
+</ul>
+</li>
+<li><p><strong>Nesterov accelerated gradient (NAG)</strong>: $V(t) &#x3D; \gamma\cdot V(t-1)+\eta\cdot\nabla J(\theta - \gamma\cdot V(t-1))$, then $\theta &#x3D; \theta - V(t)$；</p>
+<ul>
+<li>In the method he suggested we first make <strong>a big jump based on out previous momentum</strong> then calculate the Gradient and <strong>then make an correction which results in an parameter update</strong>. Now this anticipatory update prevents us to go too fast and not miss the minima and makes it more responsive to changes.</li>
+<li>We know that we will use our momentum term <strong>γV(t−1)</strong> to move the parameters <strong>θ</strong>. Computing <strong>θ−γV(t−1)</strong> thus gives us an <em>approximation of the next position of the parameters</em> <em>which gives us a</em> <em>rough idea where our parameters are going to be</em>. <strong>We can now effectively look ahead by calculating the gradient not w.r.t. to our current parameters θ but w.r.t. the approximate future position of our parameters</strong></li>
+</ul>
+</li>
+<li><p><strong>AdaGrad</strong>: </p>
+<ul>
+<li>$\theta_{t+1,i} &#x3D; \theta_{t,i}-\frac{\eta}{\sqrt{G_{t,i}+\epsilon}}\cdot g_{t,i}$,  $G_{t,i} &#x3D; G_{t,i}+\nabla_{\theta_{t,i}}J(\theta)$;</li>
+<li>allows the learning Rate <strong>$-\eta$</strong> to <strong>adapt</strong> based on the parameters. So it makes big updates for infrequent parameters and small updates for frequent parameters. For this reason, it is well-suited for dealing with sparse data.</li>
+<li>At the beginning, <strong>AdaGrad</strong> has an incentive effect on convergence, and then slowly becomes penalty convergence, and the updating speed is getting slower and slower</li>
+<li>Problem:  its learning rate $-\eta$ is always Decreasing and decaying.<ul>
+<li>Due to: the accumulation of each squared Gradients in the denominator , since every added term is positive. This in turn causes the <em>learning rate to shrink and eventually become so small,</em> <strong>that the model just stops learning entirely and stops acquiring new additional knowledge.</strong></li>
+<li>This problem of <strong>Decaying learning Rate</strong> is Rectified in another algorithm called <strong>AdaDelta.</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>AdaDelta</strong>: </p>
+<ul>
+<li>$g(t)$ is gradient of mini-batch;</li>
+<li><strong>RMSprop</strong>: <ul>
+<li>$E[g^2]<em>t &#x3D; \gamma E[g^2]</em>{t-1}+(1-\gamma)g^2_t$, </li>
+<li>$\Delta\theta_t &#x3D; -\frac{\eta}{\sqrt{E[g^2]_t+\epsilon}}\odot g_t &#x3D; -\frac{\eta}{RMS[g]_t}g_t$,</li>
+<li>$\theta_{t+1} &#x3D; \theta_t + \Delta\theta_t$</li>
+</ul>
+</li>
+<li>The authors note that the <strong>units in this update (as well as in SGD, Momentum, or Adagrad) do not match</strong>, i.e. the update should have the same hypothetical units as the parameter. To realize this, they first define another exponentially decaying average, this time not of squared gradients but of squared parameter updates;</li>
+<li>Thus, they use $RMS[\Delta\theta]_{t-1}$ instead of hyperparameter $\eta$ ;<ul>
+<li>$RMS[\Delta\theta]<em>t &#x3D; \sqrt{E[\Delta\theta^2]</em>{t-1}+\epsilon}$</li>
+<li>$E[\Delta\theta^2]<em>t &#x3D; \gamma E[\Delta\theta^2]</em>{t-1}+(1-\gamma)\Delta\theta^2_t$</li>
+</ul>
+</li>
+<li>Instead of accumulating all previous squared gradients, *<strong>AdaDelta*</strong> limits the window of accumulated past gradients to some fixed size <strong>w</strong>.</li>
+<li>Another thing with AdaDelta is that we don’t even need to set a default learning rate.</li>
+</ul>
+<blockquote>
+<p><strong>What improvements we have done so far——</strong></p>
+<ol>
+<li>We are calculating <em>different learning Rates</em> for each parameter.</li>
+<li>We are also calculating <em>momentum</em>.</li>
+<li>Preventing <strong>Vanishing(decaying) learning Rates</strong>.</li>
+</ol>
+<p><em>Since we are calculating individual</em> <strong>learning rates</strong> <em>for each parameter , why not calculate individual</em> *<strong>momentum*</strong> <em>changes for each parameter and store them separately. This is where a new modified technique and improvement comes into play called as</em> *<strong>Adam.*</strong></p>
+</blockquote>
+</li>
+<li><p><strong>Adam</strong>: Adaptive Moment Estimation (Adam) is another method that computes adaptive learning rates for each parameter. In addition to storing an exponentially decaying average of past squared gradients like <strong>AdaDelta</strong> ,<strong>Adam</strong> *also keeps an exponentially decaying average of past gradients <strong>M(t)</strong>, similar to momentum*:</p>
+<ul>
+<li>$m_t &#x3D; \beta_1m_{t-1}+(1-\beta_1)g_t, \quad v_t &#x3D; \beta_2v_{t-1}+(1-\beta_2)g^2_t$<ul>
+<li>$m_t &#x3D; (1-\beta_1)\sum_{i&#x3D;1}^{t}\beta^{t-i}_{1}g_i$, </li>
+<li>sum all weights of $g_i$ is $(1-\beta_1)\sum_{i&#x3D;1}^{t}\beta_1^{t-i} &#x3D; 1-\beta^t_1$</li>
+</ul>
+</li>
+<li>To rectify the bias to 1, divide $(1-\beta_1^t)$ respectively,   $\hat m_t &#x3D; \frac{m_t}{1-\beta_1^t}, \quad \hat v_t &#x3D; \frac{v_t}{1-\beta_2^t}$,</li>
+<li>$\theta_{t+1} &#x3D; \theta_t - \frac{\eta}{\sqrt{\hat v_t}+\epsilon}\hat m_t$</li>
+<li>指数加权移动平均$m_t$，按元素平方的指数加权移动平均$v_t$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Second Order Derivative:</strong> (Hessian)</p>
+<ul>
 <li><strong>Newton Method:</strong></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><strong>Divide and Conquer:</strong> <ul>
+<li><p><strong>Divide and Conquer:</strong> </p>
+<ul>
 <li><strong>Coordinate Descent:</strong> </li>
 <li><strong>SMO Algorithm:</strong> </li>
 <li><strong>Staged Optimization:</strong></li>
 </ul>
 </li>
-<li><strong>Dynamic Programming:</strong></li>
+<li><p><strong>Dynamic Programming:</strong></p>
+</li>
 </ul>
 </li>
 </ul>
@@ -420,6 +516,15 @@
 
 <img src="./overview.png" style="zoom:100%">
 
+
+
+
+
+
+
+<h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h4><ol>
+<li><a target="_blank" rel="noopener" href="https://medium.com/@anishsingh20/types-of-optimization-algorithms-used-in-neural-networks-and-ways-to-optimize-gradient-95ae5d39529f">Types of Optimization Algorithms used in Neural Networks and Ways to Optimize Gradient Descent</a></li>
+</ol>
 
             </div>
         
@@ -468,7 +573,7 @@
         <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            stu-yue &copy; 2023 
+            stu-yue &copy; 2024 
             <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
             <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a target="_blank" rel="noopener" href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
             
