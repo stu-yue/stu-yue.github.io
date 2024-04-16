@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Memo | Tmux | Yue&#39;s Jotter</title>
+    
+    
+        <meta name="keywords" content="shell,linux" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="0 交互式登录 shell 和非登录 shell交互式登录 shell 和非登录 shell 是两种在 Linux 系统中使用 Shell 时的不同环境。它们有以下区别： 交互式登录 shell：  当用户通过登录界面（例如终端登录、SSH 远程登录）成功登录到系统时，系统会为用户启动一个交互式登录 shell。 交互式登录 shell 会读取系统的登录配置文件（如 &#x2F;etc&#x2F;profile 和">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Memo | Tmux">
+<meta property="og:url" content="https://stu-yue.github.io/jottings/languages/shell/memo_shell_basis/">
+<meta property="og:site_name" content="Yue&#39;s Jotter">
+<meta property="og:description" content="0 交互式登录 shell 和非登录 shell交互式登录 shell 和非登录 shell 是两种在 Linux 系统中使用 Shell 时的不同环境。它们有以下区别： 交互式登录 shell：  当用户通过登录界面（例如终端登录、SSH 远程登录）成功登录到系统时，系统会为用户启动一个交互式登录 shell。 交互式登录 shell 会读取系统的登录配置文件（如 &#x2F;etc&#x2F;profile 和">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-10-04T07:56:53.000Z">
+<meta property="article:modified_time" content="2024-04-16T08:42:32.039Z">
+<meta property="article:author" content="stu-yue">
+<meta property="article:tag" content="shell">
+<meta property="article:tag" content="linux">
+<meta name="twitter:card" content="summary">
+    
+
+    
+
+    
+        <link rel="icon" href="/css/images/logo.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Yue's Jotter" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Yue&#39;s Jotter</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">HOME</a>
+                
+                    <a class="main-nav-link" href="/archives">ARCHIVES</a>
+                
+                    <a class="main-nav-link" href="/categories">CATEGORIES</a>
+                
+                    <a class="main-nav-link" href="/tags">TAGS</a>
+                
+                    <a class="main-nav-link" href="/about">ABOUT</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">HOME</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">ARCHIVES</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">CATEGORIES</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">TAGS</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">ABOUT</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            architecture
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/architecture/summa_firmware_and_drivers/">Summa | Firmware and Drivers</a></li>  <li class="file"><a href="/jottings/architecture/summa_memory_categories/">Summa | The Majority of Memory Categories</a></li>  <li class="file"><a href="/jottings/architecture/memo_isa_and_micro_architecture/">Memo | ISA and Micro-architecture</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            languages
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            python
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/languages/python/memo_GIL_and_coroutine/">Memo | GIL and Coroutine</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            shell
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/languages/shell/memo_exploring_os/">Memo | Exploring Linux Files and Directories</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_redirection/">Memo | Redirection</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_see_the_world_through_shell/">Memo | See the World through Shell</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_permission_progress_env/">Memo | Permission, Progress and Shell Environment</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_others/">Memo | Olds and Ends</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_package_device/">Memo | Package and Device</a></li>  <li class="file active"><a href="/jottings/languages/shell/memo_shell_basis/">Memo | Tmux</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_tmux/">Memo | Tmux</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            mathematics
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/mathematics/memo_optimization_alg/">Memo | Optimization Algorithm in Machine Learning</a></li>  <li class="file"><a href="/jottings/mathematics/memo_algebra_basis/">Memo | Algebra Basis</a></li>  <li class="file"><a href="/jottings/mathematics/memo_mle_mae_bayes/">Memo | Parameter Estimation</a></li>  <li class="file"><a href="/jottings/mathematics/memo_law_of_probability/">Memo | Law of Large Number</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            networks
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/networks/memo_network_tidbits/">Summa |Networks Tidbits</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            statistics_ml
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/statistics_ml/summa_intro/">Summa | Intro of Statistical ML</a></li>  <li class="file"><a href="/jottings/statistics_ml/memo_ctc/">Memo | CTC Introduction</a></li>  <li class="file"><a href="/jottings/statistics_ml/memo_lm_and_word_vector/">Memo | LM and Word Representation</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            tidbits
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/tidbits/hot_points/">Hot Points</a></li>  <li class="file"><a href="/jottings/tidbits/tbr_compiler/">TBR_compiler</a></li>  <li class="file"><a href="/jottings/tidbits/tbr_net_info/">TBR_Net_Info</a></li>  <li class="file"><a href="/jottings/tidbits/quantization/"></a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/jottings/intro/">Welcome to Yue's Jotter</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-languages/shell/memo_shell_basis" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/languages/">languages</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/languages/shell/">shell</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/linux/" rel="tag">linux</a>, <a class="tag-link-link" href="/tags/shell/" rel="tag">shell</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/jottings/languages/shell/memo_shell_basis/">
+            <time datetime="2023-10-04T07:56:53.000Z" itemprop="datePublished">2023-10-04</time>
+        </a>
+    </div>
+
+
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/stu-yue/stu-yue.github.io/raw/main/source/_posts/languages/shell/memo_shell_basis.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/stu-yue/stu-yue.github.io/edit/main/source/_posts/languages/shell/memo_shell_basis.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/stu-yue/stu-yue.github.io/commits/main/source/_posts/languages/shell/memo_shell_basis.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Memo | Tmux
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <h2 id="0-交互式登录-shell-和非登录-shell"><a href="#0-交互式登录-shell-和非登录-shell" class="headerlink" title="0 交互式登录 shell 和非登录 shell"></a>0 交互式登录 shell 和非登录 shell</h2><p>交互式登录 shell 和非登录 shell 是两种在 Linux 系统中使用 Shell 时的不同环境。它们有以下区别：</p>
+<p>交互式登录 shell：</p>
+<ul>
+<li>当用户通过登录界面（例如终端登录、SSH 远程登录）成功登录到系统时，系统会为用户启动一个交互式登录 shell。</li>
+<li>交互式登录 shell 会读取系统的登录配置文件（如 <code>/etc/profile</code> 和 <code>~/.bash_profile</code>）来执行初始化操作，设置环境变量、加载别名和执行其他登录时需要的配置。</li>
+<li>它还会执行 <code>~/.bashrc</code> 文件，以便加载用户自定义的 Shell 配置。</li>
+<li>用户在交互式登录 shell 中执行的命令会被记录到历史记录文件（如 <code>~/.bash_history</code>）中。</li>
+</ul>
+<p>非登录 shell：</p>
+<ul>
+<li>当用户已经登录到系统后，在当前 shell 中打开一个新的终端或运行脚本时，会启动一个非登录 shell。</li>
+<li>非登录 shell 不会读取登录配置文件（如 <code>/etc/profile</code> 和 <code>~/.bash_profile</code>），而是读取 <code>~/.bashrc</code> 文件进行初始化。</li>
+<li>它不会执行登录时需要的配置，只会加载用户自定义的 Shell 配置。</li>
+<li>用户在非登录 shell 中执行的命令不会被记录到历史记录文件中，除非用户在 <code>~/.bashrc</code> 中显式地指定。</li>
+</ul>
+<p>大部分Linux发行版用<code>~/.profile</code>替换<code>~/.bash_profile</code>，<code>~/.profile</code>被所有shell读取，<code>~\.bash_profile</code>仅被Bash读取；</p>
+<p><code>.profile</code>在登录shell启动时，被读取和执行；<code>.bashrc</code>在非登录shell启动时执行；</p>
+<blockquote>
+<p><code>profile</code>中会读取各自级别的<code>bashrc</code>；</p>
+<p>Shell启动时读取配置文件的顺序：</p>
+<ol>
+<li><code>/etc/profile</code></li>
+<li><code>/etc/profile.d/*.sh</code></li>
+<li><code>/etc/bash.bashrc</code></li>
+<li><code>~/.profile</code> 或 <code>~/.bash_login</code> 或 <code>~/.bash_profile</code>：个性化环境变量设置</li>
+<li><code>~/.bashrc</code> ：别名、函数和其他个性化设置；</li>
+</ol>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">系统级</th>
+<th align="center">用户级</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">登录shell</td>
+<td align="center">&#x2F;etc&#x2F;profile</td>
+<td align="center">~&#x2F;.profile  | ~&#x2F;.bash_profile</td>
+</tr>
+<tr>
+<td align="center">非登录shell</td>
+<td align="center">&#x2F;etc&#x2F;bash.bashrc</td>
+<td align="center">~&#x2F;.bashrc</td>
+</tr>
+</tbody></table>
+<h5 id="登录式-shell-和非登录式-shell-的运行形式如下："><a href="#登录式-shell-和非登录式-shell-的运行形式如下：" class="headerlink" title="登录式 shell 和非登录式 shell 的运行形式如下："></a>登录式 shell 和非登录式 shell 的运行形式如下：</h5><ul>
+<li>登录式 shell：<ul>
+<li>正常通过某终端登录的 shell。</li>
+<li>su - username。</li>
+<li>su -l username。</li>
+</ul>
+</li>
+<li>非登录式 shell：<ul>
+<li>su username。</li>
+<li><strong>图形终端</strong>下打开的命令窗口。</li>
+<li>自动执行的 shell 脚本。</li>
+</ul>
+</li>
+</ul>
+<p>**<code>echo $0</code>**：<code>-bash</code>登录shell；<code>bash</code>非登录；</p>
+<h2 id="1-结合Linux文件描述符理解重定向"><a href="#1-结合Linux文件描述符理解重定向" class="headerlink" title="1 结合Linux文件描述符理解重定向"></a>1 结合Linux文件描述符理解重定向</h2><blockquote>
+<p><strong>输入输出重定向就是通过修改文件指针实现的</strong>。发生重定向时，文件描述符并没有改变，改变的是文件描述符对应的文件指针。</p>
+</blockquote>
+<p><strong>Shell对文件描述符的操作</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">分类</th>
+<th align="center">用法</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">输出</td>
+<td align="center">n&gt;filename</td>
+<td align="center">以输出的方式打开文件 filename，并绑定到文件描述符 n。n 可以不写，默认为 1，也即标准输出文件。</td>
+</tr>
+<tr>
+<td align="center">输出</td>
+<td align="center">n&gt;&amp;m</td>
+<td align="center">用文件描述符 m 修改文件描述符 n，或者说用文件描述符 m 的内容覆盖文件描述符 n，结果就是 n 和 m 都代表了同一个文件，因为 n 和 m 的文件指针都指向了同一个文件。因为使用的是<code>&gt;</code>，所以 n 和 m 只能用作命令的输出文件。n 可以不写，默认为 1。</td>
+</tr>
+<tr>
+<td align="center">输出</td>
+<td align="center">n&gt;&amp;-</td>
+<td align="center">关闭文件描述符 n 及其代表的文件。n 可以不写，默认为 1。在shell中执行<code>&gt;&amp;-</code>命令会关闭文件描述符。具体来说，它会关闭标准输出（文件描述符1）和标准错误输出（文件描述符2），将它们都重定向到空设备（&#x2F;dev&#x2F;null）。</td>
+</tr>
+<tr>
+<td align="center">输出</td>
+<td align="center">&amp;&gt;filename</td>
+<td align="center">这个操作可以用于临时禁用命令的输出，以防止输出被显示或记录。将正确输出结果和错误信息全部重定向到 filename。</td>
+</tr>
+<tr>
+<td align="center">输入</td>
+<td align="center">n&lt;filename</td>
+<td align="center">以输入的方式打开文件 filename，并绑定到文件描述符 n。n 可以不写，默认为 0，也即标准输入文件。</td>
+</tr>
+<tr>
+<td align="center">输入</td>
+<td align="center">n&lt;&amp;m</td>
+<td align="center">类似于 n&gt;&amp;m，但是因为使用的是<code>&lt;</code>，所以 n 和 m 只能用作命令的输入文件。n 可以不写，默认为 0。</td>
+</tr>
+<tr>
+<td align="center">输入</td>
+<td align="center">n&lt;&amp;-</td>
+<td align="center">关闭文件描述符 n 及其代表的文件。n 可以不写，默认为 0。</td>
+</tr>
+<tr>
+<td align="center">输入和输出</td>
+<td align="center">n&lt;&gt;filename</td>
+<td align="center">同时以输入和输出的方式打开文件 filename，并绑定到文件描述符 n，相当于 n&gt;filename 和 n&lt;filename 的总和。。n 可以不写，默认为 0。</td>
+</tr>
+</tbody></table>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;C语言中文网&quot; 10&gt;log.txt &gt;&amp;10</span><br></pre></td></tr></table></figure>
+
+<p>先执行<code>10&gt;log.txt</code>，打开 log.txt，并给它分配文件描述符 10；接着执行<code>&gt;&amp;10</code>，用文件描述符 10 来修改文件描述符 1（对于<code>&gt;</code>，省略不写的话默认为 1），让 1 和 10 都指向 log.txt 文件，最终的结果是向 log.txt 文件中输出内容。</p>
+<p>这条语句其实等价于<code>echo &quot;C语言中文网&quot; &gt;log.txt</code>，我之所以写得这么绕，是为了让大家理解各种操作符的用法。</p>
+<p>文件描述符 10 只用了一次，我们在末尾最好将它关闭，这是一个好习惯。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;C语言中文网&quot; 10&gt;log.txt &gt;&amp;10 10&gt;&amp;-</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-管道-pipeline"><a href="#2-管道-pipeline" class="headerlink" title="2 管道(pipeline,  |  )"></a>2 管道(pipeline,  |  )</h2><p>pipeline ( | ) 是 UNIX 系统，基础且重要的观念。连结上个指令的标准输出，做为下个指令的标准输入。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">who | wc -l</span><br></pre></td></tr></table></figure>
+
+<p>善用这个观念，对精简 script 有相当的帮助。</p>
+<h2 id="3-后台工作-amp"><a href="#3-后台工作-amp" class="headerlink" title="3 后台工作(  &amp;  )"></a>3 后台工作(  &amp;  )</h2><p>单一个&amp; 符号，且放在完整指令列的最后端，即表示将该指令列放入后台中工作。</p>
+<ul>
+<li><p>nohup重定向到指定文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup ./run &gt;log 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="4-快速入门"><a href="#4-快速入门" class="headerlink" title="4 快速入门"></a>4 快速入门</h2><ul>
+<li><code>#!</code>:  Shebang line，告诉系统脚本用什么解释器执行；<ul>
+<li><code>.sh</code>作为可执行程序时，加上第一行；</li>
+</ul>
+</li>
+<li><code>sh</code> （默认Shell解释器运行）、<code>bash</code>（bash解释器执行）；</li>
+</ul>
+<h2 id="5-基本语法（变量）"><a href="#5-基本语法（变量）" class="headerlink" title="5 基本语法（变量）"></a>5 基本语法（变量）</h2><ul>
+<li><p><strong>定义变量：</strong>变量名&#x3D;变量值，等号两侧不能有空格，变量名一般习惯用大写。</p>
+</li>
+<li><p><strong>删除变量：</strong>unset 变量名 。</p>
+</li>
+<li><p><strong>声明静态变量：</strong>readonly 变量名，静态变量不能unset。</p>
+</li>
+<li><p><strong>使用变量：</strong>$变量名</p>
+</li>
+<li><p>**命令替换<code>$()</code>**：将命令返回值赋给变量；等价于反引号；</p>
+</li>
+<li><p><strong>环境变量</strong>：</p>
+<ul>
+<li>export 变量名&#x3D;变量值，将 Shell 变量输出为环境变量；</li>
+<li>source 配置文件路径，让修改后的配置信息立即生效；</li>
+<li>echo $变量名，检查环境变量是否生效；</li>
+</ul>
+</li>
+<li><p><strong>位置参数</strong>：</p>
+<ul>
+<li><code>$n</code> ：<code>$0</code> 代表命令本身、<code>$1</code>-<code>$9</code> 代表第1到9个参数，10以上参数用花括号，如 ${10}。</li>
+<li>$* ：命令行中所有参数，且把所有参数看成一个整体。</li>
+<li>$@ ：命令行中所有参数，且把每个参数区分对待（推荐）。</li>
+<li>$# ：所有参数个数。</li>
+</ul>
+<blockquote>
+<p><em><em>$</em> 和 $@，在不被双引号包围时</em>*，行为十分相似——都会将脚本的所有参数展开成一个由空格分隔的列表。在这种情况下，参数中包含的空格或特殊字符可能不会被正确处理，并可能会引起词语分割，例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// study.sh</span><br><span class="line"><span class="comment">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$@</span></span><br><span class="line"><span class="built_in">echo</span> $*</span><br><span class="line"></span><br><span class="line">// run</span><br><span class="line">./study.sh one <span class="string">&quot;two two&quot;</span> three</span><br><span class="line"></span><br><span class="line">// output</span><br><span class="line">one two two three</span><br></pre></td></tr></table></figure>
+
+<p><em><em>$</em> 和 $@，在被双引号包围时</em>*，</p>
+<p>$@ 会将每个参数作为独立且被引号包围的字符串，保持其作为单独的元素，会正确处理包含空格&#x2F;特殊字符的参数；</p>
+<p>$* 会将所有参数连成一个单独的字符串，其中的参数由空格分隔，这种方式不能保证原有参数的准确界限，尤其是参数内部包含空格时。</p>
+</blockquote>
+</li>
+<li><p><strong>预定义变量</strong></p>
+<ul>
+<li><strong>$$</strong>：当前进程的PID；</li>
+<li>**$!**：后台运行的最后一个进程的PID；</li>
+<li>**$?**：最后一次执行命令的返回状态，0为成功；</li>
+</ul>
+</li>
+<li><p><strong>运算式计算</strong></p>
+<ul>
+<li><code>$(())</code>：<code>$((2+3*2))</code></li>
+<li><code>$(expr 2 + 3)</code>：</li>
+</ul>
+</li>
+<li><p><strong>条件判断</strong></p>
+<ul>
+<li><p><code>[ condition ]</code>：前后都要有空格，非空返回0，0为true；否则为false；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> [ condition ]; <span class="keyword">then</span></span><br><span class="line">	<span class="built_in">exec</span></span><br><span class="line"><span class="keyword">elif</span> [ condition ]; <span class="keyword">then</span></span><br><span class="line">	<span class="built_in">exec</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><table>
+<thead>
+<tr>
+<th align="center">测试参数</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>str</code></td>
+<td align="center">字符串 <code>str</code> 非空</td>
+</tr>
+<tr>
+<td align="center"><code>-z str</code></td>
+<td align="center">字符串 <code>str</code> 为空</td>
+</tr>
+<tr>
+<td align="center"><code>-n str</code></td>
+<td align="center">字符串 <code>str</code> 的长度非零</td>
+</tr>
+<tr>
+<td align="center"><code>str1=str2</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>str1!=str2</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>-e file</code></td>
+<td align="center">文件 <code>file</code> 存在</td>
+</tr>
+<tr>
+<td align="center"><code>-f file</code></td>
+<td align="center">文件 <code>file</code> 存在且是一个普通文件</td>
+</tr>
+<tr>
+<td align="center"><code>-d dir</code></td>
+<td align="center">文件 <code>dir</code> 存在且是一个目录</td>
+</tr>
+<tr>
+<td align="center"><code>-r/w/x file</code></td>
+<td align="center">文件 <code>file</code> 存在且可读&#x2F;可写&#x2F;可执行</td>
+</tr>
+<tr>
+<td align="center"><code>-s file</code></td>
+<td align="center">文件 <code>file</code> 存在且文件大小不为0</td>
+</tr>
+<tr>
+<td align="center"><code>num1 -eq/ne/lt/le/ge/gt num2</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>[ ! condition ]</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>[ cond1 -a cond2]</code></td>
+<td align="center">[[ cond1 &amp;&amp; cond2]]</td>
+</tr>
+<tr>
+<td align="center"><code>[ cond1 -o cond2 ]</code></td>
+<td align="center">[[ cond1 || cond2 ]]</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+</li>
+<li><p><strong>case分支</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> <span class="variable">$var</span> <span class="keyword">in</span></span><br><span class="line">c1)</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">&quot;c1&quot;</span></span><br><span class="line">	;;</span><br><span class="line">c2)</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">&quot;c2&quot;</span></span><br><span class="line">	;;</span><br><span class="line">*)</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">&quot;default&quot;</span></span><br><span class="line">	;;</span><br><span class="line"><span class="keyword">esac</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>for循环</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> var <span class="keyword">in</span> (...); <span class="keyword">do</span></span><br><span class="line">	<span class="built_in">echo</span> <span class="variable">$var</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;1..20&#125;; <span class="keyword">do</span> <span class="keyword">if</span> [ $((i % <span class="number">2</span>)) -eq 0 ]; <span class="keyword">then</span> <span class="built_in">echo</span> <span class="variable">$i</span>; <span class="keyword">fi</span>; <span class="keyword">done</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 每隔2个数打印一次</span></span><br><span class="line"><span class="keyword">for</span> ((i=<span class="number">0</span>; i&lt;=<span class="number">10</span>; i+=<span class="number">2</span>)); <span class="keyword">do</span> <span class="built_in">echo</span> <span class="variable">$i</span>; <span class="keyword">done</span>;</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> $(<span class="built_in">seq</span> 0 2 10); <span class="keyword">do</span> <span class="built_in">echo</span> <span class="variable">$i</span>; <span class="keyword">done</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>while循环</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">i=1</span><br><span class="line"><span class="keyword">while</span> [ <span class="variable">$i</span> -le 20 ]; <span class="keyword">do</span></span><br><span class="line">	<span class="built_in">echo</span> <span class="variable">$i</span>; i=$((i + <span class="number">1</span>));</span><br><span class="line"><span class="keyword">done</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>读取控制台输入 (read)</strong></p>
+<ul>
+<li><p><code>-p</code>：指定读取值时的提示符；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">read</span> -p <span class="string">&quot;请输入一个数num=&quot;</span> NUM; <span class="built_in">echo</span> <span class="string">&quot;num=<span class="variable">$NUM</span>&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>-t</code>：指定读取值时等待秒数，如果没有指定时间内输入，不再等待；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">read</span> -t 5 -p <span class="string">&quot;请5s内输入一个数num=&quot;</span> NUM; <span class="built_in">echo</span> <span class="string">&quot;num=<span class="variable">$NUM</span>&quot;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h2 id="6-函数"><a href="#6-函数" class="headerlink" title="6 函数"></a>6 函数</h2><ul>
+<li><p><strong>系统函数</strong>：</p>
+</li>
+<li><p><strong>自定义函数</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">function_name</span></span>() &#123;</span><br><span class="line">	<span class="comment"># Your commands here</span></span><br><span class="line">	[<span class="built_in">return</span> value] </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># example</span></span><br><span class="line"><span class="function"><span class="title">check_file_exists</span></span>() &#123;</span><br><span class="line">    <span class="keyword">if</span> [ -e <span class="string">&quot;<span class="variable">$1</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;File exists.&quot;</span></span><br><span class="line">        <span class="built_in">return</span> 0</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;File does not exist.&quot;</span></span><br><span class="line">        <span class="built_in">return</span> 1</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用函数并传递文件名</span></span><br><span class="line">check_file_exists <span class="string">&quot;/path/to/your/file.txt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取函数返回值</span></span><br><span class="line">status=$?</span><br><span class="line"></span><br><span class="line"><span class="comment"># 根据返回值判断文件是否存在</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$status</span> -eq 0 ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;The check confirmed that the file exists.&quot;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;The check confirmed that the file does NOT exist.&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+
+<p>可以使用<strong>局部变量</strong>（声明和赋值应该在不同行），将位置参数赋予更有意义的名字：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">print_details</span></span>() &#123;</span><br><span class="line">    <span class="built_in">local</span> name=<span class="variable">$1</span></span><br><span class="line">    <span class="built_in">local</span> age=<span class="variable">$2</span></span><br><span class="line">    <span class="built_in">local</span> job_title=<span class="variable">$3</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;Name: <span class="variable">$name</span>&quot;</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;Age: <span class="variable">$age</span>&quot;</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;Job Title: <span class="variable">$job_title</span>&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用函数并传递参数</span></span><br><span class="line">print_details <span class="string">&quot;Alice&quot;</span> <span class="string">&quot;30&quot;</span> <span class="string">&quot;Developer&quot;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/jottings/architecture/memo_isa_and_micro_architecture/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Memo | ISA and Micro-architecture
+                
+            </div>
+        </a>
+    
+    
+        <a href="/jottings/languages/shell/memo_tmux/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Memo | Tmux</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            stu-yue &copy; 2024 
+            <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a target="_blank" rel="noopener" href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>
