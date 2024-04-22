@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://stu-yue.github.io/jottings/tools/docker/memo_usage/memo_usage/docker.png">
 <meta property="og:image" content="https://stu-yue.github.io/jottings/tools/docker/memo_usage/docker.png">
 <meta property="article:published_time" content="2023-10-04T07:56:53.000Z">
-<meta property="article:modified_time" content="2024-04-22T09:06:20.915Z">
+<meta property="article:modified_time" content="2024-04-22T10:54:09.166Z">
 <meta property="article:author" content="stu-yue">
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="docker">
@@ -559,7 +559,7 @@
 <p>此外，使用 <code>docker commit</code> 意味着所有对镜像的操作都是黑箱操作，生成的镜像也被称为 <strong>黑箱镜像</strong>，换句话说，就是除了制作镜像的人知道执行过什么命令、怎么生成的镜像，别人根本无从得知。而且，即使是这个制作镜像的人，过一段时间后也无法记清具体的操作。这种黑箱镜像的维护工作是非常痛苦的。</p>
 <p>而且，回顾之前提及的镜像所使用的分层存储的概念，除当前层外，之前的每一层都是不会发生改变的，换句话说，任何修改的结果仅仅是在当前层进行标记、添加、修改，而不会改动上一层。<strong>如果使用 <code>docker commit</code> 制作镜像，以及后期修改的话，每一次修改都会让镜像更加臃肿一次，所删除的上一层的东西并不会丢失，会一直如影随形的跟着这个镜像，即使根本无法访问到。这会让镜像更加臃肿。</strong></p>
 <h1 id="5-使用-Dockerfile-定制镜像"><a href="#5-使用-Dockerfile-定制镜像" class="headerlink" title="5 使用 Dockerfile 定制镜像"></a>5 使用 Dockerfile 定制镜像</h1><p>从刚才的 <code>docker commit</code> 的学习中，我们可以了解到，镜像的定制实际上就是定制每一层所添加的配置、文件。如果我们可以把每一层修改、安装、构建、操作的命令都写入一个脚本，用这个脚本来构建、定制镜像，那么之前提及的无法重复的问题、镜像构建透明性的问题、体积的问题就都会解决。这个脚本就是 Dockerfile。</p>
-<p>Dockerfile 是一个文本文件，其内包含了一条条的 **指令(Instruction)**，每一条指令构建一层，因此每一条指令的内容，就是描述该层应当如何构建。</p>
+<p>Dockerfile 是一个文本文件，其内包含了一条条的 <strong>指令(Instruction)<strong>，</strong>每一条指令构建一层</strong>，因此每一条指令的内容，就是描述该层应当如何构建。</p>
 <p>还以之前定制 <code>nginx</code> 镜像为例，这次我们使用 Dockerfile 来定制。</p>
 <p>在一个空白目录中，建立一个文本文件，并命名为 <code>Dockerfile</code>：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">mkdir</span> mynginx</span><br><span class="line">$ <span class="built_in">cd</span> mynginx</span><br><span class="line">$ <span class="built_in">touch</span> Dockerfile</span><br></pre></td></tr></table></figure>
@@ -641,6 +641,20 @@
 
 <p>如果发现标准输入的文件格式是 <code>gzip</code>、<code>bzip2</code> 以及 <code>xz</code> 的话，将会使其为上下文压缩包，直接将其展开，将里面视为上下文，并开始构建。</p>
 <h1 id="6-Dockerfile-指令详解"><a href="#6-Dockerfile-指令详解" class="headerlink" title="6 Dockerfile 指令详解"></a>6 Dockerfile 指令详解</h1><p>我们已经介绍了 <code>FROM</code>，<code>RUN</code>，还提及了 <code>COPY</code>, <code>ADD</code>，其实 <code>Dockerfile</code> 功能很强大，它提供了十多个指令。下面我们继续讲解其他的指令。</p>
+<blockquote>
+<p>Docker 镜像由多个只读层组成，每个层都对应 Dockerfile 中的一个指令。以下这些 Dockerfile 指令将会创建新的层：</p>
+<ol>
+<li><code>RUN</code>：每个 <code>RUN</code> 命令都会在镜像中创建一个新的层。由于这让镜像变得较大，因此常常会看到多个 <code>RUN</code> 命令链在一起以减少创建的层数。</li>
+<li><code>COPY</code>：<code>COPY</code> 指令会将文件或目录从 Docker 构建上下文复制到新的一层上，然后将它们添加到 Dockerfile 中所指定的路径。</li>
+<li><code>ADD</code>：就像 <code>COPY</code> 一样, <code>ADD</code> 指令会在一个新的层上复制文件，并对文件（如果是压缩的话，会进行自动解压缩）进行提取。另一方面，由于 <code>ADD</code> 命令有些额外的功能（比如能下载远程的 URLs），通常建议在文件复制时尽量使用 <code>COPY</code>。</li>
+<li><code>WORKDIR</code>：如果指定的工作目录不存在，这个命令将会创建该目录，并在新的层上创建。</li>
+<li><code>VOLUME</code>: 此命令也会在 Docker 镜像中创建新的层。</li>
+<li><code>USER</code>：此命令用于设定下一条 <code>RUN</code>, <code>CMD</code>, <code>ENTRYPOINT</code> 指令运行时的 UID。</li>
+<li><code>LABEL</code>：此命令添加元数据到镜像，创建一个新的层。</li>
+</ol>
+<p>虽然 <code>ENTRYPOINT</code> 和 <code>CMD</code> 指定了容器的默认执行命令，但它们不会创建新的层，因为它们不会改变镜像的文件系统。同样，<code>ENV</code> 指令用来设置环境变量，也不会创建新的镜像层。</p>
+<p>这就是 Dockerfile 中用来创建新层的主要指令, 使用合理可有效改进创建的 Docker 镜像的大小和构建时间。</p>
+</blockquote>
 <h2 id="6-1-COPY-复制文件"><a href="#6-1-COPY-复制文件" class="headerlink" title="6.1 COPY 复制文件"></a>6.1 COPY 复制文件</h2><p>格式：</p>
 <ul>
 <li><code>COPY [--chown=&lt;user&gt;:&lt;group&gt;] &lt;源路径&gt;... &lt;目标路径&gt;</code></li>
@@ -671,6 +685,163 @@
 <p>因此在 <code>COPY</code> 和 <code>ADD</code> 指令中选择的时候，可以遵循这样的原则，所有的文件复制均使用 <code>COPY</code> 指令，仅在需要自动解压缩的场合使用 <code>ADD</code>。</p>
 <p>在使用该指令的时候还可以加上 <code>--chown=&lt;user&gt;:&lt;group&gt;</code> 选项来改变文件的所属用户及所属组。</p>
 <figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ADD</span><span class="language-bash"> --<span class="built_in">chown</span>=55:mygroup files* /mydir/</span></span><br><span class="line"><span class="keyword">ADD</span><span class="language-bash"> --<span class="built_in">chown</span>=bin files* /mydir/</span></span><br><span class="line"><span class="keyword">ADD</span><span class="language-bash"> --<span class="built_in">chown</span>=1 files* /mydir/</span></span><br><span class="line"><span class="keyword">ADD</span><span class="language-bash"> --<span class="built_in">chown</span>=10:11 files* /mydir/</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="6-3-CMD-容器启动命令"><a href="#6-3-CMD-容器启动命令" class="headerlink" title="6.3 CMD 容器启动命令"></a>6.3 CMD 容器启动命令</h2><p><code>CMD</code> 指令的格式和 <code>RUN</code> 相似，也是两种格式：</p>
+<ul>
+<li><code>shell</code> 格式：<code>CMD &lt;命令&gt;</code></li>
+<li><code>exec</code> 格式：<code>CMD [&quot;可执行文件&quot;, &quot;参数1&quot;, &quot;参数2&quot;...]</code></li>
+<li>参数列表格式：<code>CMD [&quot;参数1&quot;, &quot;参数2&quot;...]</code>。在指定了 <code>ENTRYPOINT</code> 指令后，用 <code>CMD</code> 指定具体的参数。</li>
+</ul>
+<p>之前介绍容器的时候曾经说过，Docker 不是虚拟机，容器就是进程。既然是进程，那么在启动容器的时候，需要指定所运行的程序及参数。**<code>CMD</code> 指令就是用于指定默认的容器主进程的启动命令的**。</p>
+<p><strong>在运行时可以指定新的命令来替代镜像设置中的这个默认命令</strong>，比如，<code>ubuntu</code> 镜像默认的 <code>CMD</code> 是 <code>/bin/bash</code>，如果我们直接 <code>docker run -it ubuntu</code> 的话，会直接进入 <code>bash</code>。我们也可以在运行时指定运行别的命令，如 <code>docker run -it ubuntu cat /etc/os-release</code>。这就是用 <code>cat /etc/os-release</code> 命令替换了默认的 <code>/bin/bash</code> 命令了，输出了系统版本信息。</p>
+<p><strong>在指令格式上，一般推荐使用 <code>exec</code> 格式，这类格式在解析时会被解析为 JSON 数组，因此一定要使用双引号 <code>&quot;</code>，而不要使用单引号。</strong></p>
+<p>如果使用 <code>shell</code> 格式的话，实际的命令会被包装为 <code>sh -c</code> 的参数的形式进行执行。比如：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CMD</span><span class="language-bash"> <span class="built_in">echo</span> <span class="variable">$HOME</span></span></span><br></pre></td></tr></table></figure>
+
+<p>在实际执行中，会将其变更为：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CMD</span><span class="language-bash"> [ <span class="string">&quot;sh&quot;</span>, <span class="string">&quot;-c&quot;</span>, <span class="string">&quot;echo <span class="variable">$HOME</span>&quot;</span> ]</span></span><br></pre></td></tr></table></figure>
+
+<p>这就是为什么我们可以使用环境变量的原因，因为这些环境变量会被 shell 进行解析处理。</p>
+<p>提到 <code>CMD</code> 就不得不提容器中应用在前台执行和后台执行的问题。这是初学者常出现的一个混淆。</p>
+<p>Docker 不是虚拟机，容器中的应用都应该以前台执行，而不是像虚拟机、物理机里面那样，用 <code>systemd</code> 去启动后台服务，容器内没有后台服务的概念。</p>
+<p>一些初学者将 <code>CMD</code> 写为：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CMD</span><span class="language-bash"> service nginx start</span></span><br></pre></td></tr></table></figure>
+
+<p>然后发现容器执行后就立即退出了。甚至在容器内去使用 <code>systemctl</code> 命令结果却发现根本执行不了。这就是因为没有搞明白前台、后台的概念，没有区分容器和虚拟机的差异，依旧在以传统虚拟机的角度去理解容器。</p>
+<p>对于容器而言，其启动程序就是容器应用进程，容器就是为了主进程而存在的，主进程退出，容器就失去了存在的意义，从而退出，其它辅助进程不是它需要关心的东西。</p>
+<p>而使用 <code>service nginx start</code> 命令，则是希望 init 系统以后台守护进程的形式启动 nginx 服务。而刚才说了 <code>CMD service nginx start</code> 会被理解为 <code>CMD [ &quot;sh&quot;, &quot;-c&quot;, &quot;service nginx start&quot;]</code>，因此主进程实际上是 <code>sh</code>。那么当 <code>service nginx start</code> 命令结束后，<code>sh</code> 也就结束了，<code>sh</code> 作为主进程退出了，自然就会令容器退出。</p>
+<p>正确的做法是直接执行 <code>nginx</code> 可执行文件，并且要求以前台形式运行。比如：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CMD</span><span class="language-bash"> [<span class="string">&quot;nginx&quot;</span>, <span class="string">&quot;-g&quot;</span>, <span class="string">&quot;daemon off;&quot;</span>]</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="6-4-ENTRYPOINT-入口点"><a href="#6-4-ENTRYPOINT-入口点" class="headerlink" title="6.4 ENTRYPOINT 入口点"></a>6.4 ENTRYPOINT 入口点</h2><p><code>ENTRYPOINT</code> 的格式和 <code>RUN</code> 指令格式一样，分为 <code>exec</code> 格式和 <code>shell</code> 格式。</p>
+<p><code>ENTRYPOINT</code> 的目的和 <code>CMD</code> 一样，都是在指定容器启动程序及参数。**<code>ENTRYPOINT</code> 在运行时也可以替代<strong>，不过比 <code>CMD</code> 要略显繁琐，</strong>需要通过 <code>docker run</code> 的参数 <code>--entrypoint</code> 来指定**。</p>
+<p><strong>当指定了 <code>ENTRYPOINT</code> 后，<code>CMD</code> 的含义就发生了改变，不再是直接的运行其命令，而是将 <code>CMD</code> 的内容作为参数传给 <code>ENTRYPOINT</code> 指令</strong>，换句话说实际执行时，将变为：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;ENTRYPOINT&gt; <span class="string">&quot;&lt;CMD&gt;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>那么有了 <code>CMD</code> 后，为什么还要有 <code>ENTRYPOINT</code> 呢？这种 <code>&lt;ENTRYPOINT&gt; &quot;&lt;CMD&gt;&quot;</code> 有什么好处么？让我们来看几个场景。</p>
+<h4 id="场景一：让镜像变成像命令一样使用"><a href="#场景一：让镜像变成像命令一样使用" class="headerlink" title="场景一：让镜像变成像命令一样使用"></a>场景一：让镜像变成像命令一样使用</h4><p>假设我们需要一个得知自己当前公网 IP 的镜像，那么可以先用 <code>CMD</code> 来实现：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> ubuntu:<span class="number">18.04</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> apt-get update \</span></span><br><span class="line"><span class="language-bash">    &amp;&amp; apt-get install -y curl \</span></span><br><span class="line"><span class="language-bash">    &amp;&amp; <span class="built_in">rm</span> -rf /var/lib/apt/lists/*</span></span><br><span class="line"><span class="keyword">CMD</span><span class="language-bash"> [ <span class="string">&quot;curl&quot;</span>, <span class="string">&quot;-s&quot;</span>, <span class="string">&quot;http://myip.ipip.net&quot;</span> ]</span></span><br></pre></td></tr></table></figure>
+
+<p>假如我们使用 <code>docker build -t myip .</code> 来构建镜像的话，如果我们需要查询当前公网 IP，只需要执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker run myip</span><br><span class="line">当前 IP：61.148.226.66 来自：北京市 联通</span><br></pre></td></tr></table></figure>
+
+<p>嗯，这么看起来好像可以直接把镜像当做命令使用了，不过命令总有参数，如果我们希望加参数呢？比如从上面的 <code>CMD</code> 中可以看到实质的命令是 <code>curl</code>，那么如果我们希望显示 HTTP 头信息，就需要加上 <code>-i</code> 参数。那么我们可以直接加 <code>-i</code> 参数给 <code>docker run myip</code> 么？</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker run myip -i</span><br><span class="line">docker: Error response from daemon: invalid header field value <span class="string">&quot;oci runtime error: container_linux.go:247: starting container process caused \&quot;exec: \\\&quot;-i\\\&quot;: executable file not found in <span class="variable">$PATH</span>\&quot;\n&quot;</span>.</span><br></pre></td></tr></table></figure>
+
+<p>我们可以看到可执行文件找不到的报错，<code>executable file not found</code>。之前我们说过，跟在镜像名后面的是 <code>command</code>，运行时会替换 <code>CMD</code> 的默认值。因此这里的 <code>-i</code> 替换了原来的 <code>CMD</code>，而不是添加在原来的 <code>curl -s http://myip.ipip.net</code> 后面。而 <code>-i</code> 根本不是命令，所以自然找不到。</p>
+<p>那么如果我们希望加入 <code>-i</code> 这参数，我们就必须重新完整的输入这个命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run myip curl -s http://myip.ipip.net -i</span><br></pre></td></tr></table></figure>
+
+<p>这显然不是很好的解决方案，而使用 <code>ENTRYPOINT</code> 就可以解决这个问题。现在我们重新用 <code>ENTRYPOINT</code> 来实现这个镜像：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> ubuntu:<span class="number">18.04</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> apt-get update \</span></span><br><span class="line"><span class="language-bash">    &amp;&amp; apt-get install -y curl \</span></span><br><span class="line"><span class="language-bash">    &amp;&amp; <span class="built_in">rm</span> -rf /var/lib/apt/lists/*</span></span><br><span class="line"><span class="keyword">ENTRYPOINT</span><span class="language-bash"> [ <span class="string">&quot;curl&quot;</span>, <span class="string">&quot;-s&quot;</span>, <span class="string">&quot;http://myip.ipip.net&quot;</span> ]</span></span><br></pre></td></tr></table></figure>
+
+<p>这次我们再来尝试直接使用 <code>docker run myip -i</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$ docker run myip</span><br><span class="line">当前 IP：61.148.226.66 来自：北京市 联通</span><br><span class="line"></span><br><span class="line">$ docker run myip -i</span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Server: nginx/1.8.0</span><br><span class="line">Date: Tue, 22 Nov 2016 05:12:40 GMT</span><br><span class="line">Content-Type: text/html; charset=UTF-8</span><br><span class="line">Vary: Accept-Encoding</span><br><span class="line">X-Powered-By: PHP/5.6.24-1~dotdeb+7.1</span><br><span class="line">X-Cache: MISS from cache-2</span><br><span class="line">X-Cache-Lookup: MISS from cache-2:80</span><br><span class="line">X-Cache: MISS from proxy-2_6</span><br><span class="line">Transfer-Encoding: chunked</span><br><span class="line">Via: 1.1 cache-2:80, 1.1 proxy-2_6:8006</span><br><span class="line">Connection: keep-alive</span><br><span class="line"></span><br><span class="line">当前 IP：61.148.226.66 来自：北京市 联通</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，这次成功了。这是因为当存在 <code>ENTRYPOINT</code> 后，<code>CMD</code> 的内容将会作为参数传给 <code>ENTRYPOINT</code>，而这里 <code>-i</code> 就是新的 <code>CMD</code>，因此会作为参数传给 <code>curl</code>，从而达到了我们预期的效果。</p>
+<h4 id="场景二：应用运行前的准备工作"><a href="#场景二：应用运行前的准备工作" class="headerlink" title="场景二：应用运行前的准备工作"></a>场景二：应用运行前的准备工作</h4><p>启动容器就是启动主进程，但有些时候，启动主进程前，需要一些准备工作。</p>
+<p>比如 <code>mysql</code> 类的数据库，可能需要一些数据库配置、初始化的工作，这些工作要在最终的 mysql 服务器运行之前解决。</p>
+<p>此外，可能希望避免使用 <code>root</code> 用户去启动服务，从而提高安全性，而在启动服务前还需要以 <code>root</code> 身份执行一些必要的准备工作，最后切换到服务用户身份启动服务。或者除了服务外，其它命令依旧可以使用 <code>root</code> 身份执行，方便调试等。</p>
+<p>这些准备工作是和容器 <code>CMD</code> 无关的，无论 <code>CMD</code> 为什么，都需要事先进行一个预处理的工作。这种情况下，<strong>可以写一个脚本，然后放入 <code>ENTRYPOINT</code> 中去执行，而这个脚本会将接到的参数（也就是 <code>&lt;CMD&gt;</code>）作为命令，在脚本最后执行</strong>。比如官方镜像 <code>redis</code> 中就是这么做的：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> alpine:<span class="number">3.4</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> addgroup -S redis &amp;&amp; adduser -S -G redis redis</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">ENTRYPOINT</span><span class="language-bash"> [<span class="string">&quot;docker-entrypoint.sh&quot;</span>]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">6379</span></span><br><span class="line"><span class="keyword">CMD</span><span class="language-bash"> [ <span class="string">&quot;redis-server&quot;</span> ]</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看到其中为了 redis 服务创建了 redis 用户，并在最后指定了 <code>ENTRYPOINT</code> 为 <code>docker-entrypoint.sh</code> 脚本。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line">...</span><br><span class="line"><span class="comment"># allow the container to be started with `--user`</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$1</span>&quot;</span> = <span class="string">&#x27;redis-server&#x27;</span> -a <span class="string">&quot;<span class="subst">$(id -u)</span>&quot;</span> = <span class="string">&#x27;0&#x27;</span> ]; <span class="keyword">then</span></span><br><span class="line">	find . \! -user redis -<span class="built_in">exec</span> <span class="built_in">chown</span> redis <span class="string">&#x27;&#123;&#125;&#x27;</span> +</span><br><span class="line">	<span class="built_in">exec</span> gosu redis <span class="string">&quot;<span class="variable">$0</span>&quot;</span> <span class="string">&quot;<span class="variable">$@</span>&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">exec</span> <span class="string">&quot;<span class="variable">$@</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>该脚本的内容就是根据 <code>CMD</code> 的内容来判断，如果是 <code>redis-server</code> 的话，则切换到 <code>redis</code> 用户身份启动服务器，否则依旧使用 <code>root</code> 身份执行。比如：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -it redis <span class="built_in">id</span></span><br><span class="line">uid=0(root) gid=0(root) <span class="built_in">groups</span>=0(root)</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-5-ENV-设置环境变量"><a href="#6-5-ENV-设置环境变量" class="headerlink" title="6.5 ENV 设置环境变量"></a>6.5 ENV 设置环境变量</h2><p>格式有两种：</p>
+<ul>
+<li><code>ENV &lt;key&gt; &lt;value&gt;</code></li>
+<li><code>ENV &lt;key1&gt;=&lt;value1&gt; &lt;key2&gt;=&lt;value2&gt;...</code></li>
+</ul>
+<p>这个指令很简单，就是设置环境变量而已，无论是后面的其它指令，如 <code>RUN</code>，还是运行时的应用，都可以直接使用这里定义的环境变量。</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ENV</span> VERSION=<span class="number">1.0</span> DEBUG=on \</span><br><span class="line">    NAME=<span class="string">&quot;Happy Feet&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>这个例子中演示了如何换行，以及对含有空格的值用双引号括起来的办法，这和 Shell 下的行为是一致的。</p>
+<p>定义了环境变量，那么在后续的指令中，就可以使用这个环境变量。比如在官方 <code>node</code> 镜像 <code>Dockerfile</code> 中，就有类似这样的代码：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ENV</span> NODE_VERSION <span class="number">7.2</span>.<span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> curl -SLO <span class="string">&quot;https://nodejs.org/dist/v<span class="variable">$NODE_VERSION</span>/node-v<span class="variable">$NODE_VERSION</span>-linux-x64.tar.xz&quot;</span> \</span></span><br><span class="line"><span class="language-bash">  &amp;&amp; curl -SLO <span class="string">&quot;https://nodejs.org/dist/v<span class="variable">$NODE_VERSION</span>/SHASUMS256.txt.asc&quot;</span> \</span></span><br><span class="line"><span class="language-bash">  &amp;&amp; gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc \</span></span><br><span class="line"><span class="language-bash">  &amp;&amp; grep <span class="string">&quot; node-v<span class="variable">$NODE_VERSION</span>-linux-x64.tar.xz\$&quot;</span> SHASUMS256.txt | <span class="built_in">sha256sum</span> -c - \</span></span><br><span class="line"><span class="language-bash">  &amp;&amp; tar -xJf <span class="string">&quot;node-v<span class="variable">$NODE_VERSION</span>-linux-x64.tar.xz&quot;</span> -C /usr/local --strip-components=1 \</span></span><br><span class="line"><span class="language-bash">  &amp;&amp; <span class="built_in">rm</span> <span class="string">&quot;node-v<span class="variable">$NODE_VERSION</span>-linux-x64.tar.xz&quot;</span> SHASUMS256.txt.asc SHASUMS256.txt \</span></span><br><span class="line"><span class="language-bash">  &amp;&amp; <span class="built_in">ln</span> -s /usr/local/bin/node /usr/local/bin/nodejs</span></span><br></pre></td></tr></table></figure>
+
+<p>在这里先定义了环境变量 <code>NODE_VERSION</code>，其后的 <code>RUN</code> 这层里，多次使用 <code>$NODE_VERSION</code> 来进行操作定制。可以看到，将来升级镜像构建版本的时候，只需要更新 <code>7.2.0</code> 即可，<code>Dockerfile</code> 构建维护变得更轻松了。</p>
+<p>下列指令可以支持环境变量展开： <code>ADD</code>、<code>COPY</code>、<code>ENV</code>、<code>EXPOSE</code>、<code>FROM</code>、<code>LABEL</code>、<code>USER</code>、<code>WORKDIR</code>、<code>VOLUME</code>、<code>STOPSIGNAL</code>、<code>ONBUILD</code>、<code>RUN</code>。</p>
+<p>可以从这个指令列表里感觉到，环境变量可以使用的地方很多，很强大。通过环境变量，我们可以让一份 <code>Dockerfile</code> 制作更多的镜像，只需使用不同的环境变量即可。</p>
+<h2 id="6-6-ARG-构建参数"><a href="#6-6-ARG-构建参数" class="headerlink" title="6.6 ARG 构建参数"></a>6.6 ARG 构建参数</h2><p>格式：<code>ARG &lt;参数名&gt;[=&lt;默认值&gt;]</code></p>
+<p>构建参数和 <code>ENV</code> 的效果一样，都是设置环境变量。所不同的是，**<code>ARG</code> 所设置的构建环境的环境变量，在将来容器运行时是不会存在这些环境变量的<strong>。但是</strong>不要因此就使用 <code>ARG</code> 保存密码之类的信息，因为 <code>docker history</code> 还是可以看到所有值的**。</p>
+<p><code>Dockerfile</code> 中的 <code>ARG</code> 指令是定义参数名称，以及定义其默认值。<strong>该默认值可以在构建命令 <code>docker build</code> 中用 <code>--build-arg &lt;参数名&gt;=&lt;值&gt;</code> 来覆盖</strong>。</p>
+<p><strong>灵活的使用 <code>ARG</code> 指令，能够在不修改 Dockerfile 的情况下，构建出不同的镜像</strong>。</p>
+<p><strong>ARG 指令有生效范围，如果在 <code>FROM</code> 指令之前指定，那么只能用于 <code>FROM</code> 指令中</strong>。</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ARG</span> DOCKER_USERNAME=library</span><br><span class="line"></span><br><span class="line"><span class="keyword">FROM</span> $&#123;DOCKER_USERNAME&#125;/alpine</span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">set</span> -x ; <span class="built_in">echo</span> <span class="variable">$&#123;DOCKER_USERNAME&#125;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>使用上述 Dockerfile 会发现无法输出 <code>$&#123;DOCKER_USERNAME&#125;</code> 变量的值，要想正常输出，你必须在 <code>FROM</code> 之后再次指定 <code>ARG</code></p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 只在 FROM 中生效</span></span><br><span class="line"><span class="keyword">ARG</span> DOCKER_USERNAME=library</span><br><span class="line"></span><br><span class="line"><span class="keyword">FROM</span> $&#123;DOCKER_USERNAME&#125;/alpine</span><br><span class="line"></span><br><span class="line"><span class="comment"># 要想在 FROM 之后使用，必须再次指定</span></span><br><span class="line"><span class="keyword">ARG</span> DOCKER_USERNAME=library</span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">set</span> -x ; <span class="built_in">echo</span> <span class="variable">$&#123;DOCKER_USERNAME&#125;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>对于多阶段构建，尤其要注意这个问题：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这个变量在每个 FROM 中都生效</span></span><br><span class="line"><span class="keyword">ARG</span> DOCKER_USERNAME=library</span><br><span class="line"></span><br><span class="line"><span class="keyword">FROM</span> $&#123;DOCKER_USERNAME&#125;/alpine</span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">set</span> -x ; <span class="built_in">echo</span> 1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">FROM</span> $&#123;DOCKER_USERNAME&#125;/alpine</span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">set</span> -x ; <span class="built_in">echo</span> 2</span></span><br></pre></td></tr></table></figure>
+
+<p>对于上述 Dockerfile 两个 <code>FROM</code> 指令都可以使用 <code>$&#123;DOCKER_USERNAME&#125;</code>，对于在各个阶段中使用的变量都必须在每个阶段分别指定：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ARG</span> DOCKER_USERNAME=library</span><br><span class="line"></span><br><span class="line"><span class="keyword">FROM</span> $&#123;DOCKER_USERNAME&#125;/alpine</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在FROM 之后使用变量，必须在每个阶段分别指定</span></span><br><span class="line"><span class="keyword">ARG</span> DOCKER_USERNAME=library</span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">set</span> -x ; <span class="built_in">echo</span> <span class="variable">$&#123;DOCKER_USERNAME&#125;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">FROM</span> $&#123;DOCKER_USERNAME&#125;/alpine</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在FROM 之后使用变量，必须在每个阶段分别指定</span></span><br><span class="line"><span class="keyword">ARG</span> DOCKER_USERNAME=library</span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">set</span> -x ; <span class="built_in">echo</span> <span class="variable">$&#123;DOCKER_USERNAME&#125;</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="6-7-VOLUME-定义匿名卷"><a href="#6-7-VOLUME-定义匿名卷" class="headerlink" title="6.7 VOLUME 定义匿名卷"></a>6.7 VOLUME 定义匿名卷</h2><p>格式为：</p>
+<ul>
+<li><code>VOLUME [&quot;&lt;路径1&gt;&quot;, &quot;&lt;路径2&gt;&quot;...]</code></li>
+<li><code>VOLUME &lt;路径&gt;</code></li>
+</ul>
+<p>之前我们说过，<strong>容器运行时应该尽量保持容器存储层不发生写操作，对于数据库类需要保存动态数据的应用，其数据库文件应该保存于卷(volume)<strong>中，后面的章节我们会进一步介绍 Docker 卷的概念。</strong>为了防止运行时用户忘记将动态文件所保存目录挂载为卷，在 <code>Dockerfile</code> 中，我们可以事先指定某些目录挂载为匿名卷，这样在运行时如果用户不指定挂载，其应用也可以正常运行，不会向容器存储层写入大量数据</strong>。</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">VOLUME</span><span class="language-bash"> /data</span></span><br></pre></td></tr></table></figure>
+
+<p>这里的 <code>/data</code> 目录就会在容器运行时自动挂载为匿名卷，任何向 <code>/data</code> 中写入的信息都不会记录进容器存储层，从而保证了容器存储层的无状态化。当然，运行容器时可以覆盖这个挂载设置。比如：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker <span class="keyword">run</span><span class="language-bash"> -d -v mydata:/data xxxx</span></span><br></pre></td></tr></table></figure>
+
+<p>在这行命令中，就使用了 <code>mydata</code> 这个命名卷挂载到了 <code>/data</code> 这个位置，替代了 <code>Dockerfile</code> 中定义的匿名卷的挂载配置。</p>
+<blockquote>
+<p>当你在 Dockerfile 中使用 <code>VOLUME</code> 指令或者在运行容器时通过 <code>-v</code> 标记创建一个匿名卷时，Docker 会自动在宿主机上为该卷分配一个存储位置。<strong>这个位置是由 Docker 的配置和宿主机操作系统决定的</strong>，并且通常不是直接由用户指定的。对于大多数 Linux 安装和 Docker 的默认配置，<strong>匿名卷的存储位置是在宿主机的 <code>/var/lib/docker/volumes/</code> 目录下</strong>。</p>
+<p>在该目录下，每个卷都会有一个唯一的标识符作为其目录名。在这些卷的目录内部，你会找到两个子目录：<code>_data</code>，其中存储的是卷的数据，以及 <code>mounts.json</code>，其中包含有关该卷的元数据。</p>
+<p>例如，若你通过 Docker 命令创建了一个匿名卷，你可能会在 <code>/var/lib/docker/volumes/</code> 下找到一个类似于 <code>/var/lib/docker/volumes/2f4a8c1d591f396c2b47e6b42dfea9184292ab09e78a0b3e7661e8a3ef4b0c82/</code> 的目录，<code>_data</code> 文件夹就在这个目录里。</p>
+<p>需要注意的是，不同的 Docker 配置和不同的宿主机操作系统可能会改变这个默认的存储位置。此外，出于安全和维护的目的，不鼓励直接手动操作这些文件目录。对于大多数用例，建议使用 Docker 命令来管理和操作卷。</p>
+<p>若需要查询卷的具体存储位置，可以使用 Docker 卷命令，如 <code>docker volume inspect [VOLUME_NAME]</code>，它会显示卷的详细信息，包括其在宿主机上的确切存储路径。对于匿名卷，虽然没有友好的名称，但每个都有一个唯一的ID，可以通过列出所有卷的信息 <code>docker volume ls</code> 来找到，然后用这个 ID 进行检查。</p>
+</blockquote>
+<h2 id="6-8-EXPOSE-暴露端口"><a href="#6-8-EXPOSE-暴露端口" class="headerlink" title="6.8 EXPOSE 暴露端口"></a>6.8 EXPOSE 暴露端口</h2><p>格式为 <code>EXPOSE &lt;端口1&gt; [&lt;端口2&gt;...]</code>。</p>
+<p><code>**EXPOSE</code> 指令是声明容器运行时提供服务的端口，这只是一个声明，在容器运行时并不会因为这个声明应用就会开启这个端口的服务**。在 Dockerfile 中写入这样的声明有两个好处，一个是帮助镜像使用者理解这个镜像服务的守护端口，以方便配置映射；另一个用处则是在运行时使用随机端口映射时，也就是 <code>docker run -P</code> 时，会自动随机映射 <code>EXPOSE</code> 的端口。</p>
+<p><strong>要将 <code>EXPOSE</code> 和在运行时使用 <code>-p &lt;宿主端口&gt;:&lt;容器端口&gt;</code> 区分开来。<code>-p</code>，是映射宿主端口和容器端口，换句话说，就是将容器的对应端口服务公开给外界访问，而 <code>EXPOSE</code> 仅仅是声明容器打算使用什么端口而已，并不会自动在宿主进行端口映射</strong>。</p>
+<blockquote>
+<p>在 Docker 中，<code>-p</code> 和 <code>-P</code> 标志被用来将容器内部的端口映射到宿主机的端口上，但它们的工作方式存在一些区别：</p>
+<ol>
+<li><strong><code>-p</code> 标志</strong>:<ul>
+<li>使用 <code>-p</code> 标志时，你需要明确指定端口映射关系。这包括宿主机的端口和容器内部的端口，格式为 <code>-p 宿主机端口:容器端口</code>。</li>
+<li>例如，<code>docker run -p 8080:80 nginx</code> 会将容器内部的 80 端口映射到宿主机的 8080 端口。</li>
+<li>你可以精确控制端口映射的过程，包括选择特定的宿主机端口。</li>
+</ul>
+</li>
+<li><strong><code>-P</code> 标志</strong>:<ul>
+<li>使用 <code>-P</code> 标志时，Docker 会自动将容器内部所有通过 <code>EXPOSE</code> 指令暴露出来的端口映射到宿主机的一个随机高端口（通常在 49153 到 65535 之间）。</li>
+<li>这意味着你无法控制端口映射到宿主机的哪个端口上，端口号是由 Docker 动态分配的。</li>
+<li>例如，<code>docker run -P nginx</code> 假设你的 nginx 镜像通过 <code>EXPOSE</code> 指令暴露了 80 端口，Docker 将自动选择一个端口将其映射到宿主机。</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<h2 id="6-9-WORKDIR-指定工作目录"><a href="#6-9-WORKDIR-指定工作目录" class="headerlink" title="6.9 WORKDIR 指定工作目录"></a>6.9 WORKDIR 指定工作目录</h2><p>格式为 <code>WORKDIR &lt;工作目录路径&gt;</code>。</p>
+<p><strong>使用 <code>WORKDIR</code> 指令可以来指定工作目录（或者称为当前目录），以后各层的当前目录就被改为指定的目录，如该目录不存在，<code>WORKDIR</code> 会帮你建立目录</strong>。</p>
+<p>之前提到一些初学者常犯的错误是把 <code>Dockerfile</code> 等同于 Shell 脚本来书写，这种错误的理解还可能会导致出现下面这样的错误：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">cd</span> /app</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">echo</span> <span class="string">&quot;hello&quot;</span> &gt; world.txt</span></span><br></pre></td></tr></table></figure>
+
+<p>如果将这个 <code>Dockerfile</code> 进行构建镜像运行后，会发现找不到 <code>/app/world.txt</code> 文件，或者其内容不是 <code>hello</code>。原因其实很简单，在 Shell 中，连续两行是同一个进程执行环境，因此前一个命令修改的内存状态，会直接影响后一个命令；而<strong>在 <code>Dockerfile</code> 中，这两行 <code>RUN</code> 命令的执行环境根本不同，是两个完全不同的容器</strong>。这就是对 <code>Dockerfile</code> 构建分层存储的概念不了解所导致的错误。</p>
+<p>之前说过每一个 <code>RUN</code> 都是启动一个容器、执行命令、然后提交存储层文件变更。第一层 <code>RUN cd /app</code> 的执行仅仅是当前进程的工作目录变更，一个内存上的变化而已，其结果不会造成任何文件变更。而到第二层的时候，启动的是一个全新的容器，跟第一层的容器更完全没关系，自然不可能继承前一层构建过程中的内存变化。</p>
+<p>因此如果需要改变以后各层的工作目录的位置，那么应该使用 <code>WORKDIR</code> 指令。</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /app</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">echo</span> <span class="string">&quot;hello&quot;</span> &gt; world.txt</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>如果你的 <code>WORKDIR</code> 指令使用的相对路径，那么所切换的路径与之前的 <code>WORKDIR</code> 有关</strong>：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /a</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> b</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> c</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">pwd</span></span></span><br></pre></td></tr></table></figure>
+
+<p><code>RUN pwd</code> 的工作目录为 <code>/a/b/c</code>。</p>
+<h2 id="6-10-USER-指定当前用户"><a href="#6-10-USER-指定当前用户" class="headerlink" title="6.10 USER 指定当前用户"></a>6.10 USER 指定当前用户</h2><p>格式：<code>USER &lt;用户名&gt;[:&lt;用户组&gt;]</code></p>
+<p><code>USER</code> 指令和 <code>WORKDIR</code> 相似，都是改变环境状态并影响以后的层。<code>WORKDIR</code> 是改变工作目录，<code>USER</code> 则是改变之后层的执行 <code>RUN</code>, <code>CMD</code> 以及 <code>ENTRYPOINT</code> 这类命令的身份。</p>
+<p>注意，<code>USER</code> 只是帮助你切换到指定用户而已，这个用户必须是事先建立好的，否则无法切换。</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">RUN</span><span class="language-bash"> groupadd -r redis &amp;&amp; useradd -r -g redis redis</span></span><br><span class="line"><span class="keyword">USER</span> redis</span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> [ <span class="string">&quot;redis-server&quot;</span> ]</span></span><br></pre></td></tr></table></figure>
+
+<p>如果以 <code>root</code> 执行的脚本，在执行期间希望改变身份，比如希望以某个已经建立好的用户来运行某个服务进程，不要使用 <code>su</code> 或者 <code>sudo</code>，这些都需要比较麻烦的配置，而且在 TTY 缺失的环境下经常出错。建议使用 <a target="_blank" rel="noopener" href="https://github.com/tianon/gosu"><code>gosu</code></a>。</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 建立 redis 用户，并使用 gosu 换另一个用户执行命令</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> groupadd -r redis &amp;&amp; useradd -r -g redis redis</span></span><br><span class="line"><span class="comment"># 下载 gosu</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> wget -O /usr/local/bin/gosu <span class="string">&quot;https://github.com/tianon/gosu/releases/download/1.12/gosu-amd64&quot;</span> \</span></span><br><span class="line"><span class="language-bash">    &amp;&amp; <span class="built_in">chmod</span> +x /usr/local/bin/gosu \</span></span><br><span class="line"><span class="language-bash">    &amp;&amp; gosu nobody <span class="literal">true</span></span></span><br><span class="line"><span class="comment"># 设置 CMD，并以另外的用户执行</span></span><br><span class="line"><span class="keyword">CMD</span><span class="language-bash"> [ <span class="string">&quot;exec&quot;</span>, <span class="string">&quot;gosu&quot;</span>, <span class="string">&quot;redis&quot;</span>, <span class="string">&quot;redis-server&quot;</span> ]</span></span><br></pre></td></tr></table></figure>
             </div>
         
         <footer class="article-footer">
