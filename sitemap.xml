@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://stu-yue.github.io/jottings/languages/shell/memo_here_doc/</loc>
+    
+    <lastmod>2024-04-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://stu-yue.github.io/jottings/tools/docker/memo_usage/</loc>
     
     <lastmod>2024-04-22</lastmod>
@@ -12,15 +21,6 @@
   
   <url>
     <loc>https://stu-yue.github.io/jottings/tools/docker/memo_install/</loc>
-    
-    <lastmod>2024-04-21</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://stu-yue.github.io/jottings/languages/shell/memo_here_doc/</loc>
     
     <lastmod>2024-04-21</lastmod>
     
@@ -290,20 +290,6 @@
 
   
   <url>
-    <loc>https://stu-yue.github.io/tags/instruction-set-arch/</loc>
-    <lastmod>2024-04-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://stu-yue.github.io/tags/memory/</loc>
-    <lastmod>2024-04-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://stu-yue.github.io/tags/firmware/</loc>
     <lastmod>2024-04-22</lastmod>
     <changefreq>weekly</changefreq>
@@ -318,7 +304,7 @@
   </url>
   
   <url>
-    <loc>https://stu-yue.github.io/tags/algebra/</loc>
+    <loc>https://stu-yue.github.io/tags/instruction-set-arch/</loc>
     <lastmod>2024-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -326,6 +312,20 @@
   
   <url>
     <loc>https://stu-yue.github.io/tags/math/</loc>
+    <lastmod>2024-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://stu-yue.github.io/tags/memory/</loc>
+    <lastmod>2024-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://stu-yue.github.io/tags/algebra/</loc>
     <lastmod>2024-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -346,13 +346,6 @@
   </url>
   
   <url>
-    <loc>https://stu-yue.github.io/tags/statistic/</loc>
-    <lastmod>2024-04-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://stu-yue.github.io/tags/networks/</loc>
     <lastmod>2024-04-22</lastmod>
     <changefreq>weekly</changefreq>
@@ -360,14 +353,14 @@
   </url>
   
   <url>
-    <loc>https://stu-yue.github.io/tags/points/</loc>
+    <loc>https://stu-yue.github.io/tags/statistic/</loc>
     <lastmod>2024-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://stu-yue.github.io/tags/python/</loc>
+    <loc>https://stu-yue.github.io/tags/points/</loc>
     <lastmod>2024-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -382,6 +375,13 @@
   
   <url>
     <loc>https://stu-yue.github.io/tags/linux/</loc>
+    <lastmod>2024-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://stu-yue.github.io/tags/python/</loc>
     <lastmod>2024-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -432,7 +432,7 @@
   </url>
   
   <url>
-    <loc>https://stu-yue.github.io/categories/languages/python/</loc>
+    <loc>https://stu-yue.github.io/categories/tools/</loc>
     <lastmod>2024-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -446,7 +446,7 @@
   </url>
   
   <url>
-    <loc>https://stu-yue.github.io/categories/tools/</loc>
+    <loc>https://stu-yue.github.io/categories/languages/python/</loc>
     <lastmod>2024-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
