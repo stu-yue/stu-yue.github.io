@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Memo | Here Document | Yue&#39;s Jotter</title>
+    
+    
+        <meta name="keywords" content="shell,linux" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="tee命令 ：tee指令会从标准输入设备读取数据，将其内容输出到标准输出设备，同时保存成文件。  -a：追加文件内容，而非覆盖； -i：忽略中断信号；   Here Document（也称heredoc）是一种在shell中输入一个或多个行的标准输入文本的方法。一个Here Document允许用户创建一个有起始标记和终止标记的文本块，该文本块的内容会被当作输入传送给一个命令。  基本语法 12">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Memo | Here Document">
+<meta property="og:url" content="https://stu-yue.github.io/jottings/languages/shell/memo_here_doc/">
+<meta property="og:site_name" content="Yue&#39;s Jotter">
+<meta property="og:description" content="tee命令 ：tee指令会从标准输入设备读取数据，将其内容输出到标准输出设备，同时保存成文件。  -a：追加文件内容，而非覆盖； -i：忽略中断信号；   Here Document（也称heredoc）是一种在shell中输入一个或多个行的标准输入文本的方法。一个Here Document允许用户创建一个有起始标记和终止标记的文本块，该文本块的内容会被当作输入传送给一个命令。  基本语法 12">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-10-04T07:56:53.000Z">
+<meta property="article:modified_time" content="2024-04-21T13:02:48.972Z">
+<meta property="article:author" content="stu-yue">
+<meta property="article:tag" content="shell">
+<meta property="article:tag" content="linux">
+<meta name="twitter:card" content="summary">
+    
+
+    
+
+    
+        <link rel="icon" href="/css/images/logo.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Yue's Jotter" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Yue&#39;s Jotter</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">HOME</a>
+                
+                    <a class="main-nav-link" href="/archives">ARCHIVES</a>
+                
+                    <a class="main-nav-link" href="/categories">CATEGORIES</a>
+                
+                    <a class="main-nav-link" href="/tags">TAGS</a>
+                
+                    <a class="main-nav-link" href="/about">ABOUT</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">HOME</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">ARCHIVES</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">CATEGORIES</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">TAGS</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">ABOUT</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            architecture
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/architecture/summa_firmware_and_drivers/">Summa | Firmware and Drivers</a></li>  <li class="file"><a href="/jottings/architecture/summa_memory_categories/">Summa | The Majority of Memory Categories</a></li>  <li class="file"><a href="/jottings/architecture/memo_isa_and_micro_architecture/">Memo | ISA and Micro-architecture</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            languages
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            python
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/languages/python/memo_GIL_and_coroutine/">Memo | GIL and Coroutine</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            shell
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/languages/shell/memo_exploring_os/">Memo | Exploring Linux Files and Directories</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_redirection/">Memo | Redirection</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_see_the_world_through_shell/">Memo | See the World through Shell</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_permission_progress_env/">Memo | Permission, Progress and Shell Environment</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_others/">Memo | Olds and Ends</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_package_device/">Memo | Package and Device</a></li>  <li class="file active"><a href="/jottings/languages/shell/memo_here_doc/">Memo | Here Document</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_shell_basis/">Memo | Shell Basis</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_tmux/">Memo | Tmux</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            mathematics
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/mathematics/memo_optimization_alg/">Memo | Optimization Algorithm in Machine Learning</a></li>  <li class="file"><a href="/jottings/mathematics/memo_algebra_basis/">Memo | Algebra Basis</a></li>  <li class="file"><a href="/jottings/mathematics/memo_mle_mae_bayes/">Memo | Parameter Estimation</a></li>  <li class="file"><a href="/jottings/mathematics/memo_law_of_probability/">Memo | Law of Large Number</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            networks
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/networks/memo_network_tidbits/">Summa |Networks Tidbits</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            statistics_ml
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/statistics_ml/summa_intro/">Summa | Intro of Statistical ML</a></li>  <li class="file"><a href="/jottings/statistics_ml/memo_ctc/">Memo | CTC Introduction</a></li>  <li class="file"><a href="/jottings/statistics_ml/memo_lm_and_word_vector/">Memo | LM and Word Representation</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            tidbits
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/tidbits/hot_points/">Hot Points</a></li>  <li class="file"><a href="/jottings/tidbits/tbr_compiler/">TBR_compiler</a></li>  <li class="file"><a href="/jottings/tidbits/tbr_net_info/">TBR_Net_Info</a></li>  <li class="file"><a href="/jottings/tidbits/quantization/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            tools
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            docker
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/tools/docker/memo_install/">Memo | Installation</a></li>  <li class="file"><a href="/jottings/tools/docker/memo_usage/">Memo | Usage</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                     <li class="file"><a href="/jottings/intro/">Welcome to Yue's Jotter</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-languages/shell/memo_here_doc" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/languages/">languages</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/languages/shell/">shell</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/linux/" rel="tag">linux</a>, <a class="tag-link-link" href="/tags/shell/" rel="tag">shell</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/jottings/languages/shell/memo_here_doc/">
+            <time datetime="2023-10-04T07:56:53.000Z" itemprop="datePublished">2023-10-04</time>
+        </a>
+    </div>
+
+
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/stu-yue/stu-yue.github.io/raw/main/source/_posts/languages/shell/memo_here_doc.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/stu-yue/stu-yue.github.io/edit/main/source/_posts/languages/shell/memo_here_doc.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/stu-yue/stu-yue.github.io/commits/main/source/_posts/languages/shell/memo_here_doc.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Memo | Here Document
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <ul>
+<li><p><code>tee</code>命令 ：tee指令会从标准输入设备读取数据，将其内容输出到标准输出设备，同时保存成文件。</p>
+<ul>
+<li><code>-a</code>：追加文件内容，而非覆盖；</li>
+<li><code>-i</code>：忽略中断信号；</li>
+</ul>
+</li>
+<li><p><strong>Here Document</strong>（也称heredoc）是一种在shell中<strong>输入一个或多个行的标准输入文本的方法</strong>。一个Here Document允许用户创建一个有起始标记和终止标记的文本块，该文本块的内容会被当作输入传送给一个命令。</p>
+<ul>
+<li><p>基本语法</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">command</span> &lt;&lt;<span class="string">DELIMITER</span></span><br><span class="line"><span class="string">text block</span></span><br><span class="line"><span class="string">text block</span></span><br><span class="line"><span class="string">DELIMITER</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 文本块中的任何以制表符缩进的内容将会在传递给命令之前去除这些制表符缩进</span></span><br><span class="line"><span class="built_in">command</span> &lt;&lt;-<span class="string">EOF</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 带单引号后，将不在shell中进行变量替换和命令替换</span></span><br><span class="line"><span class="string">NAME=&quot;World&quot;</span></span><br><span class="line"><span class="string">CURRENT_DATE=$(date)</span></span><br><span class="line"><span class="string">tee /path/to/greeting.txt &lt;&lt;EOF</span></span><br><span class="line">Hello, <span class="variable">$NAME</span>!</span><br><span class="line">Today is <span class="variable">$CURRENT_DATE</span>.</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/jottings/architecture/memo_isa_and_micro_architecture/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Memo | ISA and Micro-architecture
+                
+            </div>
+        </a>
+    
+    
+        <a href="/jottings/languages/shell/memo_shell_basis/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Memo | Shell Basis</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            stu-yue &copy; 2024 
+            <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a target="_blank" rel="noopener" href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>
