@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Design Mode | Yue&#39;s Jotter</title>
+    
+    
+        <meta name="keywords" content="interview" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="0 UML类图关系 依赖关系：一种使用关系，一个类的实现需要另一个类的协助  代码表现：局部变量、方法的参数或静态方法的调用； 箭头方向：带虚线箭头，箭头从使用类指向被使用类；  123456classDiagram	Programmer --&gt; Computer	class Programmer &amp;#123;		-name: String		+coding(Computer c)	&amp;#12">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Design Mode">
+<meta property="og:url" content="https://stu-yue.github.io/jottings/interview/memo_design_mode/">
+<meta property="og:site_name" content="Yue&#39;s Jotter">
+<meta property="og:description" content="0 UML类图关系 依赖关系：一种使用关系，一个类的实现需要另一个类的协助  代码表现：局部变量、方法的参数或静态方法的调用； 箭头方向：带虚线箭头，箭头从使用类指向被使用类；  123456classDiagram	Programmer --&gt; Computer	class Programmer &amp;#123;		-name: String		+coding(Computer c)	&amp;#12">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-07-22T12:00:53.000Z">
+<meta property="article:modified_time" content="2024-05-02T12:17:25.064Z">
+<meta property="article:author" content="stu-yue">
+<meta property="article:tag" content="interview">
+<meta name="twitter:card" content="summary">
+    
+
+    
+
+    
+        <link rel="icon" href="/css/images/logo.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Yue's Jotter" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Yue&#39;s Jotter</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">HOME</a>
+                
+                    <a class="main-nav-link" href="/archives">ARCHIVES</a>
+                
+                    <a class="main-nav-link" href="/categories">CATEGORIES</a>
+                
+                    <a class="main-nav-link" href="/tags">TAGS</a>
+                
+                    <a class="main-nav-link" href="/about">ABOUT</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">HOME</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">ARCHIVES</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">CATEGORIES</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">TAGS</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">ABOUT</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            architecture
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/architecture/summa_firmware_and_drivers/">Summa | Firmware and Drivers</a></li>  <li class="file"><a href="/jottings/architecture/summa_memory_categories/">Summa | The Majority of Memory Categories</a></li>  <li class="file"><a href="/jottings/architecture/memo_isa_and_micro_architecture/">Memo | ISA and Micro-architecture</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            interview
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file active"><a href="/jottings/interview/memo_design_mode/">Design Mode</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            languages
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            python
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/languages/python/memo_GIL_and_coroutine/">Memo | GIL and Coroutine</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            shell
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/languages/shell/memo_exploring_os/">Memo | Exploring Linux Files and Directories</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_redirection/">Memo | Redirection</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_see_the_world_through_shell/">Memo | See the World through Shell</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_permission_progress_env/">Memo | Permission, Progress and Shell Environment</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_others/">Memo | Olds and Ends</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_package_device/">Memo | Package and Device</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_here_doc/">Memo | Here Document</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_shell_basis/">Memo | Shell Basis</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_tmux/">Memo | Tmux</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            mathematics
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/mathematics/memo_optimization_alg/">Memo | Optimization Algorithm in Machine Learning</a></li>  <li class="file"><a href="/jottings/mathematics/memo_algebra_basis/">Memo | Algebra Basis</a></li>  <li class="file"><a href="/jottings/mathematics/memo_mle_mae_bayes/">Memo | Parameter Estimation</a></li>  <li class="file"><a href="/jottings/mathematics/memo_law_of_probability/">Memo | Law of Large Number</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            networks
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/networks/memo_network_tidbits/">Summa |Networks Tidbits</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            statistics_ml
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/statistics_ml/summa_intro/">Summa | Intro of Statistical ML</a></li>  <li class="file"><a href="/jottings/statistics_ml/memo_ctc/">Memo | CTC Introduction</a></li>  <li class="file"><a href="/jottings/statistics_ml/memo_lm_and_word_vector/">Memo | LM and Word Representation</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            tidbits
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/tidbits/hot_points/">Hot Points</a></li>  <li class="file"><a href="/jottings/tidbits/tbr_compiler/">TBR_compiler</a></li>  <li class="file"><a href="/jottings/tidbits/tbr_net_info/">TBR_Net_Info</a></li>  <li class="file"><a href="/jottings/tidbits/quantization/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            tools
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            docker
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/tools/docker/memo_install/">Memo | Installation</a></li>  <li class="file"><a href="/jottings/tools/docker/memo_network/">Memo | Network</a></li>  <li class="file"><a href="/jottings/tools/docker/memo_operation/">Memo | Operation</a></li>  <li class="file"><a href="/jottings/tools/docker/memo_usage/">Memo | Usage</a></li>  <li class="file"><a href="/jottings/tools/docker/memo_registry_and_data/">Memo | Regitstry and Data</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                     <li class="file"><a href="/jottings/intro/">Welcome to Yue's Jotter</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-interview/memo_design_mode" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/interview/">interview</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/interview/" rel="tag">interview</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/jottings/interview/memo_design_mode/">
+            <time datetime="2023-07-22T12:00:53.000Z" itemprop="datePublished">2023-07-22</time>
+        </a>
+    </div>
+
+
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/stu-yue/stu-yue.github.io/raw/main/source/_posts/interview/memo_design_mode.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/stu-yue/stu-yue.github.io/edit/main/source/_posts/interview/memo_design_mode.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/stu-yue/stu-yue.github.io/commits/main/source/_posts/interview/memo_design_mode.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Design Mode
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <h2 id="0-UML类图关系"><a href="#0-UML类图关系" class="headerlink" title="0 UML类图关系"></a>0 UML类图关系</h2><ul>
+<li><p><strong>依赖关系</strong>：一种使用关系，一个类的实现需要另一个类的协助</p>
+<ul>
+<li>代码表现：局部变量、方法的参数或静态方法的调用；</li>
+<li>箭头方向：带虚线箭头，箭头从使用类指向被使用类；</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">classDiagram</span><br><span class="line">	Programmer --&gt; Computer</span><br><span class="line">	class Programmer &#123;</span><br><span class="line">		-name: String</span><br><span class="line">		+coding(Computer c)</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>关联关系：一种引用关系，使一个类知道另一个类的属性和方法；如老师与学生；</p>
+<ul>
+<li><p>代码表现：成员变量；</p>
+</li>
+<li><p>箭头方向：单向关联（箭头实线指向被拥有者），双向关联（可双箭头&#x2F;也可都没有）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">classDiagram</span><br><span class="line">	Teacher--Student</span><br><span class="line">	Student--&gt;Course</span><br><span class="line">	class Teacher &#123;</span><br><span class="line">		-students: List&amp;ltStudent&amp;gt</span><br><span class="line">	&#125;</span><br><span class="line">	class Student &#123;</span><br><span class="line">		-teacher: Teacher</span><br><span class="line">		-courses: List&amp;ltCourse&amp;gt</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>聚合关系</strong>：关联关系的一种，整体与与部分的关系，且<strong>部分可以离开整体</strong>而单独存在。</p>
+<ul>
+<li><p>代码表现：成员变量</p>
+</li>
+<li><p>箭头方向：带空心菱形的实心线，菱形指向整体</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">classDiagram</span><br><span class="line">	School o-- Teacher</span><br><span class="line">	class School &#123;</span><br><span class="line">		-teacher: List&amp;ltTeacher&amp;gt</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>组合关系</strong>：联关系的一种，整体与与部分的关系，且<strong>部分不可以离开整体</strong>而单独存在。</p>
+<ul>
+<li><p>代码表现：成员变量</p>
+</li>
+<li><p>箭头方向：带实心菱形的实线，菱形指向整体</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">classDiagram</span><br><span class="line">	Body *-- Brain</span><br><span class="line">	class Body &#123;</span><br><span class="line">		-brain: Brain</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>实现关系：接口和实现类，带三角箭头的实线指向接口；</p>
+</li>
+<li><p>泛化关系：父子类之间的继承关系，带三角箭头的虚线指向父类；</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">classDiagram</span><br><span class="line">	University &lt;|.. Tsinghua</span><br><span class="line">	University &lt;|.. Peking</span><br><span class="line">	Animal&lt;|--Bird</span><br><span class="line">	Animal&lt;|--Lion</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="1-单例模式"><a href="#1-单例模式" class="headerlink" title="1 单例模式"></a>1 单例模式</h2><ul>
+<li><p>核心思想：保证<strong>一个类只有一个实例，并提供一个全局访问点来访问这个实例</strong>。</p>
+</li>
+<li><p>优点：</p>
+<ul>
+<li>全局控制：可以严格的控制客户怎样访问&#x2F;何时访问，即对唯一实例的受控访问。</li>
+<li>节省资源：单例避免多次创建了相同的对象，节省了系统资源，且多个模块可以通过单例实例共享数据。</li>
+<li>懒加载：在需要时才实例化，可以提高程序的性能。</li>
+</ul>
+</li>
+<li><p>基本组成：私有的构造函数、静态实例变量，公有的静态方法；</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">classDiagram</span><br><span class="line">	class Singleton&#123;</span><br><span class="line">		-instance: Singleton</span><br><span class="line">		- Singleton()</span><br><span class="line">		+ GetInstance()</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实现：</p>
+<ul>
+<li><p><strong>饿汉模式</strong>：在<strong>类加载时</strong>就已经完成了创建，可<strong>能造成资源浪费，但一般不存在多个线程同时尝试初始化实例的问题</strong>。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// hpp</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">static</span> Singleton&amp; <span class="title">getInstance</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> s_instance; &#125;</span><br><span class="line">    <span class="built_in">Singleton</span>(<span class="type">const</span> Singleton&amp;) = <span class="keyword">delete</span>;</span><br><span class="line">    Singleton&amp; <span class="keyword">operator</span>=(<span class="type">const</span> Singleton&amp;) = <span class="keyword">delete</span>;</span><br><span class="line">  <span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">Singleton</span>() = <span class="keyword">default</span>;</span><br><span class="line">    <span class="type">static</span> Singleton s_instance;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// cpp</span></span><br><span class="line">Singleton Singleton::s_instance;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>懒汉模式</strong>：首次调用才被创建，避免资源浪费（如果Instance类很大）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Double-Checked Locking</span></span><br><span class="line">Class Singleton &#123;</span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">static</span> Singleton* <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!p_instance) &#123;</span><br><span class="line">            <span class="function">lock_guard&lt;mutex&gt; <span class="title">lck</span><span class="params">(mtx)</span></span>;</span><br><span class="line">            <span class="keyword">if</span>  (!p_instance) &#123;</span><br><span class="line">                p_instance = <span class="keyword">new</span> <span class="built_in">Singleton</span>();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> p_instance;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">Singleton</span>(<span class="type">const</span> Singleton&amp;) = <span class="keyword">delete</span>;</span><br><span class="line">    Singleton&amp; <span class="keyword">operator</span>=(<span class="type">const</span> Singleton&amp;) = <span class="keyword">delete</span>;</span><br><span class="line">  <span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">Singleton</span>() = <span class="keyword">default</span>;</span><br><span class="line">    <span class="type">static</span> Singleton* p_singleton;</span><br><span class="line">    <span class="type">static</span> mutex mtx;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// cpp</span></span><br><span class="line">Singleton* Singleton::p_singleton = <span class="literal">nullptr</span>;</span><br><span class="line">mutex Singleton::mtx;</span><br></pre></td></tr></table></figure>
+
+<p><strong>C++11标准规定了局部静态变量的初始化必须是线程安全的</strong>，因此可利用局部静态变量来实现单例。</p>
+<blockquote>
+<p><strong>当多个线程同时到达局部静态变量的初始化语句时</strong>，保证只有一个线程将执行初始化代码，而其他线程将等待这个初始化完成。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Meyer&#x27;s Singleton</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">static</span> Singleton&amp; <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="type">static</span> Singleton s_instance;</span><br><span class="line">        <span class="keyword">return</span> s_instance;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">Singleton</span>(<span class="type">const</span> Singleton&amp;) = <span class="keyword">delete</span>;</span><br><span class="line">    Singleton&amp; <span class="keyword">operator</span>=(<span class="type">const</span> Singleton&amp;) = <span class="keyword">delete</span>;</span><br><span class="line">  <span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">Singleton</span>() = <span class="keyword">default</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h2 id="2-工厂模式"><a href="#2-工厂模式" class="headerlink" title="2 工厂模式"></a>2 工厂模式</h2><h3 id="2-1-简单工厂模式"><a href="#2-1-简单工厂模式" class="headerlink" title="2.1 简单工厂模式"></a>2.1 简单工厂模式</h3><ul>
+<li>核心思想：将各种产品对象的创建过程封装在一个工厂类中。</li>
+<li>基本组成：工厂、抽象产品（接口）、具体产品；</li>
+<li>缺点：对修改不封闭，<strong>新增产品需要修改工厂</strong>，违反了OCP原则；</li>
+</ul>
+<h3 id="2-2-工厂模式"><a href="#2-2-工厂模式" class="headerlink" title="2.2 工厂模式"></a>2.2 工厂模式</h3><ul>
+<li>核心思想：引入抽象工厂和具体工厂的概念，每个具体工厂负责创建对应的具体产品，新增产品秩只需添加新的工厂类而无需修改原来的代码；</li>
+<li>基本组成：抽象工厂（接口）、具体工厂、抽象产品（接口）、具体产品；</li>
+<li>优点：新增产品更灵活、支持扩展，符合开闭原则；</li>
+<li>应用场景：<ul>
+<li>Spring 框架中的 Bean 工厂：通过配置文件或注解，Spring 可以根据配置信息动态地创建和管理对象。</li>
+<li>JDBC 中的 Connection 工厂：在 Java 数据库连接中， <code>DriverManager</code> 使用工厂方法模式来创建数据库连接。不同的数据库驱动（如 MySQL、PostgreSQL 等）都有对应的工厂来创建连接。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-3-抽象工厂模式"><a href="#2-3-抽象工厂模式" class="headerlink" title="2.3 抽象工厂模式"></a>2.3 抽象工厂模式</h3><ul>
+<li><p>核心思想：</p>
+<ul>
+<li>简单工厂，一个工厂创建所有具体产品；</li>
+<li>工厂方法，一个工厂创建一个具体产品；</li>
+<li>抽象工厂，一个工厂创建一类具体产品；</li>
+</ul>
+</li>
+<li><p>基本组成：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Simple Factory</span></span><br><span class="line">factory.<span class="built_in">create</span>(<span class="string">&#x27;A&#x27;</span>);	<span class="comment">// product A</span></span><br><span class="line">factory.<span class="built_in">create</span>(<span class="string">&#x27;B&#x27;</span>);	<span class="comment">// product B</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Factory Method</span></span><br><span class="line"><span class="comment">// factory_ab &lt;|-- factory_a</span></span><br><span class="line"><span class="comment">// factory_ab &lt;|-- factory_b</span></span><br><span class="line">factory_a.<span class="built_in">create</span>();		<span class="comment">// product A</span></span><br><span class="line">factory_b.<span class="built_in">create</span>();		<span class="comment">// product B</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Abstract Factory</span></span><br><span class="line"><span class="comment">// factory &lt;|-- factory_1/2</span></span><br><span class="line"><span class="comment">// product_a &lt;|-- product_a_1/2</span></span><br><span class="line"><span class="comment">// product_b &lt;|-- product_b_1/2</span></span><br><span class="line">factory_1.<span class="built_in">create_a</span>();	<span class="comment">// product A1</span></span><br><span class="line">factory_1.<span class="built_in">create_b</span>();	<span class="comment">// product B1</span></span><br><span class="line">factory_2.<span class="built_in">create_a</span>();	<span class="comment">// product A2</span></span><br><span class="line">factory_2.<span class="built_in">create_b</span>();	<span class="comment">// product B2</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="3-建造者模式"><a href="#3-建造者模式" class="headerlink" title="3 建造者模式"></a>3 建造者模式</h2><ul>
+<li><p>核心思想：将<strong>对象的构建过程分为多个步骤</strong>，并为<strong>每个步骤定义一个抽象的接口</strong>。具体的构建过程由实现了这些接口的具体建造者类来完成。</p>
+</li>
+<li><p><strong>而指导者类负责按照一定的顺序来执行构建步骤</strong>，最终生成产品。</p>
+</li>
+<li><p>基本组成：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">classDiagram</span><br><span class="line">	AbstractBuilder&lt;|..Builder1</span><br><span class="line">	AbstractBuilder&lt;|..Builder2</span><br><span class="line">	AbstractProduct&lt;|--Product1</span><br><span class="line">	AbstractProduct&lt;|--Product2</span><br><span class="line">	</span><br><span class="line">	class AbstractBuilder&#123;</span><br><span class="line">	&lt;&lt;Interface&gt;&gt;</span><br><span class="line">		+BuildPartA()</span><br><span class="line">		+BuildPartB()</span><br><span class="line">		+GetProuct()</span><br><span class="line">	&#125;</span><br><span class="line">	class Builder1&#123;</span><br><span class="line">		+BuildPartA()</span><br><span class="line">		+BuildPartB()</span><br><span class="line">		+GetProuct()</span><br><span class="line">	&#125;</span><br><span class="line">	class Builder2&#123;</span><br><span class="line">		+BuildPartA()</span><br><span class="line">		+BuildPartB()</span><br><span class="line">		+GetProuct()</span><br><span class="line">	&#125;</span><br><span class="line">	class Director&#123;</span><br><span class="line">		-builder: AbstractBuilder</span><br><span class="line">		+construct()</span><br><span class="line">	&#125;</span><br><span class="line">	class AbstractProduct &#123;</span><br><span class="line">	&lt;&lt;Interface&gt;&gt;</span><br><span class="line">		-partA</span><br><span class="line">		-partB</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>优点：</p>
+<ul>
+<li>封装性好，构建和表示分离；</li>
+<li>扩展性好，各个具体的建造者相互独立，利于系统解耦；</li>
+<li>控制风险细节，客户端无需知道细节，建造者细化创建过程；</li>
+</ul>
+</li>
+<li><p>缺点：</p>
+<ul>
+<li>产品的组成部分必须相同，限制了其使用范围；</li>
+<li>产品内部发生变化，建造者需同步修改，后期维护成本较大；</li>
+</ul>
+</li>
+</ul>
+<h2 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h2><ul>
+<li><p><strong>OCP (Open&#x2F;Closed Principle):</strong> 软件实体（类&#x2F;模块&#x2F;函数等）应该是可扩展的，但是不可修改的。</p>
+</li>
+<li><p><strong>RAII (Resource Acquisition Is Initialization):</strong> 确保所有资源（如指针、文件句柄、网络连接等）都封装在类对象里，让对象的生命周期管理资源。</p>
+<ul>
+<li><p>资源的获取（Allocation）应在对象构造时完成</p>
+</li>
+<li><p>资源的释放（Deallocation）自动在对象的析构时执行</p>
+</li>
+<li><p><strong>异常安全</strong>：RAII保证无论对象是因为作用域结束还是因为异常而离开作用域，资源的释放将总是自动发生。</p>
+<blockquote>
+<p>当C++程序中抛出一个异常时，程序控制流会从抛出异常的点跳转到能够处理该异常的捕捉点（catch block）。在这一过程中，程序会展开堆栈，退出当前作用域及其父作用域，直到找到合适的异常处理代码。在展开堆栈的过程中，局部对象会被销毁，其析构函数按照创建的逆序被调用。因此，RAII类的析构函数将负责释放其管理的资源，即使是在异常发生时。</p>
+</blockquote>
+</li>
+<li><p>优点：</p>
+<ul>
+<li>代码更加简洁明了、易于维护；</li>
+<li>自动资源管理、减少了资源泄露的风险；</li>
+<li>提高了代码的异常安全性；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/jottings/languages/shell/memo_exploring_os/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Memo | Exploring Linux Files and Directories
+                
+            </div>
+        </a>
+    
+    
+        <a href="/jottings/tidbits/hot_points/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Hot Points</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            stu-yue &copy; 2024 
+            <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a target="_blank" rel="noopener" href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>
