@@ -9,18 +9,21 @@
         <meta name="keywords" content="interview" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="0 UML类图关系 依赖关系：一种使用关系，一个类的实现需要另一个类的协助  代码表现：局部变量、方法的参数或静态方法的调用； 箭头方向：带虚线箭头，箭头从使用类指向被使用类；  123456classDiagram	Programmer --&gt; Computer	class Programmer &amp;#123;		-name: String		+coding(Computer c)	&amp;#12">
+    <meta name="description" content="笔记参考主要自 https:&#x2F;&#x2F;refactoringguru.cn&#x2F;design-patterns&#x2F;catalog  0 UML类图关系 依赖关系：一种使用关系，一个类的实现需要另一个类的协助  代码表现：局部变量、方法的参数或静态方法的调用； 箭头方向：带虚线箭头，箭头从使用类指向被使用类；  123456classDiagram	Programmer ..&gt; Computer	cla">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Design Mode">
 <meta property="og:url" content="https://stu-yue.github.io/jottings/interview/memo_design_mode/">
 <meta property="og:site_name" content="Yue&#39;s Jotter">
-<meta property="og:description" content="0 UML类图关系 依赖关系：一种使用关系，一个类的实现需要另一个类的协助  代码表现：局部变量、方法的参数或静态方法的调用； 箭头方向：带虚线箭头，箭头从使用类指向被使用类；  123456classDiagram	Programmer --&gt; Computer	class Programmer &amp;#123;		-name: String		+coding(Computer c)	&amp;#12">
+<meta property="og:description" content="笔记参考主要自 https:&#x2F;&#x2F;refactoringguru.cn&#x2F;design-patterns&#x2F;catalog  0 UML类图关系 依赖关系：一种使用关系，一个类的实现需要另一个类的协助  代码表现：局部变量、方法的参数或静态方法的调用； 箭头方向：带虚线箭头，箭头从使用类指向被使用类；  123456classDiagram	Programmer ..&gt; Computer	cla">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://stu-yue.github.io/jottings/interview/memo_design_mode/proto_fig1.png">
+<meta property="og:image" content="https://stu-yue.github.io/jottings/interview/memo_design_mode/memo_design_mode/proto_fig1.png">
 <meta property="article:published_time" content="2023-07-22T12:00:53.000Z">
-<meta property="article:modified_time" content="2024-05-02T12:17:25.064Z">
+<meta property="article:modified_time" content="2024-05-03T04:02:16.048Z">
 <meta property="article:author" content="stu-yue">
 <meta property="article:tag" content="interview">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://stu-yue.github.io/jottings/interview/memo_design_mode/proto_fig1.png">
     
 
     
@@ -191,7 +194,16 @@
                             &nbsp;
                             interview
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file active"><a href="/jottings/interview/memo_design_mode/">Design Mode</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Hot100
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/interview/Hot100/%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%92%8C/"></a></li>  </ul> 
+                    </li> 
+                     <li class="file active"><a href="/jottings/interview/memo_design_mode/">Design Mode</a></li>  <li class="file"><a href="/jottings/interview/memo_cpp_notes/"></a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -270,7 +282,7 @@
                             &nbsp;
                             docker
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/tools/docker/memo_install/">Memo | Installation</a></li>  <li class="file"><a href="/jottings/tools/docker/memo_network/">Memo | Network</a></li>  <li class="file"><a href="/jottings/tools/docker/memo_operation/">Memo | Operation</a></li>  <li class="file"><a href="/jottings/tools/docker/memo_usage/">Memo | Usage</a></li>  <li class="file"><a href="/jottings/tools/docker/memo_registry_and_data/">Memo | Regitstry and Data</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/tools/docker/memo_install/">Memo | Installation</a></li>  <li class="file"><a href="/jottings/tools/docker/memo_operation/">Memo | Operation</a></li>  <li class="file"><a href="/jottings/tools/docker/memo_network/">Memo | Network</a></li>  <li class="file"><a href="/jottings/tools/docker/memo_registry_and_data/">Memo | Regitstry and Data</a></li>  <li class="file"><a href="/jottings/tools/docker/memo_usage/">Memo | Usage</a></li>  </ul> 
                     </li> 
                      </ul> 
                     </li> 
@@ -403,15 +415,18 @@
             
         
         
-            <h2 id="0-UML类图关系"><a href="#0-UML类图关系" class="headerlink" title="0 UML类图关系"></a>0 UML类图关系</h2><ul>
+            <blockquote>
+<p>笔记参考主要自 <a target="_blank" rel="noopener" href="https://refactoringguru.cn/design-patterns/catalog">https://refactoringguru.cn/design-patterns/catalog</a></p>
+</blockquote>
+<h2 id="0-UML类图关系"><a href="#0-UML类图关系" class="headerlink" title="0 UML类图关系"></a>0 UML类图关系</h2><ul>
 <li><p><strong>依赖关系</strong>：一种使用关系，一个类的实现需要另一个类的协助</p>
 <ul>
 <li>代码表现：局部变量、方法的参数或静态方法的调用；</li>
 <li>箭头方向：带虚线箭头，箭头从使用类指向被使用类；</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">classDiagram</span><br><span class="line">	Programmer --&gt; Computer</span><br><span class="line">	class Programmer &#123;</span><br><span class="line">		-name: String</span><br><span class="line">		+coding(Computer c)</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">classDiagram</span><br><span class="line">	Programmer ..&gt; Computer</span><br><span class="line">	class Programmer &#123;</span><br><span class="line">		-name: String</span><br><span class="line">		+coding(Computer c)</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>关联关系：一种引用关系，使一个类知道另一个类的属性和方法；如老师与学生；</p>
+<li><p><strong>关联关系</strong>：一种引用关系，使一个类知道另一个类的属性和方法；如老师与学生；</p>
 <ul>
 <li><p>代码表现：成员变量；</p>
 </li>
@@ -435,7 +450,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">classDiagram</span><br><span class="line">	Body *-- Brain</span><br><span class="line">	class Body &#123;</span><br><span class="line">		-brain: Brain</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
-<li><p>实现关系：接口和实现类，带三角箭头的实线指向接口；</p>
+<li><p><strong>实现关系</strong>：接口和实现类，带三角箭头的实线指向接口；</p>
 </li>
 <li><p>泛化关系：父子类之间的继承关系，带三角箭头的虚线指向父类；</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">classDiagram</span><br><span class="line">	University &lt;|.. Tsinghua</span><br><span class="line">	University &lt;|.. Peking</span><br><span class="line">	Animal&lt;|--Bird</span><br><span class="line">	Animal&lt;|--Lion</span><br></pre></td></tr></table></figure></li>
@@ -501,9 +516,9 @@
 <li><p><strong>而指导者类负责按照一定的顺序来执行构建步骤</strong>，最终生成产品。</p>
 </li>
 <li><p>基本组成：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">classDiagram</span><br><span class="line">	AbstractBuilder&lt;|..Builder1</span><br><span class="line">	AbstractBuilder&lt;|..Builder2</span><br><span class="line">	AbstractProduct&lt;|--Product1</span><br><span class="line">	AbstractProduct&lt;|--Product2</span><br><span class="line">	</span><br><span class="line">	class AbstractBuilder&#123;</span><br><span class="line">	&lt;&lt;Interface&gt;&gt;</span><br><span class="line">		+BuildPartA()</span><br><span class="line">		+BuildPartB()</span><br><span class="line">		+GetProuct()</span><br><span class="line">	&#125;</span><br><span class="line">	class Builder1&#123;</span><br><span class="line">		+BuildPartA()</span><br><span class="line">		+BuildPartB()</span><br><span class="line">		+GetProuct()</span><br><span class="line">	&#125;</span><br><span class="line">	class Builder2&#123;</span><br><span class="line">		+BuildPartA()</span><br><span class="line">		+BuildPartB()</span><br><span class="line">		+GetProuct()</span><br><span class="line">	&#125;</span><br><span class="line">	class Director&#123;</span><br><span class="line">		-builder: AbstractBuilder</span><br><span class="line">		+construct()</span><br><span class="line">	&#125;</span><br><span class="line">	class AbstractProduct &#123;</span><br><span class="line">	&lt;&lt;Interface&gt;&gt;</span><br><span class="line">		-partA</span><br><span class="line">		-partB</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">classDiagram</span><br><span class="line">	AbstractBuilder&lt;|--Builder1</span><br><span class="line">	AbstractBuilder&lt;|--Builder2</span><br><span class="line">	AbstractProduct&lt;|--Product1</span><br><span class="line">	AbstractProduct&lt;|--Product2</span><br><span class="line">	Director o--AbstractBuilder</span><br><span class="line">	Builder1 ..&gt; Product1</span><br><span class="line">	Builder2 ..&gt; Product2</span><br><span class="line">	</span><br><span class="line">	class AbstractBuilder&#123;</span><br><span class="line">		- product: AbstractProduct</span><br><span class="line">		+BuildPartA()</span><br><span class="line">		+BuildPartB()</span><br><span class="line">		+GetProuct()</span><br><span class="line">	&#125;</span><br><span class="line">	class Director&#123;</span><br><span class="line">		-builder: AbstractBuilder</span><br><span class="line">		+construct()</span><br><span class="line">	&#125;</span><br><span class="line">	class AbstractProduct &#123;</span><br><span class="line">		-partA</span><br><span class="line">		-partB</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 
-
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Director</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Director</span> &#123;</span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">explicit</span> <span class="title">Director</span><span class="params">(Builder* builder)</span>: builder_(builder) &#123;</span>&#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">construct</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        builder_-&gt;<span class="built_in">BuildPartA</span>();</span><br><span class="line">        builder_-&gt;<span class="built_in">BuildPartB</span>();</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="keyword">private</span>:</span><br><span class="line">    Builder* builder_;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Client</span></span><br><span class="line">Builder* builder = <span class="keyword">new</span> <span class="built_in">ConcreteBuilder</span>();</span><br><span class="line">Director* director = <span class="keyword">new</span> <span class="built_in">Director</span>(builder);</span><br><span class="line">director-&gt;<span class="built_in">construct</span>();</span><br><span class="line">Product product = builder-&gt;<span class="built_in">GetProduct</span>();</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>优点：</p>
 <ul>
@@ -518,6 +533,26 @@
 <li>产品内部发生变化，建造者需同步修改，后期维护成本较大；</li>
 </ul>
 </li>
+</ul>
+<h2 id="4-原型模式"><a href="#4-原型模式" class="headerlink" title="4 原型模式"></a>4 原型模式</h2><h3 id="💬-意图"><a href="#💬-意图" class="headerlink" title="💬 意图"></a>💬 意图</h3><p><strong>基于现有的对象创建新的对象，将原型对象的成员变量复制到新生成的对象中，而不需使代码依赖它们所属的类</strong>。</p>
+<h3 id="🙁-问题"><a href="#🙁-问题" class="headerlink" title="🙁 问题"></a>🙁 问题</h3><ul>
+<li>直接复制对象（“从外部” 复制对象并非总是可行），必须知道对象所属的类才能创建复制品， 所以代码必须依赖该类；</li>
+<li>此外，有时只知道对象所实现的接口， 而不知道其所属的具体类，比如向方法的某个参数传入实现了某个接口的任何对象；</li>
+</ul>
+<h3 id="😊-解决方案"><a href="#😊-解决方案" class="headerlink" title="😊 解决方案"></a>😊 解决方案</h3><p>原型模式将克隆过程委派给被克隆的实际对象。 模式为所有支持克隆的对象声明了一个通用接口， 该接口让你能够克隆对象， 同时又无需将代码和对象所属类耦合。</p>
+<p>所有的类对 **<code>clone</code>**方法的实现都非常相似。 该方法会创建一个当前类的对象， 然后将原始对象所有的成员变量值复制到新建的类中。 </p>
+<p>支持克隆的对象即为<strong>原型</strong>。 当你的对象有几十个成员变量和几百种类型时， 对其<strong>预生成原型可以代替子类的构造</strong>（避免子类实例化的复杂，无需关心该实例是如何通过子类化构造出来的）。</p>
+<img src="./proto_fig1.png" style="zoom:50%">
+
+<img src="./memo_design_mode/proto_fig1.png" style="zoom:50%">
+
+<blockquote>
+<p>其运作方式如下： 创建一系列不同类型的对象并不同的方式对其进行配置。 如果所需对象与预先配置的对象相同， 那么你只需克隆原型即可， 无需新建一个对象。</p>
+</blockquote>
+<h3 id="🛠-原型模式结构"><a href="#🛠-原型模式结构" class="headerlink" title="🛠 原型模式结构"></a>🛠 原型模式结构</h3><ul>
+<li>核心思想：<strong>基于现有的对象创建新的对象，将原视对象的成员变量复制到新生成的对象钟，而不需使代码依赖它们所属的类</strong>。</li>
+<li>基本组成：原型模式将克隆过程委派给被克隆的实际对象。 模式为所有支持克隆的对象声明了一个通用接口， 该接口让你能够克隆对象， 同时又无需将代码和对象所属类耦合。</li>
+<li>优点：</li>
 </ul>
 <h2 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h2><ul>
 <li><p><strong>OCP (Open&#x2F;Closed Principle):</strong> 软件实体（类&#x2F;模块&#x2F;函数等）应该是可扩展的，但是不可修改的。</p>
