@@ -351,6 +351,13 @@
   </url>
   
   <url>
+    <loc>https://stu-yue.github.io/tags/math/</loc>
+    <lastmod>2024-05-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://stu-yue.github.io/tags/firmware/</loc>
     <lastmod>2024-05-03</lastmod>
     <changefreq>weekly</changefreq>
@@ -372,34 +379,6 @@
   </url>
   
   <url>
-    <loc>https://stu-yue.github.io/tags/algebra/</loc>
-    <lastmod>2024-05-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://stu-yue.github.io/tags/interview/</loc>
-    <lastmod>2024-05-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://stu-yue.github.io/tags/math/</loc>
-    <lastmod>2024-05-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://stu-yue.github.io/tags/networks/</loc>
-    <lastmod>2024-05-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://stu-yue.github.io/tags/optimization/</loc>
     <lastmod>2024-05-03</lastmod>
     <changefreq>weekly</changefreq>
@@ -414,7 +393,21 @@
   </url>
   
   <url>
-    <loc>https://stu-yue.github.io/tags/statistic/</loc>
+    <loc>https://stu-yue.github.io/tags/algebra/</loc>
+    <lastmod>2024-05-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://stu-yue.github.io/tags/networks/</loc>
+    <lastmod>2024-05-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://stu-yue.github.io/tags/interview/</loc>
     <lastmod>2024-05-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -422,6 +415,20 @@
   
   <url>
     <loc>https://stu-yue.github.io/tags/points/</loc>
+    <lastmod>2024-05-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://stu-yue.github.io/tags/statistic/</loc>
+    <lastmod>2024-05-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://stu-yue.github.io/tags/python/</loc>
     <lastmod>2024-05-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -442,13 +449,6 @@
   </url>
   
   <url>
-    <loc>https://stu-yue.github.io/tags/python/</loc>
-    <lastmod>2024-05-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://stu-yue.github.io/tags/docker/</loc>
     <lastmod>2024-05-03</lastmod>
     <changefreq>weekly</changefreq>
@@ -456,6 +456,13 @@
   </url>
   
 
+  
+  <url>
+    <loc>https://stu-yue.github.io/categories/networks/</loc>
+    <lastmod>2024-05-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
   
   <url>
     <loc>https://stu-yue.github.io/categories/mathematics/</loc>
@@ -472,7 +479,7 @@
   </url>
   
   <url>
-    <loc>https://stu-yue.github.io/categories/networks/</loc>
+    <loc>https://stu-yue.github.io/categories/tidbits/</loc>
     <lastmod>2024-05-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -486,21 +493,7 @@
   </url>
   
   <url>
-    <loc>https://stu-yue.github.io/categories/tidbits/</loc>
-    <lastmod>2024-05-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://stu-yue.github.io/categories/languages/</loc>
-    <lastmod>2024-05-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://stu-yue.github.io/categories/interview/Hot100/</loc>
     <lastmod>2024-05-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -514,7 +507,7 @@
   </url>
   
   <url>
-    <loc>https://stu-yue.github.io/categories/languages/shell/</loc>
+    <loc>https://stu-yue.github.io/categories/interview/Hot100/</loc>
     <lastmod>2024-05-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -522,6 +515,13 @@
   
   <url>
     <loc>https://stu-yue.github.io/categories/languages/python/</loc>
+    <lastmod>2024-05-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://stu-yue.github.io/categories/languages/shell/</loc>
     <lastmod>2024-05-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
