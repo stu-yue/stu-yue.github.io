@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Design Code | Yue&#39;s Jotter</title>
+    
+    
+        <meta name="keywords" content="interview" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="1 单例模式📜 示例代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081class Singleton&amp;#123;private:    s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Design Code">
+<meta property="og:url" content="https://stu-yue.github.io/jottings/interview/memo_design_code/">
+<meta property="og:site_name" content="Yue&#39;s Jotter">
+<meta property="og:description" content="1 单例模式📜 示例代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081class Singleton&amp;#123;private:    s">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-07-22T12:00:53.000Z">
+<meta property="article:modified_time" content="2024-05-05T08:40:06.248Z">
+<meta property="article:author" content="stu-yue">
+<meta property="article:tag" content="interview">
+<meta name="twitter:card" content="summary">
+    
+
+    
+
+    
+        <link rel="icon" href="/css/images/logo.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Yue's Jotter" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Yue&#39;s Jotter</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">HOME</a>
+                
+                    <a class="main-nav-link" href="/archives">ARCHIVES</a>
+                
+                    <a class="main-nav-link" href="/categories">CATEGORIES</a>
+                
+                    <a class="main-nav-link" href="/tags">TAGS</a>
+                
+                    <a class="main-nav-link" href="/about">ABOUT</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">HOME</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">ARCHIVES</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">CATEGORIES</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">TAGS</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">ABOUT</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            architecture
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/architecture/summa_firmware_and_drivers/">Summa | Firmware and Drivers</a></li>  <li class="file"><a href="/jottings/architecture/summa_memory_categories/">Summa | The Majority of Memory Categories</a></li>  <li class="file"><a href="/jottings/architecture/memo_isa_and_micro_architecture/">Memo | ISA and Micro-architecture</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            interview
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Hot100
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/interview/Hot100/%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%92%8C/"></a></li>  </ul> 
+                    </li> 
+                     <li class="file active"><a href="/jottings/interview/memo_design_code/">Design Code</a></li>  <li class="file"><a href="/jottings/interview/memo_design_mode/">Design Mode</a></li>  <li class="file"><a href="/jottings/interview/memo_cpp_notes/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            languages
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            python
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/languages/python/memo_GIL_and_coroutine/">Memo | GIL and Coroutine</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            shell
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/languages/shell/memo_exploring_os/">Memo | Exploring Linux Files and Directories</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_redirection/">Memo | Redirection</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_see_the_world_through_shell/">Memo | See the World through Shell</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_permission_progress_env/">Memo | Permission, Progress and Shell Environment</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_others/">Memo | Olds and Ends</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_package_device/">Memo | Package and Device</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_here_doc/">Memo | Here Document</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_shell_basis/">Memo | Shell Basis</a></li>  <li class="file"><a href="/jottings/languages/shell/memo_tmux/">Memo | Tmux</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            mathematics
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/mathematics/memo_optimization_alg/">Memo | Optimization Algorithm in Machine Learning</a></li>  <li class="file"><a href="/jottings/mathematics/memo_algebra_basis/">Memo | Algebra Basis</a></li>  <li class="file"><a href="/jottings/mathematics/memo_mle_mae_bayes/">Memo | Parameter Estimation</a></li>  <li class="file"><a href="/jottings/mathematics/memo_law_of_probability/">Memo | Law of Large Number</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            networks
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/networks/memo_network_tidbits/">Summa |Networks Tidbits</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            statistics_ml
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/statistics_ml/summa_intro/">Summa | Intro of Statistical ML</a></li>  <li class="file"><a href="/jottings/statistics_ml/memo_ctc/">Memo | CTC Introduction</a></li>  <li class="file"><a href="/jottings/statistics_ml/memo_lm_and_word_vector/">Memo | LM and Word Representation</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            tidbits
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/tidbits/hot_points/">Hot Points</a></li>  <li class="file"><a href="/jottings/tidbits/tbr_compiler/">TBR_compiler</a></li>  <li class="file"><a href="/jottings/tidbits/tbr_net_info/">TBR_Net_Info</a></li>  <li class="file"><a href="/jottings/tidbits/quantization/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            tools
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            docker
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/jottings/tools/docker/memo_install/">Memo | Installation</a></li>  <li class="file"><a href="/jottings/tools/docker/memo_network/">Memo | Network</a></li>  <li class="file"><a href="/jottings/tools/docker/memo_operation/">Memo | Operation</a></li>  <li class="file"><a href="/jottings/tools/docker/memo_registry_and_data/">Memo | Regitstry and Data</a></li>  <li class="file"><a href="/jottings/tools/docker/memo_usage/">Memo | Usage</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                     <li class="file"><a href="/jottings/intro/">Welcome to Yue's Jotter</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-interview/memo_design_code" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/interview/">interview</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/interview/" rel="tag">interview</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/jottings/interview/memo_design_code/">
+            <time datetime="2023-07-22T12:00:53.000Z" itemprop="datePublished">2023-07-22</time>
+        </a>
+    </div>
+
+
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/stu-yue/stu-yue.github.io/raw/main/source/_posts/interview/memo_design_code.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/stu-yue/stu-yue.github.io/edit/main/source/_posts/interview/memo_design_code.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/stu-yue/stu-yue.github.io/commits/main/source/_posts/interview/memo_design_code.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Design Code
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <h2 id="1-单例模式"><a href="#1-单例模式" class="headerlink" title="1 单例模式"></a>1 单例模式</h2><h3 id="📜-示例代码"><a href="#📜-示例代码" class="headerlink" title="📜 示例代码"></a>📜 示例代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Singleton</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">static</span> Singleton * pinstance_;</span><br><span class="line">    <span class="type">static</span> std::mutex mutex_;</span><br><span class="line"></span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">    <span class="built_in">Singleton</span>(<span class="type">const</span> std::string value): <span class="built_in">value_</span>(value)</span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    ~<span class="built_in">Singleton</span>() &#123;&#125;</span><br><span class="line">    std::string value_;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Singletons should not be cloneable.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="built_in">Singleton</span>(Singleton &amp;other) = <span class="keyword">delete</span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Singletons should not be assignable.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="type">void</span> <span class="keyword">operator</span>=(<span class="type">const</span> Singleton &amp;) = <span class="keyword">delete</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">static</span> Singleton *<span class="title">GetInstance</span><span class="params">(<span class="type">const</span> std::string&amp; value)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">SomeBusinessLogic</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function">std::string <span class="title">value</span><span class="params">()</span> <span class="type">const</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> value_;</span><br><span class="line">    &#125; </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Static methods should be defined outside the class.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line">Singleton* Singleton::pinstance_&#123;<span class="literal">nullptr</span>&#125;;</span><br><span class="line">std::mutex Singleton::mutex_;</span><br><span class="line"></span><br><span class="line"><span class="function">Singleton *<span class="title">Singleton::GetInstance</span><span class="params">(<span class="type">const</span> std::string&amp; value)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (pinstance_ == <span class="literal">nullptr</span>) &#123; <span class="comment">// alleviate access competition</span></span><br><span class="line">        <span class="function">std::lock_guard&lt;std::mutex&gt; <span class="title">lock</span><span class="params">(mutex_)</span></span>;</span><br><span class="line">        <span class="keyword">if</span> (pinstance_ == <span class="literal">nullptr</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            pinstance_ = <span class="keyword">new</span> <span class="built_in">Singleton</span>(value);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> pinstance_;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">ThreadFoo</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">// Following code emulates slow initialization.</span></span><br><span class="line">    std::this_thread::<span class="built_in">sleep_for</span>(std::chrono::<span class="built_in">milliseconds</span>(<span class="number">1000</span>));</span><br><span class="line">    Singleton* singleton = Singleton::<span class="built_in">GetInstance</span>(<span class="string">&quot;FOO&quot;</span>);</span><br><span class="line">    std::cout &lt;&lt; singleton-&gt;<span class="built_in">value</span>() &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">ThreadBar</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">// Following code emulates slow initialization.</span></span><br><span class="line">    std::this_thread::<span class="built_in">sleep_for</span>(std::chrono::<span class="built_in">milliseconds</span>(<span class="number">1000</span>));</span><br><span class="line">    Singleton* singleton = Singleton::<span class="built_in">GetInstance</span>(<span class="string">&quot;BAR&quot;</span>);</span><br><span class="line">    std::cout &lt;&lt; singleton-&gt;<span class="built_in">value</span>() &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;   </span><br><span class="line">    std::cout &lt;&lt;<span class="string">&quot;If you see the same value, then singleton was reused (yay!\n&quot;</span> &lt;&lt;</span><br><span class="line">                <span class="string">&quot;If you see different values, then 2 singletons were created (booo!!)\n\n&quot;</span> &lt;&lt;</span><br><span class="line">                <span class="string">&quot;RESULT:\n&quot;</span>;   </span><br><span class="line">    <span class="function">std::thread <span class="title">t1</span><span class="params">(ThreadFoo)</span></span>;</span><br><span class="line">    <span class="function">std::thread <span class="title">t2</span><span class="params">(ThreadBar)</span></span>;</span><br><span class="line">    t1.<span class="built_in">join</span>();</span><br><span class="line">    t2.<span class="built_in">join</span>();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="2-工厂模式"><a href="#2-工厂模式" class="headerlink" title="2 工厂模式"></a>2 工厂模式</h2><h3 id="📜-示例代码-1"><a href="#📜-示例代码-1" class="headerlink" title="📜 示例代码"></a>📜 示例代码</h3><h2 id="3-建造者模式"><a href="#3-建造者模式" class="headerlink" title="3 建造者模式"></a>3 建造者模式</h2><h3 id="📜-示例代码-2"><a href="#📜-示例代码-2" class="headerlink" title="📜 示例代码"></a>📜 示例代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Product</span>&#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">    std::vector&lt;std::string&gt; parts_;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">ListParts</span><span class="params">()</span><span class="type">const</span></span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;Product parts: &quot;</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">size_t</span> i=<span class="number">0</span>;i&lt;parts_.<span class="built_in">size</span>();i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(parts_[i]== parts_.<span class="built_in">back</span>())&#123;</span><br><span class="line">                std::cout &lt;&lt; parts_[i];</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                std::cout &lt;&lt; parts_[i] &lt;&lt; <span class="string">&quot;, &quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;\n\n&quot;</span>; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Builder</span>&#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">Builder</span>()&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">ProducePartA</span><span class="params">()</span> <span class="type">const</span> </span>=<span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">ProducePartB</span><span class="params">()</span> <span class="type">const</span> </span>=<span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">ProducePartC</span><span class="params">()</span> <span class="type">const</span> </span>=<span class="number">0</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * The Concrete Builder classes follow the Builder interface and provide</span></span><br><span class="line"><span class="comment"> * specific implementations of the building steps. Your program may have several</span></span><br><span class="line"><span class="comment"> * variations of Builders, implemented differently.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ConcreteBuilder</span> : <span class="keyword">public</span> Builder&#123;</span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line"></span><br><span class="line">    Product* product;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * A fresh builder instance should contain a blank product object, which is</span></span><br><span class="line"><span class="comment">     * used in further assembly.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line"></span><br><span class="line">    <span class="built_in">ConcreteBuilder</span>()&#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;<span class="built_in">Reset</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ~<span class="built_in">ConcreteBuilder</span>()&#123;</span><br><span class="line">        <span class="keyword">delete</span> product;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">Reset</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;product= <span class="keyword">new</span> <span class="built_in">Product</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">ProducePartA</span><span class="params">()</span><span class="type">const</span> <span class="keyword">override</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;product-&gt;parts_.<span class="built_in">push_back</span>(<span class="string">&quot;PartA&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">ProducePartB</span><span class="params">()</span><span class="type">const</span> <span class="keyword">override</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;product-&gt;parts_.<span class="built_in">push_back</span>(<span class="string">&quot;PartB&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">ProducePartC</span><span class="params">()</span><span class="type">const</span> <span class="keyword">override</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;product-&gt;parts_.<span class="built_in">push_back</span>(<span class="string">&quot;PartC&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Concrete Builders are supposed to provide their own methods for</span></span><br><span class="line"><span class="comment">     * retrieving results. That&#x27;s because various types of builders may create</span></span><br><span class="line"><span class="comment">     * entirely different products that don&#x27;t follow the same interface.</span></span><br><span class="line"><span class="comment">     * Therefore, such methods cannot be declared in the base Builder interface</span></span><br><span class="line"><span class="comment">     * (at least in a statically typed programming language). Note that PHP is a</span></span><br><span class="line"><span class="comment">     * dynamically typed language and this method CAN be in the base interface.</span></span><br><span class="line"><span class="comment">     * However, we won&#x27;t declare it there for the sake of clarity.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * Usually, after returning the end result to the client, a builder instance</span></span><br><span class="line"><span class="comment">     * is expected to be ready to start producing another product. That&#x27;s why</span></span><br><span class="line"><span class="comment">     * it&#x27;s a usual practice to call the reset method at the end of the</span></span><br><span class="line"><span class="comment">     * `getProduct` method body. However, this behavior is not mandatory, and</span></span><br><span class="line"><span class="comment">     * you can make your builders wait for an explicit reset call from the</span></span><br><span class="line"><span class="comment">     * client code before disposing of the previous result.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Please be careful here with the memory ownership. </span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"></span><br><span class="line">    <span class="function">Product* <span class="title">GetProduct</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Product* result= <span class="keyword">this</span>-&gt;product;</span><br><span class="line">        <span class="keyword">this</span>-&gt;<span class="built_in">Reset</span>();</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * The Director is only responsible for executing the building steps in a</span></span><br><span class="line"><span class="comment"> * particular sequence. It is helpful when producing products according to a</span></span><br><span class="line"><span class="comment"> * specific order or configuration. Strictly speaking, the Director class is</span></span><br><span class="line"><span class="comment"> * optional, since the client can control builders directly.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Director</span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * @var Builder</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">    Builder* builder;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * The Director works with any builder instance that the client code passes</span></span><br><span class="line"><span class="comment">     * to it. This way, the client code may alter the final type of the newly</span></span><br><span class="line"><span class="comment">     * assembled product.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">set_builder</span><span class="params">(Builder* builder)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;builder=builder;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * The Director can construct several product variations using the same</span></span><br><span class="line"><span class="comment">     * building steps.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">BuildMinimalViableProduct</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;builder-&gt;<span class="built_in">ProducePartA</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">BuildFullFeaturedProduct</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;builder-&gt;<span class="built_in">ProducePartA</span>();</span><br><span class="line">        <span class="keyword">this</span>-&gt;builder-&gt;<span class="built_in">ProducePartB</span>();</span><br><span class="line">        <span class="keyword">this</span>-&gt;builder-&gt;<span class="built_in">ProducePartC</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * The client code creates a builder object, passes it to the director and then</span></span><br><span class="line"><span class="comment"> * initiates the construction process. The end result is retrieved from the</span></span><br><span class="line"><span class="comment"> * builder object.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * I used raw pointers for simplicity however you may prefer to use smart</span></span><br><span class="line"><span class="comment"> * pointers here</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">ClientCode</span><span class="params">(Director&amp; director)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ConcreteBuilder* builder = <span class="keyword">new</span> <span class="built_in">ConcreteBuilder1</span>();</span><br><span class="line">    director.<span class="built_in">set_builder</span>(builder);</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Standard basic product:\n&quot;</span>; </span><br><span class="line">    director.<span class="built_in">BuildMinimalViableProduct</span>();</span><br><span class="line">    </span><br><span class="line">    Product* p= builder-&gt;<span class="built_in">GetProduct</span>();</span><br><span class="line">    p-&gt;<span class="built_in">ListParts</span>();</span><br><span class="line">    <span class="keyword">delete</span> p;</span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Standard full featured product:\n&quot;</span>; </span><br><span class="line">    director.<span class="built_in">BuildFullFeaturedProduct</span>();</span><br><span class="line"></span><br><span class="line">    p= builder-&gt;<span class="built_in">GetProduct</span>();</span><br><span class="line">    p-&gt;<span class="built_in">ListParts</span>();</span><br><span class="line">    <span class="keyword">delete</span> p;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Remember, the Builder pattern can be used without a Director class.</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Custom product:\n&quot;</span>;</span><br><span class="line">    builder-&gt;<span class="built_in">ProducePartA</span>();</span><br><span class="line">    builder-&gt;<span class="built_in">ProducePartC</span>();</span><br><span class="line">    p=builder-&gt;<span class="built_in">GetProduct</span>();</span><br><span class="line">    p-&gt;<span class="built_in">ListParts</span>();</span><br><span class="line">    <span class="keyword">delete</span> p;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">delete</span> builder;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Director* director= <span class="keyword">new</span> <span class="built_in">Director</span>();</span><br><span class="line">    <span class="built_in">ClientCode</span>(*director);</span><br><span class="line">    <span class="keyword">delete</span> director;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="4-原型模式"><a href="#4-原型模式" class="headerlink" title="4 原型模式"></a>4 原型模式</h2><h3 id="📜-示例代码-3"><a href="#📜-示例代码-3" class="headerlink" title="📜 示例代码"></a>📜 示例代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> std::string;</span><br><span class="line"></span><br><span class="line"><span class="keyword">enum</span> <span class="title class_">Type</span> &#123;</span><br><span class="line">  PROTOTYPE_1 = <span class="number">0</span>,</span><br><span class="line">  PROTOTYPE_2</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Prototype</span> &#123;</span><br><span class="line"> <span class="keyword">protected</span>:</span><br><span class="line">  string prototype_name_;</span><br><span class="line">  <span class="type">float</span> prototype_field_;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">public</span>:</span><br><span class="line">  <span class="built_in">Prototype</span>() &#123;&#125;</span><br><span class="line">  <span class="built_in">Prototype</span>(string prototype_name)</span><br><span class="line">      : <span class="built_in">prototype_name_</span>(prototype_name) &#123;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">virtual</span> ~<span class="built_in">Prototype</span>() &#123;&#125;</span><br><span class="line">  <span class="function"><span class="keyword">virtual</span> Prototype *<span class="title">Clone</span><span class="params">()</span> <span class="type">const</span> </span>= <span class="number">0</span>;</span><br><span class="line">  <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">Method</span><span class="params">(<span class="type">float</span> prototype_field)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;prototype_field_ = prototype_field;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Call Method from &quot;</span> &lt;&lt; prototype_name_ &lt;&lt; <span class="string">&quot; with field : &quot;</span> &lt;&lt; prototype_field &lt;&lt; std::endl;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ConcretePrototype1</span> : <span class="keyword">public</span> Prototype &#123;</span><br><span class="line"> <span class="keyword">private</span>:</span><br><span class="line">  <span class="type">float</span> concrete_prototype_field1_;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">public</span>:</span><br><span class="line">  <span class="built_in">ConcretePrototype1</span>(string prototype_name, <span class="type">float</span> concrete_prototype_field)</span><br><span class="line">      : <span class="built_in">Prototype</span>(prototype_name), <span class="built_in">concrete_prototype_field1_</span>(concrete_prototype_field) &#123;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function">Prototype *<span class="title">Clone</span><span class="params">()</span> <span class="type">const</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">ConcretePrototype1</span>(*<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ConcretePrototype2</span> : <span class="keyword">public</span> Prototype &#123;</span><br><span class="line"> <span class="keyword">private</span>:</span><br><span class="line">  <span class="type">float</span> concrete_prototype_field2_;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">public</span>:</span><br><span class="line">  <span class="built_in">ConcretePrototype2</span>(string prototype_name, <span class="type">float</span> concrete_prototype_field)</span><br><span class="line">      : <span class="built_in">Prototype</span>(prototype_name), <span class="built_in">concrete_prototype_field2_</span>(concrete_prototype_field) &#123;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function">Prototype *<span class="title">Clone</span><span class="params">()</span> <span class="type">const</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">ConcretePrototype2</span>(*<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PrototypeFactory</span> &#123;</span><br><span class="line"> <span class="keyword">private</span>:</span><br><span class="line">  std::unordered_map&lt;Type, Prototype *, std::hash&lt;<span class="type">int</span>&gt;&gt; prototypes_;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">public</span>:</span><br><span class="line">  <span class="built_in">PrototypeFactory</span>() &#123;</span><br><span class="line">    prototypes_[Type::PROTOTYPE_1] = <span class="keyword">new</span> <span class="built_in">ConcretePrototype1</span>(<span class="string">&quot;PROTOTYPE_1 &quot;</span>, <span class="number">50.f</span>);</span><br><span class="line">    prototypes_[Type::PROTOTYPE_2] = <span class="keyword">new</span> <span class="built_in">ConcretePrototype2</span>(<span class="string">&quot;PROTOTYPE_2 &quot;</span>, <span class="number">60.f</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  ~<span class="built_in">PrototypeFactory</span>() &#123;</span><br><span class="line">    <span class="keyword">delete</span> prototypes_[Type::PROTOTYPE_1];</span><br><span class="line">    <span class="keyword">delete</span> prototypes_[Type::PROTOTYPE_2];</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="function">Prototype *<span class="title">CreatePrototype</span><span class="params">(Type type)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> prototypes_[type]-&gt;<span class="built_in">Clone</span>();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Client</span><span class="params">(PrototypeFactory &amp;prototype_factory)</span> </span>&#123;</span><br><span class="line">  std::cout &lt;&lt; <span class="string">&quot;Let&#x27;s create a Prototype 1\n&quot;</span>;</span><br><span class="line"></span><br><span class="line">  Prototype *prototype = prototype_factory.<span class="built_in">CreatePrototype</span>(Type::PROTOTYPE_1);</span><br><span class="line">  prototype-&gt;<span class="built_in">Method</span>(<span class="number">90</span>);</span><br><span class="line">  <span class="keyword">delete</span> prototype;</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; <span class="string">&quot;Let&#x27;s create a Prototype 2 \n&quot;</span>;</span><br><span class="line"></span><br><span class="line">  prototype = prototype_factory.<span class="built_in">CreatePrototype</span>(Type::PROTOTYPE_2);</span><br><span class="line">  prototype-&gt;<span class="built_in">Method</span>(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">delete</span> prototype;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  PrototypeFactory *prototype_factory = <span class="keyword">new</span> <span class="built_in">PrototypeFactory</span>();</span><br><span class="line">  <span class="built_in">Client</span>(*prototype_factory);</span><br><span class="line">  <span class="keyword">delete</span> prototype_factory;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/jottings/languages/shell/memo_exploring_os/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Memo | Exploring Linux Files and Directories
+                
+            </div>
+        </a>
+    
+    
+        <a href="/jottings/interview/memo_design_mode/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Design Mode</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            stu-yue &copy; 2024 
+            <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a target="_blank" rel="noopener" href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>
